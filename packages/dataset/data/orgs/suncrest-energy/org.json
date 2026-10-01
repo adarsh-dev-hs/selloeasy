@@ -1,0 +1,436 @@
+{
+  "slug": "suncrest-energy",
+  "name": "Suncrest Energy Systems",
+  "industry": "RENEWABLE_ENERGY",
+  "websiteUrl": "https://suncrest-energy.example",
+  "hq": "Ahmedabad, India",
+  "regions": [
+    "India",
+    "Middle East",
+    "Southeast Asia",
+    "Southern Africa"
+  ],
+  "companySize": "501-1000",
+  "description": "Suncrest Energy Systems is an Ahmedabad-based manufacturer of string and central solar inverters, battery energy storage systems (BESS), EV-charging-ready hybrid inverters and the SunSight energy-management SaaS, serving C&I businesses, utilities, IPPs, EPC contractors and data centres across India and emerging markets.",
+  "profile": {
+    "summary": "Suncrest Energy Systems designs and manufactures power-conversion and storage equipment for the energy transition. Its portfolio spans 110–350 kW string inverters, 3.4 MW central inverter skids, containerised lithium-iron-phosphate BESS from 1 MWh to 5 MWh per block, EV-charging-ready hybrid inverters for commercial sites, and SunSight, a cloud platform for monitoring, forecasting and energy optimisation. Suncrest sells directly to IPPs, utilities and large C&I owners, and through a network of certified EPC partners, backed by a 9 GW installed base and 40 service hubs.",
+    "valueProps": [
+      "Single-vendor solar + storage + monitoring stack that cuts integration risk and interface disputes",
+      "Made-in-India inverters and PCS that qualify for domestic-content requirements in public tenders",
+      "Up to 99% availability guarantees backed by 48-hour field replacement from 40 service hubs",
+      "SunSight SaaS turns plant data into forecasting, peak-shaving and carbon reporting for Scope 2 disclosures",
+      "Hybrid inverters ready for EV charging and battery add-ons, protecting C&I customers from stranded assets"
+    ],
+    "differentiators": [
+      "Grid-forming firmware certified to Indian grid code and Gulf and South African connection standards",
+      "In-house BESS integration with LFP cells rated for 6,000+ cycles and a 10-year capacity warranty",
+      "Dust- and heat-hardened IP66 enclosures proven in Rajasthan and Gulf desert sites",
+      "Open APIs and SCADA connectors for utility and data-centre building management systems",
+      "Dedicated EPC partner programme with design support, bid pricing and co-branded warranties"
+    ],
+    "targetIndustries": [
+      "Renewable Energy",
+      "Utilities",
+      "Data Centers",
+      "Manufacturing",
+      "Real Estate",
+      "Government",
+      "Fleet & Mobility"
+    ],
+    "geographies": [
+      "India",
+      "UAE",
+      "Saudi Arabia",
+      "Oman",
+      "Vietnam",
+      "Singapore",
+      "Malaysia",
+      "South Africa"
+    ],
+    "personas": [
+      {
+        "title": "VP Projects (IPP / EPC)",
+        "goals": [
+          "Hit COD on schedule",
+          "Lower LCOE and balance-of-system cost",
+          "Bankable equipment for lenders"
+        ],
+        "painPoints": [
+          "Inverter lead times",
+          "Grid-code compliance delays",
+          "Slow field service in remote sites"
+        ]
+      },
+      {
+        "title": "Chief Procurement Officer",
+        "goals": [
+          "Competitive bid pricing",
+          "Domestic-content compliance",
+          "Fewer vendors to manage"
+        ],
+        "painPoints": [
+          "Price volatility of imported equipment",
+          "Warranty enforcement across multiple suppliers"
+        ]
+      },
+      {
+        "title": "Head of Sustainability",
+        "goals": [
+          "Meet net-zero and RE100 targets",
+          "Credible Scope 2 reporting"
+        ],
+        "painPoints": [
+          "Fragmented energy data",
+          "Limited rooftop area and evening demand not covered by solar"
+        ]
+      },
+      {
+        "title": "Director – Energy Infrastructure (Data Centres)",
+        "goals": [
+          "Maximise uptime",
+          "Reduce diesel runtime and grid peak charges"
+        ],
+        "painPoints": [
+          "UPS battery footprint and fire risk",
+          "Grid connection capacity limits"
+        ]
+      },
+      {
+        "title": "Plant Head",
+        "goals": [
+          "Cut power cost per unit of output",
+          "Stable power quality for production lines"
+        ],
+        "painPoints": [
+          "Voltage dips tripping machines",
+          "High demand charges"
+        ]
+      }
+    ]
+  },
+  "products": [
+    {
+      "name": "Suncrest StringMax 110–350 kW String Inverters",
+      "category": "Solar Inverters",
+      "description": "Three-phase string inverters with 12 MPPTs, 99.0% peak efficiency, IP66 enclosure and built-in string monitoring, designed for C&I rooftops and utility-scale plants using distributed architecture.",
+      "targetSegments": [
+        "C&I rooftop",
+        "Utility-scale IPPs",
+        "EPC contractors"
+      ],
+      "priceNotes": "Public list INR 3.2–4.1 per Wac depending on rating; volume pricing above 20 MW on request.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Suncrest CentraSkid 3.4 MW Central Inverter Station",
+      "category": "Solar Inverters",
+      "description": "Containerised central inverter skid integrating inverter, MV transformer and RMU, factory-tested and delivered plug-and-play for utility-scale solar parks and hybrid plants.",
+      "targetSegments": [
+        "Utility-scale IPPs",
+        "EPC contractors",
+        "Utilities"
+      ],
+      "priceNotes": "Indicative INR 2.4–2.8 per Wac ex-works; project pricing quoted per tender.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Suncrest VaultBESS Containerised Battery Storage",
+      "category": "Battery Energy Storage",
+      "description": "LFP battery energy storage blocks from 1 MWh to 5 MWh per 20-ft container with integrated PCS, liquid cooling, fire suppression and EMS for peak shaving, frequency regulation and solar firming.",
+      "targetSegments": [
+        "Utilities & DISCOMs",
+        "IPPs",
+        "Data centres",
+        "Large C&I"
+      ],
+      "priceNotes": "Indicative USD 185–230 per kWh installed for 2-hour systems; long-duration configurations priced per project.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Suncrest HybriCharge Hybrid Inverter",
+      "category": "Hybrid Inverters",
+      "description": "30–150 kW hybrid inverter with battery port and DC-coupled EV-charger interface for malls, office parks, hospitals and fleet depots that want solar, storage and EV charging on one platform.",
+      "targetSegments": [
+        "Commercial real estate",
+        "Fleet depots",
+        "Hospitals",
+        "Logistics parks"
+      ],
+      "priceNotes": "List INR 18,500–22,000 per kW; bundles with VaultBESS Mini discounted 8%.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "SunSight Energy Management Platform",
+      "category": "SaaS",
+      "description": "Cloud monitoring and optimisation platform with plant analytics, generation forecasting, BESS dispatch optimisation, tenant sub-metering and automated Scope 2 carbon reports.",
+      "targetSegments": [
+        "All Suncrest customers",
+        "Multi-site C&I",
+        "Data centres"
+      ],
+      "priceNotes": "Starts INR 1,200 per kWp per year for monitoring; see SunSight plans for tiers.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Suncrest GridForm PCS Firmware Add-on",
+      "category": "Firmware",
+      "description": "Grid-forming control firmware licence enabling synthetic inertia, black-start and weak-grid operation for storage and hybrid plants; currently offered to select utility and IPP customers.",
+      "targetSegments": [
+        "Utilities",
+        "IPPs with hybrid tenders"
+      ],
+      "priceNotes": "Internal: licence USD 6,000 per MW one-time; waive for BESS orders above 200 MWh with VP Sales approval.",
+      "visibility": "INTERNAL"
+    }
+  ],
+  "plans": [
+    {
+      "name": "SunSight Monitor",
+      "pricing": "INR 1,200 per kWp per year (min. 100 kWp)",
+      "features": [
+        "Real-time plant and inverter monitoring",
+        "Fault alerts via app, email and WhatsApp",
+        "Monthly performance reports"
+      ],
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "SunSight Optimise",
+      "pricing": "INR 2,100 per kWp per year; BESS dispatch add-on USD 1,500 per MWh per year",
+      "features": [
+        "Generation forecasting",
+        "BESS peak-shaving and tariff arbitrage optimisation",
+        "Scope 2 carbon reporting",
+        "API and BMS integration"
+      ],
+      "visibility": "INTERNAL"
+    },
+    {
+      "name": "Suncrest Assured O&M",
+      "pricing": "INR 0.28–0.45 million per MW per year depending on site and availability guarantee",
+      "features": [
+        "99% availability guarantee with liquidated damages",
+        "48-hour inverter swap",
+        "Quarterly thermography and preventive maintenance",
+        "Spares stocked at nearest service hub"
+      ],
+      "visibility": "INTERNAL"
+    }
+  ],
+  "policies": [
+    {
+      "title": "Product Warranty",
+      "type": "Warranty",
+      "body": "StringMax and HybriCharge inverters carry a standard 5-year warranty extendable to 15 years; CentraSkid stations carry 5 years extendable to 20. VaultBESS systems are warranted for 10 years or 6,000 full cycles, whichever comes first, with a guaranteed 70% end-of-warranty capacity. Warranty claims are handled through SunSight tickets with a 48-hour field response in India and 5 business days internationally.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "title": "Grid-Compliance Certifications",
+      "type": "Compliance",
+      "body": "All Suncrest inverters and PCS are tested to IEC 62109, IEC 61727 and IEC 62116, and comply with the Indian central grid-connectivity regulations including low- and high-voltage ride-through. Export variants hold certification for Gulf utility connection codes and South African grid code for renewable plants. VaultBESS containers are tested to UL 9540A thermal-runaway propagation standards. Test reports are available to customers and lenders on request.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "title": "EPC Partner Discount Policy",
+      "type": "Commercial",
+      "body": "Certified EPC partners receive a base discount of 6% off list on inverters and 4% on VaultBESS. Silver partners (above 50 MW per year) receive an additional 3%; Gold partners (above 200 MW per year) an additional 5% plus bid-support pricing locked for 90 days. Discounts beyond 14% in total require Regional Sales Director approval. Partner pricing must not be quoted directly to end customers.",
+      "visibility": "INTERNAL"
+    }
+  ],
+  "icps": [
+    {
+      "name": "Utility-scale IPPs, EPCs and DISCOMs",
+      "description": "Independent power producers, EPC contractors and distribution utilities procuring inverters and storage for tender-driven solar, hybrid and standalone BESS projects of 50 MW or more.",
+      "criteria": {
+        "industries": [
+          "Renewable Energy",
+          "Utilities",
+          "Government"
+        ],
+        "companySize": {
+          "minEmployees": 100
+        },
+        "revenueBand": "INR 500 crore+",
+        "geographies": [
+          "India",
+          "Saudi Arabia",
+          "UAE",
+          "Oman",
+          "Vietnam",
+          "South Africa"
+        ],
+        "personas": [
+          "VP Projects",
+          "Chief Procurement Officer",
+          "Director – Energy Infrastructure"
+        ],
+        "painPoints": [
+          "Tight COD timelines",
+          "Storage-linked tender requirements",
+          "Domestic-content rules"
+        ],
+        "keywords": [
+          "tender",
+          "awarded",
+          "mw",
+          "mwh",
+          "bess",
+          "epc contract",
+          "ppa",
+          "solar park"
+        ]
+      }
+    },
+    {
+      "name": "Decarbonising manufacturers and commercial real estate",
+      "description": "Manufacturing plants and commercial property owners with net-zero, RE100 or rooftop commitments that need rooftop/captive solar, storage and energy monitoring.",
+      "criteria": {
+        "industries": [
+          "Manufacturing",
+          "Real Estate"
+        ],
+        "companySize": {
+          "minEmployees": 500
+        },
+        "revenueBand": "INR 1,000 crore+",
+        "geographies": [
+          "India",
+          "Vietnam"
+        ],
+        "personas": [
+          "Head of Sustainability",
+          "Plant Head",
+          "Chief Financial Officer",
+          "Head of Facilities & Energy"
+        ],
+        "painPoints": [
+          "Rising power costs",
+          "Scope 2 reporting pressure from buyers",
+          "Evening demand not covered by solar"
+        ],
+        "keywords": [
+          "net-zero",
+          "rooftop",
+          "captive solar",
+          "re100",
+          "scope 2",
+          "decarbonisation"
+        ]
+      }
+    },
+    {
+      "name": "Data centres and electrified fleet sites",
+      "description": "Data-centre operators and fleet or logistics depots adding large, fast-growing loads that need battery storage, on-site solar and grid-demand management.",
+      "criteria": {
+        "industries": [
+          "Data Centers",
+          "Fleet & Mobility",
+          "Logistics"
+        ],
+        "companySize": {
+          "minEmployees": 100
+        },
+        "geographies": [
+          "India",
+          "Singapore",
+          "Malaysia",
+          "UAE"
+        ],
+        "personas": [
+          "Director – Energy Infrastructure",
+          "VP Critical Facilities",
+          "Director – Depot Infrastructure"
+        ],
+        "painPoints": [
+          "Grid connection limits",
+          "Diesel backup costs",
+          "Uptime and power-quality risk"
+        ],
+        "keywords": [
+          "data centre",
+          "it load",
+          "battery storage",
+          "charging depot",
+          "ev charging",
+          "uptime"
+        ]
+      }
+    }
+  ],
+  "customSignals": [
+    {
+      "name": "Commercial EV Charging Depot Rollout",
+      "description": "A fleet operator, logistics company or commercial landlord rolls out an EV charging depot or hub that needs hybrid inverters, solar canopies and storage to manage grid demand.",
+      "matchInstructions": "Match when a named organisation announces an EV charging depot, charging hub or fleet electrification programme with a stated number of chargers, vehicles, power demand or investment, especially where solar or storage is mentioned. Do NOT match EV sales figures, vehicle launches, or consumer charging-app partnerships.",
+      "keywords": [
+        "ev charging",
+        "charging depot",
+        "chargers",
+        "electric buses",
+        "fleet electrification",
+        "charging hub",
+        "electric trucks"
+      ],
+      "negativeKeywords": [
+        "vehicle launch",
+        "sales figures",
+        "recall"
+      ],
+      "weight": 1.0,
+      "icpIndex": 2
+    },
+    {
+      "name": "Battery Storage Tender",
+      "description": "A utility, DISCOM or IPP issues or wins a battery energy storage tender, or adds BESS to an existing plant — a direct opportunity for Suncrest BESS containers and PCS.",
+      "matchInstructions": "Match when an event reports a battery energy storage (BESS) tender, award, or procurement with MWh capacity, or a solar/wind plant adding storage for peak shaving or frequency regulation. Do NOT match EV battery cell manufacturing, lithium mining, or pumped-hydro-only storage.",
+      "keywords": [
+        "bess",
+        "battery energy storage",
+        "mwh",
+        "storage tender",
+        "battery storage",
+        "peak shaving",
+        "frequency regulation"
+      ],
+      "negativeKeywords": [
+        "cell gigafactory",
+        "lithium mine",
+        "pumped hydro"
+      ],
+      "weight": 1.4,
+      "icpIndex": 0
+    }
+  ],
+  "users": [
+    {
+      "name": "Kiran Desai",
+      "email": "admin@suncrest.local",
+      "role": "ORG_ADMIN"
+    },
+    {
+      "name": "Aarav Bhatt",
+      "email": "sdr1@suncrest.local",
+      "role": "SDR"
+    }
+  ],
+  "documents": [
+    {
+      "file": "brochure.md",
+      "title": "Suncrest Inverter & Storage Brochure",
+      "visibility": "PUBLIC",
+      "asPdf": true
+    },
+    {
+      "file": "epc-partner-pricing.md",
+      "title": "EPC Partner Pricing (Internal)",
+      "visibility": "INTERNAL",
+      "asPdf": true
+    },
+    {
+      "file": "case-study-cni-plant.md",
+      "title": "Case Study: 4 MW Rooftop + BESS for a Textile Plant",
+      "visibility": "PUBLIC",
+      "asPdf": false
+    }
+  ]
+}

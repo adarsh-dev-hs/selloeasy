@@ -1,0 +1,52 @@
+---
+title: ADR-0010 — Super Admin sees only public-level data and aggregates
+description: Platform administrators have no tenant access; they see an org's public-level fields, operational metadata and aggregate counts through allow-list DTOs.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+The Super Admin operates the platform: creates organizations, manages invites, suspends orgs, maintains signal
+templates and watches platform health. Tenants entrust SelloEasy with sensitive data: pricing, internal policies,
+lead lists, contact details, outreach content and CRM notes. A platform operator with unrestricted access to all of
+that is a large trust and compliance liability.
+
+## Decision
+
+The Super Admin sees **only public-level data that the org chose to publish, plus operational metadata and
+aggregates**:
+
+- Super Admin is a user flag, **not a membership**. With no org membership, every tenant route
+  (`requireOrg(…)`) returns **403**. There is no impersonation, "view as" or org-id override.
+- Platform endpoints (`/api/v1/platform/*`) are built from **allow-list DTOs** (`PlatformOrgPublicView`,
+  `PlatformOrgListItem`, `PlatformOrgStats`, `PlatformOrgUser`, `PlatformInvite`, `PlatformDashboard`), never from
+  tenant DTOs, so new internal columns cannot leak by accident.
+- Knowledge records carry `visibility` (`PUBLIC`/`INTERNAL`). Only `PUBLIC` products and documents, and the profile
+  summary and value props when marked public, appear in the platform org view. Defaults are conservative: sources,
+  plans and policies are `INTERNAL`.
+- Aggregates are SQL counts (leads, approached, meetings, converted, conversion rate, LLM usage). There is no
+  drill-down to records.
+- The platform audit log shows **PLATFORM-scope** entries only. Org-internal audit entries and diffs are excluded.
+- Viewing an org's public profile is itself audited (`platform.org_viewed`).
+
+## Consequences
+
+- A strong, explainable privacy posture: tenants can be told exactly what platform staff can see.
+- Accidental leakage is unlikely thanks to the allow-lists and the default-`INTERNAL` classifications.
+- **Support friction:** the Super Admin cannot debug a tenant's data issue directly. Support requires an org admin
+  to look, or to grant access through the normal invite flow.
+- Operational fields (member names, emails, roles, last login, pipeline errors, LLM cost) remain visible because they
+  are needed to run the platform. This is documented in [Roles & permissions](/docs/concepts/roles-and-permissions#the-super-admin-boundary).
+
+## Alternatives considered
+
+- **Full Super Admin access**: easiest support, but unacceptable exposure of tenant data.
+- **Time-boxed, consented impersonation** ("break-glass" with tenant approval and audit): a good future option. It
+  adds workflow and UI.
+- **Field-level redaction on shared DTOs**: fragile, because every new field must remember to be redacted.
+
+## Revisit when
+
+- Enterprise customers require a formal support-access workflow. Add consented, audited break-glass access.
+- Regulations or contracts demand even less operational visibility (e.g. hiding member emails).

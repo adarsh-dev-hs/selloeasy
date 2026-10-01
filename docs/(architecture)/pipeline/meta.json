@@ -1,0 +1,4 @@
+{
+  "title": "Intelligence pipeline",
+  "pages": ["overview", "stages", "prompts", "llm-providers", "evaluation"]
+}

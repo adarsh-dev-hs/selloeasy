@@ -1,0 +1,114 @@
+---
+title: Evaluation
+description: Measuring signal-matching quality — the labelled gold set, how pnpm eval:pipeline computes precision, recall, F1 and negative rejection per org, and where results are written.
+---
+
+Matching quality depends on the model configured in `OPENROUTER_MODEL`, the prompt version and the signal
+definitions. The evaluation harness measures it on a labelled **gold set**, so that a model or prompt change is a
+measured decision rather than a guess.
+
+## The gold set
+
+Location: `packages/dataset/data/eval/<industry>.json`. Each item labels one event for one org with the signals a
+careful human would expect to match:
+
+```json
+{
+  "eventExternalId": "aut-006",
+  "orgSlug": "roadgrip-tyres",
+  "expectedSignals": ["New vehicle launch", "EV platform announcement"]
+}
+```
+
+| Property     | Value                                                                                                                                                          |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Items        | **60**, 12 per org across the 5 demo orgs                                                                                                                      |
+| Negatives    | **20** items with `expectedSignals: []` (the event should match nothing for that org)                                                                          |
+| Signal names | Must be the org's industry template names or its custom signal names. `pnpm --filter @selloeasy/dataset validate` rejects unknown names and unknown event ids. |
+| Coverage     | Strong, weak, negative and cross-industry events (the dataset `kind` field)                                                                                    |
+
+## Running it
+
+```bash
+pnpm eval:pipeline                 # uses LLM_MODE from your environment
+pnpm eval:pipeline --mode live  # force the configured live provider + model (LLM_PROVIDER and its *_API_KEY + *_MODEL)
+pnpm eval:pipeline --mode mock  # deterministic keyword baseline, no key needed
+```
+
+The script (`packages/pipeline/src/eval.ts`) never **connects** to a database or Redis. It still loads the
+validated configuration, so `DATABASE_URL` and `REDIS_URL` must be set (the `.env.example` values are enough).
+It loads the dataset from disk and, for each org:
+
+1. builds that org's signals from its industry templates and custom signals (keywords, match instructions,
+   negative keywords), and its target industries from the profile and ICPs;
+2. sends the org's gold events to the real `signal.match` prompt in batches of 8, with the response cache
+   **disabled** (`cacheTtlSeconds: 0`);
+3. keeps predictions with confidence ≥ `PIPELINE_MATCH_THRESHOLD` (0.6) and maps signal ids back to names;
+4. counts, per signal label, true positives (predicted and expected), false positives (predicted, not expected)
+   and false negatives (expected, not predicted). For negative items, it also counts whether the model correctly
+   predicted nothing.
+
+It then prints **micro-averaged** precision, recall and F1 per org and overall, the negative-rejection rate, the
+number of gold items and LLM calls, and the total cost. It writes the full details to
+`packages/pipeline/eval/results-<mode>.json` (mode, model, threshold, timestamp, overall metrics, per-org counts,
+and expected versus predicted per item).
+
+<Callout type="info">
+  The evaluation calls `signal.match` directly. It bypasses the prefilter and the database pipeline, so it
+  isolates the model's matching judgement. End-to-end recall in a real run can be lower if a signal's keywords
+  are too narrow for an event to pass the [prefilter](/docs/pipeline/stages#stage-1--prefilter-no-llm).
+</Callout>
+
+## Metrics
+
+| Metric             | Formula                                                                |
+| ------------------ | ---------------------------------------------------------------------- |
+| Precision          | TP ÷ (TP + FP): of the matches the model reported, how many were right |
+| Recall             | TP ÷ (TP + FN): of the expected matches, how many the model found      |
+| F1                 | 2 · P · R ÷ (P + R)                                                    |
+| Negatives rejected | negative items with zero predictions ÷ negative items                  |
+
+## Results
+
+Numbers are produced by **running** `pnpm eval:pipeline`. They are not hard-coded here, because they change with
+the model, the prompt version and the threshold. The command prints a Markdown table in exactly this format.
+Paste it below when recording a run, together with the model and date:
+
+**Model:** `…` · **Mode:** `…` · **Threshold:** 0.6 · **Date:** `…`
+
+| Org                     | Precision | Recall | F1    | Negatives rejected |
+| ----------------------- | --------- | ------ | ----- | ------------------ |
+| cargolane-logistics     | —         | —      | —     | —/—                |
+| medisphere-diagnostics  | —         | —      | —     | —/—                |
+| nanoforge-semiconductor | —         | —      | —     | —/—                |
+| roadgrip-tyres          | —         | —      | —     | —/—                |
+| suncrest-energy         | —         | —      | —     | —/—                |
+| **All**                 | **—**     | **—**  | **—** | **—/—**            |
+
+<Callout type="warn">
+  No results are recorded yet for v0.1.0. Run the command with your configured model and fill the table. The
+  mock baseline (`--mode mock`) measures the keyword heuristic, not a model. It is useful as a floor, and it
+  is the logic used by the seed and the budget-guard fallback.
+</Callout>
+
+## Interpreting and acting on results
+
+- **Low precision** (false positives): tighten `matchInstructions` with explicit exclusions, add
+  `negativeKeywords`, or raise `PIPELINE_MATCH_THRESHOLD`.
+- **Low recall** (misses): broaden instructions, or check whether the expected signal's wording is too narrow. In
+  real runs, also check keywords, since the prefilter drops events without any keyword hit.
+- **Poor negative rejection**: the model over-matches off-target news. The prompt already penalizes events outside
+  the seller's target industries. Make sure the org profile and ICPs list the right industries.
+- **Comparing models**: run `--mode live` with different `OPENROUTER_MODEL` values and compare
+  `results-live.json` files. Cost per run is printed too.
+
+## When to run it
+
+- after changing `signal.match` (and bumping its version; see [Prompts](/docs/pipeline/prompts#changing-a-prompt));
+- before switching `OPENROUTER_MODEL` in a shared environment;
+- after large changes to signal templates.
+
+<Callout type="info">
+  **Planned:** running the live evaluation nightly in CI and publishing the table here automatically. CI
+  currently runs the unit/integration suites, not the (paid) live evaluation.
+</Callout>

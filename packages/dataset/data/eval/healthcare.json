@@ -1,0 +1,79 @@
+[
+  {
+    "eventExternalId": "hlt-001",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": [
+      "New Hospital or Wing Opening"
+    ]
+  },
+  {
+    "eventExternalId": "hlt-003",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": [
+      "Hospital Chain Funding or M&A"
+    ]
+  },
+  {
+    "eventExternalId": "hlt-007",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": [
+      "Hospital Chain Funding or M&A",
+      "Home Sample Collection Expansion"
+    ]
+  },
+  {
+    "eventExternalId": "hlt-010",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": [
+      "Accreditation & Quality Drive"
+    ]
+  },
+  {
+    "eventExternalId": "hlt-012",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": [
+      "Lab Automation & Digitisation"
+    ]
+  },
+  {
+    "eventExternalId": "hlt-013",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": [
+      "New Oncology / Cardiac / Specialty Centre"
+    ]
+  },
+  {
+    "eventExternalId": "hlt-019",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": [
+      "Government Health Scheme Tender"
+    ]
+  },
+  {
+    "eventExternalId": "hlt-025",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": [
+      "Clinical or Lab Leadership Hire"
+    ]
+  },
+  {
+    "eventExternalId": "hlt-037",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "hlt-043",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "hlt-046",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "hlt-049",
+    "orgSlug": "medisphere-diagnostics",
+    "expectedSignals": []
+  }
+]

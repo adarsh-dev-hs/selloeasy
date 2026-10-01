@@ -1,0 +1,222 @@
+{
+  "slug": "nanoforge-semiconductor",
+  "name": "Nanoforge Semiconductor",
+  "industry": "SEMICONDUCTORS",
+  "websiteUrl": "https://nanoforge-semiconductor.example",
+  "hq": "Hyderabad, India",
+  "regions": ["India", "Singapore", "Malaysia", "Vietnam", "Taiwan", "Japan", "United States"],
+  "companySize": "201-1000",
+  "description": "Nanoforge Semiconductor is a fictional Hyderabad-headquartered semiconductor company with a design centre in Singapore. It supplies automotive-grade power ICs, silicon carbide MOSFET modules and battery-management ICs to EV, renewable-energy, telecom and data-center OEMs, and sells inline fab metrology and inspection equipment with yield analytics software to new fabs and OSAT plants.",
+  "profile": {
+    "summary": "Nanoforge Semiconductor helps manufacturers in India and South-East Asia build power electronics and semiconductor capacity faster. Its product line spans AEC-Q100/Q101 qualified gate-driver and power-management ICs, 650 V and 1200 V silicon carbide MOSFET modules, and battery-management ICs for two-wheelers, buses and energy storage. For fabs and OSATs it supplies inline film-thickness metrology, wafer and substrate defect inspection tools, and the Forgesight yield analytics platform, all backed by local field application and service engineers in Hyderabad, Bengaluru, Singapore and Penang.",
+    "valueProps": [
+      "Automotive-grade power semiconductors with allocation commitments of up to 36 months",
+      "Local application engineering and failure analysis in India, cutting design-in cycles by 30-40%",
+      "Complete inverter and BMS reference designs that combine Nanoforge SiC modules, gate drivers and battery monitors",
+      "Inline metrology and inspection tools with on-site service teams inside 24 hours in India and Malaysia",
+      "Yield analytics software that shortens yield learning on new fab and OSAT lines",
+      "Supply from India and Singapore that supports localization and domestic value-addition targets"
+    ],
+    "differentiators": [
+      "One of few suppliers offering both power devices and fab process-control tools, so it understands the full chain from wafer to inverter",
+      "SiC modules assembled and tested at partner OSATs in India with die-level traceability",
+      "Forgesight yield platform pre-integrated with Nanoforge inspection tools and third-party MES",
+      "Engineering teams in Hyderabad and Singapore working in customer time zones",
+      "Export-compliance and trusted-source documentation ready for telecom and government tenders"
+    ],
+    "targetIndustries": ["Semiconductors", "Electric Vehicles", "Two-Wheelers", "Electronics Manufacturing", "Telecom", "Data Centers", "Renewable Energy", "Commercial Vehicles"],
+    "geographies": ["India", "Singapore", "Malaysia", "Vietnam", "Taiwan", "Japan", "United States"],
+    "personas": [
+      {
+        "title": "Head of Power Electronics",
+        "goals": ["Hit inverter efficiency and power-density targets", "Qualify automotive-grade parts quickly", "Secure multi-year allocation"],
+        "painPoints": ["Long import lead times for SiC modules", "Little local application support", "Single-source exposure on critical devices"]
+      },
+      {
+        "title": "VP Fab Operations",
+        "goals": ["Reach target yield on a new line fast", "Keep tool uptime above 95%", "Build a local service ecosystem"],
+        "painPoints": ["Slow yield learning on greenfield lines", "Service engineers flying in from overseas", "Fragmented inspection and metrology data"]
+      },
+      {
+        "title": "Director – Strategic Sourcing",
+        "goals": ["Localize the bill of materials", "Add a qualified second source", "Lock predictable pricing"],
+        "painPoints": ["Allocation shocks", "Currency and tariff volatility", "Supplier documentation gaps for domestic-content audits"]
+      },
+      {
+        "title": "Yield Engineering Manager",
+        "goals": ["Detect excursions early", "Correlate inline data with test results", "Reduce scrap"],
+        "painPoints": ["Data spread across tool vendors", "Manual root-cause analysis", "Limited inline sampling"]
+      },
+      {
+        "title": "CTO",
+        "goals": ["Choose a silicon roadmap partner", "De-risk tape-outs and qualification", "Differentiate products on efficiency"],
+        "painPoints": ["Immature local supply chain", "Qualification cost and time", "Scarce power-electronics talent"]
+      }
+    ]
+  },
+  "products": [
+    {
+      "name": "ForgeSiC 1200 V MOSFET Modules",
+      "category": "Power Modules",
+      "description": "Half-bridge and six-pack silicon carbide MOSFET modules rated 650 V and 1200 V, 200-800 A, with silver-sintered die attach, AQG-324 qualification and die-level traceability for traction inverters, on-board chargers and solar inverters.",
+      "targetSegments": ["EV and two-wheeler OEMs", "Commercial vehicle OEMs", "Solar inverter makers"],
+      "priceNotes": "List price from USD 95 (650 V, 200 A half-bridge) to USD 420 (1200 V six-pack) per module at 10k units; volume tiers apply.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "NF-GD Automotive Gate Driver & Power ICs",
+      "category": "Power Management ICs",
+      "description": "AEC-Q100 Grade 1 isolated gate drivers with desaturation protection, plus automotive buck/boost controllers and LDOs, designed to pair with ForgeSiC modules and third-party IGBTs in traction and charger designs.",
+      "targetSegments": ["EV and two-wheeler OEMs", "EMS providers", "Telecom and data-center power designers"],
+      "priceNotes": "USD 0.90-3.40 per unit at 50k units depending on channel count and isolation rating.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "CellGuard Battery-Management ICs",
+      "category": "Battery Management",
+      "description": "16-cell and 18-cell battery monitor ICs with ISO 26262 ASIL-C support, integrated passive balancing and daisy-chain isolation for two-wheeler, three-wheeler, bus and energy-storage battery packs.",
+      "targetSegments": ["Battery pack integrators", "EV and two-wheeler OEMs", "Energy storage makers"],
+      "priceNotes": "USD 3.80-5.60 per IC at 25k units; reference BMS boards available at cost for design-in.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "InlineEye Metrology & Defect Inspection Tools",
+      "category": "Fab Equipment",
+      "description": "Inline film-thickness and overlay metrology plus brightfield/darkfield defect inspection for 150 mm to 300 mm silicon and silicon carbide wafers, with automation interfaces for SECS/GEM and on-site service in India and Malaysia.",
+      "targetSegments": ["New fabs", "Compound-semiconductor fabs", "OSAT and advanced packaging plants"],
+      "priceNotes": "USD 1.2-4.8 million per tool depending on configuration; installation and first-year service included.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Forgesight Yield Analytics",
+      "category": "Software",
+      "description": "Yield management software that combines inline metrology, inspection, parametric test and final test data to detect excursions, rank root causes and track yield learning on new lines, deployable on-premise or in a sovereign cloud.",
+      "targetSegments": ["New fabs", "OSAT and ATMP plants", "Power module assemblers"],
+      "priceNotes": "Annual subscription from USD 180k per site (up to 20 tools); enterprise pricing for multi-fab deployments.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Strategic Allocation Programme",
+      "category": "Supply Programme",
+      "description": "Internal programme for reserving wafer and module capacity for strategic accounts, with quarterly rolling forecasts, buffer stock in Hyderabad and Singapore, and price bands tied to committed volume.",
+      "targetSegments": ["Top-20 OEM accounts", "Tier-1 EMS providers"],
+      "priceNotes": "Requires a 12-36 month volume commitment; pricing per internal volume pricing sheet and CFO approval for discounts above 18%.",
+      "visibility": "INTERNAL"
+    }
+  ],
+  "plans": [
+    {
+      "name": "Design-In Volume Tier",
+      "pricing": "List price up to 50k units/year; 8% discount from 50k, 14% from 250k units/year, on 12-month commitment.",
+      "features": ["Free engineering samples (up to 25 units)", "Reference design and simulation models", "Named field application engineer"],
+      "visibility": "INTERNAL"
+    },
+    {
+      "name": "Strategic Allocation Tier",
+      "pricing": "Custom pricing bands for >500k units/year, 24-36 month take-or-pay commitment, price reviewed semi-annually.",
+      "features": ["Guaranteed allocation with 8-week buffer stock", "On-site failure analysis within 72 hours", "Joint roadmap reviews twice a year", "Localization documentation for domestic-content audits"],
+      "visibility": "INTERNAL"
+    },
+    {
+      "name": "Fab Process-Control Service Contract",
+      "pricing": "Annual service at 9-12% of tool list price; Forgesight subscription bundled at 20% off for sites with 5+ Nanoforge tools.",
+      "features": ["24-hour on-site response in India and Malaysia", "Spare-parts depot in Hyderabad", "Quarterly yield reviews with applications engineers", "Software upgrades included"],
+      "visibility": "PUBLIC"
+    }
+  ],
+  "policies": [
+    {
+      "title": "Export Control & Trade Compliance",
+      "type": "compliance",
+      "body": "Nanoforge screens every customer, end user and shipment against applicable export-control and sanctions lists before quoting. Metrology and inspection equipment and certain software may require export licences depending on destination and end use; customers must provide end-use statements for fab equipment orders. We do not ship to restricted parties or for prohibited end uses, and we provide classification data for all products on request.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "title": "Automotive Quality & AEC-Q100 Qualification",
+      "type": "quality",
+      "body": "All automotive power ICs and battery-management ICs are qualified to AEC-Q100 (Grade 0 or 1) and discrete devices to AEC-Q101; ForgeSiC modules follow AQG-324. Manufacturing runs under IATF 16949 with PPAP Level 3 documentation available on request. We commit to 12-month advance notice of product changes and at least 10 years of supply for automotive part numbers.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "title": "NDA & Engineering Sample Policy",
+      "type": "sales",
+      "body": "Datasheets for released products may be shared freely, but roadmap, pricing sheets, reliability reports and Forgesight architecture documents require a mutual NDA signed by legal before sharing. Engineering samples are limited to 25 units per part number per account without manager approval; samples above USD 5,000 in value require a qualified opportunity in CRM with an identified design project and timeline.",
+      "visibility": "INTERNAL"
+    },
+    {
+      "title": "Allocation & Pricing Governance",
+      "type": "pricing",
+      "body": "Sales representatives may quote within the Design-In Volume Tier bands. Discounts beyond 14% require sales manager approval, and beyond 18% require CFO approval. Allocation commitments over 12 months must be reviewed by supply planning. Quotes are valid for 30 days and are denominated in USD, with INR quotes allowed for Indian customers using the monthly treasury rate.",
+      "visibility": "INTERNAL"
+    }
+  ],
+  "icps": [
+    {
+      "name": "EV & Power-Electronics OEMs",
+      "description": "Electric two-wheeler, three-wheeler, bus and battery companies bringing inverters, chargers and BMS design in-house in India and South-East Asia.",
+      "criteria": {
+        "industries": ["Electric Vehicles", "Two-Wheelers", "Commercial Vehicles", "Renewable Energy"],
+        "companySize": { "minEmployees": 150 },
+        "geographies": ["India", "Malaysia", "Vietnam"],
+        "personas": ["Head of Power Electronics", "CTO", "Director – Strategic Sourcing"],
+        "painPoints": ["Import lead times for SiC modules", "Lack of local application support", "Localization targets"],
+        "keywords": ["power electronics", "traction inverter", "motor controller", "battery management", "silicon carbide", "on-board charger"]
+      }
+    },
+    {
+      "name": "New Fabs & OSAT Plants",
+      "description": "Greenfield and expanding fabs, compound-semiconductor fabs and OSAT/ATMP plants that need inline metrology, inspection and yield analytics during ramp.",
+      "criteria": {
+        "industries": ["Semiconductors"],
+        "companySize": { "minEmployees": 200 },
+        "revenueBand": "Project capex above USD 100 million",
+        "geographies": ["India", "Singapore", "Malaysia", "Taiwan", "Japan"],
+        "personas": ["VP Fab Operations", "Yield Engineering Manager", "Director – Equipment Procurement"],
+        "painPoints": ["Slow yield learning", "No local tool service", "Fragmented process data"],
+        "keywords": ["fab", "osat", "wafers per month", "clean room", "assembly and test", "yield"]
+      }
+    },
+    {
+      "name": "EMS, Telecom & Data-Center Hardware Makers",
+      "description": "EMS providers and OEMs building telecom radios, consumer chargers and data-center power hardware that need localized, second-source power semiconductors.",
+      "criteria": {
+        "industries": ["Electronics Manufacturing", "Telecom", "Data Centers", "Consumer Electronics"],
+        "companySize": { "minEmployees": 200 },
+        "geographies": ["India", "Vietnam", "Singapore", "United States"],
+        "personas": ["Director – Strategic Sourcing", "VP Hardware Engineering", "CTO"],
+        "painPoints": ["Single-source exposure", "Domestic value-addition rules", "Power density limits"],
+        "keywords": ["localization", "second source", "supply agreement", "power supply", "gallium nitride", "rack power"]
+      }
+    }
+  ],
+  "customSignals": [
+    {
+      "name": "Solar Inverter Capacity Expansion",
+      "description": "A solar or storage inverter maker adds manufacturing capacity, a new plant or a new inverter platform that will need power modules and gate drivers.",
+      "matchInstructions": "Match when a named solar or battery-storage inverter manufacturer announces a new plant, production line or capacity expansion (GW figures, new string/central/hybrid inverter platforms). Do NOT match solar park developers, EPC contracts, tariff auctions or policy commentary without an inverter manufacturing commitment.",
+      "keywords": ["solar inverter", "string inverter", "central inverter", "hybrid inverter", "capacity expansion", "inverter manufacturing", "storage converter"],
+      "negativeKeywords": ["warranty provisions", "grid-code", "net-metering"],
+      "weight": 1.2,
+      "icpIndex": 0
+    },
+    {
+      "name": "Data-Center Power Hardware Build-out",
+      "description": "A data-center hardware maker builds or scales AI server racks, rack power shelves or server power supplies that consume GaN/SiC power stages.",
+      "matchInstructions": "Match when a server, rack or data-center hardware company announces manufacturing, funding or in-house design of rack power shelves, server power supply units or high-density AI racks. Do NOT match colocation leasing deals, data-center real estate, or sustainability events without hardware manufacturing.",
+      "keywords": ["rack power", "power shelf", "server power supply", "ai server", "48v", "data center hardware", "liquid-cooled"],
+      "negativeKeywords": ["hackathon", "lease", "colocation pricing"],
+      "weight": 1.1,
+      "icpIndex": 2
+    }
+  ],
+  "users": [
+    { "name": "Srikanth Vemuri", "email": "admin@nanoforge.local", "role": "ORG_ADMIN" },
+    { "name": "Anjali Deshpande", "email": "manager@nanoforge.local", "role": "SALES_MANAGER" },
+    { "name": "Kevin Tan", "email": "sdr1@nanoforge.local", "role": "SDR" }
+  ],
+  "documents": [
+    { "file": "brochure.md", "title": "Nanoforge Product Portfolio", "visibility": "PUBLIC", "asPdf": true },
+    { "file": "volume-pricing.md", "title": "Volume Pricing & Allocation (Internal)", "visibility": "INTERNAL", "asPdf": true },
+    { "file": "case-study-ev-inverter.md", "title": "Case Study: SiC Inverter for a 2W EV Maker", "visibility": "PUBLIC", "asPdf": false }
+  ]
+}

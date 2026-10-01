@@ -1,0 +1,13 @@
+{
+  "app": "npx tsx bin/app.ts",
+  "output": "cdk.out",
+  "watch": {
+    "include": [
+      "bin/**",
+      "lib/**"
+    ]
+  },
+  "context": {
+    "//": "Feature flags live in lib/build-app.ts (FEATURE_FLAGS) so synth:check and the CLI agree."
+  }
+}

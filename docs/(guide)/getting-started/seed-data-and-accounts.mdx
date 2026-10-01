@@ -1,0 +1,171 @@
+---
+title: Seed data & accounts
+description: What the demo seed creates — five fictional organizations across five industries, their users, the synthetic market-events corpus and company directory, pre-scored leads with CRM history, and an invited org to demo onboarding.
+---
+
+The seed (`packages/seed`, run by `pnpm db:seed` and automatically by the Compose `migrate` service when
+`SEED_ON_START=true`) makes the platform usable on first boot. There is something on every screen: leads
+across all stages, activities, tasks, dashboards and audit history.
+
+## Synthetic and fictional by design
+
+<Callout type="info">
+  Everything in the dataset is **synthetic and fictional**. Organization names, target companies, people,
+  e-mail addresses and phone numbers are invented. Company domains and e-mails use the reserved `.example`
+  top-level domain, LinkedIn URLs point to `linkedin.example`, and every market event and directory record is
+  stored with `synthetic = true`. The dataset schema (`packages/dataset/src/schema.ts`) **rejects** any domain
+  or e-mail that does not end in `.example`. See [ADR-0008](/docs/decisions/0008-synthetic-dataset).
+</Callout>
+
+This avoids fabricating news about real companies and never exposes real people's contact data. The cost is
+realism: the events are well-formed news-style texts written for the five industries, not a live feed.
+
+## The five organizations
+
+| Org (fictional)          | Slug                      | Industry         | HQ               | Sells                                                 | Seed users                     |
+| ------------------------ | ------------------------- | ---------------- | ---------------- | ----------------------------------------------------- | ------------------------------ |
+| Roadgrip Tyres Ltd.      | `roadgrip-tyres`          | Automotive       | Chennai, India   | Passenger, commercial and EV tyres to OEMs and fleets | admin, manager, 2 SDRs, viewer |
+| MediSphere Diagnostics   | `medisphere-diagnostics`  | Healthcare       | Bengaluru, India | Lab analyzers, diagnostic kits, LIS software          | admin, 2 SDRs, viewer          |
+| Nanoforge Semiconductor  | `nanoforge-semiconductor` | Semiconductors   | Hyderabad, India | Power ICs, fab metrology equipment                    | admin, manager, SDR            |
+| Suncrest Energy Systems  | `suncrest-energy`         | Renewable Energy | Ahmedabad, India | Solar inverters and battery storage                   | admin, SDR                     |
+| Cargolane Logistics Tech | `cargolane-logistics`     | Logistics        | Gurugram, India  | Warehouse automation and 3PL SaaS                     | admin, manager, SDR            |
+
+Each org fixture (`packages/dataset/data/orgs/<slug>/org.json`) contains:
+
+- basics (description, HQ, regions, company size) and a ready-made **knowledge profile** (summary, value
+  props, differentiators, target industries, personas);
+- 6 **products**, 1–4 **plans** and 2–5 **policies**, each marked `PUBLIC` or `INTERNAL`;
+- 2–3 **ICPs** (seeded with source `AI_SUGGESTED`);
+- 2 **custom signals** on top of the 6 industry templates, so each org has **8 active signals**;
+- 3 **documents** in `documents/`: a public brochure and an internal pricing document (both also shipped as
+  PDFs and ingested through the real storage → parse → chunk path), plus a public case study in Markdown.
+
+## Users per organization
+
+All org users have the password **`Password@123`** (`DEMO_PASSWORD` in `packages/seed/src/seed.ts`). Emails
+follow the pattern `<role><n>@<short-name>.local`.
+
+| Org                      | Org Admin                                      | Sales Manager                                | SDRs                                             | Viewer                    |
+| ------------------------ | ---------------------------------------------- | -------------------------------------------- | ------------------------------------------------ | ------------------------- |
+| Roadgrip Tyres           | `admin@roadgrip.local` (Venkatesh Subramanian) | `manager@roadgrip.local` (Revathi Krishnan)  | `sdr1@roadgrip.local`, `sdr2@roadgrip.local`     | `viewer@roadgrip.local`   |
+| MediSphere Diagnostics   | `admin@medisphere.local` (Ananya Raghunathan)  | —                                            | `sdr1@medisphere.local`, `sdr2@medisphere.local` | `viewer@medisphere.local` |
+| Nanoforge Semiconductor  | `admin@nanoforge.local` (Srikanth Vemuri)      | `manager@nanoforge.local` (Anjali Deshpande) | `sdr1@nanoforge.local`                           | —                         |
+| Suncrest Energy Systems  | `admin@suncrest.local` (Kiran Desai)           | —                                            | `sdr1@suncrest.local`                            | —                         |
+| Cargolane Logistics Tech | `admin@cargolane.local` (Rohit Bhardwaj)       | `manager@cargolane.local` (Shreya Kapadia)   | `sdr1@cargolane.local`                           | —                         |
+
+The **Super Admin** is created from `SUPERADMIN_EMAIL` / `SUPERADMIN_PASSWORD`, by default
+`superadmin@selloeasy.local` / `Admin@123`. Every seeded user also gets a fictional Calendly URL so the meeting
+deep link has something to open.
+
+## Dataset composition
+
+| Asset               | Count                                               | Location                                          | Notes                                                                                                                                                       |
+| ------------------- | --------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Market events       | **300** (60 per industry)                           | `packages/dataset/data/events/*.json`             | News-style title and body (300–1600 chars), published 0–200 days before seed time, region, optional amount and currency, industry tags, mentioned companies |
+| Event kinds         | 175 strong, 50 weak, 50 negative, 25 cross-industry | `kind` field                                      | Weak and negative events test precision. Cross-industry events (for example, an EV plant relevant to both tyres and semiconductors) test per-org filtering  |
+| Directory companies | **130**                                             | `packages/dataset/data/companies/*.json`          | Target companies with domain, industry tag, HQ country, size band and employees                                                                             |
+| Directory contacts  | **274**                                             | nested under companies                            | 1–3 per company: name, title, persona, seniority, email, phone, WhatsApp, LinkedIn                                                                          |
+| Signal templates    | **30** (6 per industry)                             | `packages/dataset/data/signal-templates/*.json`   | Platform-wide, cloned into each org of that industry                                                                                                        |
+| Gold labels         | **60**                                              | `packages/dataset/data/eval/*.json`               | Event → expected signals per org, for [evaluation](/docs/pipeline/evaluation)                                                                               |
+| Market tags         | 25                                                  | `MARKET_TAGS` in `packages/dataset/src/schema.ts` | Controlled vocabulary shared by event tags, profile target industries and ICP industries                                                                    |
+
+Event `publishedAt` is computed **relative to seed time** (`publishedDaysAgo`), so the corpus always looks
+recent and falls inside the 180-day pipeline window. Event hashes are derived from their external id
+(`sha256("dataset:" + externalId)`), which makes event inserts idempotent.
+
+Validate the dataset's cross-references (unknown companies, missing documents, gold labels naming unknown
+signals and similar) with:
+
+```bash
+pnpm --filter @selloeasy/dataset validate
+# templates=30 companies=130 contacts=274 events=300 gold=60 orgs=5
+# Dataset OK
+```
+
+## What the seed does, step by step
+
+<div className="fd-steps">
+<div className="fd-step">
+
+### Global data
+
+Ensures the storage bucket exists, creates the Super Admin, inserts the 30 signal templates, the company
+directory (130 companies and 274 contacts) and the 300 market events. Every insert is `ON CONFLICT DO NOTHING`.
+
+It then sets up [platform data](/docs/platform-data) provenance: all seeded events, companies and contacts are put in
+one `SEED` batch labelled "Initial synthetic dataset" (`source_type = SEED`), `content_hash` is backfilled so imports
+detect near-copies of seeded events, and a `DEMO_FEED` connector named "Demo news feed" is registered (10 events per
+run from a 60-event reserve that the seed does not load, fan-out on, no schedule). This step is idempotent.
+
+</div>
+<div className="fd-step">
+
+### Each demo org (skipped if the slug already exists)
+
+Creates the org as `ACTIVE` with settings `leadVisibility: "ALL"`, `timezone: "Asia/Kolkata"`, then its users
+and memberships and two platform audit rows (`org.created`, `invite.sent`). Knowledge follows: products,
+plans, policies, a **website snapshot** source (the `.example` domains are not reachable, so the org description
+is stored instead of crawling), and the documents, which are uploaded to MinIO/S3 and processed by the real
+`processSource()` path. Then the profile, ICPs, cloned templates and custom signals.
+
+</div>
+<div className="fd-step">
+
+### A real pipeline run with the mock LLM
+
+Creates a pipeline run (trigger `ONBOARDING`) and executes the actual `runPipeline()` with a **deterministic
+mock `LlmClient`**, a budget of 1000 calls and `recordEvaluations: false`. The seed **always** uses the mock,
+whatever `LLM_MODE` is set to: it is fast, free and reproducible. Because evaluations are not recorded, the
+first _live_ run re-evaluates the corpus with the real model and refines the mock-seeded leads.
+
+</div>
+<div className="fd-step">
+
+### Simulated CRM history
+
+A deterministic pseudo-random generator (seeded per org) distributes leads across stages (roughly 34% `NEW`,
+20% `CONTACTED`, 12% `ENGAGED`, 10% `MEETING_SCHEDULED`, 7% `QUALIFIED`, 5% `PROPOSAL`, 7% `WON`, 5% `LOST`),
+with higher-scored leads progressing further. It writes assignments, outbound emails (with matching
+`outreach_messages` rows), calls, WhatsApp messages, meetings, notes, stage changes, `lead.stage_changed`
+audit rows, open tasks, won values and a lost reason ("Chose incumbent vendor").
+
+</div>
+<div className="fd-step">
+
+### The invited org
+
+Creates **Voltedge Mobility** (Automotive) in status `INVITED`. In `APP_ENV=local` only, it also creates an
+`ORG_ADMIN` invitation for `admin@voltedge.local` with the deterministic token below (valid 30 days) and logs
+the link.
+
+</div>
+</div>
+
+The result is about **190 pre-scored leads across the five orgs** (roughly 34–42 each, i.e. 6–7 pages at 6 per
+page), with a realistic spread of `HOT`, `WARM` and `COLD` bands.
+
+## The onboarding demo invite
+
+```text
+http://localhost:3000/accept-invite?token=demo-invite-voltedge-mobility-2026-local-only
+```
+
+<Callout type="warn">
+  This token is a **local-only convenience** (`DEMO_INVITE_TOKEN` in `packages/seed/src/seed.ts`). It is
+  stored like every other invite, as a SHA-256 hash, and is single use. It is never created when `APP_ENV` is
+  not `local`. After you accept it once, reset the demo data to use it again.
+</Callout>
+
+Accepting it creates the admin user, moves Voltedge Mobility to `ONBOARDING` and signs you in. From there,
+follow [Onboarding](/docs/modules/onboarding). Voltedge has no products, sources or signals yet. Its industry
+templates are cloned when you use **Restore templates** on the Signals page
+(`POST /api/v1/signals/restore-templates`). Orgs created through the Super Admin UI get them cloned automatically.
+
+## Idempotency and re-seeding
+
+- Running the seed twice is safe. Global inserts ignore conflicts, and orgs whose slug exists are skipped
+  entirely (`Org exists — skipping`).
+- To get pristine demo data back, reset the database: `pnpm db:reset` (host) or `docker compose down -v` then
+  `up` (Compose). See [Runbooks](/docs/operations/runbooks#resetting-demo-data).
+- `SEED_DEMO_DATA=false` seeds only the platform-level data (Super Admin, templates, directory, events), which
+  is what a fresh staging environment would want.

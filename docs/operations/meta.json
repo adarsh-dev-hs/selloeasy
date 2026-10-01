@@ -1,0 +1,7 @@
+{
+  "title": "Operations",
+  "description": "Docker, AWS deployment, observability and runbooks",
+  "icon": "Server",
+  "root": true,
+  "pages": ["docker", "aws-deployment", "observability", "runbooks"]
+}

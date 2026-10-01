@@ -1,0 +1,56 @@
+---
+title: ADR-0003 — BullMQ on Redis for background work
+description: Pipeline runs, knowledge processing, email delivery and scheduled maintenance run as BullMQ jobs on Redis rather than on a cloud queue such as SQS.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+Several workloads are too slow or too failure-prone for a request/response cycle:
+
+- **pipeline runs**: minutes of LLM calls per org, with progress the UI should show live;
+- **knowledge ingestion**: crawling websites and parsing PDFs and DOCX files;
+- **profile generation**: a long LLM call;
+- **email delivery**: SMTP or SES with retries;
+- **schedules**: a pipeline run for every active org every 6 hours, and a daily audit-retention job.
+
+They need retries with backoff, per-queue concurrency, repeatable (cron) jobs, job ids for de-duplication and
+progress reporting. They must also run identically on a laptop (Docker Compose) and on AWS.
+
+## Decision
+
+Use **BullMQ 5** on **Redis 7** with four queues (`packages/core/src/queues.ts`): `profile`, `pipeline`, `outreach` and
+`maintenance`, all consumed by `apps/worker`.
+
+- Default job options: 3 attempts, exponential backoff from 2 s, completed jobs kept 7 days, failed jobs 30 days.
+- Pipeline runs use `attempts: 1` and job id `pipeline-<runId>`. Failure is recorded on the run instead, and
+  re-running is idempotent.
+- Schedules use `upsertJobScheduler` (`pipeline-schedule` on `PIPELINE_SCHEDULE_CRON`, `audit-retention` daily at
+  03:30), which is idempotent across restarts.
+- Live progress is published to a Redis pub/sub channel per run and relayed to the browser as Server-Sent Events.
+- Redis is also used for the LLM response cache, rate-limit counters and dashboard caching.
+
+## Consequences
+
+- One piece of infrastructure (Redis) covers queues, schedules, pub/sub and caching, locally and in production
+  (ElastiCache).
+- Rich job semantics (retries, backoff, concurrency, locks, repeatable jobs, progress) without custom code.
+- **Redis must be operated**: sized, persisted (AOF locally) and secured (TLS and AUTH on ElastiCache). Losing Redis
+  loses queued jobs and caches, but not business data (runs and outbox-like rows live in Postgres).
+- BullMQ relies on Lua scripts shipped inside the package, which influenced the no-bundling decision
+  ([ADR-0013](/docs/decisions/0013-tsx-runtime-no-bundling)).
+
+## Alternatives considered
+
+- **AWS SQS + EventBridge Scheduler**: fully managed, but needs a local emulator, has no native progress events or
+  job ids, and moves core behavior into cloud-specific configuration.
+- **pg-boss / Graphile Worker** (Postgres-backed): no Redis at all, but less mature progress and pub/sub support, and
+  pipeline progress would put extra load on the primary database.
+- **In-process timers in the API**: no durability or retries, and no horizontal scaling.
+
+## Revisit when
+
+- Throughput or durability requirements exceed a single Redis node's comfort zone.
+- The platform standardizes on a managed queue service and can drop Redis entirely (it would also need a new home for
+  caching and rate limiting).

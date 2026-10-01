@@ -1,0 +1,53 @@
+---
+title: ADR-0004 — Postgres full-text search instead of vector retrieval (v1)
+description: Org knowledge is retrieved with Postgres tsvector full-text search rather than embeddings and a vector store.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+LLM prompts need grounding in each org's own materials: website pages, brochures, policies and pricing documents.
+Those materials are chunked (~800 tokens with ~100 overlap) into `org_source_chunks`. Per org, the corpus is small:
+tens to a few hundred chunks.
+
+The usual approach is to embed chunks and retrieve by vector similarity. That needs an embeddings model and a vector
+index. All model calls are meant to go through OpenRouter with a single key
+([ADR-0009](/docs/decisions/0009-openrouter-model-from-env)), and OpenRouter's catalog is chat-oriented.
+
+## Decision
+
+Use **PostgreSQL full-text search** for v1:
+
+- `org_source_chunks.tsv` is a generated column `to_tsvector('english', content)` with a GIN index;
+- `retrieve(orgId, query)` ranks with `ts_rank_cd` over `websearch_to_tsquery('english', query)`. Without a query, it
+  returns the first chunks of each ready source in order;
+- retrieval is isolated in one function in `packages/engine/src/knowledge/index.ts`, so the implementation can be
+  swapped locally.
+
+Today, profile generation uses the no-query form (up to 14 chunks). Pipeline matching and scoring rely on the
+generated profile and the product list rather than on per-event retrieval.
+
+## Consequences
+
+- No extra infrastructure, no second model provider or key, fully deterministic and debuggable (`EXPLAIN`, plain SQL).
+- Works well for small corpora and keyword-heavy B2B material (product names, certifications, industries).
+- **Weaker semantic recall.** Paraphrases and synonyms are missed ("fleet electrification" versus "EV adoption").
+  For v1 this matters little, because profile generation reads the first chunks of each source rather than searching.
+- The market-events table has the same FTS setup (`market_events.tsv`), which is available for future
+  keyword-driven prefiltering in SQL.
+
+## Alternatives considered
+
+- **pgvector + an embeddings model**: better semantic recall, but it needs an embeddings provider (outside OpenRouter's
+  chat focus), re-embedding on model change, and more moving parts.
+- **A managed vector database**: overkill for hundreds of chunks per tenant, and another data store to secure and
+  isolate per tenant.
+- **No retrieval** (send everything): exceeds context windows as sources grow, and wastes tokens.
+
+## Revisit when
+
+- Per-org corpora grow to thousands of chunks, or prompts start needing query-specific grounding (e.g. outreach
+  drafts that cite the most relevant policy).
+- Retrieval quality measurably limits profile or draft quality.
+- A suitable embeddings endpoint is available through the same provider.

@@ -1,0 +1,82 @@
+[
+  {
+    "eventExternalId": "aut-001",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": [
+      "New vehicle launch"
+    ]
+  },
+  {
+    "eventExternalId": "aut-002",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": [
+      "OEM capacity expansion / new plant"
+    ]
+  },
+  {
+    "eventExternalId": "aut-006",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": [
+      "New vehicle launch",
+      "EV platform announcement"
+    ]
+  },
+  {
+    "eventExternalId": "aut-015",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": [
+      "Government EV subsidy / policy change",
+      "Fleet operator large order / fleet expansion"
+    ]
+  },
+  {
+    "eventExternalId": "aut-016",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": [
+      "Ride-hailing fleet electrification",
+      "Fleet operator large order / fleet expansion"
+    ]
+  },
+  {
+    "eventExternalId": "aut-018",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": [
+      "Fleet operator large order / fleet expansion"
+    ]
+  },
+  {
+    "eventExternalId": "aut-020",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": [
+      "Foreign OEM investment in India",
+      "OEM capacity expansion / new plant"
+    ]
+  },
+  {
+    "eventExternalId": "aut-024",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": [
+      "Mining equipment tender"
+    ]
+  },
+  {
+    "eventExternalId": "aut-036",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "aut-037",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "aut-046",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "aut-048",
+    "orgSlug": "roadgrip-tyres",
+    "expectedSignals": []
+  }
+]

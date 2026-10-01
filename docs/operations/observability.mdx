@@ -1,0 +1,102 @@
+---
+title: Observability
+description: What you can observe today — structured pino logs with request ids and redaction, health and readiness endpoints, LLM call telemetry, pipeline run statistics and live progress, BullMQ job state, audit data — and what is reserved for later (OpenTelemetry).
+---
+
+## Logs
+
+The API, worker, migrate and seed processes log with **pino** as JSON lines on stdout (`createLogger(service)` /
+`loggerOptions(service)` in `packages/core/src/logger.ts`):
+
+| Field     | Value                                                                                                                                       |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `level`   | from `LOG_LEVEL` (`info` by default)                                                                                                        |
+| `service` | `api`, `worker`, `migrate`, `seed`, `db-reset`                                                                                              |
+| `env`     | `APP_ENV`                                                                                                                                   |
+| `reqId`   | API only: the request id (from `x-request-id` or a generated UUID), also returned in the `x-request-id` header, error bodies and audit rows |
+
+- **Pretty output** (`pino-pretty`) is used only when `NODE_ENV=development` and stdout is a TTY. Containers
+  always log JSON. Compose sets `NODE_ENV=production`.
+- **Redaction:** `authorization` and `cookie` request headers, `set-cookie` response headers and any `password`,
+  `passwordHash`, `token`, `refreshToken` or `apiKey` fields (plus `OPENROUTER_API_KEY`, `OPENAI_API_KEY` and `ANTHROPIC_API_KEY`) become `[redacted]`.
+- Fastify logs every request and response (method, URL, status code, response time). 5xx errors are logged with the
+  error and stack. Response-serialization failures log the Zod issues.
+
+Useful worker log lines:
+
+| Message                                                                                                                                         | Meaning                                                          |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `LLM configured { mode, provider, model }` / `No API key for the selected LLM provider — … LLM_MODE=mock { provider }`                          | LLM mode and provider at boot                                    |
+| `Marked stale pipeline runs as FAILED { count }`                                                                                                | Runs left `QUEUED`/`RUNNING` for 30+ minutes by a previous crash |
+| `Worker started { queues, schedule }`                                                                                                           | Queues consumed and pipeline cron                                |
+| `Source processed { sourceId, chunks }`, `Profile generated { orgId }`                                                                          | Knowledge jobs                                                   |
+| `Pipeline run finished { orgId, runId, eventsScanned, prefiltered, matched, leadsCreated, leadsUpdated, llmCalls, cacheHits, costUsd, status }` | One line per run                                                 |
+| `Scheduled pipeline runs { queued }`                                                                                                            | Scheduler tick                                                   |
+| `Job failed { queue, jobId, kind, err }`                                                                                                        | Any failed job attempt                                           |
+| `Audit retention applied { deleted, days }`                                                                                                     | Daily retention                                                  |
+
+```bash
+docker compose logs -f api worker | grep -v '"level":20'   # hide debug
+docker compose logs api | grep '"reqId":"<id from the error body>"'
+```
+
+## Health endpoints
+
+| Endpoint          | Checks                                  | Response                                                                                                                  |
+| ----------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `GET /api/health` | process is up                           | `{ "status": "ok" }`                                                                                                      |
+| `GET /api/ready`  | `select 1` on Postgres, `PING` on Redis | 200 `{ status: "ready", checks: { database, redis }, llm: { mode, model, autoMocked } }`, or **503** `status: "degraded"` |
+
+Compose uses `/api/ready` as the API healthcheck (and gates the web service on it). On AWS, the ALB target group for
+the API uses the health endpoint.
+
+## LLM telemetry
+
+Every LLM call, including cache hits, mock calls and failures, is a row in `llm_calls`: purpose (prompt id), provider,
+model, prompt version and hash, input and output tokens, **cost in USD** (reported by OpenRouter, or computed from the
+`LLM_PRICE_*_PER_MTOK` table for OpenAI and Anthropic), latency, status and error, and the cached flag. See
+[LLM layer → Telemetry](/docs/pipeline/llm-providers#telemetry-llm_calls) for
+example queries. Aggregates surface on the platform dashboard (`llmCost30dUsd`, `llmCalls30d` per org and in total)
+and in each pipeline run's stats.
+
+## Pipeline observability
+
+| Source                                     | What                                                                                                                                                                                     |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pipeline_runs`                            | Status, trigger, who triggered it, start and finish, error, and `stats` (events scanned, prefiltered, matched, leads created and updated, LLM calls, cache hits, cost, budget exhausted) |
+| `GET /api/v1/pipeline/runs`, `/runs/:id`   | The same through the API                                                                                                                                                                 |
+| SSE `GET /api/v1/pipeline/runs/:id/events` | Live stage and percentage with running stats                                                                                                                                             |
+| Redis channel `pipeline:progress:<runId>`  | Raw progress events (`redis-cli SUBSCRIBE pipeline:progress:<id>`)                                                                                                                       |
+| BullMQ job progress                        | 0–100 on the `pipeline` queue job `pipeline-<runId>`                                                                                                                                     |
+| Platform dashboard `pipelineHealth`        | Runs and failures in the last 30 days, average duration                                                                                                                                  |
+| Audit                                      | `pipeline.run_requested`, `pipeline.run_completed` (with stats), `pipeline.run_failed`                                                                                                   |
+
+## Queues
+
+BullMQ keeps completed jobs for 7 days (at most 1000) and failed jobs for 30 days, so recent history can be inspected
+in Redis:
+
+```bash
+docker compose exec redis redis-cli --scan --pattern 'bull:pipeline:*' | head
+docker compose exec redis redis-cli ZCARD bull:outreach:failed
+```
+
+Any BullMQ UI (e.g. Bull Board) can be pointed at the same Redis. None is bundled in v0.1.
+
+## Business-level signals
+
+- Audit log: every mutation with actor, IP and request id ([Audit trail](/docs/modules/audit-trail)).
+- Outreach delivery: `outreach_messages.status` (`DRAFT` → `SENT` / `FAILED`, with `error`) and
+  `activities.metadata.status`.
+- Knowledge ingestion: `org_sources.status` and `error`.
+
+## Reserved: tracing and metrics export
+
+<Callout type="warn">
+  `OTEL_ENABLED`, `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_SERVICE_NAMESPACE` are validated configuration keys,
+  but **no OpenTelemetry SDK or exporter is wired yet**. Setting them has no effect in v0.1. There is also no
+  Prometheus or CloudWatch metrics exporter. Latency and error rates come from logs and the load balancer.
+</Callout>
+
+Planned (plan §26): OpenTelemetry traces across web, API and worker, request latency and error-rate metrics,
+queue-depth metrics (also for worker autoscaling), LLM token, cost and latency metrics, and pipeline match-rate metrics.

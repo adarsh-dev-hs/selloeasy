@@ -1,0 +1,41 @@
+{
+  "name": "selloeasy",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "turbo run dev --parallel --filter=@selloeasy/web --filter=@selloeasy/api --filter=@selloeasy/worker --filter=@selloeasy/docs-site",
+    "dev:docs": "pnpm --filter @selloeasy/docs-site dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:report": "tsx scripts/test-report.ts",
+    "test:report:serve": "tsx scripts/test-report.ts --serve-only",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:generate": "pnpm --filter @selloeasy/db db:generate",
+    "db:migrate": "pnpm --filter @selloeasy/db db:migrate",
+    "db:seed": "pnpm --filter @selloeasy/seed seed",
+    "db:reset": "pnpm --filter @selloeasy/db db:reset && pnpm --filter @selloeasy/seed seed",
+    "env:check": "tsx scripts/env-check.ts",
+    "docs:check": "tsx scripts/docs-check.ts",
+    "docs:sync-readme": "tsx scripts/sync-readme.ts",
+    "eval:pipeline": "pnpm --filter @selloeasy/pipeline eval",
+    "deploy:aws": "bash infra/scripts/deploy.sh",
+    "deploy:aws:seed-demo": "bash infra/scripts/seed-demo.sh",
+    "e2e": "pnpm --filter @selloeasy/e2e e2e"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "allure": "^3.19.0",
+    "allure-vitest": "^3.13.0",
+    "prettier": "^3.6.0",
+    "tsx": "^4.20.0",
+    "turbo": "^2.5.0",
+    "typescript": "5.9.3"
+  }
+}

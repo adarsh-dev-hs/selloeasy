@@ -1,0 +1,144 @@
+---
+title: Roles & permissions
+description: The five roles, the complete permission matrix from packages/shared/src/rbac.ts, the SDR ownership rule, the lead-visibility setting and the Super Admin data boundary.
+---
+
+SelloEasy uses role-based access control with one permission matrix shared by the API (enforcement) and the web
+app (hiding controls only). The source of truth is `packages/shared/src/rbac.ts`.
+
+## Roles
+
+| Role                                | Scope    | Summary                                                                                                                                                                                                                                                                                           |
+| ----------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Super Admin** (`SUPER_ADMIN`)     | Platform | Creates orgs, sends and revokes org-admin invites, suspends and reactivates orgs, manages industry signal templates, manages the **platform data source** (browse, import, connectors, rollback), sees cross-org **aggregates** and the platform audit log. Sees only an org's public-level data. |
+| **Org Admin** (`ORG_ADMIN`)         | One org  | Owns the org profile and knowledge, manages members and invites, ICPs and signals, runs the pipeline, works leads, reads the org dashboard and org audit log.                                                                                                                                     |
+| **Sales Manager** (`SALES_MANAGER`) | One org  | Manages ICPs and signals, runs the pipeline, assigns leads, works any lead, reads the org dashboard.                                                                                                                                                                                              |
+| **SDR** (`SDR`)                     | One org  | Works leads: claim, contact, log activities, move stages, tasks. Mutations only on leads they own. Sees a personal dashboard.                                                                                                                                                                     |
+| **Viewer** (`VIEWER`)               | One org  | Read-only access to leads, knowledge, ICPs, signals, pipeline runs and the org dashboard.                                                                                                                                                                                                         |
+
+`SUPER_ADMIN` is a flag on the user, not a membership role. The four org roles are membership roles and can
+all be granted through invites (`INVITABLE_ROLES`).
+
+## Permission matrix
+
+The table is generated from `ROLE_PERMISSIONS`. "✓" means the role holds the permission.
+
+| Permission                         | Super Admin | Org Admin | Sales Manager |          SDR          | Viewer |
+| ---------------------------------- | :---------: | :-------: | :-----------: | :-------------------: | :----: |
+| `platform:orgs:manage`             |      ✓      |           |               |                       |        |
+| `platform:orgs:public:read`        |      ✓      |           |               |                       |        |
+| `platform:orgs:aggregates:read`    |      ✓      |           |               |                       |        |
+| `platform:dashboard:read`          |      ✓      |           |               |                       |        |
+| `platform:signal_templates:manage` |      ✓      |           |               |                       |        |
+| `platform:audit:read`              |      ✓      |           |               |                       |        |
+| `platform:data:read`               |      ✓      |           |               |                       |        |
+| `platform:data:import`             |      ✓      |           |               |                       |        |
+| `platform:data:manage`             |      ✓      |           |               |                       |        |
+| `org:profile:read`                 |             |     ✓     |       ✓       |           ✓           |   ✓    |
+| `org:profile:write`                |             |     ✓     |               |                       |        |
+| `org:users:manage`                 |             |     ✓     |               |                       |        |
+| `icps:read`                        |             |     ✓     |       ✓       |           ✓           |   ✓    |
+| `icps:write`                       |             |     ✓     |       ✓       |                       |        |
+| `signals:read`                     |             |     ✓     |       ✓       |           ✓           |   ✓    |
+| `signals:write`                    |             |     ✓     |       ✓       |                       |        |
+| `pipeline:read`                    |             |     ✓     |       ✓       |           ✓           |   ✓    |
+| `pipeline:run`                     |             |     ✓     |       ✓       |                       |        |
+| `leads:read`                       |             |     ✓     |       ✓       |           ✓           |   ✓    |
+| `leads:assign`                     |             |     ✓     |       ✓       |                       |        |
+| `leads:claim`                      |             |     ✓     |       ✓       |           ✓           |        |
+| `leads:update`                     |             |     ✓     |       ✓       |     ✓ (own leads)     |        |
+| `leads:export`                     |             |     ✓     |       ✓       |                       |        |
+| `outreach:send`                    |             |     ✓     |       ✓       | ✓ (own or unassigned) |        |
+| `tasks:write`                      |             |     ✓     |       ✓       |           ✓           |        |
+| `dashboard:org:read`               |             |     ✓     |       ✓       |                       |   ✓    |
+| `dashboard:self:read`              |             |     ✓     |       ✓       |           ✓           |   ✓    |
+| `audit:org:read`                   |             |     ✓     |               |                       |        |
+
+Every org role gets the read set `org:profile:read`, `icps:read`, `signals:read`, `pipeline:read`,
+`leads:read` and `dashboard:self:read`.
+
+The three `platform:data:*` permissions guard the [platform data source](/docs/platform-data) endpoints
+(`/api/v1/platform/data/*`):
+
+| Permission             | Allows                                                                                                                                                             |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `platform:data:read`   | Overview, events, companies, contacts, template and sample downloads, batches, validation rows, `errors.csv`, connectors list, ingestion runs and their SSE stream |
+| `platform:data:import` | Upload an import file, commit or discard an import batch                                                                                                           |
+| `platform:data:manage` | Roll back a committed batch; create, update, delete, test and run connectors                                                                                       |
+
+## How permissions are enforced
+
+- **Server-side only.** Each route declares a guard (preHandler) in `apps/api/src/plugins/auth.ts`:
+  - `requireAuth`: any signed-in user (for example `GET /auth/me`).
+  - `requirePermission(p)`: platform routes, checked against the caller's role.
+  - `requireOrg(p)`: tenant routes. The caller must have an org membership **and** the permission. Super Admins
+    always get **403** "Platform administrators cannot access organization data".
+- **Fresh on every request.** The access token carries only the user id. The API reloads the user and the
+  active membership on each request, so a role change, disabled member or suspended org takes effect
+  immediately, without waiting for token expiry.
+- **Client mirroring.** `GET /auth/me` returns the role's permission list. The web app uses it to hide
+  navigation and buttons. It is never trusted for authorization.
+
+## The SDR ownership rule
+
+`requiresOwnership(role)` is true only for `SDR`. Managers and admins may act on any lead in their org. SDRs
+face these extra checks:
+
+| Action                                                      | SDR behavior                                                                                                                                                                                               |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PATCH /leads/:id` (stage, primary contact, won value)      | Allowed only if the SDR owns the lead. Otherwise 403 "claim the lead first".                                                                                                                               |
+| Reassigning (`ownerUserId` change, bulk assign)             | Always 403. Needs `leads:assign`.                                                                                                                                                                          |
+| `POST /leads/:id/claim`                                     | Allowed on **unassigned** leads. Race-safe conditional update: 409 if someone else got it first.                                                                                                           |
+| Notes, contacts (`POST /leads/:id/activities`, `/contacts`) | Own leads only.                                                                                                                                                                                            |
+| Outreach send/log                                           | Allowed on own leads. On an **unassigned** lead, the first outreach **auto-claims** it in the same transaction (audited as `lead.claimed` with `via: "outreach"`). A lead owned by a teammate returns 403. |
+| Bulk stage change                                           | Allowed only if the SDR owns every selected lead.                                                                                                                                                          |
+| Tasks                                                       | Can create tasks for themselves and update or delete their own. Assigning a task to someone else needs `leads:assign`.                                                                                     |
+| Dashboard                                                   | `scope: "me"`: KPIs over leads they own and activities they performed.                                                                                                                                     |
+
+## Lead visibility setting
+
+By default (`organizations.settings.leadVisibility = "ALL"`), every org member can **read** every lead in the
+org, and SDR mutations are still limited by ownership. An org can switch to `ASSIGNED_ONLY`, where SDRs only
+see leads they own. It is enforced in one function, `visibilityFilter()` in `apps/api/src/lib/leads.ts`, which is
+applied to:
+
+- the leads list and CSV export,
+- lead detail and every lead sub-resource (activities, tasks, outreach, contacts) through `loadLead()`,
+- bulk actions,
+- the dashboard's lead and channel queries.
+
+Leads outside the filter return **404**, like cross-tenant access. Changing the setting through `PATCH /org` is
+refused with 403 unless the platform flag `FEATURE_LEAD_VISIBILITY_TOGGLE=true`
+([ADR-0011](/docs/decisions/0011-lead-visibility-setting)).
+
+## The Super Admin boundary
+
+<Callout type="warn">
+  The Super Admin has **no** tenant permissions. There is no impersonation, no `x-org-id` override and no
+  "view as org". Super Admins cannot read leads, accounts, contacts, activities, tasks, outreach content,
+  ICPs, signals, internal documents, pricing or org-scope audit entries.
+</Callout>
+
+What they _can_ see comes only from `/api/v1/platform/*` endpoints built from allow-list DTOs
+(`PlatformOrgPublicView`, `PlatformOrgListItem`, `PlatformOrgStats`, `PlatformOrgUser`, `PlatformInvite`,
+`PlatformDashboard`):
+
+| Classification | Examples                                                                                                                                                                                     | Super Admin  |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Public         | Name, slug, industry, website, HQ, regions, company size, public profile summary and value props, `PUBLIC` products and documents                                                            | Read         |
+| Operational    | Status, created/activated dates, user and pending-invite counts, members' names, emails, roles and last login, invitations, last pipeline run status and error, LLM calls and cost (30 days) | Read         |
+| Aggregate      | Leads, approached, meetings, converted, conversion rate, per industry                                                                                                                        | Numbers only |
+| Internal       | Everything else                                                                                                                                                                              | Never        |
+
+The platform data source (market events, directory companies and contacts) is platform-owned, tenant-free data,
+so the Super Admin sees every field of it. Its **distribution** view (which orgs matched an event or batch) is limited
+to org names with match and lead **counts**; lead records, contacts and scores are never exposed.
+
+Viewing an org's public profile is itself audited (`platform.org_viewed`, scope `PLATFORM`). The trade-off:
+the Super Admin cannot debug org-internal data directly, so support needs an org admin's help
+([ADR-0010](/docs/decisions/0010-superadmin-public-data-boundary)).
+
+## Related
+
+- [Multi-tenancy](/docs/architecture/multi-tenancy): `org_id` scoping and the 404-versus-403 rules.
+- [Security](/docs/architecture/security): authentication, sessions and rate limits.

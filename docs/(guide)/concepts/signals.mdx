@@ -1,0 +1,88 @@
+---
+title: Signals
+description: Buying signals — predefined industry templates versus custom signals, keywords versus natural-language match instructions, negative keywords, weight, and how each field is used by the pipeline and scoring.
+---
+
+A **signal** is an observable market event that indicates buying intent _for this org_. For a tyre maker,
+"an OEM announces a new vehicle launch" is a signal. For a diagnostics company, "a hospital chain opens a new
+wing" is one. The pipeline reads market events and decides, per org, which events satisfy which active
+signals. Each accepted match becomes evidence on a lead.
+
+## Predefined and custom
+
+| Source       | Origin                                                                                                                                                                 | Editable                   | Deletable                                   |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------------------------------------- |
+| `PREDEFINED` | Cloned from the platform's **signal templates** for the org's industry (`signal_templates`, managed by the Super Admin). `signals.template_id` points to the template. | Yes (every field, per org) | No. Disable it instead (`isActive: false`). |
+| `CUSTOM`     | Created by the org (`POST /api/v1/signals`).                                                                                                                           | Yes                        | Yes                                         |
+
+**Cloning happens** when the Super Admin creates an org, during seeding, and on demand with
+`POST /api/v1/signals/restore-templates`, which re-adds any template not yet cloned into the org. Cloning is
+idempotent: templates already cloned are skipped. Later edits to a template do **not** propagate to orgs that
+already cloned it. Each org owns its copy.
+
+### Industry templates shipped with the dataset
+
+| Industry         | Templates (default weight)                                                                                                                                                                                                                                           |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Automotive       | New vehicle launch (1.2) · OEM capacity expansion / new plant (1.4) · Foreign OEM investment in India (1.3) · EV platform announcement (1.3) · Fleet operator large order / fleet expansion (1.5) · Government EV subsidy / policy change (0.9)                      |
+| Healthcare       | New Hospital or Wing Opening (1.3) · Hospital Chain Funding or M&A (1.2) · Accreditation & Quality Drive (1.0) · Government Health Scheme Tender (1.5) · New Oncology / Cardiac / Specialty Centre (1.1) · Clinical or Lab Leadership Hire (0.9)                     |
+| Semiconductors   | New Fab or OSAT Plant Announcement (1.5) · Semiconductor Incentive Approval (1.2) · Chip Design Centre Opening (1.0) · Electronics Supply-Chain Localization Deal (1.1) · Chip & Hardware Startup Funding Round (1.0) · EV & 5G OEM Power Electronics Sourcing (1.3) |
+| Renewable Energy | Utility-Scale Project Awarded (1.5) · Rooftop Solar Mandate or Policy (1.1) · Industrial Decarbonisation Pledge (1.2) · Data Centre Build-Out (1.3) · Green Hydrogen Project (1.2) · Power Purchase Agreement Signed (1.0)                                           |
+| Logistics        | New warehouse / fulfilment centre (1.4) · D2C / e-commerce brand funding (1.2) · Port, rail or freight corridor project (1.0) · Cold-chain expansion (1.3) · Festive / peak-season capacity ramp (1.1) · Cross-border trade / export hub (1.0)                       |
+
+The Super Admin manages templates with `GET/POST/PATCH /api/v1/platform/signal-templates`. Template keys are
+unique per industry (`^[a-z0-9_]+$`).
+
+## Anatomy of a signal
+
+| Field               | Constraints                              | Used by                           | Effect                                                                                                                                                               |
+| ------------------- | ---------------------------------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`              | 2–160 chars                              | UI, prompts, evidence, dashboards | Shown on lead cards ("headline signal") and in "leads by signal"                                                                                                     |
+| `description`       | up to 2000 chars                         | UI                                | Human explanation                                                                                                                                                    |
+| `matchInstructions` | 10–2000 chars, **required**              | `signal.match` prompt             | The natural-language rule the LLM applies, e.g. _"Match when an automaker announces a new model launch or launch date in India; ignore concept cars and facelifts…"_ |
+| `keywords`          | up to 50                                 | **Prefilter** and prompt          | Cheap gate before any LLM call: an event must contain at least one active signal's keyword to reach the LLM. Also shown to the model as hints.                       |
+| `negativeKeywords`  | up to 50                                 | Prompt (and mock matcher)         | Passed to the model as "exclude if: …". The mock matcher drops a signal outright when a negative keyword appears. The prefilter does **not** use them.               |
+| `weight`            | 0.5–2.0 (default 1)                      | Scoring                           | Multiplies the match's contribution to **signal strength** (10 points of the score)                                                                                  |
+| `icpId`             | optional, must be an ICP in the same org | UI                                | Documents which ICP the signal serves. Not used in scoring in v1.                                                                                                    |
+| `isActive`          | boolean                                  | Pipeline                          | Only active signals are prefiltered and matched. A run with zero active signals fails with "No active signals".                                                      |
+
+### Keywords compared with match instructions
+
+These two fields do different jobs:
+
+- **Keywords are recall filters for cost control.** Matching is whole-phrase and case-insensitive over title and
+  body. An event with no keyword from _any_ active signal is dropped before the LLM sees it, even if its
+  industry tag matches. Too-narrow keywords silently lose events. Too-broad keywords spend LLM budget on
+  noise.
+- **Match instructions are precision rules for the model.** They decide whether a shortlisted event really
+  qualifies and with what confidence (0–1). Only matches with confidence of at least `PIPELINE_MATCH_THRESHOLD` (0.6) are
+  kept.
+
+<Callout type="info">
+  Good practice: 4–10 specific keywords (product-category and event words such as "new plant", "gigafactory",
+  "tender", "fulfilment centre"), plus instructions that say what **does not** count (concepts, rumours, other
+  geographies). Put hard exclusions such as "recall" or "lawsuit" in `negativeKeywords`.
+</Callout>
+
+## Editing signals re-evaluates events
+
+The pipeline records every event it has evaluated for an org together with a **hash of the active signal set**
+(`org_event_evaluations.signals_hash`). The hash covers each active signal's id, match instructions, keywords
+and negative keywords. When you change any of those, add a signal or toggle one, the hash changes and the next
+run re-evaluates events that were already processed under the old definition. Changing only `name`,
+`description` or `weight` does not trigger re-evaluation. A weight change affects scores the next time a lead
+is (re)scored. See [Idempotency](/docs/pipeline/stages#idempotency).
+
+## Permissions and audit
+
+- Read: every org role (`signals:read`). Write: Org Admin and Sales Manager (`signals:write`).
+- Audited actions: `signal.created`, `signal.updated`, `signal.enabled`, `signal.disabled`, `signal.deleted`,
+  `signal.templates_restored`, plus `signal_template.created` and `signal_template.updated` (platform scope).
+- `GET /api/v1/signals` returns a `leadCount` per signal (the number of accepted matches) and
+  `GET /api/v1/signal-templates` lists the templates for the caller's industry.
+
+## Related
+
+- [Pipeline stages](/docs/pipeline/stages): exactly how signals are applied.
+- [Prompts](/docs/pipeline/prompts#signalmatch-v1): the `signal.match` prompt.
+- [BANT+ scoring](/docs/concepts/bant-scoring): how weight and confidence become signal strength.

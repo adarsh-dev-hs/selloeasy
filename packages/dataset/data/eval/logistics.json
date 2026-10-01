@@ -1,0 +1,80 @@
+[
+  {
+    "eventExternalId": "log-002",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": [
+      "New warehouse / fulfilment centre"
+    ]
+  },
+  {
+    "eventExternalId": "log-003",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": [
+      "D2C / e-commerce brand funding"
+    ]
+  },
+  {
+    "eventExternalId": "log-004",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": [
+      "Quick-commerce dark store expansion"
+    ]
+  },
+  {
+    "eventExternalId": "log-012",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": [
+      "Port, rail or freight corridor project"
+    ]
+  },
+  {
+    "eventExternalId": "log-014",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": [
+      "Cold-chain expansion"
+    ]
+  },
+  {
+    "eventExternalId": "log-018",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": [
+      "Festive / peak-season capacity ramp"
+    ]
+  },
+  {
+    "eventExternalId": "log-020",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": [
+      "Cross-border trade / export hub",
+      "New warehouse / fulfilment centre"
+    ]
+  },
+  {
+    "eventExternalId": "log-022",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": [
+      "D2C / e-commerce brand funding",
+      "New warehouse / fulfilment centre"
+    ]
+  },
+  {
+    "eventExternalId": "log-036",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "log-041",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "log-046",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "log-047",
+    "orgSlug": "cargolane-logistics",
+    "expectedSignals": []
+  }
+]

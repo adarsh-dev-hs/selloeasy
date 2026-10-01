@@ -1,0 +1,60 @@
+---
+title: ADR-0014 — A thin fetch client for OpenRouter instead of the openai SDK
+description: LLM calls use plain fetch against OpenRouter's OpenAI-compatible /chat/completions endpoint rather than the openai npm SDK.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24 · **Supersedes:** the plan's (§16.1) intent to use the `openai` SDK with a custom `baseURL`
+
+## Context
+
+OpenRouter exposes an OpenAI-compatible API, and the original plan was to call it through the official `openai` npm
+SDK with `baseURL` pointed at OpenRouter. In practice, SelloEasy uses a very small slice of that API: one endpoint
+(`POST /chat/completions`), non-streaming, with system and user messages, `temperature`, `max_tokens` and
+`response_format`.
+
+It also needs a few OpenRouter-specific behaviors that the OpenAI SDK does not model:
+
+- `usage: { include: true }` and the **`usage.cost`** field (the real USD cost per call), stored in `llm_calls`;
+- the `HTTP-Referer` and `X-Title` attribution headers;
+- detecting "structured outputs not supported" errors, to fall back from `json_schema` to prompt-only JSON;
+- precise control over retries (429, 5xx, timeouts, empty completions) and a process-wide concurrency limit.
+
+The SDK's major versions change request and response types and retry semantics, which is a recurring upgrade cost
+for a single endpoint.
+
+## Decision
+
+Implement a **thin client** in `packages/llm/src/client.ts` using the platform `fetch`:
+
+- `POST {OPENROUTER_BASE_URL}/chat/completions` with bearer auth and attribution headers;
+- a per-attempt timeout (`AbortController`, `LLM_TIMEOUT_MS`), up to 4 attempts with exponential backoff and jitter
+  for 429, 5xx, empty completions, timeouts and network errors;
+- `response_format: json_schema` generated from each prompt's Zod schema, with automatic, sticky fallback when the
+  model rejects it;
+- tolerant JSON extraction, Zod validation and one repair retry;
+- an in-process semaphore (`LLM_MAX_CONCURRENCY`), Redis caching and telemetry hooks;
+- `fetchImpl` injectable for tests.
+
+## Consequences
+
+- No SDK dependency in `@selloeasy/llm` (only `zod` and `@selloeasy/shared`). Fewer version risks and a smaller
+  install.
+- Direct access to OpenRouter-specific fields (`usage.cost`) and behaviors.
+- Retries, timeouts and error classification are explicit and easy to reason about.
+- **We own a small amount of HTTP code** (about 200 lines), including error parsing, which must be maintained if
+  OpenRouter's API evolves.
+- Streaming, tool calls and multimodal inputs are not supported. They are not needed today.
+
+## Alternatives considered
+
+- **`openai` SDK with `baseURL`**: familiar types and built-in retries, but OpenRouter extensions become untyped
+  extras, retry semantics are less controllable, and major-version churn adds cost.
+- **Vercel AI SDK / LangChain**: rich abstractions (streaming, tools, providers), but far more than needed, with
+  heavier dependency trees and their own model-selection conventions that conflict with
+  [ADR-0009](/docs/decisions/0009-openrouter-model-from-env).
+
+## Revisit when
+
+- Streaming responses (e.g. token-by-token drafts in the UI), tool or function calling, or multimodal input becomes a
+  requirement.
+- OpenRouter publishes an official, stable TypeScript SDK that covers cost reporting.

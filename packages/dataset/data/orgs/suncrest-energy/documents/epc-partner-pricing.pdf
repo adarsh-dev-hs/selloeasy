@@ -1,0 +1,123 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Title (EPC Partner Pricing \(Internal\)) /Producer (SelloEasy dataset) /Subject (Synthetic demo document) >>
+endobj
+6 0 obj
+<< /Length 2449 >>
+stream
+BT /F2 18 Tf 50 761 Td (EPC Partner Pricing \(Internal\)) Tj ET
+BT /F1 11 Tf 50 729 Td (*Suncrest Energy Systems - INTERNAL. Do not share with end customers or non-certified) Tj ET
+BT /F1 11 Tf 50 713 Td (    partners.*) Tj ET
+BT /F1 11 Tf 50 681 Td (> Fictional demo data. Prices are illustrative and valid for the current financial year) Tj ET
+BT /F1 11 Tf 50 665 Td (    unless revised by Commercial.) Tj ET
+BT /F2 14 Tf 50 614 Td (1. Purpose) Tj ET
+BT /F1 11 Tf 50 582 Td (This note sets out how Suncrest prices inverters, storage and software to certified EPC) Tj ET
+BT /F1 11 Tf 50 566 Td (    partners, and how sales teams should structure bid support for tender-driven projects. It) Tj ET
+BT /F1 11 Tf 50 550 Td (    complements the EPC Partner Discount Policy.) Tj ET
+BT /F2 14 Tf 50 499 Td (2. Partner tiers) Tj ET
+BT /F1 11 Tf 50 467 Td (   Tier    Annual volume \(Suncrest equipment\)    Additional discount    Other benefits   ) Tj ET
+BT /F1 11 Tf 50 451 Td (   Certified    Any    Base only    Design review, standard lead times   ) Tj ET
+BT /F1 11 Tf 50 435 Td (Silver    Above 50 MW per year    +3%    Priority allocation, quarterly business review   ) Tj ET
+BT /F1 11 Tf 50 419 Td (Gold    Above 200 MW per year    +5%    90-day bid price lock, dedicated applications) Tj ET
+BT /F1 11 Tf 50 403 Td (    engineer, co-branded warranty   ) Tj ET
+BT /F1 11 Tf 50 371 Td (Tier status is reviewed every six months on shipped \(not ordered\) volume.) Tj ET
+BT /F2 14 Tf 50 320 Td (3. Base partner discounts off list) Tj ET
+BT /F1 11 Tf 50 288 Td (  - StringMax string inverters: 6%) Tj ET
+BT /F1 11 Tf 50 272 Td (  - CentraSkid central stations: 6%) Tj ET
+BT /F1 11 Tf 50 256 Td (  - HybriCharge hybrid inverters: 6%) Tj ET
+BT /F1 11 Tf 50 240 Td (  - VaultBESS storage: 4%) Tj ET
+BT /F1 11 Tf 50 224 Td (  - SunSight subscriptions: 10% on first-year fees when bundled with hardware) Tj ET
+BT /F1 11 Tf 50 192 Td (Maximum total discount without escalation is 14%. Anything above 14% requires Regional Sales) Tj ET
+BT /F1 11 Tf 50 176 Td (    Director approval; above 18% requires the VP Sales and CFO.) Tj ET
+BT /F2 14 Tf 50 125 Td (4. Indicative partner price bands) Tj ET
+BT /F1 11 Tf 50 93 Td (   Product    List    Gold partner \(typical\)   ) Tj ET
+BT /F1 11 Tf 50 77 Td (   StringMax 350 kW    INR 3.2 per Wac    INR 2.85 per Wac   ) Tj ET
+BT /F1 11 Tf 50 61 Td (   CentraSkid 3.4 MW    INR 2.6 per Wac    INR 2.32 per Wac   ) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2566 >>
+stream
+BT /F1 11 Tf 50 784 Td (   VaultBESS 2-hour    USD 210 per kWh    USD 192 per kWh   ) Tj ET
+BT /F1 11 Tf 50 768 Td (   HybriCharge 100 kW    INR 20,000 per kW    INR 17,900 per kW   ) Tj ET
+BT /F1 11 Tf 50 736 Td (Bands exclude GST, freight beyond 500 km from Sanand, and site-specific civil work.) Tj ET
+BT /F2 14 Tf 50 685 Td (5. Bid support for tenders) Tj ET
+BT /F1 11 Tf 50 653 Td (When a partner is bidding for a utility-scale tender:) Tj ET
+BT /F1 11 Tf 50 621 Td (1. The account manager registers the opportunity in the CRM with tender reference, capacity) Tj ET
+BT /F1 11 Tf 50 605 Td (    and bid date.) Tj ET
+BT /F1 11 Tf 50 589 Td (2. Applications engineering produces a single-line diagram and energy yield estimate within) Tj ET
+BT /F1 11 Tf 50 573 Td (    five working days.) Tj ET
+BT /F1 11 Tf 50 557 Td (3. Gold partners receive a price lock for 90 days from the bid submission date. Silver) Tj ET
+BT /F1 11 Tf 50 541 Td (    partners receive 45 days.) Tj ET
+BT /F1 11 Tf 50 525 Td (4. If the partner is awarded the project, the locked price converts to a purchase order) Tj ET
+BT /F1 11 Tf 50 509 Td (    within 30 days of the letter of award, or the lock lapses.) Tj ET
+BT /F1 11 Tf 50 477 Td (Only one partner may hold a price lock on a given tender. First registration wins unless the) Tj ET
+BT /F1 11 Tf 50 461 Td (    customer has nominated a specific EPC.) Tj ET
+BT /F2 14 Tf 50 410 Td (6. Storage-linked projects) Tj ET
+BT /F1 11 Tf 50 378 Td (For projects that combine solar with a BESS component \(increasingly common in firm and) Tj ET
+BT /F1 11 Tf 50 362 Td (    dispatchable power tenders\):) Tj ET
+BT /F1 11 Tf 50 330 Td (- Offer the GridForm PCS firmware licence free for storage orders above 200 MWh, with VP) Tj ET
+BT /F1 11 Tf 50 314 Td (    Sales approval.) Tj ET
+BT /F1 11 Tf 50 298 Td (- Bundle two years of SunSight Optimise with BESS dispatch at no charge for orders above 100) Tj ET
+BT /F1 11 Tf 50 282 Td (    MWh.) Tj ET
+BT /F1 11 Tf 50 266 Td (  - Quote augmentation pricing for year 8-10 capacity top-ups upfront; lenders ask for it.) Tj ET
+BT /F2 14 Tf 50 215 Td (7. Payment terms) Tj ET
+BT /F1 11 Tf 50 183 Td (  - Standard: 10% advance, 80% against dispatch, 10% on commissioning) Tj ET
+BT /F1 11 Tf 50 167 Td (- Gold partners: 5% advance, 85% against dispatch with a letter of credit, 10% on) Tj ET
+BT /F1 11 Tf 50 151 Td (    commissioning) Tj ET
+BT /F1 11 Tf 50 135 Td (  - Delays beyond 60 days on the final tranche suspend price-lock eligibility on new bids) Tj ET
+BT /F2 14 Tf 50 84 Td (8. What not to do) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 634 >>
+stream
+BT /F1 11 Tf 50 784 Td (  - Do not quote partner prices directly to IPPs or end customers.) Tj ET
+BT /F1 11 Tf 50 768 Td (  - Do not combine partner discounts with direct-sale promotional offers.) Tj ET
+BT /F1 11 Tf 50 752 Td (- Do not commit delivery dates without confirmation from supply-chain planning, especially) Tj ET
+BT /F1 11 Tf 50 736 Td (    for CentraSkid, which has a 14-week lead time.) Tj ET
+BT /F2 14 Tf 50 685 Td (9. Contacts) Tj ET
+BT /F1 11 Tf 50 653 Td (  - Partner programme: partners@suncrest-energy.example) Tj ET
+BT /F1 11 Tf 50 637 Td (  - Commercial approvals: commercial-desk@suncrest-energy.example) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000128 00000 n 
+0000000225 00000 n 
+0000000327 00000 n 
+0000000455 00000 n 
+0000002955 00000 n 
+0000003091 00000 n 
+0000005708 00000 n 
+0000005844 00000 n 
+0000006529 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R /Info 5 0 R >>
+startxref
+6667
+%%EOF

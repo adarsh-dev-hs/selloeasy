@@ -1,0 +1,64 @@
+---
+title: Architecture decision records
+description: Every significant trade-off in SelloEasy, recorded as an ADR — what was decided, why, what it costs, and when to revisit it.
+---
+
+An **Architecture Decision Record (ADR)** captures one decision: its context, the choice, its consequences and the
+alternatives considered. SelloEasy records every trade-off and optimization as an ADR, so the reasons survive
+longer than the conversation that produced them. The trade-off table in the implementation plan (§28) is the
+origin of most of these records.
+
+## Index
+
+| ADR                                                                       | Decision                                                                                                                       | Status                         | Main cost                                      |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ---------------------------------------------- |
+| [0001](/docs/decisions/0001-nextjs-over-vite)                             | Next.js (not Vite) for the web app, because Fumadocs is Next.js-native                                                         | Accepted                       | Heavier framework for a mostly client-side app |
+| [0002](/docs/decisions/0002-drizzle-orm)                                  | Drizzle ORM and SQL migrations (not Prisma)                                                                                    | Accepted                       | Smaller ecosystem                              |
+| [0003](/docs/decisions/0003-bullmq-for-pipeline)                          | BullMQ on Redis for background jobs (not SQS)                                                                                  | Accepted                       | Redis to operate                               |
+| [0004](/docs/decisions/0004-fts-over-vector-retrieval)                    | Postgres full-text search for knowledge retrieval (not vectors)                                                                | Accepted                       | Weaker semantic recall                         |
+| [0005](/docs/decisions/0005-offset-pagination-for-leads)                  | Offset pagination for the leads UI (6 per page)                                                                                | Accepted, extended by ADR-0018 | Slower deep pages at scale                     |
+| [0006](/docs/decisions/0006-deep-links-for-whatsapp-voice-calendly)       | Deep links + manual logging for WhatsApp, voice and Calendly. Email is really sent.                                            | Accepted                       | Manual logging                                 |
+| [0007](/docs/decisions/0007-app-level-tenancy-before-rls)                 | Application-level tenancy first, Postgres RLS later                                                                            | Accepted                       | Relies on code discipline                      |
+| [0008](/docs/decisions/0008-synthetic-dataset)                            | Synthetic, fictional dataset. The seed uses the mock LLM.                                                                      | Accepted                       | Less realism                                   |
+| [0009](/docs/decisions/0009-openrouter-model-from-env)                    | The model comes only from env (`OPENROUTER_MODEL`; per provider since ADR-0017)                                                | Accepted, extended by ADR-0017 | Prompts must stay model-agnostic               |
+| [0010](/docs/decisions/0010-superadmin-public-data-boundary)              | Super Admin sees public-level data and aggregates only                                                                         | Accepted                       | Support cannot inspect tenant data directly    |
+| [0011](/docs/decisions/0011-lead-visibility-setting)                      | SDRs see all org leads in v1, switchable per org by a setting                                                                  | Accepted                       | Less isolation between SDRs by default         |
+| [0012](/docs/decisions/0012-env-driven-drivers-for-aws-readiness)         | Env-driven drivers so the same images run locally and on AWS                                                                   | Accepted                       | A thin abstraction layer                       |
+| [0013](/docs/decisions/0013-tsx-runtime-no-bundling)                      | API and worker run TypeScript via `tsx`, without bundling                                                                      | Accepted                       | Startup time, image size                       |
+| [0014](/docs/decisions/0014-fetch-over-openai-sdk)                        | A thin `fetch` client for OpenRouter instead of the `openai` SDK                                                               | Accepted                       | Owning a small amount of HTTP code             |
+| [0015](/docs/decisions/0015-canonical-data-template-and-two-phase-import) | One canonical data template (v1); two-phase import with partial commit, refused above 20 % invalid rows (2026-09-28)           | Accepted                       | Two-step imports, strict columns               |
+| [0016](/docs/decisions/0016-retract-instead-of-delete-for-rollback)       | Batch rollback retracts instead of deleting; the data source is append/retract only; tenant leads are kept (2026-09-28)        | Accepted                       | Retracted rows still block re-import           |
+| [0017](/docs/decisions/0017-provider-adapter-layer)                       | Provider adapters (OpenRouter default, OpenAI, Anthropic) selected by `LLM_PROVIDER`; model per provider from env (2026-09-28) | Accepted                       | More config surface, capability table upkeep   |
+| [0018](/docs/decisions/0018-hybrid-offset-keyset-pagination)              | Offset pages, keyset cursor for deep event pages, estimated totals above 50 000 rows (2026-09-28)                              | Accepted                       | Two paging modes, approximate totals           |
+| [0019](/docs/decisions/0019-standalone-docs-site)                         | Standalone docs site (`apps/docs-site`, port 3001) alongside the in-app `/docs` (2026-10-01)                                   | Accepted                       | Two renderers of one `docs/` folder            |
+
+## Format
+
+Each ADR follows the same structure:
+
+```md
+---
+title: ADR-000N — <decision>
+description: <one line>
+---
+
+**Status:** Accepted | Superseded by ADR-00xx · **Date:** YYYY-MM-DD
+
+## Context
+
+## Decision
+
+## Consequences
+
+## Alternatives considered
+
+## Revisit when
+```
+
+## Process
+
+- Any change that introduces a trade-off (a new dependency, a deliberate limitation, a performance shortcut, a
+  security compromise) adds or updates an ADR in the same change.
+- ADRs are not rewritten when circumstances change. A new ADR supersedes the old one, and the old one's status is
+  updated to "Superseded by ADR-00xx".
+- Non-obvious code that follows an ADR points to it in a comment, e.g. `// ADR-0005: stable ordering for offset pagination`.

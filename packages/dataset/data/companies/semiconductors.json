@@ -1,0 +1,874 @@
+[
+  {
+    "key": "sem-vardhan-silicon",
+    "name": "Vardhan Silicon Works",
+    "domain": "vardhansilicon.example",
+    "industry": "Semiconductors",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 1850,
+    "description": "Indian specialty foundry running 200 mm power and analog lines in Gujarat, now planning a 300 mm mixed-signal fab for automotive and industrial customers.",
+    "contacts": [
+      {
+        "name": "Rajesh Iyengar",
+        "title": "VP Fab Operations",
+        "persona": "Fab Operations Leader",
+        "seniority": "VP",
+        "email": "rajesh.iyengar@vardhansilicon.example",
+        "phone": "+919000020001",
+        "whatsapp": "+919000020001",
+        "linkedinUrl": "https://linkedin.example/in/rajesh-iyengar-vardha"
+      },
+      {
+        "name": "Meera Kulkarni",
+        "title": "Yield Engineering Manager",
+        "persona": "Yield & Process Engineer",
+        "seniority": "Manager",
+        "email": "meera.kulkarni@vardhansilicon.example",
+        "phone": "+919000020002",
+        "whatsapp": "+919000020002",
+        "linkedinUrl": "https://linkedin.example/in/meera-kulkarni-vardha"
+      },
+      {
+        "name": "Arvind Rao",
+        "title": "Director – Strategic Sourcing",
+        "persona": "Procurement Leader",
+        "seniority": "Director",
+        "email": "arvind.rao@vardhansilicon.example",
+        "phone": "+919000020003",
+        "whatsapp": "+919000020003",
+        "linkedinUrl": "https://linkedin.example/in/arvind-rao-vardha"
+      }
+    ]
+  },
+  {
+    "key": "sem-kaveri-osat",
+    "name": "Kaveri Assembly & Test",
+    "domain": "kaveriassembly.example",
+    "industry": "Semiconductors",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2400,
+    "description": "OSAT provider in Karnataka offering wire-bond, flip-chip and power-module assembly and test services for automotive and industrial chips.",
+    "contacts": [
+      {
+        "name": "Sunitha Gowda",
+        "title": "Chief Operating Officer",
+        "persona": "Operations Executive",
+        "seniority": "C-Level",
+        "email": "sunitha.gowda@kaveriassembly.example",
+        "phone": "+919000020004",
+        "whatsapp": "+919000020004",
+        "linkedinUrl": "https://linkedin.example/in/sunitha-gowda-kaveri"
+      },
+      {
+        "name": "Farhan Siddiqui",
+        "title": "Head of Test Engineering",
+        "persona": "Test & Quality Leader",
+        "seniority": "Director",
+        "email": "farhan.siddiqui@kaveriassembly.example",
+        "phone": "+919000020005",
+        "whatsapp": "+919000020005",
+        "linkedinUrl": "https://linkedin.example/in/farhan-siddiqui-kaveri"
+      }
+    ]
+  },
+  {
+    "key": "sem-saurashtra-microfab",
+    "name": "Saurashtra Microfab",
+    "domain": "saurashtramicrofab.example",
+    "industry": "Semiconductors",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 620,
+    "description": "Greenfield semiconductor manufacturing venture building a mature-node 300 mm fab and ATMP campus near Dholera for power, display-driver and microcontroller chips.",
+    "contacts": [
+      {
+        "name": "Hemant Desai",
+        "title": "CEO",
+        "persona": "Executive Sponsor",
+        "seniority": "C-Level",
+        "email": "hemant.desai@saurashtramicrofab.example",
+        "phone": "+919000020006",
+        "whatsapp": "+919000020006",
+        "linkedinUrl": "https://linkedin.example/in/hemant-desai-sauras"
+      },
+      {
+        "name": "Kavya Nair",
+        "title": "VP Fab Operations",
+        "persona": "Fab Operations Leader",
+        "seniority": "VP",
+        "email": "kavya.nair@saurashtramicrofab.example",
+        "phone": "+919000020007",
+        "whatsapp": "+919000020007",
+        "linkedinUrl": "https://linkedin.example/in/kavya-nair-sauras"
+      },
+      {
+        "name": "Tobias Lindqvist",
+        "title": "Director – Equipment Procurement",
+        "persona": "Procurement Leader",
+        "seniority": "Director",
+        "email": "tobias.lindqvist@saurashtramicrofab.example",
+        "phone": "+919000020008",
+        "whatsapp": "+919000020008",
+        "linkedinUrl": "https://linkedin.example/in/tobias-lindqvist-sauras"
+      }
+    ]
+  },
+  {
+    "key": "sem-luminachip-labs",
+    "name": "Luminachip Labs",
+    "domain": "luminachip.example",
+    "industry": "Semiconductors",
+    "hqCountry": "IN",
+    "sizeBand": "51-200",
+    "employees": 140,
+    "description": "Bengaluru-based fabless startup designing battery-management and motor-control SoCs for electric two-wheelers and energy-storage systems.",
+    "contacts": [
+      {
+        "name": "Aditi Menon",
+        "title": "CTO",
+        "persona": "Technical Decision Maker",
+        "seniority": "C-Level",
+        "email": "aditi.menon@luminachip.example",
+        "phone": "+919000020009",
+        "whatsapp": "+919000020009",
+        "linkedinUrl": "https://linkedin.example/in/aditi-menon-lumina"
+      },
+      {
+        "name": "Rohit Bhatia",
+        "title": "Head of Silicon Operations",
+        "persona": "Operations Leader",
+        "seniority": "Director",
+        "email": "rohit.bhatia@luminachip.example",
+        "phone": "+919000020010",
+        "whatsapp": "+919000020010",
+        "linkedinUrl": "https://linkedin.example/in/rohit-bhatia-lumina"
+      }
+    ]
+  },
+  {
+    "key": "sem-voltrix-motors",
+    "name": "Voltrix Motors",
+    "domain": "voltrixmotors.example",
+    "industry": "Electric Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3200,
+    "description": "Electric two-wheeler maker headquartered in Pune with an in-house motor, battery and power-electronics engineering team.",
+    "contacts": [
+      {
+        "name": "Nikhil Joshi",
+        "title": "Head of Power Electronics",
+        "persona": "Power Electronics Engineering Leader",
+        "seniority": "Director",
+        "email": "nikhil.joshi@voltrixmotors.example",
+        "phone": "+919000020011",
+        "whatsapp": "+919000020011",
+        "linkedinUrl": "https://linkedin.example/in/nikhil-joshi-voltri"
+      },
+      {
+        "name": "Priyanka Sharma",
+        "title": "Director – Strategic Sourcing",
+        "persona": "Procurement Leader",
+        "seniority": "Director",
+        "email": "priyanka.sharma@voltrixmotors.example",
+        "phone": "+919000020012",
+        "whatsapp": "+919000020012",
+        "linkedinUrl": "https://linkedin.example/in/priyanka-sharma-voltri"
+      },
+      {
+        "name": "Samuel D'Souza",
+        "title": "CTO",
+        "persona": "Technical Decision Maker",
+        "seniority": "C-Level",
+        "email": "samuel.dsouza@voltrixmotors.example",
+        "phone": "+919000020013",
+        "whatsapp": "+919000020013",
+        "linkedinUrl": "https://linkedin.example/in/samuel-dsouza-voltri"
+      }
+    ]
+  },
+  {
+    "key": "sem-arohan-mobility",
+    "name": "Arohan Mobility",
+    "domain": "arohanmobility.example",
+    "industry": "Electric Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 6800,
+    "description": "Maker of electric three-wheelers and light commercial EVs with plants in Tamil Nadu and Telangana, moving drivetrain electronics in-house.",
+    "contacts": [
+      {
+        "name": "Lakshmi Narayanan",
+        "title": "VP Electrification",
+        "persona": "Electrification Program Leader",
+        "seniority": "VP",
+        "email": "lakshmi.narayanan@arohanmobility.example",
+        "phone": "+919000020014",
+        "whatsapp": "+919000020014",
+        "linkedinUrl": "https://linkedin.example/in/lakshmi-narayanan-arohan"
+      },
+      {
+        "name": "Imran Qureshi",
+        "title": "Senior Manager – Electronics Sourcing",
+        "persona": "Procurement Manager",
+        "seniority": "Manager",
+        "email": "imran.qureshi@arohanmobility.example",
+        "phone": "+919000020015",
+        "whatsapp": "+919000020015",
+        "linkedinUrl": "https://linkedin.example/in/imran-qureshi-arohan"
+      }
+    ]
+  },
+  {
+    "key": "sem-meghdoot-electronics",
+    "name": "Meghdoot Electronics",
+    "domain": "meghdootelectronics.example",
+    "industry": "Electronics Manufacturing",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 7400,
+    "description": "Electronics manufacturing services (EMS) company assembling smartphones, EV controllers and telecom boards across Noida, Sriperumbudur and Hyderabad.",
+    "contacts": [
+      {
+        "name": "Vikram Chawla",
+        "title": "President – EMS Operations",
+        "persona": "Operations Executive",
+        "seniority": "C-Level",
+        "email": "vikram.chawla@meghdootelectronics.example",
+        "phone": "+919000020016",
+        "whatsapp": "+919000020016",
+        "linkedinUrl": "https://linkedin.example/in/vikram-chawla-meghdo"
+      },
+      {
+        "name": "Ananya Bose",
+        "title": "Director – Component Sourcing",
+        "persona": "Procurement Leader",
+        "seniority": "Director",
+        "email": "ananya.bose@meghdootelectronics.example",
+        "phone": "+919000020017",
+        "whatsapp": "+919000020017",
+        "linkedinUrl": "https://linkedin.example/in/ananya-bose-meghdo"
+      }
+    ]
+  },
+  {
+    "key": "sem-prithvi-contract",
+    "name": "Prithvi Contract Manufacturing",
+    "domain": "prithvicm.example",
+    "industry": "Electronics Manufacturing",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2100,
+    "description": "Mid-sized EMS provider in Chennai specialising in industrial, automotive and power-conversion PCB assemblies.",
+    "contacts": [
+      {
+        "name": "Karthik Subramanian",
+        "title": "Managing Director",
+        "persona": "Executive Sponsor",
+        "seniority": "C-Level",
+        "email": "karthik.subramanian@prithvicm.example",
+        "phone": "+919000020018",
+        "whatsapp": "+919000020018",
+        "linkedinUrl": "https://linkedin.example/in/karthik-subramanian-prithv"
+      },
+      {
+        "name": "Divya Raghavan",
+        "title": "Head of Supply Chain",
+        "persona": "Supply Chain Leader",
+        "seniority": "Director",
+        "email": "divya.raghavan@prithvicm.example",
+        "phone": "+919000020019",
+        "whatsapp": "+919000020019",
+        "linkedinUrl": "https://linkedin.example/in/divya-raghavan-prithv"
+      }
+    ]
+  },
+  {
+    "key": "sem-suryatej-power",
+    "name": "Suryatej Power Systems",
+    "domain": "suryatejpower.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 1600,
+    "description": "Indian manufacturer of string and central solar inverters and hybrid energy-storage converters for utility and rooftop markets.",
+    "contacts": [
+      {
+        "name": "Gaurav Mehta",
+        "title": "CTO",
+        "persona": "Technical Decision Maker",
+        "seniority": "C-Level",
+        "email": "gaurav.mehta@suryatejpower.example",
+        "phone": "+919000020020",
+        "whatsapp": "+919000020020",
+        "linkedinUrl": "https://linkedin.example/in/gaurav-mehta-suryat"
+      },
+      {
+        "name": "Swati Pandey",
+        "title": "Director – Strategic Sourcing",
+        "persona": "Procurement Leader",
+        "seniority": "Director",
+        "email": "swati.pandey@suryatejpower.example",
+        "phone": "+919000020021",
+        "whatsapp": "+919000020021",
+        "linkedinUrl": "https://linkedin.example/in/swati-pandey-suryat"
+      }
+    ]
+  },
+  {
+    "key": "sem-helionix-inverters",
+    "name": "Helionix Inverters",
+    "domain": "helionix.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 540,
+    "description": "Rooftop and commercial solar inverter maker based in Ahmedabad expanding into battery-storage power conversion.",
+    "contacts": [
+      {
+        "name": "Jignesh Patel",
+        "title": "Founder & CEO",
+        "persona": "Executive Sponsor",
+        "seniority": "C-Level",
+        "email": "jignesh.patel@helionix.example",
+        "phone": "+919000020022",
+        "whatsapp": "+919000020022",
+        "linkedinUrl": "https://linkedin.example/in/jignesh-patel-helion"
+      },
+      {
+        "name": "Neha Vora",
+        "title": "Head of Power Electronics",
+        "persona": "Power Electronics Engineering Leader",
+        "seniority": "Director",
+        "email": "neha.vora@helionix.example",
+        "phone": "+919000020023",
+        "whatsapp": "+919000020023",
+        "linkedinUrl": "https://linkedin.example/in/neha-vora-helion"
+      }
+    ]
+  },
+  {
+    "key": "sem-tarangam-networks",
+    "name": "Tarangam Networks",
+    "domain": "tarangam.example",
+    "industry": "Telecom",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2900,
+    "description": "Telecom equipment maker building 4G/5G radio units, small cells and optical transport gear for Indian and South-East Asian operators.",
+    "contacts": [
+      {
+        "name": "Suresh Venkatesan",
+        "title": "VP Hardware Engineering",
+        "persona": "Hardware Engineering Leader",
+        "seniority": "VP",
+        "email": "suresh.venkatesan@tarangam.example",
+        "phone": "+919000020024",
+        "whatsapp": "+919000020024",
+        "linkedinUrl": "https://linkedin.example/in/suresh-venkatesan-tarang"
+      },
+      {
+        "name": "Pooja Agarwal",
+        "title": "Director – Strategic Sourcing",
+        "persona": "Procurement Leader",
+        "seniority": "Director",
+        "email": "pooja.agarwal@tarangam.example",
+        "phone": "+919000020025",
+        "whatsapp": "+919000020025",
+        "linkedinUrl": "https://linkedin.example/in/pooja-agarwal-tarang"
+      }
+    ]
+  },
+  {
+    "key": "sem-nimbusrack-systems",
+    "name": "Nimbusrack Systems",
+    "domain": "nimbusracksystems.example",
+    "industry": "Data Centers",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 780,
+    "description": "Designer and assembler of servers, AI accelerator racks and rack power shelves for Indian hyperscale and colocation data centers.",
+    "contacts": [
+      {
+        "name": "Anirudh Kapoor",
+        "title": "CTO",
+        "persona": "Technical Decision Maker",
+        "seniority": "C-Level",
+        "email": "anirudh.kapoor@nimbusracksystems.example",
+        "phone": "+919000020026",
+        "whatsapp": "+919000020026",
+        "linkedinUrl": "https://linkedin.example/in/anirudh-kapoor-nimbus"
+      },
+      {
+        "name": "Fatima Sheikh",
+        "title": "Manager – Power Hardware",
+        "persona": "Power Hardware Engineer",
+        "seniority": "Manager",
+        "email": "fatima.sheikh@nimbusracksystems.example",
+        "phone": "+919000020027",
+        "whatsapp": "+919000020027",
+        "linkedinUrl": "https://linkedin.example/in/fatima-sheikh-nimbus"
+      }
+    ]
+  },
+  {
+    "key": "sem-orbis-devices",
+    "name": "Orbis Consumer Devices",
+    "domain": "orbisdevices.example",
+    "industry": "Consumer Electronics",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2600,
+    "description": "Consumer electronics brand selling smartphones, wearables and fast chargers, with an assembly plant in Uttar Pradesh.",
+    "contacts": [
+      {
+        "name": "Rahul Khanna",
+        "title": "Head of Hardware Products",
+        "persona": "Product Leader",
+        "seniority": "Director",
+        "email": "rahul.khanna@orbisdevices.example",
+        "phone": "+919000020028",
+        "whatsapp": "+919000020028",
+        "linkedinUrl": "https://linkedin.example/in/rahul-khanna-orbisd"
+      },
+      {
+        "name": "Shreya Iyer",
+        "title": "Senior Manager – Semiconductor Sourcing",
+        "persona": "Procurement Manager",
+        "seniority": "Manager",
+        "email": "shreya.iyer@orbisdevices.example",
+        "phone": "+919000020029",
+        "whatsapp": "+919000020029",
+        "linkedinUrl": "https://linkedin.example/in/shreya-iyer-orbisd"
+      }
+    ]
+  },
+  {
+    "key": "sem-merbok-precision",
+    "name": "Merbok Precision Packaging",
+    "domain": "merbokprecision.example",
+    "industry": "Semiconductors",
+    "hqCountry": "MY",
+    "sizeBand": "1001-5000",
+    "employees": 3300,
+    "description": "Malaysian OSAT in Penang offering power-module packaging, system-in-package and final test for automotive customers.",
+    "contacts": [
+      {
+        "name": "Tan Wei Ling",
+        "title": "VP Operations",
+        "persona": "Operations Leader",
+        "seniority": "VP",
+        "email": "tan.ling@merbokprecision.example",
+        "phone": "+60120002001",
+        "whatsapp": "+60120002001",
+        "linkedinUrl": "https://linkedin.example/in/tan-wei-ling-merbok"
+      },
+      {
+        "name": "Muthu Krishnan",
+        "title": "Yield Engineering Manager",
+        "persona": "Yield & Process Engineer",
+        "seniority": "Manager",
+        "email": "muthu.krishnan@merbokprecision.example",
+        "phone": "+60120002002",
+        "whatsapp": "+60120002002",
+        "linkedinUrl": "https://linkedin.example/in/muthu-krishnan-merbok"
+      }
+    ]
+  },
+  {
+    "key": "sem-lionbay-semiconductor",
+    "name": "Lionbay Semiconductor",
+    "domain": "lionbaysemi.example",
+    "industry": "Semiconductors",
+    "hqCountry": "SG",
+    "sizeBand": "1001-5000",
+    "employees": 1900,
+    "description": "Singapore specialty foundry producing MEMS, silicon photonics and power devices on 200 mm wafers.",
+    "contacts": [
+      {
+        "name": "Daniel Koh",
+        "title": "VP Fab Operations",
+        "persona": "Fab Operations Leader",
+        "seniority": "VP",
+        "email": "daniel.koh@lionbaysemi.example",
+        "phone": "+6590000001",
+        "whatsapp": "+6590000001",
+        "linkedinUrl": "https://linkedin.example/in/daniel-koh-lionba"
+      },
+      {
+        "name": "Rachel Lim",
+        "title": "Director – Process Integration",
+        "persona": "Process Engineering Leader",
+        "seniority": "Director",
+        "email": "rachel.lim@lionbaysemi.example",
+        "phone": "+6590000002",
+        "whatsapp": "+6590000002",
+        "linkedinUrl": "https://linkedin.example/in/rachel-lim-lionba"
+      }
+    ]
+  },
+  {
+    "key": "sem-jadeite-foundry",
+    "name": "Jadeite Foundry",
+    "domain": "jadeitefoundry.example",
+    "industry": "Semiconductors",
+    "hqCountry": "TW",
+    "sizeBand": "5001-10000",
+    "employees": 8200,
+    "description": "Taiwanese mature-node foundry with 200 mm and 300 mm capacity for power management and display-driver ICs, expanding overseas.",
+    "contacts": [
+      {
+        "name": "Chen Yu-Ting",
+        "title": "Senior Director – Overseas Fabs",
+        "persona": "Fab Operations Leader",
+        "seniority": "Director",
+        "email": "chen.ting@jadeitefoundry.example",
+        "phone": "+886900000001",
+        "whatsapp": "+886900000001",
+        "linkedinUrl": "https://linkedin.example/in/chen-yu-ting-jadeit"
+      },
+      {
+        "name": "Huang Jian-Ming",
+        "title": "Yield Engineering Manager",
+        "persona": "Yield & Process Engineer",
+        "seniority": "Manager",
+        "email": "huang.ming@jadeitefoundry.example",
+        "phone": "+886900000002",
+        "whatsapp": "+886900000002",
+        "linkedinUrl": "https://linkedin.example/in/huang-jian-ming-jadeit"
+      }
+    ]
+  },
+  {
+    "key": "sem-hoshizora-power",
+    "name": "Hoshizora Power Devices",
+    "domain": "hoshizorapower.example",
+    "industry": "Semiconductors",
+    "hqCountry": "JP",
+    "sizeBand": "1001-5000",
+    "employees": 2700,
+    "description": "Japanese maker of IGBT and silicon carbide power devices for rail, industrial drives and EV traction.",
+    "contacts": [
+      {
+        "name": "Kenji Watanabe",
+        "title": "General Manager – Global Procurement",
+        "persona": "Procurement Leader",
+        "seniority": "Director",
+        "email": "kenji.watanabe@hoshizorapower.example",
+        "phone": "+819000000001",
+        "whatsapp": "+819000000001",
+        "linkedinUrl": "https://linkedin.example/in/kenji-watanabe-hoshiz"
+      },
+      {
+        "name": "Aiko Tanaka",
+        "title": "Head of Automotive Business",
+        "persona": "Business Unit Leader",
+        "seniority": "VP",
+        "email": "aiko.tanaka@hoshizorapower.example",
+        "phone": "+819000000002",
+        "whatsapp": "+819000000002",
+        "linkedinUrl": "https://linkedin.example/in/aiko-tanaka-hoshiz"
+      }
+    ]
+  },
+  {
+    "key": "sem-mekong-circuitworks",
+    "name": "Mekong Circuitworks",
+    "domain": "mekongcircuit.example",
+    "industry": "Electronics Manufacturing",
+    "hqCountry": "VN",
+    "sizeBand": "5001-10000",
+    "employees": 9100,
+    "description": "Vietnamese EMS group assembling networking, telecom and consumer devices across Hai Phong and Bac Ninh.",
+    "contacts": [
+      {
+        "name": "Nguyen Thi Lan",
+        "title": "Director – Strategic Sourcing",
+        "persona": "Procurement Leader",
+        "seniority": "Director",
+        "email": "nguyen.lan@mekongcircuit.example",
+        "phone": "+84900000001",
+        "whatsapp": "+84900000001",
+        "linkedinUrl": "https://linkedin.example/in/nguyen-thi-lan-mekong"
+      },
+      {
+        "name": "Pham Quoc Bao",
+        "title": "Head of Test Engineering",
+        "persona": "Test & Quality Leader",
+        "seniority": "Manager",
+        "email": "pham.bao@mekongcircuit.example",
+        "phone": "+84900000002",
+        "whatsapp": "+84900000002",
+        "linkedinUrl": "https://linkedin.example/in/pham-quoc-bao-mekong"
+      }
+    ]
+  },
+  {
+    "key": "sem-pinecrest-compute",
+    "name": "Pinecrest Compute",
+    "domain": "pinecrestcompute.example",
+    "industry": "Data Centers",
+    "hqCountry": "US",
+    "sizeBand": "201-1000",
+    "employees": 430,
+    "description": "US hardware startup building liquid-cooled AI server racks and 48 V rack power systems, with manufacturing partners in Asia.",
+    "contacts": [
+      {
+        "name": "Emily Carter",
+        "title": "VP Hardware",
+        "persona": "Hardware Engineering Leader",
+        "seniority": "VP",
+        "email": "emily.carter@pinecrestcompute.example",
+        "phone": "+15550100001",
+        "whatsapp": "+15550100001",
+        "linkedinUrl": "https://linkedin.example/in/emily-carter-pinecr"
+      },
+      {
+        "name": "Marcus Bell",
+        "title": "Director – Supply Chain",
+        "persona": "Supply Chain Leader",
+        "seniority": "Director",
+        "email": "marcus.bell@pinecrestcompute.example",
+        "phone": "+15550100002",
+        "whatsapp": "+15550100002",
+        "linkedinUrl": "https://linkedin.example/in/marcus-bell-pinecr"
+      }
+    ]
+  },
+  {
+    "key": "sem-gangotri-electric",
+    "name": "Gangotri Electric",
+    "domain": "gangotrielectric.example",
+    "industry": "Two-Wheelers",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 850,
+    "description": "Electric scooter and motorcycle startup from Coimbatore with in-house motor controller and battery pack design.",
+    "contacts": [
+      {
+        "name": "Vishal Rajan",
+        "title": "Co-founder & CTO",
+        "persona": "Technical Decision Maker",
+        "seniority": "C-Level",
+        "email": "vishal.rajan@gangotrielectric.example",
+        "phone": "+919000020030",
+        "whatsapp": "+919000020030",
+        "linkedinUrl": "https://linkedin.example/in/vishal-rajan-gangot"
+      },
+      {
+        "name": "Harini Srinivasan",
+        "title": "Manager – Electronics Procurement",
+        "persona": "Procurement Manager",
+        "seniority": "Manager",
+        "email": "harini.srinivasan@gangotrielectric.example",
+        "phone": "+919000020031",
+        "whatsapp": "+919000020031",
+        "linkedinUrl": "https://linkedin.example/in/harini-srinivasan-gangot"
+      }
+    ]
+  },
+  {
+    "key": "sem-deccan-cellworks",
+    "name": "Deccan Cellworks",
+    "domain": "deccancellworks.example",
+    "industry": "Electric Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 690,
+    "description": "Hyderabad-based battery pack and energy-storage system integrator designing its own battery management systems.",
+    "contacts": [
+      {
+        "name": "Sandeep Reddy",
+        "title": "CEO",
+        "persona": "Executive Sponsor",
+        "seniority": "C-Level",
+        "email": "sandeep.reddy@deccancellworks.example",
+        "phone": "+919000020032",
+        "whatsapp": "+919000020032",
+        "linkedinUrl": "https://linkedin.example/in/sandeep-reddy-deccan"
+      },
+      {
+        "name": "Mounika Varma",
+        "title": "Head of BMS Engineering",
+        "persona": "Power Electronics Engineering Leader",
+        "seniority": "Director",
+        "email": "mounika.varma@deccancellworks.example",
+        "phone": "+919000020033",
+        "whatsapp": "+919000020033",
+        "linkedinUrl": "https://linkedin.example/in/mounika-varma-deccan"
+      }
+    ]
+  },
+  {
+    "key": "sem-kalinga-compound",
+    "name": "Kalinga Compound Semiconductors",
+    "domain": "kalingacompound.example",
+    "industry": "Semiconductors",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 310,
+    "description": "Odisha-based venture building a silicon carbide and gallium nitride compound-semiconductor fab for power and RF devices.",
+    "contacts": [
+      {
+        "name": "Debashis Mohanty",
+        "title": "Managing Director",
+        "persona": "Executive Sponsor",
+        "seniority": "C-Level",
+        "email": "debashis.mohanty@kalingacompound.example",
+        "phone": "+919000020034",
+        "whatsapp": "+919000020034",
+        "linkedinUrl": "https://linkedin.example/in/debashis-mohanty-kaling"
+      },
+      {
+        "name": "Sneha Patnaik",
+        "title": "Yield Engineering Manager",
+        "persona": "Yield & Process Engineer",
+        "seniority": "Manager",
+        "email": "sneha.patnaik@kalingacompound.example",
+        "phone": "+919000020035",
+        "whatsapp": "+919000020035",
+        "linkedinUrl": "https://linkedin.example/in/sneha-patnaik-kaling"
+      },
+      {
+        "name": "Oliver Grant",
+        "title": "VP Fab Operations",
+        "persona": "Fab Operations Leader",
+        "seniority": "VP",
+        "email": "oliver.grant@kalingacompound.example",
+        "phone": "+919000020036",
+        "whatsapp": "+919000020036",
+        "linkedinUrl": "https://linkedin.example/in/oliver-grant-kaling"
+      }
+    ]
+  },
+  {
+    "key": "sem-vyomika-rf",
+    "name": "Vyomika RF Systems",
+    "domain": "vyomikarf.example",
+    "industry": "Semiconductors",
+    "hqCountry": "IN",
+    "sizeBand": "51-200",
+    "employees": 95,
+    "description": "Fabless startup developing GaN RF front-end chips and power amplifiers for 5G radios and satellite terminals.",
+    "contacts": [
+      {
+        "name": "Arjun Malhotra",
+        "title": "Founder & CEO",
+        "persona": "Executive Sponsor",
+        "seniority": "C-Level",
+        "email": "arjun.malhotra@vyomikarf.example",
+        "phone": "+919000020037",
+        "whatsapp": "+919000020037",
+        "linkedinUrl": "https://linkedin.example/in/arjun-malhotra-vyomik"
+      },
+      {
+        "name": "Ishita Ghosh",
+        "title": "Director – Silicon Engineering",
+        "persona": "Technical Decision Maker",
+        "seniority": "Director",
+        "email": "ishita.ghosh@vyomikarf.example",
+        "phone": "+919000020038",
+        "whatsapp": "+919000020038",
+        "linkedinUrl": "https://linkedin.example/in/ishita-ghosh-vyomik"
+      }
+    ]
+  },
+  {
+    "key": "sem-agnivahan-cv",
+    "name": "Agnivahan Commercial Vehicles",
+    "domain": "agnivahan.example",
+    "industry": "Commercial Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 8800,
+    "description": "Bus and truck maker transitioning its urban bus and last-mile truck range to electric drivetrains.",
+    "contacts": [
+      {
+        "name": "Manoj Tiwari",
+        "title": "VP Electric Powertrain",
+        "persona": "Electrification Program Leader",
+        "seniority": "VP",
+        "email": "manoj.tiwari@agnivahan.example",
+        "phone": "+919000020039",
+        "whatsapp": "+919000020039",
+        "linkedinUrl": "https://linkedin.example/in/manoj-tiwari-agniva"
+      },
+      {
+        "name": "Rekha Joshi",
+        "title": "Director – Strategic Sourcing",
+        "persona": "Procurement Leader",
+        "seniority": "Director",
+        "email": "rekha.joshi@agnivahan.example",
+        "phone": "+919000020040",
+        "whatsapp": "+919000020040",
+        "linkedinUrl": "https://linkedin.example/in/rekha-joshi-agniva"
+      }
+    ]
+  },
+  {
+    "key": "sem-nilgiri-wireless",
+    "name": "Nilgiri Wireless",
+    "domain": "nilgiriwireless.example",
+    "industry": "Telecom",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 480,
+    "description": "Maker of rural 4G/5G base stations, microwave backhaul and solar-powered telecom shelters.",
+    "contacts": [
+      {
+        "name": "Balaji Krishnamurthy",
+        "title": "CTO",
+        "persona": "Technical Decision Maker",
+        "seniority": "C-Level",
+        "email": "balaji.krishnamurthy@nilgiriwireless.example",
+        "phone": "+919000020041",
+        "whatsapp": "+919000020041",
+        "linkedinUrl": "https://linkedin.example/in/balaji-krishnamurthy-nilgir"
+      },
+      {
+        "name": "Zoya Khan",
+        "title": "Manager – Hardware Sourcing",
+        "persona": "Procurement Manager",
+        "seniority": "Manager",
+        "email": "zoya.khan@nilgiriwireless.example",
+        "phone": "+919000020042",
+        "whatsapp": "+919000020042",
+        "linkedinUrl": "https://linkedin.example/in/zoya-khan-nilgir"
+      }
+    ]
+  },
+  {
+    "key": "sem-sankalp-logistics",
+    "name": "Sankalp Electronics Logistics",
+    "domain": "sankalplogistics.example",
+    "industry": "Logistics",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2300,
+    "description": "Third-party logistics provider specialising in bonded warehousing, clean-handling and customs services for electronics and semiconductor supply chains.",
+    "contacts": [
+      {
+        "name": "Ritesh Agrawal",
+        "title": "Head of Hi-Tech Logistics",
+        "persona": "Logistics Leader",
+        "seniority": "Director",
+        "email": "ritesh.agrawal@sankalplogistics.example",
+        "phone": "+919000020043",
+        "whatsapp": "+919000020043",
+        "linkedinUrl": "https://linkedin.example/in/ritesh-agrawal-sankal"
+      },
+      {
+        "name": "Nandini Rao",
+        "title": "Chief Commercial Officer",
+        "persona": "Commercial Executive",
+        "seniority": "C-Level",
+        "email": "nandini.rao@sankalplogistics.example",
+        "phone": "+919000020044",
+        "whatsapp": "+919000020044",
+        "linkedinUrl": "https://linkedin.example/in/nandini-rao-sankal"
+      }
+    ]
+  }
+]

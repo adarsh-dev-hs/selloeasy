@@ -1,0 +1,15 @@
+{
+  "title": "Guide",
+  "description": "Overview, setup, concepts and product modules",
+  "icon": "BookOpen",
+  "root": true,
+  "pages": [
+    "index",
+    "---Getting started---",
+    "...getting-started",
+    "---Concepts---",
+    "...concepts",
+    "---Modules---",
+    "...modules"
+  ]
+}

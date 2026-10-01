@@ -1,0 +1,54 @@
+---
+title: ADR-0005 — Offset pagination for the leads UI
+description: The leads list uses page/pageSize offset pagination (default 6 per page) with a stable sort, rather than keyset or cursor pagination.
+---
+
+**Status:** Accepted, extended by [ADR-0018](/docs/decisions/0018-hybrid-offset-keyset-pagination) · **Date:** 2026-09-24
+
+> **Update (2026-09-28).** The leads list is unchanged. The platform data explorer adds keyset paging for deep pages
+> and estimated totals on large tables; see [ADR-0018](/docs/decisions/0018-hybrid-offset-keyset-pagination).
+
+## Context
+
+The leads page is a card grid showing **6 leads per page** by default. Users expect "page 3 of 12", jumping directly
+to a page, and a total count. Leads are filtered (stage, band, signal, ICP, owner, search, date range) and sorted
+(score by default, or recency, age, account name). Per-org volumes are in the tens to low thousands.
+
+Keyset (cursor) pagination performs better on deep pages and is stable under concurrent inserts, but it cannot
+jump to an arbitrary page or cheaply show "page N of M".
+
+## Decision
+
+Use **offset pagination** for user-facing lists:
+
+- `page` (1-based) and `pageSize` (default **6**, max 50) parsed by `pageQuerySchema`, turned into
+  `LIMIT pageSize OFFSET (page − 1) × pageSize`;
+- response envelope `{ items, page, pageSize, total, totalPages }` built by `toPage()`
+  (`packages/shared/src/pagination.ts`);
+- a **stable, total order** so pages do not shuffle: the default sort is `score_total desc, id desc`, backed by the
+  index `leads (org_id, score_total desc, id desc)`. Other sorts also end with `id` as a tie-breaker;
+- the same envelope is used for pipeline runs and the audit log (audit default 25, max 100).
+
+The default page size is the constant `DEFAULT_PAGE_SIZE = 6`. The `LEADS_PAGE_SIZE_DEFAULT` environment key is
+validated but not wired to it yet.
+
+## Consequences
+
+- A simple API and UI: page numbers, jump-to-page, totals.
+- An extra `count(*)` per list request, which is cheap at current volumes with the `(org_id, …)` indexes.
+- Deep pages get slower as the offset grows. That is acceptable at hundreds or thousands of leads per org.
+- Under concurrent inserts or re-scoring, a lead can shift between pages while a user paginates. That is acceptable
+  for a working list, and a refresh fixes it.
+- Bulk and export paths do not paginate. Export returns up to 5000 rows in one response.
+
+## Alternatives considered
+
+- **Keyset pagination** (`WHERE (score_total, id) < (…)`): scalable and stable, but no page numbers or totals, which
+  conflicts with the UX requirement. Suitable for internal batch processing.
+- **Infinite scroll**: good on mobile, but poor for "go back to where I was" and for team conversations ("it's on
+  page 2").
+
+## Revisit when
+
+- Per-org lead counts reach tens of thousands, or leads list p95 latency exceeds about 300 ms.
+- Exports need to exceed 5000 rows. Stream them with keyset pagination.

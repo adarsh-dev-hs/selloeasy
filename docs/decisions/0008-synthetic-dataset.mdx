@@ -1,0 +1,53 @@
+---
+title: ADR-0008 — Synthetic, fictional dataset; the seed uses the mock LLM
+description: Demo data is fully synthetic and fictional, and the seed pre-scores leads with the deterministic mock LLM so the platform is usable without an API key.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+The platform must be evaluable end to end on first boot: organizations with knowledge profiles, ICPs and signals, a
+market-events corpus, target companies with contacts, scored leads across all stages, activity history and
+populated dashboards. Two tempting shortcuts are harmful:
+
+- **Real news about real companies** risks fabricating or misrepresenting events about real businesses, and
+  licensing content.
+- **Real people's contact data** (from LinkedIn or elsewhere) raises privacy and legal problems.
+
+Evaluators may also not have an OpenRouter key, and seeding through a live model would be slow, costly and
+non-reproducible.
+
+## Decision
+
+1. **Everything is synthetic and fictional** (`packages/dataset`): 5 fictional orgs (one each in Healthcare,
+   Automotive, Semiconductors, Renewable Energy and Logistics), 300 news-style events (60 per industry, mixing
+   strong, weak, negative and cross-industry cases), 130 fictional target companies with 274 fictional contacts,
+   30 signal templates and a 60-item gold set.
+2. **Enforced by schema:** company domains and emails must end in the reserved `.example` TLD, LinkedIn URLs use
+   `linkedin.example`, and records are stored with `synthetic = true`.
+3. **The seed always uses the deterministic mock LLM**, regardless of `LLM_MODE`. It runs the real pipeline code
+   (`runPipeline()`) with a mock client, so seeded leads are produced by the same stages as real runs, just with
+   rule-based matching and scoring. It also simulates CRM history deterministically.
+4. The seed does **not** record event evaluations, so the first live run re-evaluates the corpus with the real model.
+
+## Consequences
+
+- Safe to demo, share and publish. No real company or person is misrepresented.
+- Reproducible: every seed produces the same orgs, leads and history (relative to seed time).
+- Works without any API key. About 190 pre-scored leads across 5 orgs on first boot.
+- **Less realism:** events are well-formed and keyword-rich by design. Mock matching is simpler than a model, so
+  seeded scores and matches differ from what a live model would produce. Precision and recall must be measured with
+  [the evaluation harness](/docs/pipeline/evaluation), not inferred from the demo.
+- The first live pipeline run costs LLM calls, because the corpus is re-evaluated.
+
+## Alternatives considered
+
+- **Curated real news with real company names**: more realistic, but risky and not reproducible.
+- **Seeding with a live model**: realistic scores, but requires a key, costs money, and is slow and non-deterministic.
+- **Empty platform**: honest, but evaluators could not see dashboards, CRM flows or scoring without long setup.
+
+## Revisit when
+
+- Real event sources are integrated (RSS, news APIs, webhooks). The dataset then becomes a test fixture only.
+- A customer pilot needs a realistic sandbox built from their own (consented) data.

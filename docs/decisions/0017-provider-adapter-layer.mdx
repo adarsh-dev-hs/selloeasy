@@ -1,0 +1,61 @@
+---
+title: ADR-0017 — Provider adapter layer, with OpenRouter as the default
+description: LlmClient stays provider-agnostic and delegates only the HTTP call to adapters for OpenRouter, OpenAI and Anthropic, selected by LLM_PROVIDER; the model always comes from that provider's *_MODEL env var.
+---
+
+**Status:** Accepted · **Date:** 2026-09-28 · Extends [ADR-0009](/docs/decisions/0009-openrouter-model-from-env)
+
+## Context
+
+v0.1 had one OpenRouter client, and the model came only from `OPENROUTER_MODEL` (ADR-0009). Plan2 §10 needs direct
+OpenAI access now and Anthropic or others later, by configuration alone. The original brief mandates OpenRouter, so the
+submitted configuration must stay on OpenRouter. The providers differ in ways that break naive reuse: OpenAI reasoning
+models reject a custom `temperature` and need `max_completion_tokens`; Anthropic has a different API, needs
+`max_tokens`, and is most reliable at JSON through a forced tool call; only OpenRouter returns cost.
+
+## Decision
+
+- **Adapters.** `packages/llm/src/providers/` defines `ChatProvider.complete(req)`. `OpenAICompatibleProvider` serves
+  `openrouter` and `openai` (`/chat/completions`); `AnthropicProvider` serves `anthropic` (`/v1/messages`, forced
+  tool call with the prompt's JSON Schema as `input_schema`). `createProvider()` is the only switch.
+- **`LlmClient` stays provider-agnostic**: prompts, zod validation, repair retry, cache, concurrency, retries,
+  telemetry and mock mode are unchanged and shared.
+- **Selection by env.** `LLM_PROVIDER` = `openrouter` (default, and the value in `.env.example`) | `openai` |
+  `anthropic`. The model is exactly the selected provider's `OPENROUTER_MODEL` / `OPENAI_MODEL` / `ANTHROPIC_MODEL`;
+  ADR-0009's "no model name in code" now applies to all providers. Only the selected provider's key and model are
+  required; with no key the app auto-falls back to mock mode.
+- **Capabilities.** `capabilitiesFor()` resolves temperature support, structured-output support, the token parameter
+  and reasoning-effort support per provider and model family, overridable with `LLM_SUPPORTS_TEMPERATURE` /
+  `LLM_SUPPORTS_JSON_SCHEMA`. Adapters **self-heal**: a 400 naming an unsupported parameter disables it for the
+  process and the call is resent.
+- **Failover.** Optional `LLM_FALLBACK_PROVIDER` re-runs a call on another configured provider after retryable or
+  5xx failures.
+- **Telemetry and cache.** `llm_calls.provider` (migration `0002`) records who answered; the cache key includes the
+  provider and model. Cost comes from the provider when reported (OpenRouter) or from `LLM_PRICE_*_PER_MTOK`.
+
+## Consequences
+
+- Positive: switching provider or model is an env change and a restart; the submission stays OpenRouter-compliant
+  while a local `.env` can use OpenAI directly; new vendors plug in with one adapter.
+- Positive: prompts stay model-agnostic, and provider quirks live in one folder with fake-`fetch` unit tests.
+- Negative: more configuration surface (keys per provider, capability overrides, price table) and more code to own.
+- Negative: cost is 0 for OpenAI and Anthropic unless the price table is set; self-healed capabilities are
+  per process.
+- Negative: the capability table is pattern-based and needs updating (or env overrides) as new model families ship.
+  The Anthropic adapter has unit tests but no live evaluation yet.
+
+## Alternatives considered
+
+- **Route everything through OpenRouter** (it can proxy OpenAI and Anthropic models): one path, but no direct-provider
+  option when OpenRouter is unavailable or not wanted.
+- **Vendor SDKs** (`openai`, `@anthropic-ai/sdk`): more dependencies and version churn for three small HTTP calls
+  ([ADR-0014](/docs/decisions/0014-fetch-over-openai-sdk)).
+- **A generic gateway library**: another abstraction to learn, and it would still need our capability handling.
+- **Per-purpose model routing** (`LLM_MODEL_<PURPOSE>`): deferred; the design leaves room for it.
+
+## Revisit when
+
+- Per-purpose models are needed for cost or quality.
+- A fourth provider is added, or a provider ships a native structured-output mode that makes the tool-call trick
+  unnecessary.
+- Failover is triggered often enough that cross-provider output differences show up in evaluation results.

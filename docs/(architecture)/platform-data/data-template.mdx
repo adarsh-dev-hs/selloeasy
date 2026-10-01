@@ -1,0 +1,139 @@
+---
+title: Data template (v1)
+description: The canonical Market Event Record — every field, its type, whether it is required, its rules and an example, generated from TEMPLATE_V1_FIELDS in packages/shared/src/data-template.ts.
+---
+
+Every record that enters the platform data source, whether by CSV/JSONL/JSON import or by a connector, follows
+**template v1**: one **Market Event Record** describes one business-news event, its **subject company** (the company
+that would buy) and optionally **one contact** at that company.
+
+The single source of truth is `packages/shared/src/data-template.ts`:
+
+| Export                      | Used for                                                                                   |
+| --------------------------- | ------------------------------------------------------------------------------------------ |
+| `TEMPLATE_V1_FIELDS`        | The field reference below, `GET /platform/data/template` and the downloadable CSV template |
+| `marketEventRecordV1` (zod) | Structural and cross-field validation of every row                                         |
+| `normalizeRecord()`         | Trimming and normalization before validation (see [Normalization](#normalization))         |
+| `templateCsv()`             | `GET /platform/data/template.csv`: the header row plus one example row                     |
+| `templateJsonSchema()`      | `GET /platform/data/template.schema.json` (`template-v1.schema.json`) for integrators      |
+
+Every stored event has `schema_version = 1` (`TEMPLATE_VERSION`). A future v2 would add a new schema and keep v1
+accepted ([ADR-0015](/docs/decisions/0015-canonical-data-template-and-two-phase-import)).
+
+## Fields
+
+"Requirement" is one of **required**, **recommended**, **conditional** (required only in a stated case) or
+**optional**. Pipes inside list examples are literal `|` separators.
+
+### Event
+
+| Field           | Type                   | Requirement | Rules                                                                                               | Example                                                      |
+| --------------- | ---------------------- | ----------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `external_id`   | string ≤ 100           | recommended | Unique per source; makes re-imports idempotent. A content hash is used when empty.                  | `imp-001`                                                    |
+| `source`        | string 2–80            | required    | Publisher or feed name.                                                                             | `AutoWire India`                                             |
+| `source_url`    | https URL              | required    | `https://` only, public host, unique. At most 2048 characters.                                      | `https://autowire-india.example/2026/torvia-launch`          |
+| `title`         | string 20–300          | required    | Headline; not all caps, not a placeholder.                                                          | `Torvia Motors to launch Aera electric crossover in Q1 2027` |
+| `body`          | string 200–10 000      | required    | ≥ 30 words, ≥ 95 % printable characters.                                                            | `Torvia Motors on Tuesday announced …`                       |
+| `published_at`  | ISO 8601 date/datetime | required    | Not more than 1 day in the future, not older than the age limit (`DATA_MAX_AGE_DAYS`, 730).         | `2026-09-22`                                                 |
+| `industry_tags` | list of market tags    | required    | 1–4 tags, pipe-separated in CSV or an array in JSON, from the [allowed tags](#allowed-market-tags). | `Automotive\|Electric Vehicles`                              |
+| `region`        | string ≤ 120           | optional    | City / state / region.                                                                              | `Sanand, India`                                              |
+| `country`       | ISO 3166-1 alpha-2     | optional    | Two uppercase letters.                                                                              | `IN`                                                         |
+| `amount`        | number ≥ 0             | optional    | Deal / investment / order size.                                                                     | `4200000000`                                                 |
+| `currency`      | `INR`, `USD` or `EUR`  | conditional | Required when `amount` is set.                                                                      | `INR`                                                        |
+
+### Subject company
+
+| Field                       | Type                                                              | Requirement | Rules                                                                 | Example                                  |
+| --------------------------- | ----------------------------------------------------------------- | ----------- | --------------------------------------------------------------------- | ---------------------------------------- |
+| `subject_company_name`      | string 2–160                                                      | required    | The company that would buy.                                           | `Torvia Motors`                          |
+| `subject_company_domain`    | hostname                                                          | required    | Lower-cased; directory dedupe key; not a free-mail domain.            | `torviamotors.example`                   |
+| `subject_company_industry`  | one market tag                                                    | optional    | From the allowed tags.                                                | `Automotive`                             |
+| `subject_company_country`   | ISO-2                                                             | optional    | Two uppercase letters.                                                | `IN`                                     |
+| `subject_company_size_band` | `1-50`, `51-200`, `201-1000`, `1001-5000`, `5001-10000`, `10000+` | optional    | Employee band.                                                        | `5001-10000`                             |
+| `subject_company_employees` | integer 1–5 000 000                                               | optional    | Must fall inside `size_band` when both are given.                     | `7800`                                   |
+| `mentioned_companies`       | list of names                                                     | optional    | Up to 5, pipe-separated in CSV or an array in JSON. Each 2–160 chars. | `Kestrel Silicon\|Lumora Semiconductors` |
+
+### Contact
+
+| Field                  | Type         | Requirement | Rules                                                                        | Example                                  |
+| ---------------------- | ------------ | ----------- | ---------------------------------------------------------------------------- | ---------------------------------------- |
+| `contact_name`         | string 2–120 | conditional | Required when any `contact_*` field is set, together with an email or phone. | `Kavita Rao`                             |
+| `contact_title`        | string ≤ 160 | optional    | Job title.                                                                   | `VP Procurement`                         |
+| `contact_email`        | email        | optional    | Domain should match `subject_company_domain` (warning otherwise).            | `kavita.rao@torviamotors.example`        |
+| `contact_phone`        | E.164        | optional    | `+` followed by 6–15 digits.                                                 | `+919000050001`                          |
+| `contact_whatsapp`     | E.164        | optional    | Defaults to `contact_phone`.                                                 | `+919000050001`                          |
+| `contact_linkedin_url` | URL          | optional    | `https://` profile URL.                                                      | `https://linkedin.example/in/kavita-rao` |
+
+### Cross-field rules
+
+Enforced by the zod schema's `superRefine` (issue code `custom`):
+
+- `currency` is required when `amount` is set.
+- `subject_company_employees` must fall inside `subject_company_size_band` (`10000+` means 10 001–5 000 000).
+- If any `contact_*` field is set, `contact_name` is required, and so is at least one of `contact_email` or
+  `contact_phone`.
+
+### Unknown and ignored columns
+
+The schema is **strict**: a column or key that is not in the table above is rejected, not ignored. This catches
+files exported from a different system. The one exception is `_comment`, which is dropped (useful for spreadsheet
+notes). Column names are matched case-insensitively after trimming.
+
+## Allowed market tags
+
+`industry_tags` and `subject_company_industry` use the controlled vocabulary `MARKET_TAGS`
+(`packages/shared/src/enums.ts`), the same tags the pipeline prefilter and ICPs use. Matching ignores case and the
+stored value uses the canonical spelling:
+
+Automotive, Electric Vehicles, Two-Wheelers, Commercial Vehicles, Fleet & Mobility, Hospitals, Diagnostics, Pharma,
+Healthcare Services, Semiconductors, Electronics Manufacturing, Consumer Electronics, Telecom, Data Centers,
+Manufacturing, Utilities, Renewable Energy, Real Estate, E-commerce, Retail, FMCG, Logistics, Ports & Shipping,
+Cold Chain, Government.
+
+## Normalization
+
+Before validation, `normalizeRecord()`:
+
+- trims every string and treats empty strings and `null` as "not set";
+- splits `industry_tags` and `mentioned_companies` on `|` (or accepts a JSON array) and drops empty items;
+- maps tags to their canonical casing;
+- converts numeric strings for `amount` and `subject_company_employees` (commas, underscores and spaces removed);
+- lower-cases `subject_company_domain` and strips `http(s)://`, `www.` and any path (so `https://www.Acme.example/about`
+  becomes `acme.example`);
+- upper-cases `country`, `subject_company_country` and `currency`, and lower-cases `contact_email`.
+
+## Formats
+
+| Format | Shape                                                                                   | Notes                                                                    |
+| ------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| CSV    | UTF-8 (a BOM is tolerated), comma-separated, RFC 4180 quoting, CRLF or LF, a header row | Column order is free. The header must contain every **required** column. |
+| JSONL  | One JSON object per line (`.jsonl` or `.ndjson`)                                        | Lists are JSON arrays. Missing required keys are reported per row.       |
+| JSON   | An array of objects, or `{"items": [...]}`                                              | Same as JSONL.                                                           |
+
+## Downloads
+
+| What                            | Endpoint (`/api/v1`)                                |
+| ------------------------------- | --------------------------------------------------- |
+| Field reference + limits (JSON) | `GET /platform/data/template`                       |
+| CSV template (header + example) | `GET /platform/data/template.csv`                   |
+| JSON Schema                     | `GET /platform/data/template.schema.json`           |
+| 10 valid sample rows            | `GET /platform/data/samples/sampleData.csv`         |
+| Garbage sample (rejected rows)  | `GET /platform/data/samples/sampleData.invalid.csv` |
+
+The samples are copies of the repository-root `sampleData.csv` and `sampleData.invalid.csv` (kept identical by a unit
+test). `sampleData.csv` has 10 valid rows covering all five demo industries and every optional field at least once.
+Importing it produces 10 `VALID` rows, 10 new events, 10 directory companies and 7 contacts. See
+[Importing data](/docs/platform-data/importing#try-it-with-sampledatacsv).
+
+## How a record is stored
+
+| Template field(s)                                                                                                    | Stored in                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `external_id`, `source`, `title`, `body`, `published_at`, `industry_tags`, `region`, `country`, `amount`, `currency` | `market_events` (same names; `source_url` → `url`)                                                                       |
+| `subject_company_name`, `subject_company_domain`, `mentioned_companies`                                              | `market_events.companies` (`role: subject` / `mentioned`)                                                                |
+| `subject_company_*`                                                                                                  | `directory_companies`, matched on domain; missing attributes are filled, existing non-empty values are never overwritten |
+| `contact_*`                                                                                                          | `directory_contacts`, matched on (company, email) or (company, phone); inserted when new                                 |
+
+Records whose subject domain ends in `.example` are flagged `synthetic = true`. The explorer's event detail
+(`GET /platform/data/events/:id`) returns the event in template-v1 field names, joined with the subject company's
+directory attributes. Contacts are directory records and are listed separately.

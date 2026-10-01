@@ -1,0 +1,22 @@
+{
+  "name": "@selloeasy/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@selloeasy/core": "workspace:*",
+    "@selloeasy/db": "workspace:*",
+    "@selloeasy/engine": "workspace:*",
+    "@selloeasy/llm": "workspace:*",
+    "@selloeasy/shared": "workspace:*",
+    "bullmq": "^5.56.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.0"
+  }
+}

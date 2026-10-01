@@ -1,0 +1,108 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Title (Cargolane Platform Overview) /Producer (SelloEasy dataset) /Subject (Synthetic demo document) >>
+endobj
+6 0 obj
+<< /Length 3312 >>
+stream
+BT /F2 18 Tf 50 761 Td (Cargolane Platform Overview) Tj ET
+BT /F1 11 Tf 50 729 Td (*Warehouse automation, WMS, TMS and cold-chain visibility from one accountable partner.*) Tj ET
+BT /F2 14 Tf 50 678 Td (Who we are) Tj ET
+BT /F1 11 Tf 50 646 Td (Cargolane Logistics Tech is a supply chain technology company headquartered in Gurugram,) Tj ET
+BT /F1 11 Tf 50 630 Td (    India. We design, deploy and operate automated warehouses and the software that runs them.) Tj ET
+BT /F1 11 Tf 50 614 Td (    Our customers include D2C brands, e-commerce marketplaces, omnichannel retailers, FMCG) Tj ET
+BT /F1 11 Tf 50 598 Td (    companies, third-party logistics providers, port and ICD operators, and pharma and) Tj ET
+BT /F1 11 Tf 50 582 Td (    cold-chain distributors across India, the UAE, Singapore, Indonesia, Thailand and the United) Tj ET
+BT /F1 11 Tf 50 566 Td (    Kingdom.) Tj ET
+BT /F1 11 Tf 50 534 Td (Most supply chain teams today stitch together a robot vendor, a WMS vendor, a transport tool) Tj ET
+BT /F1 11 Tf 50 518 Td (    and a separate temperature-logging provider. When something breaks during a festive peak,) Tj ET
+BT /F1 11 Tf 50 502 Td (    nobody owns the problem. Cargolane was founded to be the single accountable partner for the) Tj ET
+BT /F1 11 Tf 50 486 Td (    whole flow, from inbound dock to customer doorstep.) Tj ET
+BT /F2 14 Tf 50 435 Td (The platform) Tj ET
+BT /F1 11 Tf 50 403 Td (LaneFlow WMS. A cloud warehouse management system for single-client and multi-client sites.) Tj ET
+BT /F1 11 Tf 50 387 Td (    LaneFlow covers receiving, putaway, wave and zone picking, packing, returns, batch and) Tj ET
+BT /F1 11 Tf 50 371 Td (    expiry tracking, and kitting. It ships with connectors to more than 40 marketplaces, ERPs) Tj ET
+BT /F1 11 Tf 50 355 Td (    and carrier platforms, and natively orchestrates our robots and sorters, so there is no) Tj ET
+BT /F1 11 Tf 50 339 Td (    middleware layer to maintain.) Tj ET
+BT /F1 11 Tf 50 307 Td (LaneRoute TMS. A transport management system for primary, secondary and last-mile) Tj ET
+BT /F1 11 Tf 50 291 Td (    distribution. LaneRoute plans loads, optimises routes around time windows and vehicle) Tj ET
+BT /F1 11 Tf 50 275 Td (    constraints, runs carrier procurement and freight audit, and gives customers live tracking) Tj ET
+BT /F1 11 Tf 50 259 Td (    links. Typical customers reduce freight cost by 10 to 18 percent within six months.) Tj ET
+BT /F1 11 Tf 50 227 Td (LaneBot AMR Fleet. Goods-to-person autonomous mobile robots that bring shelving pods to) Tj ET
+BT /F1 11 Tf 50 211 Td (    ergonomic pick stations. Pickers move from roughly 90 to 300 order lines per hour, and new) Tj ET
+BT /F1 11 Tf 50 195 Td (    staff become productive in a single shift, which matters when seasonal hiring doubles your) Tj ET
+BT /F1 11 Tf 50 179 Td (    workforce.) Tj ET
+BT /F1 11 Tf 50 147 Td (LaneSort. Modular cross-belt and pouch sorters with dimensioning and weighing, from 4,000 to) Tj ET
+BT /F1 11 Tf 50 131 Td (    20,000 parcels per hour, for sortation hubs, fulfilment centres and returns centres.) Tj ET
+BT /F1 11 Tf 50 99 Td (LaneStack AS/RS. High-density shuttle and pallet storage, including frozen-store variants) Tj ET
+BT /F1 11 Tf 50 83 Td (    rated to minus 25 degrees, delivered with certified integration partners.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2686 >>
+stream
+BT /F1 11 Tf 50 784 Td (FrostEye Cold-Chain Monitoring. Wireless sensors for cold rooms, reefer trucks, retail) Tj ET
+BT /F1 11 Tf 50 768 Td (    freezers and insulated shippers. FrostEye streams temperature and humidity data to a central) Tj ET
+BT /F1 11 Tf 50 752 Td (    control tower, raises alerts before an excursion becomes a loss, and produces GDP-compliant) Tj ET
+BT /F1 11 Tf 50 736 Td (    audit reports for pharma customers.) Tj ET
+BT /F2 14 Tf 50 685 Td (How we engage) Tj ET
+BT /F1 11 Tf 50 653 Td (1. Design sprint \(2-3 weeks\). Our solution designers analyse your order profile, SKU) Tj ET
+BT /F1 11 Tf 50 637 Td (    velocity and growth plan, and model throughput, headcount and cost per order for several) Tj ET
+BT /F1 11 Tf 50 621 Td (    layouts.) Tj ET
+BT /F1 11 Tf 50 605 Td (2. Build and integrate \(8-14 weeks for software, 12-20 weeks for automation\). One project) Tj ET
+BT /F1 11 Tf 50 589 Td (    team delivers hardware, software and integrations.) Tj ET
+BT /F1 11 Tf 50 573 Td (3. Operate and improve. Our 24x7 remote operations centre in Gurugram monitors robots and) Tj ET
+BT /F1 11 Tf 50 557 Td (    software, with 4-hour on-site response in 12 cities.) Tj ET
+BT /F2 14 Tf 50 506 Td (Commercial options) Tj ET
+BT /F1 11 Tf 50 474 Td (Software is offered as a subscription per site or per vehicle. Robots are available for) Tj ET
+BT /F1 11 Tf 50 458 Td (    purchase or through Robotics-as-a-Service, a monthly subscription that includes maintenance,) Tj ET
+BT /F1 11 Tf 50 442 Td (    spares and monitoring, and lets you add flex robots for festive and peak seasons without) Tj ET
+BT /F1 11 Tf 50 426 Td (    capital expenditure.) Tj ET
+BT /F2 14 Tf 50 375 Td (Commitments) Tj ET
+BT /F1 11 Tf 50 343 Td (  - 99.9% monthly uptime for LaneFlow and LaneRoute on Enterprise plans) Tj ET
+BT /F1 11 Tf 50 327 Td (  - 98.5% robot availability guarantee) Tj ET
+BT /F1 11 Tf 50 311 Td (  - ISO 27001 certified, data hosted in-region, encrypted at rest and in transit) Tj ET
+BT /F2 14 Tf 50 260 Td (Why customers choose Cargolane) Tj ET
+BT /F1 11 Tf 50 228 Td (  - One vendor, one contract and one support line for robots, WMS, TMS and cold-chain IoT) Tj ET
+BT /F1 11 Tf 50 212 Td (- Built for Indian warehouse realities: mixed floor quality, power fluctuations and high SKU) Tj ET
+BT /F1 11 Tf 50 196 Td (    churn) Tj ET
+BT /F1 11 Tf 50 180 Td (  - Multi-client WMS designed for 3PLs, with client-level billing and dashboards) Tj ET
+BT /F1 11 Tf 50 164 Td (  - Customs-aware workflows for bonded warehouses and free-zone export hubs) Tj ET
+BT /F1 11 Tf 50 132 Td (To start a design sprint, contact our solutions team through cargolane-logistics.example.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000000443 00000 n 
+0000003806 00000 n 
+0000003942 00000 n 
+0000006679 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R /Info 5 0 R >>
+startxref
+6815
+%%EOF

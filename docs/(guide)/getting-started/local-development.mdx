@@ -1,0 +1,255 @@
+---
+title: Local development
+description: Work on SelloEasy with hot reload — pnpm workspaces and Turborepo, infrastructure in Docker, apps on the host, database commands and tests.
+---
+
+For day-to-day development, run the **infrastructure** (Postgres, Redis, MinIO, Mailpit) in Docker and the
+**apps** (web, API, worker) on your machine with hot reload.
+
+## Prerequisites
+
+| Tool    | Version                               | Notes                                                        |
+| ------- | ------------------------------------- | ------------------------------------------------------------ |
+| Node.js | 22+ (`engines.node >=22`, `.nvmrc`)   | `process.loadEnvFile` (used to read `.env`) needs Node 21.7+ |
+| pnpm    | 10.x (`packageManager: pnpm@10.34.5`) | `corepack enable` picks the pinned version                   |
+| Docker  | Compose v2                            | For the infrastructure services                              |
+
+## Workspace layout
+
+pnpm workspaces are declared in `pnpm-workspace.yaml` (`apps/*`, `packages/*`, `infra`). Turborepo
+(`turbo.json`) orchestrates tasks across them. See [Monorepo](/docs/architecture/monorepo) for what each
+package does and the dependency rules.
+
+| Root script                                                  | What it runs                                                                                                                  |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm dev`                                                   | `turbo run dev --parallel` for `@selloeasy/web`, `@selloeasy/api` and `@selloeasy/worker`                                     |
+| `pnpm build`                                                 | `turbo run build` (the web app; API and worker are not bundled, see [ADR-0013](/docs/decisions/0013-tsx-runtime-no-bundling)) |
+| `pnpm typecheck`                                             | `tsc` in every package (`next typegen && tsc --noEmit` for web)                                                               |
+| `pnpm test`                                                  | `turbo run test` (Vitest in packages that define tests)                                                                       |
+| `pnpm test:report`                                           | Tests + Allure report served on http://localhost:5252 (see [Allure test report](#allure-test-report))                         |
+| `pnpm lint`                                                  | `turbo run lint`                                                                                                              |
+| `pnpm format` / `pnpm format:check`                          | Prettier                                                                                                                      |
+| `pnpm db:generate`                                           | `drizzle-kit generate`: create a SQL migration from schema changes                                                            |
+| `pnpm db:migrate`                                            | Apply migrations in `packages/db/drizzle`                                                                                     |
+| `pnpm db:seed`                                               | Run the demo seed                                                                                                             |
+| `pnpm db:reset`                                              | Drop the `public` and `drizzle` schemas, re-migrate and re-seed (refuses in staging/production)                               |
+| `pnpm eval:pipeline`                                         | Pipeline evaluation against the gold set (see [Evaluation](/docs/pipeline/evaluation))                                        |
+| `pnpm env:check`, `pnpm docs:check`, `pnpm docs:sync-readme` | Tooling scripts under `scripts/` (deploy-readiness and docs-sync work)                                                        |
+| `pnpm deploy:aws`, `pnpm deploy:aws:seed-demo`               | AWS deploy scripts under `infra/scripts/` (see [AWS deployment](/docs/operations/aws-deployment))                             |
+
+Turbo task notes: `build` depends on dependencies' `build` and caches `.next/**` and `.source/**`. `dev` is
+persistent and uncached. `test` passes through `DATABASE_URL`, `REDIS_URL` and `LLM_MODE`.
+
+## Run infrastructure in Docker, apps on the host
+
+<div className="fd-steps">
+<div className="fd-step">
+
+### Install and configure
+
+```bash
+pnpm install
+cp .env.example .env   # host-oriented values (localhost URLs) work as-is
+```
+
+</div>
+<div className="fd-step">
+
+### Start only the infrastructure
+
+```bash
+docker compose up -d postgres redis minio mailpit
+```
+
+</div>
+<div className="fd-step">
+
+### Migrate and seed
+
+```bash
+pnpm db:migrate
+pnpm db:seed
+```
+
+The seed creates the MinIO bucket if it is missing, then loads the demo data (see
+[Seed data & accounts](/docs/getting-started/seed-data-and-accounts)).
+
+</div>
+<div className="fd-step">
+
+### Start the apps with hot reload
+
+```bash
+pnpm dev
+```
+
+- Web: `next dev --port ${WEB_PORT:-3000}`: http://localhost:3000
+- API: `tsx watch src/index.ts`, listening on `API_PORT` (4000)
+- Worker: `tsx watch src/index.ts`
+
+The web app proxies `/api/*` to `API_INTERNAL_URL` (default `http://localhost:4000`).
+
+</div>
+</div>
+
+<Callout type="info">
+  Apps load the repository-root `.env` automatically (`loadDotEnv()` in `@selloeasy/core`) and only when
+  running on the host. Values already set in the environment win. You do not need `dotenv-cli` or exported
+  variables.
+</Callout>
+
+### Running on non-default ports
+
+If the default ports are taken (for example, another project already uses 3000, 4000, 5432 or 6379), change
+both the published infrastructure ports and the app ports in `.env`:
+
+```dotenv
+POSTGRES_HOST_PORT=5433
+REDIS_HOST_PORT=6380
+DATABASE_URL=postgres://selloeasy:selloeasy@localhost:5433/selloeasy
+REDIS_URL=redis://localhost:6380
+
+WEB_PORT=3100
+WEB_URL=http://localhost:3100
+CORS_ORIGINS=http://localhost:3100
+API_PORT=4100
+API_INTERNAL_URL=http://localhost:4100
+```
+
+<Callout type="warn">
+  `API_PORT` sets the port the API listens on. That is fine for `pnpm dev`, but inside Docker Compose the API
+  container must keep listening on **4000**, because the compose healthcheck and the `web` service target
+  `api:4000`. For Compose, change only `API_HOST_PORT`.
+</Callout>
+
+## Database workflow
+
+The schema lives in `packages/db/src/schema/*.ts` (Drizzle). Migrations are plain SQL in
+`packages/db/drizzle/`, committed to the repository:
+
+| Migration                    | Contents                                                                                                                                            |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `0000_init.sql`              | All enums, tables, indexes and foreign keys (generated by drizzle-kit)                                                                              |
+| `0001_audit_append_only.sql` | Custom: `pg_trgm` extension, the `audit_logs_guard()` trigger that blocks `UPDATE`/`DELETE` on `audit_logs`, and a trigram index on `accounts.name` |
+
+To change the schema:
+
+```bash
+# 1. edit packages/db/src/schema/*.ts
+pnpm db:generate          # writes packages/db/drizzle/NNNN_*.sql + snapshot
+# 2. review the SQL, then
+pnpm db:migrate
+```
+
+Never edit a migration that has already been applied. Add a new one instead. `pnpm --filter @selloeasy/db
+db:studio` opens Drizzle Studio for browsing data.
+
+## Tests
+
+Tests use **Vitest**. The current suites are unit tests that need no database:
+
+| Package               | Suite                       | Covers                                                                                                                                                                                                                                                                                              |
+| --------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@selloeasy/pipeline` | `test/scoring.test.ts`      | Prefilter (window, keywords, idempotent skip), dedupe keys, authority, ICP fit, signal-strength decay, score combination and banding                                                                                                                                                                |
+| `@selloeasy/pipeline` | `test/data-quality.test.ts` | Platform-data validation: CSV parser edge cases (quotes, embedded newlines, CRLF, BOM), `sampleData.csv` 10/10 valid, every row of `sampleData.invalid.csv`, file-layer rejections, row rules, dedupe keys and CSV-injection-safe export ([Validation rules](/docs/platform-data/validation-rules)) |
+| `@selloeasy/engine`   | `test/extract.test.ts`      | Parsing the generated dataset PDFs, rejecting content that does not match the declared type (magic bytes), chunking with overlap                                                                                                                                                                    |
+| `@selloeasy/engine`   | `test/demo-feed.test.ts`    | `DEMO_FEED` connector: batch size and run limit, offset cursor, end of reserve, date shifting, released rows are valid template-v1 records; `assertCommittable` (invalid-ratio guard at and above the limit, nothing to commit)                                                                     |
+| `@selloeasy/dataset`  | `test/samples.test.ts`      | Import samples use the template v1 header and match the repo-root copies; the `DEMO_FEED` reserve is large enough, valid, sorted, unique, and does not overlap the seed or the samples                                                                                                              |
+
+```bash
+pnpm test                                   # everything via Turbo
+pnpm --filter @selloeasy/pipeline test      # one package
+```
+
+Additional suites:
+
+| Package             | Suite                             | Covers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `@selloeasy/llm`    | `test/client.test.ts`             | Mock mode, model from env, `json_schema` → prompt-only fallback, schema repair retry, 429 backoff, cache hits, signal-match mock                                                                                                                                                                                                                                                                                                                                                                 |
+| `@selloeasy/shared` | `test/rbac.test.ts`               | Permission matrix invariants (Super Admin platform-only, viewers read-only)                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `@selloeasy/llm`    | `test/providers.test.ts`          | Capability table and env overrides, OpenAI request shaping for reasoning models (no temperature, `max_completion_tokens`, price-table cost), self-healing on a rejected parameter, Anthropic forced tool call, `LLM_FALLBACK_PROVIDER` failover, provider config from env ([LLM layer](/docs/pipeline/llm-providers))                                                                                                                                                                            |
+| `@selloeasy/core`   | `test/config.test.ts`             | Env validation, auto-mock when the selected provider has no key, provider-conditional key/model requirements, driver-conditional keys, production guards                                                                                                                                                                                                                                                                                                                                         |
+| `@selloeasy/api`    | `test/platform-data.test.ts`      | `/platform/data`: org roles 403 and unauthenticated 401 on every route; `sampleData.csv` upload → validate → commit round trip with provenance and audit rows; re-import gives 10 duplicates (commit 422); garbage file fails at the file layer; `sampleData.invalid.csv` refused by the 20 % guard, with `errors.csv`; rollback retracts events; page-size limit, default 25 and keyset `after`; `DEMO_FEED` runs insert the next 10 and advance the cursor; connector PATCH keeps the schedule |
+| `@selloeasy/api`    | `test/{auth,tenancy,crm}.test.ts` | Integration tests with Fastify `inject` against a freshly migrated + seeded `<db>_test` database: login/validation, refresh rotation + reuse detection, cross-tenant **404**s, Super Admin **403** on every tenant route, allow-list DTO keys, SDR ownership & claim races, optimistic locking, outreach side effects, lead-visibility setting, dashboards, append-only audit trigger                                                                                                            |
+
+API tests use the same Postgres/Redis as local dev (database `<name>_test`, Redis db 1) and an in-memory storage driver,
+so they need no MinIO. In CI they run against service containers.
+
+### End-to-end (Playwright)
+
+```bash
+pnpm --filter @selloeasy/e2e exec playwright install chromium   # once
+BASE_URL=http://localhost:3000 pnpm e2e                          # against docker compose
+```
+
+`e2e/tests/happy-flow.spec.ts` drives the whole plan §25 flow in a browser: Super Admin creates an org → the invite is
+read from Mailpit → the admin accepts, onboards and activates → the pipeline runs → leads show 6 per page → an AI
+email is sent (and arrives in Mailpit) → the lead is marked WON → the dashboard and audit log reflect it.
+`e2e/tests/screenshots.spec.ts` captures every main page for visual review.
+
+## Docs site
+
+The documentation has two renderers of the same `docs/` folder ([ADR-0019](/docs/decisions/0019-standalone-docs-site)):
+
+| Where                       | How to run                                               | URL                                                              |
+| --------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------- |
+| Inside the web app          | `pnpm dev` (or the `web` compose service)                | http://localhost:3000/docs                                       |
+| Standalone `apps/docs-site` | `pnpm dev:docs`, `pnpm dev`, or `docker compose up docs` | http://localhost:3001 (`DOCS_PORT`, `DOCS_HOST_PORT` in Compose) |
+
+Both pick up edits to `docs/**/*.mdx` live in dev mode. The standalone site redirects `/` to `/docs`, keeps the
+same URLs, has the same search, and links back to the product through `WEB_URL`. The sidebar is split into five sections with a dropdown switcher: `(guide)`,
+`(architecture)`, `operations`, `decisions` and `(project)` are `root: true` folders. Folder names in parentheses
+group pages without changing URLs, so put new pages in the section a reader would look in. When you add an MDX component,
+register it in both `apps/web/components/mdx.tsx` and `apps/docs-site/components/mdx.tsx`.
+
+### Allure test report
+
+Every suite also writes [Allure](https://allurereport.org) results to the repo-root `allure-results/`: the Vitest
+packages through `allure-vitest` (configured once in `vitest.shared.ts`) and Playwright through `allure-playwright`.
+Each result carries a `workspace` label (`@selloeasy/api`, `@selloeasy/e2e`, …) and the report
+(`allurerc.mjs`, Allure 3, no Java needed) groups tests by it.
+
+```bash
+pnpm test:report                 # run all Vitest suites, build the report, serve it on http://localhost:5252
+pnpm test:report --e2e           # also run Playwright (needs a running stack; BASE_URL / MAILPIT_URL as for pnpm e2e)
+pnpm test:report --no-serve      # generate only → ./allure-report (what CI does; uploaded as the `allure-report` artifact)
+pnpm test:report:serve           # serve the last generated report again
+ALLURE_PORT=6000 pnpm test:report
+```
+
+The script forces a fresh `turbo run test` (a cache hit would leave no results), still generates the report when tests
+fail, and exits with the test status. Pass/fail trends across local runs are kept in `allure-history.jsonl`.
+`allure-results/`, `allure-report/` and the history file are git-ignored.
+
+To serve an already generated report from Docker instead:
+`docker compose --profile reports up -d allure` (port `ALLURE_HOST_PORT`, default `5252`).
+
+## Useful local URLs
+
+| Service       | URL                                                                  |
+| ------------- | -------------------------------------------------------------------- |
+| Web + docs    | http://localhost:3000, http://localhost:3000/docs                    |
+| OpenAPI UI    | http://localhost:4000/api/docs (or via the web proxy at `/api/docs`) |
+| Mailpit       | http://localhost:8025                                                |
+| MinIO console | http://localhost:9001 (`minioadmin` / `minioadmin`)                  |
+| Docs site     | http://localhost:3001 (`pnpm dev:docs`)                              |
+| Allure report | http://localhost:5252 (after `pnpm test:report`)                     |
+
+## Working with the LLM locally
+
+- **No key:** leave the selected provider's key (by default `OPENROUTER_API_KEY`) empty and everything runs in mock
+  mode.
+- **Force mock with a key present:** set `LLM_MODE=mock`.
+- **Live (OpenRouter, default):** set `OPENROUTER_API_KEY` and keep `LLM_MODE=live`. The model is `OPENROUTER_MODEL`.
+- **Live with OpenAI or Anthropic:** in your own `.env`, set `LLM_PROVIDER=openai` with `OPENAI_API_KEY` and
+  `OPENAI_MODEL` (or `LLM_PROVIDER=anthropic` with `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL`). Never commit keys. See
+  [LLM layer & providers](/docs/pipeline/llm-providers).
+- Responses are cached in Redis for `LLM_CACHE_TTL_SECONDS`. To force fresh answers, flush keys matching
+  `llm:*` (`redis-cli --scan --pattern 'llm:*' | xargs redis-cli del`), or use **Regenerate** on outreach drafts,
+  which bypasses the cache.
+
+## Documentation
+
+Docs are MDX files in the repository-root `docs/` folder, rendered by Fumadocs inside the web app at `/docs`
+(`apps/web/lib/source.ts` points the loader at `../../docs`). Each folder has a `meta.json` that orders its
+pages. ` ```mermaid ` code blocks render as diagrams. With `pnpm dev` running, edits appear on refresh.

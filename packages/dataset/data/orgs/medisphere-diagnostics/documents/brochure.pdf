@@ -1,0 +1,126 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Title (MediSphere Solutions Brochure) /Producer (SelloEasy dataset) /Subject (Synthetic demo document) >>
+endobj
+6 0 obj
+<< /Length 2862 >>
+stream
+BT /F2 18 Tf 50 761 Td (MediSphere Diagnostics - Solutions Brochure) Tj ET
+BT /F1 11 Tf 50 729 Td (*Faster results. Fewer vendors. Zero capex.*) Tj ET
+BT /F1 11 Tf 50 697 Td (MediSphere Diagnostics is a Bengaluru-based in-vitro diagnostics company. We help hospitals,) Tj ET
+BT /F1 11 Tf 50 681 Td (    diagnostic lab chains, home-collection providers and government health programmes build) Tj ET
+BT /F1 11 Tf 50 665 Td (    laboratories that report accurate results quickly, pass accreditation audits, and scale) Tj ET
+BT /F1 11 Tf 50 649 Td (    without large upfront investment. Our analyzers, kits and software are designed to work) Tj ET
+BT /F1 11 Tf 50 633 Td (    together, supported by a field service network that covers more than 180 cities in India and) Tj ET
+BT /F1 11 Tf 50 617 Td (    partner networks in the UAE, Singapore, Kenya and Bangladesh.) Tj ET
+BT /F2 14 Tf 50 566 Td (What we offer) Tj ET
+BT /F2 12 Tf 50 517 Td (SphereChem 800 - Clinical Chemistry) Tj ET
+BT /F1 11 Tf 50 501 Td (A fully automated chemistry analyzer processing up to 800 photometric tests per hour plus) Tj ET
+BT /F1 11 Tf 50 485 Td (    ISE. Sixty onboard reagent positions, closed-tube sampling and automatic rerun rules make it) Tj ET
+BT /F1 11 Tf 50 469 Td (    suitable for hospital central labs, processing labs of lab chains and medical colleges.) Tj ET
+BT /F2 12 Tf 50 420 Td (SphereIA 240 - Immunoassay) Tj ET
+BT /F1 11 Tf 50 404 Td (A chemiluminescence immunoassay analyzer running 240 tests per hour. The menu covers) Tj ET
+BT /F1 11 Tf 50 388 Td (    thyroid, fertility, diabetes, cardiac markers \(high-sensitivity troponin, NT-proBNP\), tumour) Tj ET
+BT /F1 11 Tf 50 372 Td (    markers \(PSA, CEA, CA-125, AFP\) and infectious disease serology - the core menu for oncology) Tj ET
+BT /F1 11 Tf 50 356 Td (    and cardiac centres.) Tj ET
+BT /F2 12 Tf 50 307 Td (SpherePOC Rapid Kits) Tj ET
+BT /F1 11 Tf 50 291 Td (Point-of-care kits for dengue, malaria, typhoid, HbA1c, CRP, troponin I and hepatitis, with) Tj ET
+BT /F1 11 Tf 50 275 Td (    a handheld reader that pushes results directly into SphereLIS. Ideal for emergency) Tj ET
+BT /F1 11 Tf 50 259 Td (    departments, ICUs, primary health centres and doorstep sample collection.) Tj ET
+BT /F2 12 Tf 50 210 Td (SphereMDx RT-PCR Panels) Tj ET
+BT /F1 11 Tf 50 194 Td (RT-PCR kits for tuberculosis, hepatitis B and C viral load, HPV, respiratory viral panels) Tj ET
+BT /F1 11 Tf 50 178 Td (    and sexually transmitted infections. Validated on common open real-time PCR platforms, with) Tj ET
+BT /F1 11 Tf 50 162 Td (    optional automated extraction.) Tj ET
+BT /F2 12 Tf 50 113 Td (SphereLIS Cloud - Laboratory Information System) Tj ET
+BT /F1 11 Tf 50 97 Td (A cloud LIS built for Indian and emerging-market labs:) Tj ET
+BT /F1 11 Tf 50 65 Td (  - Barcode sample tracking from collection to report) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 3031 >>
+stream
+BT /F1 11 Tf 50 784 Td (  - Instrument middleware and auto-verification rules) Tj ET
+BT /F1 11 Tf 50 768 Td (  - NABL-ready QC dashboards, calibration logs and audit trails) Tj ET
+BT /F1 11 Tf 50 752 Td (  - Home-collection app integration, B2B and hub-and-spoke workflows) Tj ET
+BT /F1 11 Tf 50 736 Td (  - Report delivery by WhatsApp, email and patient portal) Tj ET
+BT /F1 11 Tf 50 720 Td (  - HL7 and FHIR integration with hospital information systems) Tj ET
+BT /F2 14 Tf 50 669 Td (How customers buy) Tj ET
+BT /F1 11 Tf 50 637 Td (Reagent rental. We place analyzers at no upfront cost. Customers commit to a monthly test) Tj ET
+BT /F1 11 Tf 50 621 Td (    volume and pay per reportable test, with installation, training and maintenance included.) Tj ET
+BT /F1 11 Tf 50 605 Td (    This model is popular with new hospitals, where capital is already stretched by construction) Tj ET
+BT /F1 11 Tf 50 589 Td (    and imaging equipment.) Tj ET
+BT /F1 11 Tf 50 557 Td (LIS subscription. SphereLIS is sold per site per month in Essentials, Professional and) Tj ET
+BT /F1 11 Tf 50 541 Td (    Enterprise tiers, so a three-lab chain and a fifty-lab network can both start quickly.) Tj ET
+BT /F1 11 Tf 50 509 Td (Government tenders. Our hub-and-spoke bundle combines hub-lab analyzers, PHC point-of-care) Tj ET
+BT /F1 11 Tf 50 493 Td (    kits and a state-level LIS dashboard, priced per test and aligned with standard tender) Tj ET
+BT /F1 11 Tf 50 477 Td (    formats.) Tj ET
+BT /F2 14 Tf 50 426 Td (Why MediSphere) Tj ET
+BT /F1 11 Tf 50 394 Td (- One partner for chemistry, immunoassay, point-of-care, molecular and LIS - one service) Tj ET
+BT /F1 11 Tf 50 378 Td (    contract, one escalation path.) Tj ET
+BT /F1 11 Tf 50 362 Td (- Faster turnaround. Customers typically see 30-40% faster turnaround time after moving to) Tj ET
+BT /F1 11 Tf 50 346 Td (    SphereLIS auto-verification and consolidated analyzers.) Tj ET
+BT /F1 11 Tf 50 330 Td (- Accreditation-ready. Built-in QC rules, Levey-Jennings charts and audit trails simplify) Tj ET
+BT /F1 11 Tf 50 314 Td (    NABL, NABH and JCI preparation.) Tj ET
+BT /F1 11 Tf 50 298 Td (- Service you can count on. 6-hour on-site response in metros, 24 hours in tier-2 cities,) Tj ET
+BT /F1 11 Tf 50 282 Td (    and a 98% quarterly uptime guarantee on rental analyzers.) Tj ET
+BT /F1 11 Tf 50 266 Td (- Made in India. Reagents and kits manufactured in Bengaluru, reducing lead times and import) Tj ET
+BT /F1 11 Tf 50 250 Td (    dependency.) Tj ET
+BT /F2 14 Tf 50 199 Td (Who we work with) Tj ET
+BT /F1 11 Tf 50 167 Td (  - Multi-specialty hospital chains and new hospitals) Tj ET
+BT /F1 11 Tf 50 151 Td (  - Oncology, cardiac and transplant centres) Tj ET
+BT /F1 11 Tf 50 135 Td (  - Diagnostic lab chains and reference laboratories) Tj ET
+BT /F1 11 Tf 50 119 Td (  - Home sample collection and telehealth platforms) Tj ET
+BT /F1 11 Tf 50 103 Td (  - Medical colleges and teaching hospitals) Tj ET
+BT /F1 11 Tf 50 87 Td (  - State health missions and medical services corporations) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 473 >>
+stream
+BT /F2 14 Tf 50 765 Td (Get in touch) Tj ET
+BT /F1 11 Tf 50 733 Td (Visit https://medisphere-diagnostics.example or write to) Tj ET
+BT /F1 11 Tf 50 717 Td (    hello@medisphere-diagnostics.example to arrange a lab assessment. Our application) Tj ET
+BT /F1 11 Tf 50 701 Td (    specialists will review your current test menu, volumes and turnaround time, and propose a) Tj ET
+BT /F1 11 Tf 50 685 Td (    configuration and cost-per-test model within ten working days.) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000128 00000 n 
+0000000225 00000 n 
+0000000327 00000 n 
+0000000452 00000 n 
+0000003365 00000 n 
+0000003501 00000 n 
+0000006583 00000 n 
+0000006719 00000 n 
+0000007243 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R /Info 5 0 R >>
+startxref
+7381
+%%EOF

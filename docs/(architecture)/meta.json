@@ -1,0 +1,16 @@
+{
+  "title": "Architecture",
+  "description": "System design, AI pipeline, platform data and API",
+  "icon": "Boxes",
+  "root": true,
+  "pages": [
+    "---Architecture---",
+    "...architecture",
+    "---Intelligence pipeline---",
+    "...pipeline",
+    "---Platform data---",
+    "...platform-data",
+    "---API---",
+    "...api"
+  ]
+}

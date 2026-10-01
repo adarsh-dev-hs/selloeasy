@@ -1,0 +1,80 @@
+---
+title: Ideal Customer Profiles (ICPs)
+description: How SelloEasy models ICPs, how the AI suggests them from the knowledge profile, and how ICPs drive prefiltering, ICP-fit scoring and authority scoring.
+---
+
+An **Ideal Customer Profile** describes a kind of company the org wants to sell to: its industries, size,
+geographies, buyer personas, pain points and the words likely to appear in news about such buyers. An org
+typically has 2–4 ICPs. The seed gives every demo org 2–3.
+
+## Shape
+
+ICPs are stored in `icps` with the criteria as JSONB. The Zod schema is `icpCriteriaSchema` in
+`packages/shared/src/dto.ts`:
+
+```ts
+{
+  name: "Vehicle OEMs launching or expanding platforms",
+  description: "…",
+  isActive: true,
+  source: "AI_SUGGESTED" | "CUSTOM",
+  criteria: {
+    industries: ["Automotive", "Electric Vehicles"],       // MARKET_TAGS vocabulary
+    companySize: { minEmployees: 1000, maxEmployees: 50000 },
+    revenueBand: ">$500M",                                 // free text, optional
+    geographies: ["India", "South Asia"],
+    personas: ["VP Procurement", "Head of Vehicle Platform"],
+    painPoints: ["tyre cost per km", "EV-specific tyres"],
+    keywords: ["OEM", "vehicle launch", "new plant", "EV platform"]
+  }
+}
+```
+
+List fields accept up to 50 items of up to 200 characters each.
+
+<Callout type="info">
+  `criteria.industries` should use the platform's controlled vocabulary (`MARKET_TAGS`: Automotive, Electric
+  Vehicles, Hospitals, Semiconductors, Data Centers, E-commerce and others, 25 in total), because the pipeline
+  prefilter compares it with each event's `industryTags`. The AI prompts are told to pick only from this list.
+  The API does not reject free text, but free-text industries will not match event tags.
+</Callout>
+
+## AI-suggested and custom ICPs
+
+| Source         | How it is created                                                                                                                                                                                                                                                                                                     |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AI_SUGGESTED` | `POST /api/v1/icps/suggest` runs the `icp.suggest` prompt over the org profile and products and returns 1–4 **proposals** without saving them. Proposals whose name matches an existing ICP (case-insensitive) are filtered out. The admin reviews and edits a proposal and saves it with `POST /api/v1/icps/accept`. |
+| `CUSTOM`       | `POST /api/v1/icps` with the same schema, built by hand.                                                                                                                                                                                                                                                              |
+
+Suggesting requires a generated knowledge profile. Without one, the endpoint returns 400 "Generate the org profile
+before suggesting ICPs". ICPs can be edited (`PATCH /icps/:id`), deactivated (`isActive: false`) or deleted.
+Deleting an ICP sets `leads.icp_id` and `signals.icp_id` to null. All changes are audited (`icp.created`,
+`icp.accepted`, `icp.updated`, `icp.deleted`). Writing requires `icps:write` (Org Admin, Sales Manager).
+
+## Where ICPs are used
+
+Only **active** ICPs are used.
+
+1. **Pipeline prefilter.** The org's target tags are the union of the profile's `targetIndustries` and all
+   active ICPs' `criteria.industries`. See [Pipeline stages](/docs/pipeline/stages#stage-1--prefilter-no-llm).
+2. **LLM context.** The same target industries are passed to `signal.match` and `lead.score-bant` so the model
+   knows which accounts are on-target.
+3. **ICP fit (15 points of the lead score).** Deterministic: each account is compared with every active ICP and
+   the best match wins. Industry counts for up to 5 of 10 (exact match 5, adjacent or substring match 3),
+   geography 2.5, company size 2.5 (or 1 if the account is at least half the minimum). With no active ICP the
+   score is a neutral 5. The best-matching ICP is stored on the lead (`leads.icp_id`) and shown on the lead
+   detail page. See [BANT+ scoring](/docs/concepts/bant-scoring).
+4. **Authority.** A contact whose title contains a word from any active ICP persona gets +1 on the authority
+   dimension.
+5. **Filtering leads.** `GET /leads?icpId=…` returns leads whose best-fit ICP is that ICP. `GET /icps` returns a
+   `leadCount` per ICP.
+
+## Tips for good ICPs
+
+- Use 2–4 **distinct** ICPs instead of one broad one. Fit is scored against the _best_ ICP.
+- Put the words buyers' news would contain in `keywords`, and the job titles you actually sell to in
+  `personas`.
+- Keep `geographies` human-readable ("India", "Middle East", "Global"). Fit matching understands common aliases
+  for India, Singapore, UAE, Saudi Arabia and the US, and "Global" matches everything.
+- Link custom signals to an ICP (`signals.icp_id`) to document intent. The link is informational in v1 and is
+  not used in scoring.

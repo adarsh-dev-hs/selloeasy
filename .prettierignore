@@ -1,0 +1,9 @@
+pnpm-lock.yaml
+**/drizzle/**
+**/.next/**
+**/.source/**
+**/dist/**
+packages/dataset/data/**
+allure-results
+allure-report
+allure-history.jsonl

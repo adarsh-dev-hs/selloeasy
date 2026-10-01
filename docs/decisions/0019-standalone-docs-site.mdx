@@ -1,0 +1,44 @@
+---
+title: ADR-0019 — Standalone docs site alongside the in-app /docs
+description: A separate Fumadocs app (apps/docs-site, port 3001) renders the same docs/ folder as the web app's /docs, so documentation can be read, shared and deployed without the product.
+---
+
+**Status:** Accepted · **Date:** 2026-10-01
+
+## Context
+
+The documentation (`docs/`) is rendered by the web app at `/docs` (plan §20). That couples reading the docs to running
+the product: a stakeholder, subject matter expert or new developer needs the whole stack, and every docs change
+rebuilds the product image. The project section (sprint plan, roles) is read mostly by people who never log in to
+SelloEasy.
+
+## Decision
+
+- Add `apps/docs-site`, a small Next.js 16 + Fumadocs app that renders the **same** repo-root `docs/` folder with the
+  same MDX setup (Mermaid, Callouts, Cards, Tabs, Steps) and search. It listens on `DOCS_PORT` (default 3001) with
+  `pnpm dev:docs` / `pnpm dev`, and on `DOCS_HOST_PORT` (default 3001) as the compose service `docs`.
+- Pages keep the `/docs/...` base URL (`/` redirects to `/docs`), so every internal link and the `docs:check` link
+  rules work unchanged in both places.
+- "Open the app" links go through `/go/app` and `/go/api-docs`, which redirect to `WEB_URL` at request time, so one
+  image works in every environment.
+- The web app keeps `/docs` (the AWS deployment still serves docs from the web service). The docs-site image is built
+  in CI but has no CDK stack yet.
+
+## Consequences (trade-offs, perf/cost impact)
+
+- Positive: docs readable without the product stack; faster docs-only rebuilds; a separate, shareable URL for the
+  delivery team; a path to hosting docs on their own (static hosting or a small container).
+- Negative: two renderers of one content folder. The MDX component map (`components/mdx.tsx`, `mermaid.tsx`) and the
+  source config are duplicated in `apps/web` and `apps/docs-site` and must stay in sync. One more image to build in CI.
+
+## Alternatives considered
+
+- **Only the in-app `/docs`** — keeps one renderer but ties docs to the product deployment.
+- **Move docs out of the web app entirely** — cleaner, but breaks the existing `/docs` links in the product and the
+  AWS routing; possible later.
+- **A shared `packages/docs-ui` package** for the duplicated MDX components — worth it once the two copies drift or
+  grow beyond a few files.
+
+## Revisit when
+
+The docs site gets its own deployment target, or the duplicated MDX components need a change in both apps.

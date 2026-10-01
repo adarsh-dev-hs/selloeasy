@@ -1,0 +1,38 @@
+---
+title: Project delivery
+description: How the SelloEasy team plans, builds and ships v1 — the 8-week sprint plan and who is responsible for what.
+---
+
+This section is for the people who deliver SelloEasy rather than the people who use it. It covers the
+delivery plan, the team, and how work moves from an idea to a release.
+
+<Cards>
+  <Card
+    title="8-week sprint plan"
+    href="/docs/project/sprint-plan"
+    description="Eight one-week sprints from foundation to staging go-live: goals, scope, owners, exit criteria, milestones and risks."
+  />
+  <Card
+    title="Roles & responsibilities"
+    href="/docs/project/roles-and-responsibilities"
+    description="Product Manager, Senior Developer, Developer, Stakeholder and Subject Matter Expert: what each owns, decides and delivers, with a RACI matrix."
+  />
+</Cards>
+
+## Sources of truth
+
+| Artifact                               | What it holds                                                                                                     | Owner (see [roles](/docs/project/roles-and-responsibilities)) |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `plan.md`                              | v1 product and technical design (§1–§30), including the delivery phases P0–P8                                     | Product Manager + Senior Developer                            |
+| `plan2.md`                             | Platform data source and multi-provider LLM design (phases A–F)                                                   | Product Manager + Senior Developer                            |
+| `CLAUDE.md`                            | Engineering rules: architecture map, non-negotiables, definition of done                                          | Senior Developer                                              |
+| [Decisions (ADRs)](/docs/decisions)    | Every trade-off, with its cost and when to revisit it                                                             | Senior Developer                                              |
+| [Changelog](/docs/changelog)           | What changed in each release                                                                                      | Product Manager (content), Developers (entries)               |
+| [Known limitations](/docs/limitations) | What v1 does not do yet; the input to the post-v1 backlog                                                         | Product Manager                                               |
+| Allure report (`pnpm test:report`)     | Test results for every layer, per package ([details](/docs/getting-started/local-development#allure-test-report)) | Senior Developer                                              |
+
+<Callout title="Project roles are not product roles">
+  The roles in this section (Product Manager, Senior Developer and so on) describe the **delivery team**. The
+  roles inside the product (Super Admin, Org Admin, Sales Manager, SDR, Viewer) are described in [Roles &
+  permissions](/docs/concepts/roles-and-permissions).
+</Callout>

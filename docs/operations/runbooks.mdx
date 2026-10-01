@@ -1,0 +1,224 @@
+---
+title: Runbooks
+description: Step-by-step procedures for common operational problems — a stuck or failing pipeline run, LLM errors and quota limits, platform data import and ingestion problems, emails not arriving, knowledge sources failing, resetting demo data, rotating secrets and unlocking accounts.
+---
+
+Commands assume the local Docker Compose stack. On AWS, run the same SQL through a bastion or session with RDS
+access, and read logs in CloudWatch.
+
+```bash
+psql() { docker compose exec -T postgres psql -U selloeasy selloeasy "$@"; }
+```
+
+## Pipeline run stuck
+
+**Symptoms:** "A pipeline run is already in progress" (409) when starting a run, a run showing `RUNNING` or `QUEUED`
+for a long time, or SSE progress that stopped moving.
+
+<div className="fd-steps">
+<div className="fd-step">
+
+### Look at the run
+
+```sql
+select id, trigger, status, started_at, finished_at, error, stats
+from pipeline_runs where org_id = '<org id>' order by created_at desc limit 5;
+```
+
+`stats` shows how far it got (`prefiltered`, `matched`, `llmCalls`…).
+
+</div>
+<div className="fd-step">
+
+### Check the worker
+
+```bash
+docker compose ps worker
+docker compose logs --since 30m worker | grep -E 'Pipeline|Job failed|error'
+```
+
+A run only progresses while the worker is alive. If the worker crashed or restarted mid-run, the job's lock expires
+and the row stays `RUNNING`.
+
+</div>
+<div className="fd-step">
+
+### Recover
+
+- **Restart the worker** (`docker compose restart worker`). On boot it marks runs that have been `QUEUED`/`RUNNING`
+  for more than **30 minutes** as `FAILED` ("Run timed out or worker restarted").
+- To unblock sooner, mark the run failed by hand:
+
+  ```sql
+  update pipeline_runs set status = 'FAILED', error = 'Manually failed by operator', finished_at = now()
+  where id = '<run id>' and status in ('QUEUED','RUNNING');
+  ```
+
+- Start a new run. It is always safe: evaluated events are skipped, and matches and leads are unique
+  ([idempotency](/docs/pipeline/stages#idempotency)).
+
+</div>
+</div>
+
+**Run `FAILED` with "No active signals"**: enable or add signals (`/app/signals`) and run again.
+
+**Run ends `PARTIAL`**: not an error. The LLM budget (`PIPELINE_MAX_LLM_CALLS_PER_RUN`) was reached. Remaining events
+are processed by the next run, and heuristically scored leads can be re-scored. Raise the budget or tighten keywords
+if this happens on every run.
+
+**Scheduled runs not happening**: only `ACTIVE` orgs without an in-progress run are scheduled, on
+`PIPELINE_SCHEDULE_CRON`. The worker logs `Scheduled pipeline runs { queued }` on each tick.
+
+## LLM errors and quotas
+
+**Symptoms:** runs `FAILED` with `openrouter error: …` (or `openai error: …`, `anthropic error: …`), drafts returning
+503 "Could not generate a draft right now", ICP suggestion 400s, profile generation jobs failing.
+
+1. **Find the error.**
+
+   ```sql
+   select created_at, purpose, provider, model, status, error, latency_ms
+   from llm_calls where status = 'error' order by created_at desc limit 20;
+   ```
+
+   "Key" and "model" below mean the **selected provider's** variables: `OPENROUTER_*`, `OPENAI_*` or `ANTHROPIC_*`
+   depending on `LLM_PROVIDER`.
+
+2. **Match it to a cause.**
+
+   | Error                                                                     | Cause                                                                  | Action                                                                                                                                                  |
+   | ------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `HTTP 401` / invalid API key                                              | Wrong API key for the selected provider                                | Fix the key, restart api and worker                                                                                                                     |
+   | `HTTP 402` / insufficient credits                                         | Account out of credits                                                 | Top up with the provider                                                                                                                                |
+   | `HTTP 400` model not found                                                | Typo in the selected provider's `*_MODEL`                              | Fix the model id, restart                                                                                                                               |
+   | `HTTP 400` naming a parameter (e.g. `temperature`) that keeps coming back | A model newer than the capability table; self-healing is per process   | Set `LLM_SUPPORTS_TEMPERATURE=false` or `LLM_SUPPORTS_JSON_SCHEMA=false`, restart ([capabilities](/docs/pipeline/llm-providers#capabilities-per-model)) |
+   | Repeated 5xx or timeouts from one provider                                | Provider outage                                                        | Configure `LLM_FALLBACK_PROVIDER` (with its key and model), or switch `LLM_PROVIDER`, restart                                                           |
+   | `HTTP 429`                                                                | Rate limit                                                             | Already retried with backoff (4 attempts). Lower `LLM_MAX_CONCURRENCY`, or reduce the number of running workers.                                        |
+   | `timed out after 30000ms`                                                 | Slow model or provider                                                 | Raise `LLM_TIMEOUT_MS`, or choose a faster model                                                                                                        |
+   | `failed schema validation for signal.match`                               | The model does not follow the JSON contract, even after a repair retry | Try another model, and check the [evaluation](/docs/pipeline/evaluation)                                                                                |
+   | `empty completion` / `returned an empty response`                         | Provider hiccup                                                        | Retried automatically. Re-run if persistent.                                                                                                            |
+
+3. **Check the mode.** `curl -s localhost:4000/api/ready` shows `llm.mode`, `llm.provider`, `llm.model` and
+   `autoMocked`. If the selected provider's key is missing, the app falls back to mock mode and only logs a warning.
+
+4. **Keep working without the LLM.** Set `LLM_MODE=mock` (or empty the key) and restart. Everything keeps working with
+   deterministic output.
+
+5. **Spend runaway?** Check cost per org and purpose (queries on [LLM layer](/docs/pipeline/llm-providers#telemetry-llm_calls)).
+   Lower `PIPELINE_MAX_LLM_CALLS_PER_RUN`, make the schedule less frequent (`PIPELINE_SCHEDULE_CRON`), or tighten signal
+   keywords so fewer events pass the prefilter.
+
+## Platform data import or ingestion problems
+
+See [Platform data](/docs/platform-data) for the full flow.
+
+| Symptom                                             | Cause and action                                                                                                                                                                                                                                                 |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Upload returns 422                                  | The file layer rejected it; `details.batch.fileIssues` has the code (`binary`, `encoding`, `unknown_columns`, `missing_columns`, `too_many_rows`…). Re-export as UTF-8 CSV or JSONL in [template v1](/docs/platform-data/data-template).                         |
+| Batch stays `UPLOADED` or `VALIDATING`              | The worker is not consuming the `ingestion` queue. Check `docker compose logs worker`.                                                                                                                                                                           |
+| Commit returns 422                                  | More than `IMPORT_MAX_INVALID_RATIO` (20 %) of rows are invalid, or nothing is committable. Download `errors.csv`, fix the file, upload again.                                                                                                                   |
+| Batch back to `VALIDATED` with `error` after commit | The `import.commit` job failed (see the error and worker logs). Chunks already written are kept; committing again skips them as duplicates.                                                                                                                      |
+| Every row is `DUPLICATE`                            | The data is already in the data source, possibly as retracted events from a rolled-back batch. Retracted rows still count for dedupe.                                                                                                                            |
+| Ingestion run `FAILED`                              | See `ingestion_runs.error`: feed HTTP status, `Feed response exceeds 10 MB`, an SSRF refusal (private address), a redirect, a missing `CONNECTOR_*` env var, or invalid CSV/JSONL columns. Use **Test connection** (`POST /platform/data/connectors/:id/test`).  |
+| Run "No new data"                                   | The cursor is at the end (DEMO_FEED reserve exhausted) or the feed has nothing newer than `cursor.since`. Resetting a cursor needs SQL (`update data_connectors set cursor = null where id = …`), which re-fetches data that will then be skipped as duplicates. |
+| Run stuck `RUNNING`                                 | A worker crash. Restarting the worker fails runs older than 30 minutes so the connector can run again.                                                                                                                                                           |
+
+```sql
+select id, kind, status, label, stats, error, created_at from data_batches order by created_at desc limit 10;
+select id, connector_id, status, stats, error, finished_at from ingestion_runs order by created_at desc limit 10;
+```
+
+## Emails not arriving
+
+Emails (invites, password resets, outreach) are sent by the **worker** from the `outreach` queue, never by the API.
+
+1. **Locally, look in Mailpit first:** http://localhost:8025. All mail goes there, including mail to `*.example`
+   addresses.
+2. **Check the message status** (outreach):
+
+   ```sql
+   select id, "to", subject, status, error, sent_at, created_at
+   from outreach_messages order by created_at desc limit 10;
+   ```
+
+   `DRAFT` = still queued or retrying, `SENT` = handed to the provider, `FAILED` = all 3 attempts failed (see `error`).
+
+3. **Check the worker:** `docker compose logs worker | grep -i 'Job failed'`. Typical causes: SMTP host or port wrong
+   (`SMTP_HOST=mailpit`, `SMTP_PORT=1025` in Compose), Mailpit down, or SES identity not verified or in sandbox
+   (`MAIL_DRIVER=ses`).
+4. **Invite link without email:** in `APP_ENV=local`, `POST /platform/orgs`, `POST /platform/orgs/:id/invites` and
+   `POST /org/invites` also return `inviteLink` in the response.
+5. **Wrong host or port in links:** links use `WEB_URL`. Set it to the URL users actually open (for example after
+   changing `WEB_HOST_PORT`).
+
+## Knowledge source stuck or failed
+
+- `PENDING` forever: the worker is not consuming the `profile` queue. Check it is running. For uploads, the client
+  must call `POST /org/sources/:id/complete` after the PUT.
+- `FAILED` errors:
+
+  | Error                                       | Meaning                                                                  |
+  | ------------------------------------------- | ------------------------------------------------------------------------ |
+  | `File content does not match declared type` | Magic bytes do not match the declared content type                       |
+  | `Only .docx archives are supported`         | A ZIP-based file that is not DOCX                                        |
+  | `No extractable text found in document`     | Scanned PDF or empty file (no OCR in v0.1)                               |
+  | `No readable pages found (…)`               | Website unreachable, blocked by robots.txt, not HTML, or pages too short |
+  | `URL resolves to a private network address` | SSRF protection. Internal sites cannot be crawled.                       |
+
+- Retry with `POST /org/sources/:id/reprocess`.
+
+## Resetting demo data
+
+```bash tab="Docker Compose"
+docker compose down -v        # deletes the Postgres, Redis and MinIO volumes
+docker compose up --build     # migrate + seed run again from scratch
+```
+
+```bash tab="Host (pnpm)"
+pnpm db:reset                 # drop schemas → migrate → seed (refuses when APP_ENV is staging/production)
+redis-cli --scan --pattern 'llm:*' | xargs -r redis-cli del    # optional: clear the LLM cache
+```
+
+- The seed is idempotent. Re-running it on an existing database only fills gaps, and **does not** restore modified
+  demo orgs. Use a reset for that.
+- The Voltedge demo invite can only be used once. Reset to use it again.
+- To keep global data but re-create one demo org, delete the org row (tenant data cascades; audit rows remain), then
+  run `pnpm db:seed` or `docker compose run --rm migrate`.
+
+## Rotating secrets
+
+| Secret                                                      | Effect of rotation                                                                                          | Procedure                                                                                                       |
+| ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `JWT_ACCESS_SECRET`                                         | All access tokens become invalid. Clients refresh transparently (refresh tokens are opaque and unaffected). | Change the value, restart the API                                                                               |
+| Refresh tokens (all sessions)                               | Everyone must sign in again                                                                                 | `update refresh_tokens set revoked_at = now() where revoked_at is null;`                                        |
+| `OPENROUTER_API_KEY`, `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` | None                                                                                                        | Change the value, restart API and worker                                                                        |
+| `CONNECTOR_*` feed secrets                                  | The connector fails until updated                                                                           | Change the value, restart API and worker                                                                        |
+| `SUPERADMIN_PASSWORD`                                       | Only used when the seed **creates** the Super Admin. Changing it later does nothing.                        | Use "Forgot password" for the Super Admin account instead                                                       |
+| S3 / SMTP credentials                                       | Uploads or email fail until updated                                                                         | Update the values, restart API and worker                                                                       |
+| Database password                                           | —                                                                                                           | Change it in Postgres or RDS, update `DATABASE_URL` (AWS: assembled from the RDS secret on task start), restart |
+
+On AWS, secrets live in the JSON secret `selloeasy/<env>/app` and are read **at boot**. Update the secret, then force
+a new deployment of the api and worker services.
+
+## Account locked or password forgotten
+
+- Lockout lasts 15 minutes after 10 failed attempts, and clears on successful login or password reset. To clear it
+  immediately:
+
+  ```sql
+  update users set failed_login_count = 0, locked_until = null where email = 'sdr1@roadgrip.local';
+  ```
+
+- Password reset: `POST /api/v1/auth/forgot-password` (UI: `/forgot-password`). The email arrives in Mailpit with a
+  1-hour link.
+
+## Checking tenant isolation after an incident
+
+```sql
+-- leads whose account belongs to a different org (should return 0 rows)
+select l.id from leads l join accounts a on a.id = l.account_id where a.org_id <> l.org_id;
+-- matches pointing at another org's signal (should return 0 rows)
+select m.id from signal_matches m join signals s on s.id = m.signal_id where s.org_id <> m.org_id;
+```
+
+Use the audit log (`request_id`, `ip`, `actor_user_id`) to reconstruct what happened.

@@ -1,0 +1,19 @@
+---
+title: LLM layer (OpenRouter) — moved
+description: This page moved to "LLM layer & providers", which now covers OpenRouter, OpenAI and Anthropic.
+---
+
+This page has moved to **[LLM layer & providers](/docs/pipeline/llm-providers)**.
+
+SelloEasy now selects its LLM provider with `LLM_PROVIDER` (`openrouter`, the default, `openai` or `anthropic`), and
+the model comes from that provider's `*_MODEL` variable. The old sections map as follows:
+
+| Old section       | New location                                                                      |
+| ----------------- | --------------------------------------------------------------------------------- |
+| Model selection   | [Choosing a provider](/docs/pipeline/llm-providers#choosing-a-provider)           |
+| Mock mode         | [Mock mode](/docs/pipeline/llm-providers#mock-mode)                               |
+| Request anatomy   | [Request anatomy](/docs/pipeline/llm-providers#request-anatomy-openai-compatible) |
+| Structured output | [Capabilities per model](/docs/pipeline/llm-providers#capabilities-per-model)     |
+| Telemetry         | [Telemetry: llm_calls](/docs/pipeline/llm-providers#telemetry-llm_calls)          |
+
+This stub is kept (and hidden from the sidebar) so existing links keep working.

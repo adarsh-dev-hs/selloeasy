@@ -1,0 +1,50 @@
+---
+title: ADR-0001 — Next.js over Vite for the web app
+description: The web app uses Next.js (App Router) because the documentation site must live inside it and Fumadocs is Next.js-native.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+The product UI is mostly a client-side application: authenticated screens that talk to the Fastify API through
+TanStack Query. A Vite + React SPA would fit that well. However, the platform also requires a documentation site
+at `/docs`, served **from the same frontend**, kept in the repository as Markdown/MDX, and rich enough for sidebars,
+search, a table of contents, code highlighting, callouts and Mermaid diagrams.
+
+The documentation framework chosen for that job, **Fumadocs**, is built for Next.js. It relies on the App Router,
+React Server Components and Next's MDX pipeline.
+
+## Decision
+
+Build `apps/web` with **Next.js** (App Router). The plan specified Next.js 15. At build time the current major
+version was **Next.js 16**, which is what the repository uses (with Fumadocs 16, React 19 and Tailwind CSS v4).
+
+- Product screens under `/app/*` and `/platform/*` are client components that call the API.
+- Documentation under `/docs/*` is rendered by Fumadocs from the repository-root `docs/` folder
+  (`apps/web/lib/source.ts` → `../../docs`). ` ```mermaid ` blocks become diagrams through `remarkMdxMermaid`.
+- The web server also provides the same-origin `/api/*` proxy route, and a Next 16 `proxy.ts` (the successor to
+  middleware) redirects unauthenticated visitors away from app routes.
+- Production builds use `output: 'standalone'` for a small runtime image.
+
+## Consequences
+
+- One frontend, one origin, one image for the UI and the docs. Auth cookies stay first-party.
+- The docs are versioned with the code and render on GitHub as plain Markdown too.
+- The framework is heavier than a Vite SPA for what is mostly client code: longer builds, a Node server at
+  runtime instead of static files, and more framework concepts (server versus client components, route handlers).
+- Being on the newest major (16) means following its conventions (e.g. `proxy.ts` instead of `middleware.ts`) and
+  accepting that some ecosystem examples still target 15.
+
+## Alternatives considered
+
+- **Vite + React SPA with a separate docs site** (Docusaurus, VitePress, or Fumadocs as its own Next app): rejected,
+  because `/docs` must be part of the same frontend, and a second app would double the deployment surface.
+- **Vite SPA with a Markdown renderer for docs**: rejected. It would rebuild navigation, search and MDX features by
+  hand.
+- **Astro / Starlight**: good for docs, but mixing it with an authenticated React app adds complexity.
+
+## Revisit when
+
+- The docs move to a dedicated site or domain, **and** the product UI would benefit from a pure static SPA deployment.
+- Fumadocs (or an equivalent) supports a Vite runtime with feature parity.

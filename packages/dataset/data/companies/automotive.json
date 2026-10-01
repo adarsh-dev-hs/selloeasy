@@ -1,0 +1,854 @@
+[
+  {
+    "key": "aut-veltrix-motors",
+    "name": "Veltrix Motors Ltd.",
+    "domain": "veltrixmotors.example",
+    "industry": "Automotive",
+    "hqCountry": "IN",
+    "sizeBand": "10000+",
+    "employees": 18400,
+    "description": "Pune-based passenger vehicle manufacturer producing compact SUVs, sedans and pickups for the Indian and export markets.",
+    "contacts": [
+      {
+        "name": "Anand Kulkarni",
+        "title": "VP Procurement",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "anand.kulkarni@veltrixmotors.example",
+        "phone": "+919000001001",
+        "whatsapp": "+919000001001",
+        "linkedinUrl": "https://linkedin.example/in/anand-kulkarni-veltri"
+      },
+      {
+        "name": "Meera Deshpande",
+        "title": "Head of Vehicle Platform",
+        "persona": "Engineering",
+        "seniority": "Director",
+        "email": "meera.deshpande@veltrixmotors.example",
+        "phone": "+919000001002",
+        "whatsapp": "+919000001002",
+        "linkedinUrl": "https://linkedin.example/in/meera-deshpande-veltri"
+      },
+      {
+        "name": "Rohit Sawant",
+        "title": "Director – Supply Chain",
+        "persona": "Supply Chain",
+        "seniority": "Director",
+        "email": "rohit.sawant@veltrixmotors.example",
+        "phone": "+919000001003",
+        "whatsapp": "+919000001003",
+        "linkedinUrl": "https://linkedin.example/in/rohit-sawant-veltri"
+      }
+    ]
+  },
+  {
+    "key": "aut-suryan-autoworks",
+    "name": "Suryan Autoworks",
+    "domain": "suryanautoworks.example",
+    "industry": "Automotive",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 7200,
+    "description": "Chennai-headquartered carmaker focused on affordable hatchbacks and compact sedans with a strong fleet-taxi franchise.",
+    "contacts": [
+      {
+        "name": "Karthik Raghavan",
+        "title": "Chief Purchasing Officer",
+        "persona": "Procurement",
+        "seniority": "C-Level",
+        "email": "karthik.raghavan@suryanautoworks.example",
+        "phone": "+919000001004",
+        "whatsapp": "+919000001004",
+        "linkedinUrl": "https://linkedin.example/in/karthik-raghavan-suryan"
+      },
+      {
+        "name": "Lakshmi Narayanan",
+        "title": "Senior Manager – Chassis Sourcing",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "lakshmi.narayanan@suryanautoworks.example",
+        "phone": "+919000001005",
+        "whatsapp": "+919000001005",
+        "linkedinUrl": "https://linkedin.example/in/lakshmi-narayanan-suryan"
+      }
+    ]
+  },
+  {
+    "key": "aut-kavero-electric",
+    "name": "Kavero Electric",
+    "domain": "kaveroelectric.example",
+    "industry": "Electric Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2600,
+    "description": "Bengaluru EV maker building electric SUVs and crossovers on a proprietary skateboard architecture.",
+    "contacts": [
+      {
+        "name": "Nikhil Rao",
+        "title": "CTO",
+        "persona": "Engineering",
+        "seniority": "C-Level",
+        "email": "nikhil.rao@kaveroelectric.example",
+        "phone": "+919000001006",
+        "whatsapp": "+919000001006",
+        "linkedinUrl": "https://linkedin.example/in/nikhil-rao-kavero"
+      },
+      {
+        "name": "Divya Shenoy",
+        "title": "Head of Supplier Development",
+        "persona": "Procurement",
+        "seniority": "Director",
+        "email": "divya.shenoy@kaveroelectric.example",
+        "phone": "+919000001007",
+        "whatsapp": "+919000001007",
+        "linkedinUrl": "https://linkedin.example/in/divya-shenoy-kavero"
+      }
+    ]
+  },
+  {
+    "key": "aut-zentro-ev",
+    "name": "Zentro EV Pvt. Ltd.",
+    "domain": "zentroev.example",
+    "industry": "Electric Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 640,
+    "description": "Hyderabad-based startup developing affordable electric hatchbacks for urban buyers and fleet operators.",
+    "contacts": [
+      {
+        "name": "Aditya Reddy",
+        "title": "Co-founder & CEO",
+        "persona": "Leadership",
+        "seniority": "C-Level",
+        "email": "aditya.reddy@zentroev.example",
+        "phone": "+919000001008",
+        "whatsapp": "+919000001008",
+        "linkedinUrl": "https://linkedin.example/in/aditya-reddy-zentro"
+      },
+      {
+        "name": "Sneha Varma",
+        "title": "VP Operations",
+        "persona": "Operations",
+        "seniority": "VP",
+        "email": "sneha.varma@zentroev.example",
+        "phone": "+919000001009",
+        "whatsapp": "+919000001009",
+        "linkedinUrl": "https://linkedin.example/in/sneha-varma-zentro"
+      }
+    ]
+  },
+  {
+    "key": "aut-arohan-two-wheelers",
+    "name": "Arohan Two Wheelers",
+    "domain": "arohan2w.example",
+    "industry": "Two-Wheelers",
+    "hqCountry": "IN",
+    "sizeBand": "10000+",
+    "employees": 12800,
+    "description": "Hosur-based motorcycle and scooter maker with a large commuter portfolio and growing exports to Africa and Latin America.",
+    "contacts": [
+      {
+        "name": "Senthil Kumar",
+        "title": "VP Materials & Procurement",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "senthil.kumar@arohan2w.example",
+        "phone": "+919000001010",
+        "whatsapp": "+919000001010",
+        "linkedinUrl": "https://linkedin.example/in/senthil-kumar-arohan"
+      },
+      {
+        "name": "Priya Iyer",
+        "title": "Head of Product Planning",
+        "persona": "Product",
+        "seniority": "Director",
+        "email": "priya.iyer@arohan2w.example",
+        "phone": "+919000001011",
+        "whatsapp": "+919000001011",
+        "linkedinUrl": "https://linkedin.example/in/priya-iyer-arohan"
+      }
+    ]
+  },
+  {
+    "key": "aut-pulsewing-mobility",
+    "name": "Pulsewing Mobility",
+    "domain": "pulsewing.example",
+    "industry": "Two-Wheelers",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 1900,
+    "description": "Bengaluru electric scooter and motorcycle brand with an in-house software stack and a growing dealer footprint.",
+    "contacts": [
+      {
+        "name": "Varun Hegde",
+        "title": "Chief Product Officer",
+        "persona": "Product",
+        "seniority": "C-Level",
+        "email": "varun.hegde@pulsewing.example",
+        "phone": "+919000001012",
+        "whatsapp": "+919000001012",
+        "linkedinUrl": "https://linkedin.example/in/varun-hegde-pulsew"
+      },
+      {
+        "name": "Farah Siddiqui",
+        "title": "Director – Sourcing",
+        "persona": "Procurement",
+        "seniority": "Director",
+        "email": "farah.siddiqui@pulsewing.example",
+        "phone": "+919000001013",
+        "whatsapp": "+919000001013",
+        "linkedinUrl": "https://linkedin.example/in/farah-siddiqui-pulsew"
+      }
+    ]
+  },
+  {
+    "key": "aut-bharatrath-commercial",
+    "name": "Bharatrath Commercial Vehicles",
+    "domain": "bharatrath.example",
+    "industry": "Commercial Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 9100,
+    "description": "Lucknow-based maker of medium and heavy trucks, tippers and tractor-trailers for domestic and Gulf markets.",
+    "contacts": [
+      {
+        "name": "Rajesh Tiwari",
+        "title": "VP Procurement",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "rajesh.tiwari@bharatrath.example",
+        "phone": "+919000001014",
+        "whatsapp": "+919000001014",
+        "linkedinUrl": "https://linkedin.example/in/rajesh-tiwari-bharat"
+      },
+      {
+        "name": "Sanjay Mishra",
+        "title": "Head of Truck Platforms",
+        "persona": "Engineering",
+        "seniority": "Director",
+        "email": "sanjay.mishra@bharatrath.example",
+        "phone": "+919000001015",
+        "whatsapp": "+919000001015",
+        "linkedinUrl": "https://linkedin.example/in/sanjay-mishra-bharat"
+      },
+      {
+        "name": "Pooja Srivastava",
+        "title": "Manager – Strategic Sourcing",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "pooja.srivastava@bharatrath.example",
+        "phone": "+919000001016",
+        "whatsapp": "+919000001016",
+        "linkedinUrl": "https://linkedin.example/in/pooja-srivastava-bharat"
+      }
+    ]
+  },
+  {
+    "key": "aut-stallion-bus-coach",
+    "name": "Stallion Bus & Coach",
+    "domain": "stallionbus.example",
+    "industry": "Commercial Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3400,
+    "description": "Dharwad-based builder of city buses, intercity coaches and school buses for state transport undertakings and private operators.",
+    "contacts": [
+      {
+        "name": "Ganesh Patil",
+        "title": "Director – Supply Chain",
+        "persona": "Supply Chain",
+        "seniority": "Director",
+        "email": "ganesh.patil@stallionbus.example",
+        "phone": "+919000001017",
+        "whatsapp": "+919000001017",
+        "linkedinUrl": "https://linkedin.example/in/ganesh-patil-stalli"
+      },
+      {
+        "name": "Asha Kamath",
+        "title": "Head of Institutional Sales",
+        "persona": "Sales",
+        "seniority": "Director",
+        "email": "asha.kamath@stallionbus.example",
+        "phone": "+919000001018",
+        "whatsapp": "+919000001018",
+        "linkedinUrl": "https://linkedin.example/in/asha-kamath-stalli"
+      }
+    ]
+  },
+  {
+    "key": "aut-greenline-ebus",
+    "name": "Greenline eBus",
+    "domain": "greenlineebus.example",
+    "industry": "Commercial Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2100,
+    "description": "Hyderabad-based electric bus manufacturer supplying 9m and 12m e-buses to city transport agencies on gross-cost contracts.",
+    "contacts": [
+      {
+        "name": "Srinivas Rao",
+        "title": "CEO",
+        "persona": "Leadership",
+        "seniority": "C-Level",
+        "email": "srinivas.rao@greenlineebus.example",
+        "phone": "+919000001019",
+        "whatsapp": "+919000001019",
+        "linkedinUrl": "https://linkedin.example/in/srinivas-rao-greenl"
+      },
+      {
+        "name": "Kavya Menon",
+        "title": "VP Procurement",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "kavya.menon@greenlineebus.example",
+        "phone": "+919000001020",
+        "whatsapp": "+919000001020",
+        "linkedinUrl": "https://linkedin.example/in/kavya-menon-greenl"
+      }
+    ]
+  },
+  {
+    "key": "aut-cabzy-mobility",
+    "name": "Cabzy Mobility",
+    "domain": "cabzy.example",
+    "industry": "Fleet & Mobility",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 4300,
+    "description": "Bengaluru ride-hailing platform operating an owned-and-leased fleet of cabs across 22 Indian cities.",
+    "contacts": [
+      {
+        "name": "Arjun Malhotra",
+        "title": "Fleet Operations Head",
+        "persona": "Fleet Operations",
+        "seniority": "Director",
+        "email": "arjun.malhotra@cabzy.example",
+        "phone": "+919000001021",
+        "whatsapp": "+919000001021",
+        "linkedinUrl": "https://linkedin.example/in/arjun-malhotra-cabzy"
+      },
+      {
+        "name": "Neha Kapoor",
+        "title": "Chief Operating Officer",
+        "persona": "Operations",
+        "seniority": "C-Level",
+        "email": "neha.kapoor@cabzy.example",
+        "phone": "+919000001022",
+        "whatsapp": "+919000001022",
+        "linkedinUrl": "https://linkedin.example/in/neha-kapoor-cabzy"
+      }
+    ]
+  },
+  {
+    "key": "aut-routemile-logistics",
+    "name": "RouteMile Logistics",
+    "domain": "routemile.example",
+    "industry": "Fleet & Mobility",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 6200,
+    "description": "Gurugram-based full-truckload and express logistics operator running one of north India's largest owned truck fleets.",
+    "contacts": [
+      {
+        "name": "Vikram Choudhary",
+        "title": "Head of Fleet & Maintenance",
+        "persona": "Fleet Operations",
+        "seniority": "Director",
+        "email": "vikram.choudhary@routemile.example",
+        "phone": "+919000001023",
+        "whatsapp": "+919000001023",
+        "linkedinUrl": "https://linkedin.example/in/vikram-choudhary-routem"
+      },
+      {
+        "name": "Ritu Bansal",
+        "title": "VP Procurement",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "ritu.bansal@routemile.example",
+        "phone": "+919000001024",
+        "whatsapp": "+919000001024",
+        "linkedinUrl": "https://linkedin.example/in/ritu-bansal-routem"
+      }
+    ]
+  },
+  {
+    "key": "aut-swiftkart-fleet",
+    "name": "SwiftKart Fleet Services",
+    "domain": "swiftkartfleet.example",
+    "industry": "Fleet & Mobility",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3800,
+    "description": "Mumbai-based last-mile delivery fleet operator serving e-commerce and quick-commerce platforms with vans and three-wheelers.",
+    "contacts": [
+      {
+        "name": "Imran Shaikh",
+        "title": "Fleet Operations Head",
+        "persona": "Fleet Operations",
+        "seniority": "Director",
+        "email": "imran.shaikh@swiftkartfleet.example",
+        "phone": "+919000001025",
+        "whatsapp": "+919000001025",
+        "linkedinUrl": "https://linkedin.example/in/imran-shaikh-swiftk"
+      },
+      {
+        "name": "Sonal Mehta",
+        "title": "Director – Procurement",
+        "persona": "Procurement",
+        "seniority": "Director",
+        "email": "sonal.mehta@swiftkartfleet.example",
+        "phone": "+919000001026",
+        "whatsapp": "+919000001026",
+        "linkedinUrl": "https://linkedin.example/in/sonal-mehta-swiftk"
+      }
+    ]
+  },
+  {
+    "key": "aut-kronhaus-automobil",
+    "name": "Kronhaus Automobil AG",
+    "domain": "kronhaus.example",
+    "industry": "Automotive",
+    "hqCountry": "DE",
+    "sizeBand": "10000+",
+    "employees": 41000,
+    "description": "Stuttgart-based premium carmaker with growing ambitions in India for locally assembled SUVs.",
+    "contacts": [
+      {
+        "name": "Matthias Weber",
+        "title": "Head of Purchasing – Asia",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "matthias.weber@kronhaus.example",
+        "phone": "+493055501027",
+        "whatsapp": "+493055501027",
+        "linkedinUrl": "https://linkedin.example/in/matthias-weber-kronha"
+      },
+      {
+        "name": "Rahul Menon",
+        "title": "Managing Director, Kronhaus India",
+        "persona": "Leadership",
+        "seniority": "C-Level",
+        "email": "rahul.menon@kronhaus.example",
+        "phone": "+493055501028",
+        "whatsapp": "+493055501028",
+        "linkedinUrl": "https://linkedin.example/in/rahul-menon-kronha"
+      }
+    ]
+  },
+  {
+    "key": "aut-hoshida-motor",
+    "name": "Hoshida Motor Corporation",
+    "domain": "hoshidamotor.example",
+    "industry": "Automotive",
+    "hqCountry": "JP",
+    "sizeBand": "10000+",
+    "employees": 58000,
+    "description": "Nagoya-based carmaker with a long-standing Indian subsidiary producing hybrids and compact SUVs.",
+    "contacts": [
+      {
+        "name": "Kenji Takahashi",
+        "title": "President, Hoshida Motor India",
+        "persona": "Leadership",
+        "seniority": "C-Level",
+        "email": "kenji.takahashi@hoshidamotor.example",
+        "phone": "+813555001029",
+        "whatsapp": "+813555001029",
+        "linkedinUrl": "https://linkedin.example/in/kenji-takahashi-hoshid"
+      },
+      {
+        "name": "Suresh Pillai",
+        "title": "Director – Localisation",
+        "persona": "Procurement",
+        "seniority": "Director",
+        "email": "suresh.pillai@hoshidamotor.example",
+        "phone": "+813555001030",
+        "whatsapp": "+813555001030",
+        "linkedinUrl": "https://linkedin.example/in/suresh-pillai-hoshid"
+      }
+    ]
+  },
+  {
+    "key": "aut-daeyang-motors",
+    "name": "Daeyang Motors",
+    "domain": "daeyangmotors.example",
+    "industry": "Automotive",
+    "hqCountry": "KR",
+    "sizeBand": "10000+",
+    "employees": 33000,
+    "description": "Seoul-based SUV and MPV maker preparing its first Indian manufacturing base.",
+    "contacts": [
+      {
+        "name": "Park Ji-hoon",
+        "title": "Head of India Programme",
+        "persona": "Strategy",
+        "seniority": "VP",
+        "email": "park.jihoon@daeyangmotors.example",
+        "phone": "+822555001031",
+        "whatsapp": "+822555001031",
+        "linkedinUrl": "https://linkedin.example/in/park-jihoon-daeyan"
+      },
+      {
+        "name": "Harish Nair",
+        "title": "Director – Supplier Quality",
+        "persona": "Quality",
+        "seniority": "Director",
+        "email": "harish.nair@daeyangmotors.example",
+        "phone": "+822555001032",
+        "whatsapp": "+822555001032",
+        "linkedinUrl": "https://linkedin.example/in/harish-nair-daeyan"
+      }
+    ]
+  },
+  {
+    "key": "aut-ampera-dynamics",
+    "name": "Ampera Dynamics Inc.",
+    "domain": "amperadynamics.example",
+    "industry": "Electric Vehicles",
+    "hqCountry": "US",
+    "sizeBand": "5001-10000",
+    "employees": 6800,
+    "description": "California-based electric vehicle company developing battery electric pickups and crossovers with an Asia manufacturing strategy.",
+    "contacts": [
+      {
+        "name": "Daniel Brooks",
+        "title": "VP Global Sourcing",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "daniel.brooks@amperadynamics.example",
+        "phone": "+14155551033",
+        "whatsapp": "+14155551033",
+        "linkedinUrl": "https://linkedin.example/in/daniel-brooks-ampera"
+      },
+      {
+        "name": "Ananya Bhatt",
+        "title": "Country Head – India",
+        "persona": "Leadership",
+        "seniority": "Director",
+        "email": "ananya.bhatt@amperadynamics.example",
+        "phone": "+14155551034",
+        "whatsapp": "+14155551034",
+        "linkedinUrl": "https://linkedin.example/in/ananya-bhatt-ampera"
+      }
+    ]
+  },
+  {
+    "key": "aut-terraforge-equipment",
+    "name": "Terraforge Equipment",
+    "domain": "terraforge.example",
+    "industry": "Manufacturing",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2900,
+    "description": "Nagpur-based manufacturer of rigid dump trucks, wheel loaders and motor graders for mining and infrastructure.",
+    "contacts": [
+      {
+        "name": "Prakash Deshmukh",
+        "title": "VP Procurement",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "prakash.deshmukh@terraforge.example",
+        "phone": "+919000001035",
+        "whatsapp": "+919000001035",
+        "linkedinUrl": "https://linkedin.example/in/prakash-deshmukh-terraf"
+      },
+      {
+        "name": "Swati Joshi",
+        "title": "Head of Product Engineering",
+        "persona": "Engineering",
+        "seniority": "Director",
+        "email": "swati.joshi@terraforge.example",
+        "phone": "+919000001036",
+        "whatsapp": "+919000001036",
+        "linkedinUrl": "https://linkedin.example/in/swati-joshi-terraf"
+      }
+    ]
+  },
+  {
+    "key": "aut-deccan-earthmovers",
+    "name": "Deccan Earthmovers",
+    "domain": "deccanearthmovers.example",
+    "industry": "Manufacturing",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3500,
+    "description": "Bengaluru-based maker of backhoe loaders, excavators and compactors for construction and quarrying.",
+    "contacts": [
+      {
+        "name": "Manjunath Gowda",
+        "title": "Director – Supply Chain",
+        "persona": "Supply Chain",
+        "seniority": "Director",
+        "email": "manjunath.gowda@deccanearthmovers.example",
+        "phone": "+919000001037",
+        "whatsapp": "+919000001037",
+        "linkedinUrl": "https://linkedin.example/in/manjunath-gowda-deccan"
+      },
+      {
+        "name": "Rekha Prasad",
+        "title": "Senior Manager – Sourcing",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "rekha.prasad@deccanearthmovers.example",
+        "phone": "+919000001038",
+        "whatsapp": "+919000001038",
+        "linkedinUrl": "https://linkedin.example/in/rekha-prasad-deccan"
+      }
+    ]
+  },
+  {
+    "key": "aut-orbis-mining-services",
+    "name": "Orbis Mining Services",
+    "domain": "orbismining.example",
+    "industry": "Fleet & Mobility",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 4100,
+    "description": "Ranchi-based mine-developer-and-operator contractor running large haul-truck and excavator fleets in coal and iron ore mines.",
+    "contacts": [
+      {
+        "name": "Abhishek Sinha",
+        "title": "Head of Equipment & Fleet",
+        "persona": "Fleet Operations",
+        "seniority": "Director",
+        "email": "abhishek.sinha@orbismining.example",
+        "phone": "+919000001039",
+        "whatsapp": "+919000001039",
+        "linkedinUrl": "https://linkedin.example/in/abhishek-sinha-orbism"
+      },
+      {
+        "name": "Nandini Das",
+        "title": "VP Procurement",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "nandini.das@orbismining.example",
+        "phone": "+919000001040",
+        "whatsapp": "+919000001040",
+        "linkedinUrl": "https://linkedin.example/in/nandini-das-orbism"
+      }
+    ]
+  },
+  {
+    "key": "aut-meridian-tractors",
+    "name": "Meridian Tractors",
+    "domain": "meridiantractors.example",
+    "industry": "Automotive",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 4700,
+    "description": "Mohali-based tractor and farm-equipment maker selling across north India and exporting to Africa.",
+    "contacts": [
+      {
+        "name": "Gurpreet Singh",
+        "title": "VP Procurement",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "gurpreet.singh@meridiantractors.example",
+        "phone": "+919000001041",
+        "whatsapp": "+919000001041",
+        "linkedinUrl": "https://linkedin.example/in/gurpreet-singh-meridi"
+      },
+      {
+        "name": "Harleen Kaur",
+        "title": "Head of Product Management",
+        "persona": "Product",
+        "seniority": "Director",
+        "email": "harleen.kaur@meridiantractors.example",
+        "phone": "+919000001042",
+        "whatsapp": "+919000001042",
+        "linkedinUrl": "https://linkedin.example/in/harleen-kaur-meridi"
+      }
+    ]
+  },
+  {
+    "key": "aut-yatrigo-rides",
+    "name": "Yatrigo Rides",
+    "domain": "yatrigo.example",
+    "industry": "Fleet & Mobility",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 900,
+    "description": "Delhi-based ride-hailing operator running a company-owned fleet with salaried driver-partners.",
+    "contacts": [
+      {
+        "name": "Siddharth Jain",
+        "title": "Co-founder & COO",
+        "persona": "Operations",
+        "seniority": "C-Level",
+        "email": "siddharth.jain@yatrigo.example",
+        "phone": "+919000001043",
+        "whatsapp": "+919000001043",
+        "linkedinUrl": "https://linkedin.example/in/siddharth-jain-yatrig"
+      },
+      {
+        "name": "Mohit Arora",
+        "title": "Fleet Maintenance Manager",
+        "persona": "Fleet Operations",
+        "seniority": "Manager",
+        "email": "mohit.arora@yatrigo.example",
+        "phone": "+919000001044",
+        "whatsapp": "+919000001044",
+        "linkedinUrl": "https://linkedin.example/in/mohit-arora-yatrig"
+      }
+    ]
+  },
+  {
+    "key": "aut-lionspeed-motorcycles",
+    "name": "Lionspeed Motorcycles",
+    "domain": "lionspeed.example",
+    "industry": "Two-Wheelers",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 5600,
+    "description": "Chennai-based maker of mid-size and premium motorcycles with a strong export franchise.",
+    "contacts": [
+      {
+        "name": "Balaji Venkatesh",
+        "title": "Head of Sourcing",
+        "persona": "Procurement",
+        "seniority": "Director",
+        "email": "balaji.venkatesh@lionspeed.example",
+        "phone": "+919000001045",
+        "whatsapp": "+919000001045",
+        "linkedinUrl": "https://linkedin.example/in/balaji-venkatesh-lionsp"
+      },
+      {
+        "name": "Tanya Fernandes",
+        "title": "VP Product Strategy",
+        "persona": "Product",
+        "seniority": "VP",
+        "email": "tanya.fernandes@lionspeed.example",
+        "phone": "+919000001046",
+        "whatsapp": "+919000001046",
+        "linkedinUrl": "https://linkedin.example/in/tanya-fernandes-lionsp"
+      }
+    ]
+  },
+  {
+    "key": "aut-voltway-mobility",
+    "name": "Voltway Mobility Pte. Ltd.",
+    "domain": "voltway.example",
+    "industry": "Electric Vehicles",
+    "hqCountry": "SG",
+    "sizeBand": "201-1000",
+    "employees": 750,
+    "description": "Singapore-headquartered electric two-wheeler company targeting South and Southeast Asian markets.",
+    "contacts": [
+      {
+        "name": "Wei Ling Tan",
+        "title": "Chief Executive Officer",
+        "persona": "Leadership",
+        "seniority": "C-Level",
+        "email": "wei.tan@voltway.example",
+        "phone": "+656555001047",
+        "whatsapp": "+656555001047",
+        "linkedinUrl": "https://linkedin.example/in/wei-ling-tan-voltwa"
+      },
+      {
+        "name": "Kiran Joshi",
+        "title": "Director – India Operations",
+        "persona": "Operations",
+        "seniority": "Director",
+        "email": "kiran.joshi@voltway.example",
+        "phone": "+656555001048",
+        "whatsapp": "+656555001048",
+        "linkedinUrl": "https://linkedin.example/in/kiran-joshi-voltwa"
+      }
+    ]
+  },
+  {
+    "key": "aut-desertline-transport",
+    "name": "Desertline Transport LLC",
+    "domain": "desertline.example",
+    "industry": "Fleet & Mobility",
+    "hqCountry": "AE",
+    "sizeBand": "1001-5000",
+    "employees": 2400,
+    "description": "Dubai-based heavy haulage and cross-border trucking operator serving GCC ports and construction projects.",
+    "contacts": [
+      {
+        "name": "Omar Al Hashimi",
+        "title": "Fleet Director",
+        "persona": "Fleet Operations",
+        "seniority": "Director",
+        "email": "omar.hashimi@desertline.example",
+        "phone": "+9714555001049",
+        "whatsapp": "+9714555001049",
+        "linkedinUrl": "https://linkedin.example/in/omar-al-hashimi-desert"
+      },
+      {
+        "name": "Joseph Mathew",
+        "title": "Procurement Manager",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "joseph.mathew@desertline.example",
+        "phone": "+9714555001050",
+        "whatsapp": "+9714555001050",
+        "linkedinUrl": "https://linkedin.example/in/joseph-mathew-desert"
+      }
+    ]
+  },
+  {
+    "key": "aut-trimurti-auto",
+    "name": "Trimurti Auto",
+    "domain": "trimurtiauto.example",
+    "industry": "Electric Vehicles",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 820,
+    "description": "Kanpur-based maker of electric three-wheelers, e-rickshaws and cargo loaders for small fleet owners.",
+    "contacts": [
+      {
+        "name": "Alok Agarwal",
+        "title": "Managing Director",
+        "persona": "Leadership",
+        "seniority": "C-Level",
+        "email": "alok.agarwal@trimurtiauto.example",
+        "phone": "+919000001051",
+        "whatsapp": "+919000001051",
+        "linkedinUrl": "https://linkedin.example/in/alok-agarwal-trimur"
+      },
+      {
+        "name": "Shalini Verma",
+        "title": "Head of Purchase",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "shalini.verma@trimurtiauto.example",
+        "phone": "+919000001052",
+        "whatsapp": "+919000001052",
+        "linkedinUrl": "https://linkedin.example/in/shalini-verma-trimur"
+      }
+    ]
+  },
+  {
+    "key": "aut-coastal-interstate-bus",
+    "name": "Coastal Interstate Bus Lines",
+    "domain": "coastalbuslines.example",
+    "industry": "Fleet & Mobility",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2700,
+    "description": "Kochi-based private bus operator running intercity sleeper and seater services across south India.",
+    "contacts": [
+      {
+        "name": "Thomas Kurian",
+        "title": "Director – Fleet",
+        "persona": "Fleet Operations",
+        "seniority": "Director",
+        "email": "thomas.kurian@coastalbuslines.example",
+        "phone": "+919000001053",
+        "whatsapp": "+919000001053",
+        "linkedinUrl": "https://linkedin.example/in/thomas-kurian-coasta"
+      },
+      {
+        "name": "Deepa Nambiar",
+        "title": "Procurement Lead",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "deepa.nambiar@coastalbuslines.example",
+        "phone": "+919000001054",
+        "whatsapp": "+919000001054",
+        "linkedinUrl": "https://linkedin.example/in/deepa-nambiar-coasta"
+      }
+    ]
+  }
+]

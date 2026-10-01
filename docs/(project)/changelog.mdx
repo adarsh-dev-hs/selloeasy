@@ -1,0 +1,167 @@
+---
+title: Changelog
+description: Release history of SelloEasy.
+---
+
+## Unreleased
+
+Changes from 2026-09-28: the platform data source and multi-provider LLM support (plan2).
+
+### Added
+
+- **Sidebar section switcher** in the docs: a dropdown at the top of the sidebar switches between Guide,
+  Architecture, Operations, Decisions and Project, and the sidebar shows only that section's pages. Files moved into
+  `(guide)`, `(architecture)` and `(project)` group folders; every `/docs/...` URL is unchanged.
+- **Standalone docs site** `apps/docs-site` on port 3001 (`DOCS_PORT`; Compose service `docs` on `DOCS_HOST_PORT`)
+  renders the whole `docs/` folder with search and Mermaid; `pnpm dev:docs`; CI builds its image
+  ([ADR-0019](/docs/decisions/0019-standalone-docs-site), [Local development](/docs/getting-started/local-development#docs-site)).
+- **Project docs**: an [8-week sprint plan](/docs/project/sprint-plan) and [roles & responsibilities](/docs/project/roles-and-responsibilities)
+  (Product Manager, Senior Developer, Developer, Stakeholder, Subject Matter Expert) with a RACI matrix.
+- **Allure test report**: all Vitest suites and the Playwright E2E write Allure results; `pnpm test:report`
+  builds one report grouped by workspace package and serves it on port 5252 (`ALLURE_PORT`), CI uploads it as an
+  artifact, and `docker compose --profile reports up allure` serves it from Docker
+  ([Local development](/docs/getting-started/local-development#allure-test-report)).
+- Super Admin **Data source** screens at `/platform/data`: overview, events/companies/contacts explorers with
+  record drawers, the import wizard (template → upload → validation report → commit/discard, rollback), connectors
+  with live ingestion progress, and the template reference.
+- **Platform data source** for the Super Admin: browse every market event, directory company and contact with
+  provenance and distribution (org names + counts), 25 per page. See [Platform data](/docs/platform-data) and
+  [Data explorer & pagination](/docs/platform-data/explorer-and-pagination).
+- **Template v1**, the canonical Market Event Record, with a downloadable CSV template, JSON Schema and
+  `sampleData.csv` / `sampleData.invalid.csv` samples ([Data template](/docs/platform-data/data-template),
+  [ADR-0015](/docs/decisions/0015-canonical-data-template-and-two-phase-import)).
+- **Two-phase CSV / JSONL / JSON import**: upload → worker validation into staging → review with `errors.csv` →
+  partial commit (valid + warning rows), refused above `IMPORT_MAX_INVALID_RATIO` (20 %); discard; limits 10 MB and
+  5 000 rows ([Importing data](/docs/platform-data/importing), [Validation rules](/docs/platform-data/validation-rules)).
+- **Batch rollback** that retracts events and batch-only directory rows without deleting tenant leads; the data
+  source is append/retract only ([ADR-0016](/docs/decisions/0016-retract-instead-of-delete-for-rollback)).
+- **Connectors and ingestion runs**: `DEMO_FEED` (60-event bundled reserve, 10 per run, seeded as "Demo news feed")
+  and `HTTP_FEED` (CSV / JSONL / JSON over https with SSRF guard and `CONNECTOR_*` secrets), cron schedules, cursors,
+  "Test connection" and live SSE progress ([Connectors & ingestion](/docs/platform-data/connectors-and-ingestion)).
+- **Fan-out**: new data queues `DATA_REFRESH` pipeline runs for `ACTIVE` orgs whose target industries match, on by
+  default per batch and connector ([Pipeline overview](/docs/pipeline/overview#triggers)).
+- **Optional AI quality gate** for imports (`IMPORT_AI_GATE_ENABLED`, off by default) with the new
+  `data.quality-gate` v1 prompt; it only adds warnings ([Prompts](/docs/pipeline/prompts#dataquality-gate-v1)).
+- **LLM provider switch**: `LLM_PROVIDER` = `openrouter` (default) | `openai` | `anthropic`, with per-model
+  capabilities, self-healing on 400, optional `LLM_FALLBACK_PROVIDER` failover and a price table for cost
+  ([LLM layer & providers](/docs/pipeline/llm-providers), [ADR-0017](/docs/decisions/0017-provider-adapter-layer)).
+- Permissions `platform:data:read`, `platform:data:import`, `platform:data:manage`
+  ([Roles & permissions](/docs/concepts/roles-and-permissions)); 27 `/api/v1/platform/data/*` endpoints
+  ([API reference](/docs/api/reference#platform-data-super-admin-only-modulesplatform-datats)); `PLATFORM` audit
+  actions `data.*` ([Audit trail](/docs/modules/audit-trail)).
+- Migration `0002_data_source`: provenance columns on `market_events`, `directory_companies` and
+  `directory_contacts`; tables `data_batches`, `data_batch_rows`, `data_connectors`, `ingestion_runs`;
+  `llm_calls.provider`; the `DATA_REFRESH` pipeline trigger; dedupe indexes ([Data model](/docs/architecture/data-model)).
+- Worker queue `ingestion` and the daily `maintenance.staging-purge` job (`STAGING_RETENTION_DAYS`).
+- Env keys `LLM_PROVIDER`, `LLM_FALLBACK_PROVIDER`, `LLM_SUPPORTS_TEMPERATURE`, `LLM_SUPPORTS_JSON_SCHEMA`,
+  `LLM_PRICE_INPUT_PER_MTOK`, `LLM_PRICE_OUTPUT_PER_MTOK`, `OPENAI_*`, `ANTHROPIC_*`, `IMPORT_MAX_MB`,
+  `IMPORT_MAX_ROWS`, `IMPORT_MAX_INVALID_RATIO`, `DATA_MAX_AGE_DAYS`, `INGESTION_MAX_ROWS_PER_RUN`,
+  `IMPORT_AI_GATE_ENABLED`, `IMPORT_AI_GATE_MAX_CALLS`, `STAGING_RETENTION_DAYS`
+  ([Environment variables](/docs/getting-started/environment-variables)).
+- Tests: `apps/api/test/platform-data.test.ts` (RBAC, import round trip, duplicates, invalid-ratio guard, rollback,
+  keyset pagination, `DEMO_FEED` ingestion), `packages/pipeline/test/data-quality.test.ts`,
+  `packages/llm/test/providers.test.ts`, `packages/engine/test/demo-feed.test.ts`,
+  `packages/dataset/test/samples.test.ts`, and provider cases in `packages/core/test/config.test.ts`
+  ([Local development → Tests](/docs/getting-started/local-development#tests)).
+- ADRs 0015–0018, including hybrid offset/keyset pagination with estimated totals
+  ([ADR-0018](/docs/decisions/0018-hybrid-offset-keyset-pagination)).
+
+### Changed
+
+- The LLM docs page moved from `/docs/pipeline/llm-openrouter` to [LLM layer & providers](/docs/pipeline/llm-providers)
+  (the old URL remains as a pointer).
+- Automatic mock mode now checks the **selected provider's** key; `/api/ready` and the startup log report the
+  provider; the platform dashboard shows `provider · model`; the LLM cache key includes the provider.
+- The pipeline never loads retracted events, and account resolution ignores retracted directory companies and
+  contacts ([Pipeline stages](/docs/pipeline/stages)).
+- Deploy validation requires the selected provider's key and model instead of always the OpenRouter pair.
+- ADR-0009 is extended by ADR-0017 (the model rule now covers every provider); ADR-0005 is extended by ADR-0018.
+
+### Fixed
+
+- `PATCH /platform/data/connectors/:id` no longer clears the connector's cron schedule when `schedule` is omitted from
+  the body (send `""` or `null` to clear it).
+- `GET /platform/data/companies/:id` returned 500 (untyped `jsonb_build_object` parameter).
+- The commit endpoint and the import wizard now report the invalid-ratio limit before "nothing to commit", matching
+  the worker.
+
+### Security
+
+- `HTTP_FEED` connectors reuse the crawler's SSRF guard on every request, refuse redirects and cross-host pagination,
+  and can read only `CONNECTOR_*` env vars as auth secrets ([Security](/docs/architecture/security)).
+- Provider API keys live only in env or Secrets Manager; `.env.example` ships empty keys.
+
+## v0.1.0 — 2026-09-24
+
+The first implementation of the approved plan.
+
+### Platform & infrastructure
+
+- pnpm + Turborepo monorepo with `apps/web`, `apps/api`, `apps/worker` and the packages `shared`, `core`, `db`, `llm`,
+  `pipeline`, `engine`, `dataset` and `seed`.
+- One validated environment schema (`packages/shared/src/env.ts`), a single `.env.example` with every local, AWS
+  runtime and AWS deploy key, automatic mock mode when no OpenRouter key is set, and optional AWS Secrets Manager
+  loading at boot.
+- Env-driven drivers: MinIO/S3 storage, SMTP/SES mail, Postgres TLS with the RDS CA bundle, Redis TLS.
+- Docker Compose stack (Postgres 16, Redis 7, MinIO from `quay.io`, Mailpit, one-shot migrate + seed, API, worker, web)
+  with healthchecks and configurable host ports (`*_HOST_PORT`).
+- Multi-stage Dockerfiles using `turbo prune`. The API and worker run TypeScript via `tsx` (no bundling). The web image
+  uses Next.js standalone output.
+- AWS CDK app and deploy scripts in `infra/` (deploy-ready work, not deployed).
+
+### Identity, tenancy & security
+
+- Auth with argon2id passwords, a 15-minute access JWT and a rotating opaque refresh token (7 days) in `HttpOnly`
+  cookies, refresh-token reuse detection (family revocation), lockout after 10 failures, rate limits, password reset.
+- Single-use, hashed, 72-hour invitations for org admins (Super Admin) and teammates (Org Admin).
+- RBAC with five roles and 25 permissions (`packages/shared/src/rbac.ts`), default-deny route guards, SDR ownership
+  rules, and a lead-visibility setting behind a feature flag.
+- Application-level tenant isolation (membership-derived `org_id`, 404 on cross-tenant access). Super Admins get 403 on
+  tenant routes and see public-level data and aggregates only through allow-list DTOs.
+- SSRF-protected website crawler, magic-byte upload validation, prompt-injection-aware prompting, CSV-injection-safe
+  exports, log and audit redaction.
+
+### Knowledge & onboarding
+
+- Org onboarding: basics, website crawl, document uploads (PDF, DOCX, Markdown, text) through presigned URLs, pasted
+  text, products, plans, policies with Public/Internal visibility, chunking and Postgres FTS indexing.
+- AI knowledge profile generation (editable, versioned), AI-suggested ICPs, custom ICPs.
+- Industry signal templates (managed by the Super Admin) cloned into orgs, custom signals with match instructions,
+  keywords, negative keywords and weights.
+- Activation queues the first pipeline run.
+
+### Intelligence pipeline & scoring
+
+- Pipeline runs (manual, scheduled every 6 hours, on activation): keyword and window prefilter, batched LLM matching and
+  extraction (`signal.match`), account resolution through a synthetic company directory, dedupe and upsert of leads,
+  evidence and timeline entries, BANT+ scoring.
+- Idempotency through `org_event_evaluations` (signals-hash aware) and unique matches and leads. One active run per org.
+  Budget guard (60 calls) with `PARTIAL` runs. Live progress over SSE.
+- BANT+ scoring: LLM-judged budget, need and timeline, and deterministic authority, ICP fit and signal strength (30-day
+  half-life). HOT/WARM/COLD bands, heuristic fallback, "Why this score?" rationales.
+- OpenRouter client over `fetch`, with the model only from `OPENROUTER_MODEL`, `json_schema` structured output with
+  fallback, Zod validation with a repair retry, retries with backoff, a Redis response cache, per-process concurrency
+  limit, and `llm_calls` telemetry including cost.
+- Seven versioned prompts with deterministic mocks. Evaluation harness `pnpm eval:pipeline` over a 60-item gold set.
+
+### CRM, outreach, dashboards & audit
+
+- Leads grid (6 per page, filters, sorts, search), lead detail with evidence and score breakdown, stages with optimistic
+  locking, assignment, race-safe claim, bulk actions, notes, contacts, tasks, CSV export, re-scoring.
+- Outreach: AI drafts for email, WhatsApp and call scripts. Email really sent through the worker (Mailpit/SES) with
+  delivery status. WhatsApp, call and meeting through deep links and manual logging, with automatic stage transitions.
+- Org dashboard (KPIs, funnel, weekly bands, leads by signal, team leaderboard, channel effectiveness, "My stats" for
+  SDRs, 60 s cache) and Super Admin platform dashboard (aggregates only).
+- Append-only audit trail (database trigger), PLATFORM and ORG scopes, field-level diffs with redaction, a safety-net hook
+  for any unaudited mutation, daily retention job.
+
+### Demo data
+
+- Synthetic, fictional dataset: 5 orgs across Healthcare, Automotive, Semiconductors, Renewable Energy and Logistics,
+  300 events, 130 companies, 274 contacts, 30 signal templates, and about 190 leads pre-scored with the mock LLM, with
+  simulated CRM history. A sixth org, Voltedge Mobility, is left `INVITED` with a local-only demo invite link.
+
+### Documentation
+
+- This documentation site at `/docs` (Fumadocs), including 14 architecture decision records and the
+  [known limitations](/docs/limitations).

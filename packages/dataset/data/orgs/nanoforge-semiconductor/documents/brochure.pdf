@@ -1,0 +1,107 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Title (Nanoforge Product Portfolio) /Producer (SelloEasy dataset) /Subject (Synthetic demo document) >>
+endobj
+6 0 obj
+<< /Length 2816 >>
+stream
+BT /F2 18 Tf 50 761 Td (Nanoforge Product Portfolio) Tj ET
+BT /F1 11 Tf 50 729 Td (*Power semiconductors and process-control solutions, engineered in Hyderabad and Singapore.*) Tj ET
+BT /F1 11 Tf 50 697 Td (Nanoforge Semiconductor helps manufacturers across India and South-East Asia build power) Tj ET
+BT /F1 11 Tf 50 681 Td (    electronics and semiconductor capacity faster. We supply automotive-grade power devices and) Tj ET
+BT /F1 11 Tf 50 665 Td (    battery-management ICs to OEMs, and inline metrology, inspection and yield analytics to fabs) Tj ET
+BT /F1 11 Tf 50 649 Td (    and OSAT plants. Because we work on both sides of the chain - from the wafer to the inverter) Tj ET
+BT /F1 11 Tf 50 633 Td (    - our engineers understand what it takes to move from first silicon to stable volume) Tj ET
+BT /F1 11 Tf 50 617 Td (    production.) Tj ET
+BT /F2 14 Tf 50 566 Td (Power semiconductors) Tj ET
+BT /F2 12 Tf 50 517 Td (ForgeSiC 650 V / 1200 V MOSFET modules) Tj ET
+BT /F1 11 Tf 50 501 Td (Half-bridge and six-pack silicon carbide modules rated 200 A to 800 A. Silver-sintered die) Tj ET
+BT /F1 11 Tf 50 485 Td (    attach, low-inductance layout and AQG-324 qualification make them suitable for traction) Tj ET
+BT /F1 11 Tf 50 469 Td (    inverters in two-wheelers, three-wheelers and buses, as well as on-board chargers and 350 kW) Tj ET
+BT /F1 11 Tf 50 453 Td (    string inverters. Every module ships with die-level traceability, assembled and tested at) Tj ET
+BT /F1 11 Tf 50 437 Td (    qualified partner OSATs in India.) Tj ET
+BT /F2 12 Tf 50 388 Td (NF-GD gate drivers and power-management ICs) Tj ET
+BT /F1 11 Tf 50 372 Td (AEC-Q100 Grade 1 isolated gate drivers with desaturation detection, active Miller clamp and) Tj ET
+BT /F1 11 Tf 50 356 Td (    soft turn-off, paired with automotive buck/boost controllers and LDOs. Designed to drive) Tj ET
+BT /F1 11 Tf 50 340 Td (    ForgeSiC modules and third-party IGBTs with minimal external components.) Tj ET
+BT /F2 12 Tf 50 291 Td (CellGuard battery-management ICs) Tj ET
+BT /F1 11 Tf 50 275 Td (16-cell and 18-cell battery monitors with integrated passive balancing, isolated daisy-chain) Tj ET
+BT /F1 11 Tf 50 259 Td (    communication and ISO 26262 ASIL-C support. CellGuard scales from 48 V scooter packs to 800) Tj ET
+BT /F1 11 Tf 50 243 Td (    V bus packs and multi-rack energy storage systems.) Tj ET
+BT /F2 12 Tf 50 194 Td (Reference designs) Tj ET
+BT /F1 11 Tf 50 178 Td (  - 12 kW and 25 kW two-wheeler traction inverter) Tj ET
+BT /F1 11 Tf 50 162 Td (  - 6.6 kW and 22 kW on-board charger) Tj ET
+BT /F1 11 Tf 50 146 Td (  - 16S to 24S BMS board with state-of-charge firmware) Tj ET
+BT /F1 11 Tf 50 130 Td (  - 3 kW GaN/SiC rack power shelf module for 48 V data-center racks) Tj ET
+BT /F2 14 Tf 50 79 Td (Fab and OSAT process control) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2789 >>
+stream
+BT /F2 12 Tf 50 767 Td (InlineEye metrology and inspection) Tj ET
+BT /F1 11 Tf 50 751 Td (Film-thickness, overlay and critical-dimension metrology plus brightfield and darkfield) Tj ET
+BT /F1 11 Tf 50 735 Td (    defect inspection for 150 mm to 300 mm wafers, including silicon carbide substrates and) Tj ET
+BT /F1 11 Tf 50 719 Td (    epitaxial layers. Tools support SECS/GEM automation and are serviced from our Hyderabad and) Tj ET
+BT /F1 11 Tf 50 703 Td (    Penang depots with 24-hour on-site response.) Tj ET
+BT /F2 12 Tf 50 654 Td (Forgesight yield analytics) Tj ET
+BT /F1 11 Tf 50 638 Td (Forgesight combines inline metrology, inspection, parametric test and final test data into) Tj ET
+BT /F1 11 Tf 50 622 Td (    one model of your line. It flags excursions within minutes, ranks likely root causes and) Tj ET
+BT /F1 11 Tf 50 606 Td (    tracks yield learning curves across tools and lots. Deploy it on-premise or in a sovereign) Tj ET
+BT /F1 11 Tf 50 590 Td (    cloud; it connects to Nanoforge tools out of the box and to third-party tools through) Tj ET
+BT /F1 11 Tf 50 574 Td (    standard interfaces.) Tj ET
+BT /F2 14 Tf 50 523 Td (Why customers choose Nanoforge) Tj ET
+BT /F1 11 Tf 50 491 Td (- Local engineering. Field application engineers in Hyderabad, Bengaluru, Pune, Chennai,) Tj ET
+BT /F1 11 Tf 50 475 Td (    Singapore and Penang, plus a failure-analysis lab in Hyderabad.) Tj ET
+BT /F1 11 Tf 50 459 Td (- Allocation you can plan around. Multi-year allocation programmes with buffer stock held in) Tj ET
+BT /F1 11 Tf 50 443 Td (    India and Singapore.) Tj ET
+BT /F1 11 Tf 50 427 Td (- Localization-ready. Documentation to support domestic value-addition audits and) Tj ET
+BT /F1 11 Tf 50 411 Td (    trusted-source requirements.) Tj ET
+BT /F1 11 Tf 50 395 Td (- Quality first. IATF 16949 manufacturing, AEC-Q100/Q101 qualification and a 10-year supply) Tj ET
+BT /F1 11 Tf 50 379 Td (    commitment on automotive part numbers.) Tj ET
+BT /F2 14 Tf 50 328 Td (Who we serve) Tj ET
+BT /F1 11 Tf 50 296 Td (EV, two-wheeler and commercial vehicle OEMs; battery pack integrators; solar and storage) Tj ET
+BT /F1 11 Tf 50 280 Td (    inverter makers; telecom and data-center hardware companies; EMS providers; and new fabs,) Tj ET
+BT /F1 11 Tf 50 264 Td (    compound-semiconductor fabs and OSAT/ATMP plants.) Tj ET
+BT /F2 14 Tf 50 213 Td (Get started) Tj ET
+BT /F1 11 Tf 50 181 Td (Request samples, reference designs or a line assessment at nanoforge-semiconductor.example.) Tj ET
+BT /F1 11 Tf 50 165 Td (    Engineering samples and evaluation boards are available to qualified design projects, and) Tj ET
+BT /F1 11 Tf 50 149 Td (    our process-control team offers a free two-week yield baseline study for new fab and OSAT) Tj ET
+BT /F1 11 Tf 50 133 Td (    lines.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000000443 00000 n 
+0000003310 00000 n 
+0000003446 00000 n 
+0000006286 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R /Info 5 0 R >>
+startxref
+6422
+%%EOF

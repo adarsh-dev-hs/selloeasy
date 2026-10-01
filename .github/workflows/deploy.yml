@@ -1,0 +1,142 @@
+# Deploy to AWS — DISABLED by default (plan §23.3, decision D6).
+#
+# Enable by setting, in the GitHub repository settings:
+#   Variables:  AWS_DEPLOY_ENABLED=true, AWS_ACCOUNT_ID, AWS_REGION, DEPLOY_ENV, DOMAIN_NAME, HOSTED_ZONE_ID,
+#               OPENROUTER_MODEL, MAIL_FROM, and optionally ACM_CERTIFICATE_ARN, ALARM_EMAIL, SES_REGION, NAT_GATEWAYS,
+#               RDS_* / REDIS_NODE_TYPE / ECS_* sizing, SUPERADMIN_EMAIL
+#   Secrets:    GITHUB_OIDC_ROLE_ARN (output GithubOidcRoleArn of the <env>-selloeasy-bootstrap stack),
+#               OPENROUTER_API_KEY, and optionally JWT_ACCESS_SECRET, JWT_REFRESH_SECRET, SUPERADMIN_PASSWORD
+#               (generated and kept in Secrets Manager when omitted)
+# The first deploy must be run locally (`pnpm deploy:aws --env-file .env.aws`) — it creates the OIDC role this uses.
+name: Deploy (AWS)
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      deploy_env:
+        description: "Target environment"
+        type: choice
+        options: [staging, production]
+        default: staging
+
+concurrency:
+  group: deploy-${{ inputs.deploy_env || vars.DEPLOY_ENV || 'staging' }}
+  cancel-in-progress: false
+
+permissions:
+  id-token: write # OIDC → AWS
+  contents: read
+
+jobs:
+  deploy:
+    if: vars.AWS_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment: ${{ inputs.deploy_env || vars.DEPLOY_ENV || 'staging' }}
+    env:
+      DEPLOY_ENV: ${{ inputs.deploy_env || vars.DEPLOY_ENV || 'staging' }}
+      AWS_REGION: ${{ vars.AWS_REGION || 'ap-south-1' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.GITHUB_OIDC_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: selloeasy-deploy-${{ github.run_id }}
+
+      - name: Build .env.aws from repository variables and secrets
+        env:
+          V_AWS_ACCOUNT_ID: ${{ vars.AWS_ACCOUNT_ID }}
+          V_DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
+          V_HOSTED_ZONE_ID: ${{ vars.HOSTED_ZONE_ID }}
+          V_ACM_CERTIFICATE_ARN: ${{ vars.ACM_CERTIFICATE_ARN }}
+          V_ECR_REPOSITORY_PREFIX: ${{ vars.ECR_REPOSITORY_PREFIX || 'selloeasy' }}
+          V_VPC_ID: ${{ vars.VPC_ID }}
+          V_NAT_GATEWAYS: ${{ vars.NAT_GATEWAYS || '1' }}
+          V_RDS_INSTANCE_CLASS: ${{ vars.RDS_INSTANCE_CLASS || 't4g.micro' }}
+          V_RDS_ALLOCATED_STORAGE_GB: ${{ vars.RDS_ALLOCATED_STORAGE_GB || '20' }}
+          V_RDS_MULTI_AZ: ${{ vars.RDS_MULTI_AZ || 'false' }}
+          V_RDS_BACKUP_RETENTION_DAYS: ${{ vars.RDS_BACKUP_RETENTION_DAYS || '7' }}
+          V_REDIS_NODE_TYPE: ${{ vars.REDIS_NODE_TYPE || 'cache.t4g.micro' }}
+          V_ECS_API_CPU: ${{ vars.ECS_API_CPU || '512' }}
+          V_ECS_API_MEMORY: ${{ vars.ECS_API_MEMORY || '1024' }}
+          V_ECS_API_DESIRED_COUNT: ${{ vars.ECS_API_DESIRED_COUNT || '1' }}
+          V_ECS_WORKER_CPU: ${{ vars.ECS_WORKER_CPU || '512' }}
+          V_ECS_WORKER_MEMORY: ${{ vars.ECS_WORKER_MEMORY || '1024' }}
+          V_ECS_WORKER_DESIRED_COUNT: ${{ vars.ECS_WORKER_DESIRED_COUNT || '1' }}
+          V_ECS_WEB_CPU: ${{ vars.ECS_WEB_CPU || '256' }}
+          V_ECS_WEB_MEMORY: ${{ vars.ECS_WEB_MEMORY || '512' }}
+          V_ECS_WEB_DESIRED_COUNT: ${{ vars.ECS_WEB_DESIRED_COUNT || '1' }}
+          V_ALARM_EMAIL: ${{ vars.ALARM_EMAIL }}
+          V_OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL }}
+          V_MAIL_FROM: ${{ vars.MAIL_FROM }}
+          V_SES_REGION: ${{ vars.SES_REGION || 'ap-south-1' }}
+          V_SUPERADMIN_EMAIL: ${{ vars.SUPERADMIN_EMAIL }}
+          V_GITHUB_OIDC_ROLE_ARN: ${{ secrets.GITHUB_OIDC_ROLE_ARN }}
+          V_OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          V_JWT_ACCESS_SECRET: ${{ secrets.JWT_ACCESS_SECRET }}
+          V_JWT_REFRESH_SECRET: ${{ secrets.JWT_REFRESH_SECRET }}
+          V_SUPERADMIN_PASSWORD: ${{ secrets.SUPERADMIN_PASSWORD }}
+        run: |
+          umask 077
+          : > .env.aws
+          # JSON-quote every value so spaces / '#' / quotes survive the dotenv parser.
+          put() { printf '%s=%s\n' "$1" "$(node -e 'process.stdout.write(JSON.stringify(process.argv[1]))' "$2")" >> .env.aws; }
+          put AWS_ACCOUNT_ID "$V_AWS_ACCOUNT_ID"
+          put AWS_REGION "$AWS_REGION"
+          put DEPLOY_ENV "$DEPLOY_ENV"
+          put DOMAIN_NAME "$V_DOMAIN_NAME"
+          put HOSTED_ZONE_ID "$V_HOSTED_ZONE_ID"
+          put ACM_CERTIFICATE_ARN "$V_ACM_CERTIFICATE_ARN"
+          put ECR_REPOSITORY_PREFIX "$V_ECR_REPOSITORY_PREFIX"
+          put IMAGE_TAG "${GITHUB_SHA::12}"
+          put VPC_ID "$V_VPC_ID"
+          put NAT_GATEWAYS "$V_NAT_GATEWAYS"
+          put RDS_INSTANCE_CLASS "$V_RDS_INSTANCE_CLASS"
+          put RDS_ALLOCATED_STORAGE_GB "$V_RDS_ALLOCATED_STORAGE_GB"
+          put RDS_MULTI_AZ "$V_RDS_MULTI_AZ"
+          put RDS_BACKUP_RETENTION_DAYS "$V_RDS_BACKUP_RETENTION_DAYS"
+          put REDIS_NODE_TYPE "$V_REDIS_NODE_TYPE"
+          put ECS_API_CPU "$V_ECS_API_CPU"
+          put ECS_API_MEMORY "$V_ECS_API_MEMORY"
+          put ECS_API_DESIRED_COUNT "$V_ECS_API_DESIRED_COUNT"
+          put ECS_WORKER_CPU "$V_ECS_WORKER_CPU"
+          put ECS_WORKER_MEMORY "$V_ECS_WORKER_MEMORY"
+          put ECS_WORKER_DESIRED_COUNT "$V_ECS_WORKER_DESIRED_COUNT"
+          put ECS_WEB_CPU "$V_ECS_WEB_CPU"
+          put ECS_WEB_MEMORY "$V_ECS_WEB_MEMORY"
+          put ECS_WEB_DESIRED_COUNT "$V_ECS_WEB_DESIRED_COUNT"
+          put ALARM_EMAIL "$V_ALARM_EMAIL"
+          put GITHUB_OIDC_ROLE_ARN "$V_GITHUB_OIDC_ROLE_ARN"
+          put GITHUB_REPOSITORY "$GITHUB_REPOSITORY"
+          put OPENROUTER_API_KEY "$V_OPENROUTER_API_KEY"
+          put OPENROUTER_MODEL "$V_OPENROUTER_MODEL"
+          put MAIL_FROM "$V_MAIL_FROM"
+          put SES_REGION "$V_SES_REGION"
+          put SUPERADMIN_EMAIL "$V_SUPERADMIN_EMAIL"
+          put JWT_ACCESS_SECRET "$V_JWT_ACCESS_SECRET"
+          put JWT_REFRESH_SECRET "$V_JWT_REFRESH_SECRET"
+          put SUPERADMIN_PASSWORD "$V_SUPERADMIN_PASSWORD"
+
+      - name: Deploy
+        run: bash infra/scripts/deploy.sh --env-file .env.aws
+
+      - name: Remove .env.aws
+        if: always()
+        run: rm -f .env.aws

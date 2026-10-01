@@ -1,0 +1,226 @@
+{
+  "slug": "medisphere-diagnostics",
+  "name": "MediSphere Diagnostics",
+  "industry": "HEALTHCARE",
+  "websiteUrl": "https://medisphere-diagnostics.example",
+  "hq": "Bengaluru, India",
+  "regions": ["India", "Middle East", "South-East Asia", "East Africa", "Bangladesh"],
+  "companySize": "201-1000",
+  "description": "MediSphere Diagnostics is a Bengaluru-based in-vitro diagnostics company that supplies clinical chemistry and immunoassay analyzers, point-of-care test kits, RT-PCR molecular diagnostics kits and a cloud Laboratory Information System to hospitals, lab chains and government health programmes.",
+  "profile": {
+    "summary": "MediSphere Diagnostics helps hospitals, diagnostic lab chains and public health systems run faster, more reliable laboratories. We combine fully automated clinical chemistry and immunoassay analyzers, rapid point-of-care kits and CE/CDSCO-approved RT-PCR kits with SphereLIS, a cloud laboratory information system, and offer everything on a reagent-rental model so customers pay per reportable test rather than committing capital upfront. Our field service network covers 180 Indian cities with a 6-hour response SLA in metros.",
+    "valueProps": [
+      "Zero-capex reagent rental: pay per reportable test, analyzers placed free",
+      "Single vendor for chemistry, immunoassay, point-of-care, molecular and LIS",
+      "30–40% faster turnaround time with middleware auto-verification",
+      "Accreditation-ready QC, calibration and audit trails built into SphereLIS",
+      "6-hour on-site service response in metros, 24 hours in tier-2 cities"
+    ],
+    "differentiators": [
+      "Made-in-India analyzers and kits with local reagent manufacturing in Bengaluru",
+      "Cloud LIS with native home-collection, B2B and hub-and-spoke workflows",
+      "Proven government tender track record across three states",
+      "Uptime guarantee of 98% backed by service credits",
+      "Open-channel analyzers that also run third-party reagents where needed"
+    ],
+    "targetIndustries": ["Hospitals", "Diagnostics", "Healthcare Services", "Government"],
+    "geographies": ["India", "UAE", "Singapore", "Kenya", "Bangladesh"],
+    "personas": [
+      {
+        "title": "Head of Laboratory Services",
+        "goals": ["Cut turnaround time", "Pass NABL/JCI audits", "Standardise analyzers across sites"],
+        "painPoints": ["Mixed analyzer fleet with different QC processes", "Manual result verification", "Frequent instrument downtime"]
+      },
+      {
+        "title": "Chief Medical Officer",
+        "goals": ["Reliable results for critical care", "Consistent clinical quality across hospitals"],
+        "painPoints": ["Delayed stat results in ICU and emergency", "Outsourced tests with poor visibility"]
+      },
+      {
+        "title": "VP Procurement",
+        "goals": ["Lower cost per test", "Predictable reagent spend", "Fewer vendors"],
+        "painPoints": ["High capex for new hospitals", "Opaque reagent pricing", "Multiple service contracts"]
+      },
+      {
+        "title": "Government Procurement Officer",
+        "goals": ["Free diagnostics at district hospitals and PHCs", "Transparent, compliant tenders"],
+        "painPoints": ["Vendors failing uptime commitments", "No central visibility of test volumes"]
+      }
+    ]
+  },
+  "products": [
+    {
+      "name": "SphereChem 800",
+      "category": "Clinical Chemistry Analyzer",
+      "description": "Fully automated clinical chemistry analyzer processing up to 800 photometric tests per hour plus ISE, with 60 onboard reagent positions and closed-tube sampling.",
+      "targetSegments": ["Hospital central labs", "Lab chain processing labs", "Medical colleges"],
+      "priceNotes": "Placed on reagent rental; outright purchase list price INR 38 lakh.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "SphereIA 240",
+      "category": "Immunoassay Analyzer",
+      "description": "Chemiluminescence immunoassay analyzer running 240 tests per hour across thyroid, fertility, cardiac markers (hs-troponin, NT-proBNP), tumour markers and infectious disease panels.",
+      "targetSegments": ["Hospitals", "Oncology and cardiac centres", "Lab chains"],
+      "priceNotes": "Reagent rental from INR 95 per reportable TSH test at 3,000 tests/month.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "SpherePOC Rapid Kits",
+      "category": "Point-of-Care Test Kits",
+      "description": "Rapid lateral-flow and cartridge-based point-of-care kits for dengue, malaria, typhoid, HbA1c, CRP, troponin I and hepatitis, with a handheld reader that syncs results to SphereLIS.",
+      "targetSegments": ["Primary health centres", "Emergency departments", "Home sample collection providers"],
+      "priceNotes": "Kits INR 60–450 per test; readers free above 1,000 tests/month.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "SphereMDx RT-PCR Panels",
+      "category": "Molecular Diagnostics",
+      "description": "RT-PCR kits for TB, hepatitis B/C viral load, HPV, respiratory viral panels and STI panels, validated on open real-time PCR platforms with automated extraction options.",
+      "targetSegments": ["Molecular labs", "Government medical colleges", "Oncology centres"],
+      "priceNotes": "INR 650–2,400 per reaction depending on panel; volume tiers for tenders.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "SphereLIS Cloud",
+      "category": "Laboratory Information System",
+      "description": "Cloud laboratory information system with barcode sample tracking, instrument middleware, auto-verification rules, NABL-ready QC dashboards, home-collection app integration and patient report delivery via WhatsApp and email.",
+      "targetSegments": ["Hospitals", "Lab chains", "Home collection startups", "State health programmes"],
+      "priceNotes": "Subscription per site per month; see Essentials/Professional/Enterprise plans.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Government Hub-and-Spoke Bundle",
+      "category": "Solution Bundle",
+      "description": "Tender-ready bundle for state health departments combining hub-lab analyzers, PHC point-of-care kits, SphereLIS state dashboard and operated-lab staffing on a per-test pricing model.",
+      "targetSegments": ["State health missions", "Medical services corporations"],
+      "priceNotes": "Per-test rates quoted per tender; floor margins defined in internal pricing policy.",
+      "visibility": "INTERNAL"
+    }
+  ],
+  "plans": [
+    {
+      "name": "Reagent Rental Programme",
+      "pricing": "Analyzers placed at zero capex; customer commits to a minimum monthly test volume and pays per reportable test. Minimum 36-month term.",
+      "features": [
+        "Free analyzer placement, installation and training",
+        "Preventive and breakdown maintenance included",
+        "Quarterly volume true-up",
+        "Analyzer upgrade after 36 months"
+      ],
+      "visibility": "INTERNAL"
+    },
+    {
+      "name": "SphereLIS Essentials / Professional",
+      "pricing": "Essentials INR 18,000 per site per month (up to 300 samples/day); Professional INR 42,000 per site per month (up to 2,000 samples/day).",
+      "features": [
+        "Barcode sample tracking and report delivery",
+        "Instrument interfacing for up to 10 analyzers",
+        "QC dashboards and audit trail",
+        "Professional adds auto-verification and home-collection app integration"
+      ],
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "SphereLIS Enterprise",
+      "pricing": "Custom annual contract for 10+ sites; typically INR 30,000–35,000 per site per month with multi-year discount.",
+      "features": [
+        "Hub-and-spoke and B2B workflows",
+        "Group-level analytics and state dashboards",
+        "Dedicated customer success manager",
+        "HIS/EMR integration via HL7 and FHIR"
+      ],
+      "visibility": "INTERNAL"
+    }
+  ],
+  "policies": [
+    {
+      "title": "Service Level Agreement",
+      "type": "SLA",
+      "body": "MediSphere commits to on-site engineer response within 6 hours in metro cities and 24 hours in tier-2 and tier-3 cities for breakdowns of installed analyzers. Instrument uptime of 98% per calendar quarter is guaranteed for analyzers under reagent rental; shortfalls are credited as free reagent. SphereLIS Cloud offers 99.5% monthly availability with 24x7 phone and WhatsApp support.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "title": "Data Privacy & Patient Data Protection",
+      "type": "Privacy",
+      "body": "All patient data processed in SphereLIS Cloud is hosted in data centres located in the customer's country where required by law, encrypted in transit and at rest, and accessible only to authorised customer users. MediSphere acts as a data processor, does not sell or use patient data for marketing, and supports customer obligations under applicable data protection laws, including breach notification within 72 hours.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "title": "Pricing & Discount Authority",
+      "type": "Pricing",
+      "body": "Sales representatives may offer up to 8% discount on list reagent-rental rates. Discounts of 8–15% require Regional Sales Manager approval; above 15% or any government tender bid requires approval from the Head of Sales and Finance. Per-test rates must not fall below the floor price defined for each test category, and analyzer placement requires a minimum committed volume of 2,500 tests per month for chemistry.",
+      "visibility": "INTERNAL"
+    }
+  ],
+  "icps": [
+    {
+      "name": "Multi-specialty Hospital Chains",
+      "description": "Private hospital groups with three or more hospitals, expanding capacity or standardising labs across sites, often after funding or acquisitions.",
+      "criteria": {
+        "industries": ["Hospitals"],
+        "companySize": { "minEmployees": 1000 },
+        "revenueBand": "INR 300 crore+",
+        "geographies": ["India", "UAE", "Bangladesh"],
+        "personas": ["Chief Medical Officer", "Head of Laboratory Services", "VP Procurement", "COO"],
+        "painPoints": ["Mixed analyzer fleet", "Capex for new hospitals", "Accreditation readiness"],
+        "keywords": ["new hospital", "beds", "acquisition", "accreditation", "oncology", "cardiac"]
+      }
+    },
+    {
+      "name": "Diagnostic Lab Chains & Home-Collection Players",
+      "description": "Lab chains, reference labs and home sample collection or telehealth companies scaling test volumes and needing automation and a cloud LIS.",
+      "criteria": {
+        "industries": ["Diagnostics", "Healthcare Services"],
+        "companySize": { "minEmployees": 200 },
+        "geographies": ["India", "Singapore", "Kenya"],
+        "personas": ["CEO", "Head of Laboratory", "Head of IT", "Head of Lab Partnerships"],
+        "painPoints": ["Turnaround time", "Manual verification", "Integration with booking apps"],
+        "keywords": ["home sample collection", "lab automation", "laboratory information system", "funding", "nabl accreditation"]
+      }
+    },
+    {
+      "name": "Government Health Programmes",
+      "description": "State health missions, medical services corporations and government medical colleges procuring diagnostics through tenders for district hospitals and PHCs.",
+      "criteria": {
+        "industries": ["Government", "Hospitals"],
+        "companySize": {},
+        "geographies": ["India"],
+        "personas": ["Managing Director", "General Manager – Equipment", "Deputy Director – Laboratory Services"],
+        "painPoints": ["Vendor uptime failures", "No central visibility of test volumes"],
+        "keywords": ["tender", "rfp", "district hospitals", "primary health centres", "health mission"]
+      }
+    }
+  ],
+  "customSignals": [
+    {
+      "name": "Home Sample Collection Expansion",
+      "description": "A lab chain, telehealth platform or startup launches or scales home sample collection, adding cities, phlebotomists or collection centres.",
+      "matchInstructions": "Match when a healthcare company launches home sample collection or at-home testing, expands it to new cities, or hires phlebotomists or opens collection centres at scale. Higher volumes drive demand for analyzer capacity, point-of-care kits and a LIS integrated with booking apps. Do NOT match veterinary or pet testing, nurse home-care visits without sample collection, or one-off health camps.",
+      "keywords": ["home sample collection", "home collection", "phlebotomists", "collection centres", "at-home testing", "doorstep"],
+      "negativeKeywords": ["veterinary", "pet", "health camp"],
+      "weight": 1.2,
+      "icpIndex": 1
+    },
+    {
+      "name": "Lab Automation & Digitisation",
+      "description": "A hospital or lab plans lab automation, a new laboratory information system, middleware or digitisation to cut turnaround time.",
+      "matchInstructions": "Match when a hospital, lab chain or public health lab announces plans or RFPs for lab automation lines, a new or cloud laboratory information system, instrument middleware, auto-verification or digitisation of lab workflows. Do NOT match radiology-only PACS projects, generic hospital EMR rollouts without a lab component, or IT outsourcing unrelated to laboratories.",
+      "keywords": ["lab automation", "laboratory information system", "digitisation", "middleware", "auto-verification", "turnaround time", "cloud laboratory"],
+      "negativeKeywords": ["pacs", "radiology only"],
+      "weight": 1.1,
+      "icpIndex": 1
+    }
+  ],
+  "users": [
+    { "name": "Ananya Raghunathan", "email": "admin@medisphere.local", "role": "ORG_ADMIN" },
+    { "name": "Rahul Venkatesh", "email": "sdr1@medisphere.local", "role": "SDR" },
+    { "name": "Fatima Siddiqui", "email": "sdr2@medisphere.local", "role": "SDR" },
+    { "name": "Joseph D'Souza", "email": "viewer@medisphere.local", "role": "VIEWER" }
+  ],
+  "documents": [
+    { "file": "brochure.md", "title": "MediSphere Solutions Brochure", "visibility": "PUBLIC", "asPdf": true },
+    { "file": "reagent-rental-pricing.md", "title": "Reagent Rental Pricing (Internal)", "visibility": "INTERNAL", "asPdf": true },
+    { "file": "case-study-lab-chain.md", "title": "Case Study: 40% Faster TAT for a Lab Chain", "visibility": "PUBLIC", "asPdf": false }
+  ]
+}

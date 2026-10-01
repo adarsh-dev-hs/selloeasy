@@ -1,0 +1,151 @@
+---
+title: BANT+ scoring
+description: How every lead gets an explainable 0–100 score — the six weighted dimensions, which are judged by the LLM and which are computed deterministically, score bands, age decay, the budget-guard heuristic and the "Why this score?" panel.
+---
+
+Every lead carries an explainable score from 0 to 100, built from six dimensions. Each dimension is scored 0–10
+with a one-sentence rationale, and the weighted sum is the total. Weights and thresholds live in
+`packages/shared/src/scoring.ts`. The math is in `packages/pipeline/src/scoring.ts`, and the orchestration
+(loading evidence, calling the LLM, persisting) in `packages/engine/src/scoring.ts`.
+
+## Dimensions and weights
+
+| Dimension           | Weight | Scored by               | How                                                                                              |
+| ------------------- | :----: | ----------------------- | ------------------------------------------------------------------------------------------------ |
+| **Budget**          |   20   | LLM (`lead.score-bant`) | Evidence the account can spend: funding, capex, investment amount, company scale.                |
+| **Authority**       |   15   | Deterministic           | Do we know a decision-maker at the account? Best contact's seniority plus a persona match bonus. |
+| **Need**            |   25   | LLM                     | How directly the evidence implies need for **this seller's** products.                           |
+| **Timeline**        |   15   | LLM                     | How soon a purchase is likely: explicit dates or quarters, launch schedules, recency.            |
+| **ICP fit**         |   15   | Deterministic           | Industry, geography and size overlap with the best-matching active ICP.                          |
+| **Signal strength** |   10   | Deterministic           | Weighted, confidence-adjusted, age-decayed sum over the supporting matches.                      |
+
+```text
+total = round( Σ over dimensions  weight × clamp(score, 0, 10) / 10 )      // 0–100
+```
+
+## Bands
+
+| Band   | Rule            |
+| ------ | --------------- |
+| `HOT`  | total ≥ 75      |
+| `WARM` | 50 ≤ total ≤ 74 |
+| `COLD` | total ≤ 49      |
+
+## Deterministic dimensions
+
+### Authority
+
+Every contact at the account is ranked by a title-to-seniority map. The best contact wins:
+
+| Title contains                                                                    | Seniority              | Base score |
+| --------------------------------------------------------------------------------- | ---------------------- | :--------: |
+| CEO, CFO, COO, CTO, CPO, CMO, Chief, Founder, Managing Director, President, Owner | C-level                |     8      |
+| EVP, SVP, VP, Vice President                                                      | VP                     |    7.5     |
+| Head, Director, General Manager, GM                                               | Director/Head          |    6.5     |
+| Manager, Lead, Principal                                                          | Manager                |    4.5     |
+| anything else                                                                     | Individual contributor |     3      |
+
+A contact whose title contains a word (longer than 3 letters) from any active ICP persona gets **+1**. With no
+contacts, authority is 1 ("No known contact at the account yet"). C-level is deliberately not the maximum: a VP
+or Head of the relevant function with a persona match (8.5) ranks at or above a generic C-level (8).
+
+### ICP fit
+
+The account is compared against every active ICP. The best total wins and becomes the lead's `icp_id`:
+
+| Criterion                                                                                               | Points |
+| ------------------------------------------------------------------------------------------------------- | :----: |
+| Account industry equals an ICP industry (case-insensitive)                                              |   5    |
+| …or one contains the other ("adjacent industry")                                                        |   3    |
+| HQ country matches ICP geographies (aliases, e.g. IN ↔ India / South Asia / APAC; "Global" matches all) |  2.5   |
+| Employees within `minEmployees`–`maxEmployees`                                                          |  2.5   |
+| …or at least half of `minEmployees` (and under the max)                                                 |   1    |
+
+With no active ICP the fit is a neutral **5**.
+
+### Signal strength and decay
+
+```text
+raw      = Σ over supporting matches ( signal.weight × match.confidence × decay(ageDays) )
+decay(d) = 0.5 ^ (d / 30)                  // half-life SIGNAL_HALF_LIFE_DAYS = 30
+strength = clamp(raw × 4.5, 0, 10)
+```
+
+A single fresh match with weight 1.5 and confidence 0.9 gives about 6.1. Two or three corroborating recent
+events reach the 10 cap. Old evidence fades: after 30 days a match counts half, after 60 days a quarter.
+
+A separate **recency score** (`10 × decay(age of the latest signal)`) is stored on the lead as `recency_score`
+for sorting and display. It is not part of the total.
+
+## LLM-judged dimensions
+
+The `lead.score-bant` prompt ([Prompts](/docs/pipeline/prompts#leadscore-bant-v1)) receives the seller's summary,
+products and target industries, the account (industry, size band, employees, description), known contact titles
+and up to **5** evidence events (newest first). It returns `budget`, `need` and `timeline`, each with a
+`score` (0–10) and a `rationale` (≤ 500 chars). The system prompt tells the model to be conservative: without
+evidence, score 3–5 and never invent facts. Output is validated with Zod, and a schema violation triggers one
+repair retry.
+
+## Heuristic fallback (budget guard)
+
+Each pipeline run has a budget of `PIPELINE_MAX_LLM_CALLS_PER_RUN` (default 60) **non-cached** LLM calls.
+Matching may use about 60% of it. Scoring gets what remains. When the budget runs out, the remaining leads are
+still scored, using a **deterministic heuristic** (the same logic as the mock prompt) instead of the LLM:
+
+- **Budget:** from company size band (1.5 to 7.5) or from the largest announced amount, normalized to USD
+  (log-scaled, up to 9.5).
+- **Need:** from average match confidence, number of supporting events and whether the account is in a target
+  industry (−2 if not).
+- **Timeline:** from the age of the newest evidence (5 if 14 days old or less, down to 2.5), +1.5 if the text
+  states an explicit timeline ("Q1 2027", "by end of 2026", "within 6 months"…).
+
+Every heuristic rationale ends with **"(heuristic — LLM budget reached; re-score to refine)"**, and the run
+finishes with status `PARTIAL`. Use **Re-score** on the lead (`POST /api/v1/leads/:id/rescore`) to replace the
+heuristic with a model judgement. In mock mode, every score comes from this logic, without the suffix.
+
+## When scores change
+
+- After each pipeline run, for every lead that received new evidence.
+- On demand via `POST /leads/:id/rescore` (audited as `lead.rescored` with before and after totals).
+- If a lead had a previous non-zero score and the total moves by **5 or more points**, a `SCORE_CHANGED`
+  activity ("Score 58 → 71") is added to the timeline.
+
+Changing a signal's `weight` or an ICP does not re-score existing leads by itself. The new values apply at the
+next (re)score.
+
+## "Why this score?"
+
+The lead detail page shows every dimension with its 0–10 score, its weight and its rationale, next to the
+evidence list (signal name, confidence, the match rationale, event title, source link, published date and amount).
+The API returns this as `LeadDetail.breakdown`:
+
+```json
+{
+  "budget": { "score": 7.4, "rationale": "Announced spend of ~$120M indicates allocated budget." },
+  "authority": {
+    "score": 8.5,
+    "rationale": "Priya Nair (VP Procurement) is VP and matches a target persona."
+  },
+  "need": {
+    "score": 7.9,
+    "rationale": "\"New vehicle launch\" signal (91% confidence) in a target industry; 2 supporting events."
+  },
+  "timeline": { "score": 6.5, "rationale": "Explicit timeline stated (Q1 2027); latest signal 9 days old." },
+  "icpFit": {
+    "score": 10,
+    "rationale": "Best ICP \"Vehicle OEMs…\" — matches industry Automotive, geography IN, company size."
+  },
+  "signalStrength": {
+    "score": 9.1,
+    "rationale": "2 supporting events across 2 signals (age-decayed, half-life 30d)."
+  }
+}
+```
+
+The list endpoint returns only the four BANT sub-scores (`bant.budget`, `bant.authority`, `bant.need`,
+`bant.timeline`) for the mini-bars on lead cards.
+
+<Callout type="info">
+  **Planned:** manual score override with a reason (audited), mentioned in plan §28. It is not implemented in
+  v0.1.
+</Callout>

@@ -1,0 +1,30 @@
+{
+  "name": "@selloeasy/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema/index.ts",
+    "./migrate": "./src/migrate.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx src/migrate.ts",
+    "db:reset": "tsx src/reset.ts && tsx src/migrate.ts",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@selloeasy/core": "workspace:*",
+    "@selloeasy/shared": "workspace:*",
+    "drizzle-orm": "^0.45.0",
+    "pg": "^8.16.0",
+    "uuidv7": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.0",
+    "drizzle-kit": "^0.31.0",
+    "tsx": "^4.20.0"
+  }
+}

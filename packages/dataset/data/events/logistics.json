@@ -1,0 +1,1335 @@
+[
+  {
+    "externalId": "log-001",
+    "source": "Deal Street Daily",
+    "url": "https://dealstreet-daily.example/2026/urbanthread-apparel-raises-180-crore-in-series-b-funding-to-scale-fulf",
+    "title": "UrbanThread Apparel raises ₹180 crore in Series B funding to scale fulfilment and private labels",
+    "body": "Bengaluru-based D2C fashion label UrbanThread Apparel has raised ₹180 crore in a Series B funding round led by Meridian Peak Ventures, with participation from existing investors Kestrel Capital and Northgate Partners. The company said roughly 40% of the fresh capital will go towards supply chain upgrades, including a larger fulfilment network in western India and faster returns processing. UrbanThread currently ships about 45,000 orders a day and expects that number to double within 18 months as it expands its denim and athleisure lines. \"Our customers now expect next-day delivery in the top 30 cities, and that is fundamentally a warehousing and automation problem,\" said co-founder and CEO Aakash Varma. The brand plans to move from manual pick-and-pack to goods-to-person automation and a new warehouse management system before the next festive season. Ritika Menon, VP Supply Chain, will lead the programme. The round values the company at an estimated ₹1,400 crore.",
+    "publishedDaysAgo": 6,
+    "industryTags": [
+      "E-commerce",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-urbanthread",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": 1800000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-002",
+    "source": "The Warehouse Wire",
+    "url": "https://warehousewire.example/2026/urbanthread-leases-2-1-lakh-sq-ft-fulfilment-centre-in-bhiwandi-target",
+    "title": "UrbanThread leases 2.1 lakh sq ft fulfilment centre in Bhiwandi, targets go-live by January",
+    "body": "UrbanThread Apparel has signed a nine-year lease for a 2.1 lakh sq ft fulfilment centre at Stackwell Warehousing Parks' Bhiwandi campus, weeks after closing its Series B round. The Grade A facility will have 18,000 pallet positions, a mezzanine for pick-faces and dedicated returns-processing lines, and is expected to go live in phases from January. The company said the warehouse will handle up to 90,000 orders a day at peak and will serve Mumbai, Pune, Gujarat and Madhya Pradesh. \"We are designing the site around automation from day one: sorters, autonomous mobile robots and a cloud WMS that talks to every marketplace we sell on,\" said Ritika Menon, VP Supply Chain at UrbanThread. The brand currently operates from two smaller third-party sites in Bengaluru and Gurugram, which will be converted into regional forward hubs. Tenders for material-handling equipment and warehouse software are expected to be floated in the coming weeks.",
+    "publishedDaysAgo": 3,
+    "industryTags": [
+      "E-commerce",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-urbanthread",
+        "role": "subject"
+      },
+      {
+        "key": "log-stackwell",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Bhiwandi, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-003",
+    "source": "Deal Street Daily",
+    "url": "https://dealstreet-daily.example/2026/glowroot-naturals-raises-22-million-series-c-to-expand-d2c-reach-and-s",
+    "title": "GlowRoot Naturals raises $22 million Series C to expand D2C reach and supply chain",
+    "body": "Skincare brand GlowRoot Naturals has closed a $22 million Series C funding round led by Arcadia Consumer Fund, with Brightwater Growth and existing investors participating. The Mumbai-based D2C company said it will use the growth capital to strengthen its supply chain, add regional inventory hubs, and deepen its presence on quick-commerce platforms, which now contribute a quarter of revenue. GlowRoot sells around 1.2 million units a month across 180 SKUs and plans to launch a haircare range later this year. \"Speed to shelf and speed to doorstep are now our biggest competitive levers,\" said COO Sneha Iyer. \"We will invest in warehouse automation and better demand planning so inventory sits closer to the customer.\" The company said it would also upgrade its order management and warehouse software to support multi-node fulfilment. GlowRoot was last valued at $95 million in its Series B round two years ago.",
+    "publishedDaysAgo": 12,
+    "industryTags": [
+      "E-commerce",
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-glowroot",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": 22000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-004",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/kiranadash-to-add-150-dark-stores-in-six-months-enters-three-new-citie",
+    "title": "KiranaDash to add 150 dark stores in six months, enters three new cities",
+    "body": "Quick-commerce startup KiranaDash plans to open 150 new dark stores over the next six months, taking its network to more than 420 sites across twelve cities. The company will enter Jaipur, Lucknow and Indore for the first time and densify coverage in Delhi NCR and Bengaluru. Each dark store will average 4,000 sq ft and stock about 6,500 SKUs, with larger 10,000 sq ft micro-fulfilment sites planned for high-demand zones. \"Our 10-minute delivery promise depends on picking accuracy and replenishment discipline at every store,\" said COO Vikram Sethi. KiranaDash said it is evaluating store-level automation, handheld-driven picking and a new routing engine for its rider fleet to keep average delivery times under 11 minutes. The company processes roughly 600,000 orders a day and says quick commerce now accounts for a fast-growing share of urban grocery spending. Neha Bansal, Director – Logistics Technology, is leading vendor selection for the rollout.",
+    "publishedDaysAgo": 9,
+    "industryTags": [
+      "E-commerce",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-kiranadash",
+        "role": "subject"
+      }
+    ],
+    "region": "Delhi NCR, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-005",
+    "source": "SupplyChain Pulse",
+    "url": "https://supplychain-pulse.example/2026/bazaarly-adds-three-sortation-hubs-and-12-000-seasonal-staff-ahead-of",
+    "title": "Bazaarly adds three sortation hubs and 12,000 seasonal staff ahead of festive season",
+    "body": "Online marketplace Bazaarly is adding three new sortation hubs in Lucknow, Patna and Nagpur and hiring 12,000 seasonal workers ahead of the festive season, when it expects order volumes to rise 2.5 times over normal weeks. The combined hubs span 6.5 lakh sq ft of warehouse space and will add sortation capacity of 1.8 million shipments a day, the company said. Bazaarly will also operate temporary warehousing in 14 Tier-2 cities to position fast-moving inventory closer to buyers. \"Peak season is where our network is truly stress-tested. This year we want 70% of festive orders delivered within 48 hours even in smaller towns,\" said Anand Raghavan, VP Supply Chain. The company said the new hubs will use automated cross-belt sorters and dimensioning systems, and it is piloting AI-driven route planning for last-mile partners. The seasonal hiring drive includes 2,000 women associates and training programmes for sorter operations.",
+    "publishedDaysAgo": 15,
+    "industryTags": [
+      "E-commerce",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-bazaarly",
+        "role": "subject"
+      }
+    ],
+    "region": "Lucknow, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-006",
+    "source": "The Warehouse Wire",
+    "url": "https://warehousewire.example/2026/trendwell-retail-to-invest-450-crore-in-3-5-lakh-sq-ft-automated-distr",
+    "title": "Trendwell Retail to invest ₹450 crore in 3.5 lakh sq ft automated distribution centre in Hosur",
+    "body": "Omnichannel retailer Trendwell Retail will invest ₹450 crore in a 3.5 lakh sq ft distribution centre in Hosur, its largest supply chain investment to date. The facility will serve 140 stores across Tamil Nadu, Karnataka and Kerala as well as online orders, replacing four smaller warehouses. Trendwell said the site will feature an automated storage and retrieval system with 30,000 pallet positions, a shuttle-based system for small items and an omnichannel pick module. Construction starts next month and the first phase is scheduled to open in the second quarter of next year. \"Consolidating into one highly automated distribution centre lets us replenish stores daily and ship online orders from the same inventory pool,\" said Chief Supply Chain Officer Suresh Natarajan. The retailer plans to select an automation integrator and a warehouse management system partner by the end of the year. Trendwell operates 380 stores nationwide.",
+    "publishedDaysAgo": 21,
+    "industryTags": [
+      "Retail",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-trendwell",
+        "role": "subject"
+      }
+    ],
+    "region": "Hosur, India",
+    "amount": 4500000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-007",
+    "source": "Coldchain Chronicle",
+    "url": "https://coldchain-chronicle.example/2026/harvestbowl-foods-commits-120-crore-to-frozen-snacks-line-and-8-000-pa",
+    "title": "HarvestBowl Foods commits ₹120 crore to frozen snacks line and 8,000-pallet cold storage",
+    "body": "Packaged foods company HarvestBowl Foods will invest ₹120 crore in a new frozen snacks production line and an adjacent cold storage facility at Sonipat, Haryana. The temperature-controlled warehouse will hold 8,000 pallets at minus 18 degrees and act as the hub for distribution to north India. HarvestBowl said frozen products now contribute 22% of revenue and are growing faster than its ambient range. The company has also signed Frostline Cold Logistics to run reefer transport from the hub to 60 distributors. \"Our cold chain has to be as reliable as our kitchen. We need real-time temperature visibility from the freezer to the retail chest,\" said Manoj Agarwal, VP Supply Chain. HarvestBowl plans to deploy IoT sensors across reefer trucks and distributor freezers and integrate them with its planning systems. Commercial production is expected to begin in March.",
+    "publishedDaysAgo": 18,
+    "industryTags": [
+      "FMCG",
+      "Cold Chain"
+    ],
+    "companies": [
+      {
+        "key": "log-harvestbowl",
+        "role": "subject"
+      },
+      {
+        "key": "log-frostline",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Sonipat, India",
+    "amount": 1200000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-008",
+    "source": "SupplyChain Pulse",
+    "url": "https://supplychain-pulse.example/2026/sundhara-consumer-products-to-build-5-lakh-sq-ft-mother-hub-in-nagpur",
+    "title": "Sundhara Consumer Products to build 5 lakh sq ft mother hub in Nagpur to consolidate depots",
+    "body": "FMCG major Sundhara Consumer Products will build a 5 lakh sq ft mother hub near Nagpur to consolidate nine depots in central India. The warehouse will hold 45,000 pallet positions and act as the primary distribution centre for home care, personal care and beverage products serving 1.2 lakh retail outlets. Sundhara said the move is part of a network redesign that will cut the number of depots nationwide from 42 to 26 over three years. \"Central India gives us a two-day reach to 70% of the country. The hub will be run on a single warehouse management system with automated sortation for secondary dispatch,\" said COO Rajesh Khanna. The company expects the facility to be operational within 14 months and has shortlisted logistics park developers along the Samruddhi Mahamarg. Meera Joshi, Director – Logistics Technology, said a transport management system for primary freight will be rolled out alongside the new hub.",
+    "publishedDaysAgo": 27,
+    "industryTags": [
+      "FMCG",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-sundhara",
+        "role": "subject"
+      }
+    ],
+    "region": "Nagpur, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-009",
+    "source": "The Warehouse Wire",
+    "url": "https://warehousewire.example/2026/movelinx-3pl-opens-1-2-million-sq-ft-multi-client-logistics-park-in-ch",
+    "title": "MoveLinx 3PL opens 1.2 million sq ft multi-client logistics park in Chakan",
+    "body": "Third-party logistics provider MoveLinx 3PL has opened a 1.2 million sq ft multi-client logistics park at Chakan near Pune, its largest facility in India. The Grade A campus comprises four warehouse blocks with 60,000 pallet positions, 140 dock doors and a dedicated e-commerce fulfilment centre for consumer brands. MoveLinx said three anchor clients from the automotive aftermarket, consumer durables and fashion segments have already signed on, with 70% of the space committed. \"Clients want flexible, shared infrastructure that they can scale up for peaks without long leases,\" said CEO Harpreet Singh. The company plans to deploy autonomous mobile robots in the fulfilment block and a multi-tenant warehouse management system that gives each client its own dashboards. MoveLinx currently manages 9 million sq ft of contract space and aims to cross 12 million sq ft by next year.",
+    "publishedDaysAgo": 33,
+    "industryTags": [
+      "Logistics",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-movelinx",
+        "role": "subject"
+      }
+    ],
+    "region": "Chakan, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-010",
+    "source": "Consumer Brands Today",
+    "url": "https://consumerbrands-today.example/2026/sundhara-consumer-products-appoints-former-3pl-executive-as-chief-supp",
+    "title": "Sundhara Consumer Products appoints former 3PL executive as Chief Supply Chain Officer",
+    "body": "Sundhara Consumer Products has appointed Vandana Rao as Chief Supply Chain Officer, effective next month. Rao joins from a leading contract logistics firm, where she led warehousing automation and transport programmes for consumer goods clients. At Sundhara she will oversee manufacturing logistics, depot network redesign and distribution to more than 1.2 lakh retail outlets. The company said the appointment is part of a three-year supply chain transformation plan that includes consolidating depots, digitising primary freight and introducing automated warehouses. \"Vandana has built networks at scale and knows how to make technology deliver on the ground,\" said Managing Director Anil Sarin. Rao will report directly to the MD and work closely with COO Rajesh Khanna and Director – Logistics Technology Meera Joshi. Industry observers expect the new leadership to accelerate vendor decisions on warehouse and transport software that had been pending since last year.",
+    "publishedDaysAgo": 36,
+    "industryTags": [
+      "FMCG",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-sundhara",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-011",
+    "source": "The Warehouse Wire",
+    "url": "https://warehousewire.example/2026/stackwell-warehousing-parks-to-develop-2-8-million-sq-ft-of-grade-a-wa",
+    "title": "Stackwell Warehousing Parks to develop 2.8 million sq ft of Grade A warehouse space around Chennai",
+    "body": "Logistics park developer Stackwell Warehousing Parks will invest ₹600 crore to develop 2.8 million sq ft of Grade A warehouse space across two campuses at Oragadam and Periyapalayam near Chennai. The first 1 million sq ft will be delivered within 15 months, with built-to-suit options for e-commerce, FMCG and 3PL tenants. Each campus will offer 12-metre clear heights, FM2-grade floors suitable for very narrow aisle racking and robotics, and pre-installed fibre for automation. \"Occupiers are asking for automation-ready buildings rather than empty sheds. Our logistics park designs now start from the robot and the rack,\" said COO Nikhil Mehra. Stackwell said it is also partnering with technology vendors to offer tenants plug-and-play warehouse management and yard management software. The developer currently has 11 million sq ft under management in six cities.",
+    "publishedDaysAgo": 24,
+    "industryTags": [
+      "Logistics",
+      "Real Estate"
+    ],
+    "companies": [
+      {
+        "key": "log-stackwell",
+        "role": "subject"
+      }
+    ],
+    "region": "Oragadam, India",
+    "amount": 6000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-012",
+    "source": "Harbour & Rail Review",
+    "url": "https://harbourrail-review.example/2026/kaveri-gateway-ports-adds-two-berths-lifting-container-terminal-capaci",
+    "title": "Kaveri Gateway Ports adds two berths, lifting container terminal capacity to 1.6 million TEU",
+    "body": "Kaveri Gateway Ports will invest ₹3,200 crore to add two deep-draft berths and expand its container terminal, raising annual capacity from 1 million TEU to 1.6 million TEU by 2028. The expansion includes six new ship-to-shore cranes, 18 rubber-tyred gantries and an automated gate complex with optical character recognition. The port also plans to extend its rail siding to handle double-stack container trains to hinterland markets. \"Shipping lines are bringing larger vessels to the east coast, and our port capacity must stay ahead of that curve,\" said COO Srinivas Rao. Kaveri Gateway said it will replace its legacy terminal operating system and invest in yard planning and truck appointment software to cut gate turnaround below 30 minutes. Priya Subramaniam, Head of Terminal Technology, said a request for proposals would be issued this quarter.",
+    "publishedDaysAgo": 8,
+    "industryTags": [
+      "Ports & Shipping",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-kaverigateway",
+        "role": "subject"
+      }
+    ],
+    "region": "Andhra Pradesh coast, India",
+    "amount": 3200000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-013",
+    "source": "Harbour & Rail Review",
+    "url": "https://harbourrail-review.example/2026/deccan-railport-icd-commissions-new-rail-siding-doubles-handling-capac",
+    "title": "Deccan Railport ICD commissions new rail siding, doubles handling capacity at Medchal",
+    "body": "Deccan Railport ICD has commissioned a new 1.5 km rail siding at its inland container depot in Medchal near Hyderabad, doubling handling capacity to 300,000 TEU a year. The ICD can now receive full-length container rakes from western ports directly, cutting transit times for importers in Telangana. The company also opened a 1.2 lakh sq ft container freight station and bonded storage shed within the terminal. \"Rail-connected dry port capacity in the Deccan has been a bottleneck for years,\" said Managing Director Venkat Reddy. The operator plans to add a second ICD near Aurangabad with access to the freight corridor under construction. Deccan Railport said it is modernising its yard operations with container tracking, a rake planning tool and a customer portal, and expects the new siding to handle 12 trains a week by December.",
+    "publishedDaysAgo": 30,
+    "industryTags": [
+      "Ports & Shipping",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-deccanrailport",
+        "role": "subject"
+      }
+    ],
+    "region": "Medchal, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-014",
+    "source": "Coldchain Chronicle",
+    "url": "https://coldchain-chronicle.example/2026/frostline-cold-logistics-to-add-12-temperature-controlled-hubs-and-400",
+    "title": "Frostline Cold Logistics to add 12 temperature-controlled hubs and 400 reefer trucks",
+    "body": "Frostline Cold Logistics will invest ₹250 crore over two years to add 12 temperature-controlled hubs and 400 reefer trucks, expanding its cold chain network to 30 cities. The new hubs, totalling 60,000 pallets, will be multi-temperature, with frozen, chilled and 2-8°C pharma chambers. Frostline said demand from dairy, ice cream, quick-service restaurants and vaccine distribution is outpacing capacity. \"Customers now ask for live temperature data per pallet, not a printout at delivery,\" said CEO Karthik Narayan. The company plans to fit every reefer and chamber with IoT sensors connected to a central control tower and adopt route optimisation software to reduce empty kilometres. Shalini Gupta, VP Operations, said the first four hubs in Kolkata, Ahmedabad, Kochi and Lucknow will open by March. Frostline currently operates 18 hubs and 650 trucks.",
+    "publishedDaysAgo": 5,
+    "industryTags": [
+      "Cold Chain",
+      "Logistics",
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-frostline",
+        "role": "subject"
+      }
+    ],
+    "region": "Pan-India",
+    "amount": 2500000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-015",
+    "source": "Coldchain Chronicle",
+    "url": "https://coldchain-chronicle.example/2026/remedix-pharma-distribution-opens-gdp-compliant-cold-chain-hub-in-ahme",
+    "title": "Remedix Pharma Distribution opens GDP-compliant cold chain hub in Ahmedabad",
+    "body": "Remedix Pharma Distribution has opened a GDP-compliant pharma distribution hub in Ahmedabad with 4,500 pallet positions, including 1,200 in 2-8°C chambers and a minus 20 degree freezer section for specialty biologics. The 90,000 sq ft facility will serve 9,000 pharmacies, hospitals and clinics in Gujarat and Rajasthan. Remedix said demand for insulin, vaccines and biologics has pushed temperature-controlled volumes up 38% year on year. \"Regulators and manufacturers expect continuous, auditable temperature records for every shipment,\" said COO Dr. Sanjay Kapoor. The distributor is deploying data loggers on insulated shippers and plans to connect its warehouse and last-mile fleet to a single monitoring platform. Remedix intends to replicate the model in Indore and Nagpur next year as part of its cold chain expansion plan.",
+    "publishedDaysAgo": 20,
+    "industryTags": [
+      "Pharma",
+      "Cold Chain"
+    ],
+    "companies": [
+      {
+        "key": "log-remedix",
+        "role": "subject"
+      }
+    ],
+    "region": "Ahmedabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-016",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/swiftbasket-to-open-80-dark-stores-in-pune-and-hyderabad-adds-pharmacy",
+    "title": "Swiftbasket to open 80 dark stores in Pune and Hyderabad, adds pharmacy to 10-minute delivery",
+    "body": "Quick-commerce app Swiftbasket will open 80 new dark stores in Pune and Hyderabad by March, including 20 larger micro-fulfilment sites of 8,000 sq ft that will stock pharmacy and electronics alongside groceries. The company said its 10-minute delivery promise now covers 85% of its serviceable pin codes. Swiftbasket processes about 220,000 orders a day and expects the expansion to lift that to 350,000. \"Assortment is expanding faster than store size, so every square foot has to work harder,\" said co-founder and COO Aditya Malhotra. The startup is piloting shelf-mounted pick-to-light systems and a new inventory engine that rebalances stock between dark stores overnight. Farah Siddiqui, Fulfilment Operations Manager, said the company will standardise store layouts and handheld workflows across all sites before the rollout.",
+    "publishedDaysAgo": 4,
+    "industryTags": [
+      "E-commerce",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-swiftbasket",
+        "role": "subject"
+      }
+    ],
+    "region": "Pune, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-017",
+    "source": "Deal Street Daily",
+    "url": "https://dealstreet-daily.example/2026/homenest-furnishings-raises-9-5-million-series-a-to-build-regional-ful",
+    "title": "HomeNest Furnishings raises $9.5 million Series A to build regional fulfilment network",
+    "body": "D2C furniture brand HomeNest Furnishings has raised $9.5 million in a Series A funding round led by Lantern Rock Capital, with angel investors from the consumer internet sector participating. The Bengaluru-based company sells modular sofas, mattresses and decor online and offers next-day delivery in five metros. HomeNest said the funding will be used to build regional fulfilment hubs in Delhi NCR and Mumbai, improve last-mile handling of bulky items and expand its product range. \"Furniture is a logistics business disguised as a design business,\" said founder and CEO Ishaan Chopra. \"Damage rates, delivery slots and installation scheduling decide whether customers come back.\" The brand currently ships about 2,500 orders a week and expects that to triple within a year. Tanvi Shah, Head of Supply Chain, is evaluating a warehouse management system and a transport platform capable of two-person delivery scheduling.",
+    "publishedDaysAgo": 14,
+    "industryTags": [
+      "E-commerce",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-homenest",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": 9500000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-018",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/voltcart-electronics-expands-same-day-delivery-to-40-cities-for-festiv",
+    "title": "VoltCart Electronics expands same-day delivery to 40 cities for festive season",
+    "body": "Consumer-electronics retailer VoltCart Electronics will expand same-day delivery to 40 cities for the festive season, up from 18 last year, as it prepares for order volumes three times normal levels. The chain is converting back rooms in 60 stores into ship-from-store nodes and adding four temporary warehousing sites in Delhi NCR, Mumbai, Bengaluru and Hyderabad. VoltCart also plans seasonal hiring of 1,500 delivery and installation staff. \"Televisions, refrigerators and air conditioners dominate the peak season, and customers want them installed the same day,\" said Gaurav Saxena, VP Supply Chain. The company is rolling out a route planning tool that combines delivery and installation appointments, and real-time tracking for customers. VoltCart said it expects festive sales to account for a third of annual revenue this year.",
+    "publishedDaysAgo": 10,
+    "industryTags": [
+      "Retail",
+      "Consumer Electronics"
+    ],
+    "companies": [
+      {
+        "key": "log-voltcart",
+        "role": "subject"
+      }
+    ],
+    "region": "Delhi NCR, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-019",
+    "source": "Coldchain Chronicle",
+    "url": "https://coldchain-chronicle.example/2026/gauvika-dairy-invests-85-crore-in-cold-storage-and-150-truck-reefer-fl",
+    "title": "Gauvika Dairy invests ₹85 crore in cold storage and 150-truck reefer fleet",
+    "body": "Farmer-owned dairy brand Gauvika Dairy will invest ₹85 crore to build a 6,000-tonne cold storage facility at Kolhapur and add 150 reefer trucks to its distribution fleet. The investment will support expansion of ice cream, paneer and flavoured milk into Karnataka and Goa. Gauvika said its cold chain currently loses around 3% of product value to temperature excursions, a figure it wants to halve within a year. \"Every degree matters in dairy. We need visibility on every truck and every retailer freezer,\" said COO Ramesh Patil. The company plans to fit trucks and 5,000 retailer freezers with IoT temperature monitors and adopt a transport management system for route optimisation across its 1,100 routes. Sunita Yadav, Head of Distribution, said a vendor will be selected by November.",
+    "publishedDaysAgo": 40,
+    "industryTags": [
+      "FMCG",
+      "Cold Chain"
+    ],
+    "companies": [
+      {
+        "key": "log-gauvika",
+        "role": "subject"
+      }
+    ],
+    "region": "Kolhapur, India",
+    "amount": 850000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-020",
+    "source": "Freight Ledger Asia",
+    "url": "https://freightledger-asia.example/2026/gulfbridge-trading-opens-45-million-re-export-hub-in-dubai-free-zone",
+    "title": "GulfBridge Trading opens $45 million re-export hub in Dubai free zone",
+    "body": "GulfBridge Trading has opened a $45 million re-export hub in the Khor Nahda Free Zone in Dubai, adding 420,000 sq ft of bonded and ambient warehouse space. The facility will consolidate consumer goods and packaged foods sourced from India, Thailand and Turkey for onward distribution to the GCC, East Africa and South Asia. GulfBridge said the new free zone warehouse will handle 25,000 pallets and allow customs-suspended storage for up to two years. \"Buyers in Africa want smaller, more frequent shipments. The hub lets us break bulk and re-export in days rather than weeks,\" said CEO Omar Al Mansoori. The company is implementing a customs-aware warehouse management system and a freight booking platform to manage multi-country documentation. Deepa Nair, Head of Warehousing, said automation for case picking will be added next year.",
+    "publishedDaysAgo": 16,
+    "industryTags": [
+      "Logistics",
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-gulfbridge",
+        "role": "subject"
+      }
+    ],
+    "region": "Dubai, UAE",
+    "amount": 45000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-021",
+    "source": "Freight Ledger Asia",
+    "url": "https://freightledger-asia.example/2026/straits-freightways-opens-bonded-warehouse-in-chennai-to-serve-india-a",
+    "title": "Straits Freightways opens bonded warehouse in Chennai to serve India–ASEAN cross-border trade",
+    "body": "Singapore-based Straits Freightways has opened a 250,000 sq ft bonded warehouse near Chennai to support rising cross-border trade between India and ASEAN markets under the free trade agreement framework. The facility offers customs-bonded storage, value-added services and consolidation for exporters and importers of electronics components, auto parts and processed food. Straits said shipments on its India–Singapore–Malaysia lanes have grown 34% this year. \"Manufacturers are building China-plus-one supply chains, and they need an export hub that moves goods in and out of customs quickly,\" said COO Daniel Tan. Early customers include organic food exporter TerraLeaf Organics. Mei Ling Goh, Director – Logistics Technology, said the company will integrate the site with its regional warehouse and freight systems and is exploring robotics for inbound sorting.",
+    "publishedDaysAgo": 22,
+    "industryTags": [
+      "Logistics",
+      "Electronics Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "log-straitsfreight",
+        "role": "subject"
+      },
+      {
+        "key": "log-terraleaf",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Singapore",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-022",
+    "source": "SupplyChain Pulse",
+    "url": "https://supplychain-pulse.example/2026/nusantara-commerce-raises-40-million-plans-three-fulfilment-centres-in",
+    "title": "Nusantara Commerce raises $40 million, plans three fulfilment centres in Java",
+    "body": "Indonesian online marketplace Nusantara Commerce has raised $40 million in a Series C funding round led by Equator Growth Partners, with participation from regional investors. The Jakarta-based company said half of the funding will be used to build three fulfilment centres in Greater Jakarta, Surabaya and Semarang, totalling 900,000 sq ft. The sites will support next-day delivery across Java and include automated sortation and goods-to-person picking. \"Sellers want us to hold inventory for them and deliver faster than they can on their own,\" said VP Supply Chain Budi Santoso. Nusantara currently fulfils about 30% of orders from its own warehouse network and aims to reach 60% within two years. The company also plans to extend its logistics services to third-party brands, and is evaluating warehouse management and transport platforms for the rollout.",
+    "publishedDaysAgo": 11,
+    "industryTags": [
+      "E-commerce",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-nusantara",
+        "role": "subject"
+      }
+    ],
+    "region": "Jakarta, Indonesia",
+    "amount": 40000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-023",
+    "source": "Coldchain Chronicle",
+    "url": "https://coldchain-chronicle.example/2026/siamfresh-retail-builds-automated-fresh-and-frozen-distribution-centre",
+    "title": "SiamFresh Retail builds automated fresh and frozen distribution centre outside Bangkok",
+    "body": "Thai supermarket operator SiamFresh Retail will build a 500,000 sq ft fresh and frozen distribution centre in Chachoengsao province east of Bangkok, with commissioning planned for late next year. The multi-temperature facility will include chilled, frozen and ambient zones, with 14,000 pallet positions in an automated frozen store operating at minus 25 degrees. SiamFresh said the investment, equivalent to about ₹120 crore, will support its 540 outlets and online grocery channel. \"Fresh is where supermarkets win or lose customers, and our cold chain must deliver twice a day to city stores,\" said Chief Supply Chain Officer Somchai Wongsakul. The retailer plans to deploy temperature monitoring across its fleet of 300 reefer trucks and replace its legacy warehouse software. Nattaya Srisuk, Head of Distribution Centres, is leading the automation tender.",
+    "publishedDaysAgo": 29,
+    "industryTags": [
+      "Retail",
+      "Cold Chain"
+    ],
+    "companies": [
+      {
+        "key": "log-siamfresh",
+        "role": "subject"
+      }
+    ],
+    "region": "Bangkok, Thailand",
+    "amount": 1200000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-024",
+    "source": "Freight Ledger Asia",
+    "url": "https://freightledger-asia.example/2026/thameside-home-retail-sets-up-india-export-hub-in-tiruppur-ahead-of-uk",
+    "title": "Thameside Home Retail sets up India export hub in Tiruppur ahead of UK trade deal",
+    "body": "UK homewares retailer Thameside Home Retail is setting up a consolidation and export hub in Tiruppur, Tamil Nadu, to capitalise on lower duties under the India–UK free trade agreement. The 150,000 sq ft facility, operated with a local logistics partner, will consolidate textiles, rugs and decor from more than 60 suppliers and ship full containers to the retailer's distribution centre in the Midlands. Thameside expects India-sourced volumes to rise 45% over two years. \"Duty savings only materialise if we can consolidate efficiently and clear customs without delays,\" said Oliver Bennett, Director of International Sourcing. The retailer plans to give suppliers access to a booking portal and purchase-order tracking, and wants cross-border visibility from factory gate to store shelf. Hannah Clarke, VP Supply Chain, said the hub will begin operations in the first quarter.",
+    "publishedDaysAgo": 45,
+    "industryTags": [
+      "Retail",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-thameside",
+        "role": "subject"
+      }
+    ],
+    "region": "Tiruppur, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-025",
+    "source": "Deal Street Daily",
+    "url": "https://dealstreet-daily.example/2026/pawpantry-raises-4-2-million-series-a-funding-to-expand-fresh-pet-food",
+    "title": "PawPantry raises $4.2 million Series A funding to expand fresh pet food delivery",
+    "body": "D2C pet-care brand PawPantry has raised $4.2 million in a Series A funding round led by Seedline Ventures, with existing investors Harbour Angels participating. The Gurugram-based company sells fresh and dry pet food through subscriptions and its own app in 14 cities. PawPantry said the funds will be used to set up chilled storage in four new cities, improve delivery reliability for its fresh range and expand its veterinary product line. \"Fresh pet food has a five-day shelf life, so our supply chain is as demanding as any dairy brand's,\" said founder and CEO Kunal Arora. The company ships around 60,000 orders a month and plans to double that in a year. Mansi Dutta, Fulfilment Operations Manager, said PawPantry is looking for a warehouse system that handles batch and expiry tracking and a delivery routing tool for subscription slots.",
+    "publishedDaysAgo": 19,
+    "industryTags": [
+      "E-commerce",
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-pawpantry",
+        "role": "subject"
+      }
+    ],
+    "region": "Gurugram, India",
+    "amount": 4200000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-026",
+    "source": "Freight Ledger Asia",
+    "url": "https://freightledger-asia.example/2026/terraleaf-organics-opens-export-hub-in-kochi-as-eu-free-trade-agreemen",
+    "title": "TerraLeaf Organics opens export hub in Kochi as EU free trade agreement talks advance",
+    "body": "Organic staples and spice maker TerraLeaf Organics has opened a 60,000 sq ft export hub in Kochi to handle rising shipments to Europe and the Middle East. The facility includes a fumigation unit, a quality lab and a customs clearance desk, and will consolidate produce from 14 farmer collectives in Kerala and Karnataka. TerraLeaf said export revenue grew 41% last year and now makes up more than half its sales. \"If the free trade agreement with the EU comes through, organic exports could double. We are building the infrastructure ahead of it,\" said COO Aravind Krishnan. The company plans to track every lot from farm to container and generate export documentation automatically. Nisha Thomas, Export Logistics Manager, said TerraLeaf is also evaluating a bonded warehouse partner in Rotterdam for cross-border distribution within Europe.",
+    "publishedDaysAgo": 38,
+    "industryTags": [
+      "FMCG",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-terraleaf",
+        "role": "subject"
+      }
+    ],
+    "region": "Kochi, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-027",
+    "source": "Deal Street Daily",
+    "url": "https://dealstreet-daily.example/2026/kiranadash-raises-120-million-series-d-to-fund-dark-store-expansion",
+    "title": "KiranaDash raises $120 million Series D to fund dark store expansion",
+    "body": "Quick-commerce startup KiranaDash has raised $120 million in a funding round led by Summit Arc Capital, with participation from existing investors, valuing the company at about $1.1 billion. The company said most of the capital will fund its dark store expansion to 420 sites and investments in supply chain technology, including automated replenishment, micro-fulfilment centres and a new rider routing engine. \"Quick commerce is now a logistics race. The winners will be those who run the tightest stores at the lowest cost per order,\" said COO Vikram Sethi. KiranaDash said it is also building regional mother warehouses to feed its dark stores and will hire 300 engineers over the next year. The startup processes roughly 600,000 orders a day and says it expects to reach operating breakeven in its top four cities by next summer.",
+    "publishedDaysAgo": 2,
+    "industryTags": [
+      "E-commerce",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-kiranadash",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": 120000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-028",
+    "source": "Consumer Brands Today",
+    "url": "https://consumerbrands-today.example/2026/bazaarly-appoints-former-fmcg-logistics-chief-as-vp-supply-chain-for-f",
+    "title": "Bazaarly appoints former FMCG logistics chief as VP Supply Chain for fulfilment network",
+    "body": "Online marketplace Bazaarly has appointed Rahul Mathur as Senior VP Supply Chain, responsible for its fulfilment network, sortation hubs and last-mile partnerships. Mathur joins from a consumer goods company where he headed logistics for a decade and led a large depot automation programme. He will report to the CEO and work alongside VP Supply Chain Anand Raghavan, who will focus on seller logistics. Bazaarly said the appointment signals the start of a supply chain transformation aimed at cutting cost per shipment by 20% over two years. \"Rahul brings deep operating experience in running high-volume networks with discipline,\" said CEO Meenakshi Rao. Industry analysts said the marketplace is expected to review its warehouse automation and transport software vendors as part of the transformation. Bazaarly handles about 1.1 million shipments a day.",
+    "publishedDaysAgo": 25,
+    "industryTags": [
+      "E-commerce",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-bazaarly",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-029",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/sundhara-consumer-products-ramps-depot-capacity-30-for-festive-season",
+    "title": "Sundhara Consumer Products ramps depot capacity 30% for festive season demand",
+    "body": "Sundhara Consumer Products is ramping up depot and transport capacity by 30% ahead of the festive season, when sales of home care, gifting packs and beverages typically peak. The FMCG major has added temporary warehousing of 8 lakh sq ft across 18 cities and contracted 1,200 additional trucks for the September–November window. Sundhara expects order volumes from distributors and modern trade to rise by about 35% during the peak season. \"Festive gifting packs are bulky and time-bound. If a pack reaches a store after the festival, it is a write-off,\" said COO Rajesh Khanna. The company is using a new demand-sensing model to position stock and is piloting a transport planning tool for load consolidation. Seasonal hiring of 3,000 warehouse workers is under way through its 3PL partners.",
+    "publishedDaysAgo": 7,
+    "industryTags": [
+      "FMCG",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-sundhara",
+        "role": "subject"
+      }
+    ],
+    "region": "Pan-India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-030",
+    "source": "The Warehouse Wire",
+    "url": "https://warehousewire.example/2026/glowroot-naturals-commissions-1-1-lakh-sq-ft-warehouse-in-gurugram-for",
+    "title": "GlowRoot Naturals commissions 1.1 lakh sq ft warehouse in Gurugram for north India",
+    "body": "Skincare brand GlowRoot Naturals has commissioned a 1.1 lakh sq ft warehouse in Gurugram's Pataudi Road cluster to serve north India, cutting delivery times to Delhi NCR, Punjab and Uttar Pradesh from three days to one. The facility has 9,000 pallet positions and a mezzanine for each-picking, and will handle both D2C and marketplace orders. GlowRoot said the site is designed to accommodate autonomous mobile robots in the second phase. \"Our north India orders were being shipped from Bhiwandi, which made next-day delivery impossible,\" said Faisal Qureshi, Head of Warehousing. The fulfilment centre will also process returns and run kitting for gift sets. GlowRoot plans a similar facility in Kolkata next year to serve the east.",
+    "publishedDaysAgo": 50,
+    "industryTags": [
+      "E-commerce",
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-glowroot",
+        "role": "subject"
+      }
+    ],
+    "region": "Gurugram, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-031",
+    "source": "Harbour & Rail Review",
+    "url": "https://harbourrail-review.example/2026/kaveri-gateway-ports-plans-multimodal-logistics-park-linked-to-freight",
+    "title": "Kaveri Gateway Ports plans multimodal logistics park linked to freight corridor",
+    "body": "Kaveri Gateway Ports will develop a 300-acre multimodal logistics park 40 km inland from its port, linked by a dedicated rail line to the upcoming east coast freight corridor. The ₹180 crore first phase includes a container yard, a rail siding capable of handling full rakes, and 500,000 sq ft of warehouse space for importers and exporters. The company is in talks with Deccan Railport ICD to run rail services between the park and its Medchal terminal. \"Port-led logistics parks reduce congestion at the gate and give shippers a one-stop hub,\" said COO Srinivas Rao. Kaveri Gateway said it will issue tenders for yard management, gate automation and warehouse operations software in the next two quarters. The park is expected to handle 400,000 TEU a year when fully built.",
+    "publishedDaysAgo": 60,
+    "industryTags": [
+      "Ports & Shipping",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-kaverigateway",
+        "role": "subject"
+      },
+      {
+        "key": "log-deccanrailport",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Andhra Pradesh, India",
+    "amount": 1800000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-032",
+    "source": "Coldchain Chronicle",
+    "url": "https://coldchain-chronicle.example/2026/frostline-cold-logistics-opens-reefer-export-hub-for-seafood-at-visakh",
+    "title": "Frostline Cold Logistics opens reefer export hub for seafood at Visakhapatnam",
+    "body": "Frostline Cold Logistics has opened a 5,000-tonne cold storage and pre-cooling facility near Visakhapatnam to serve seafood exporters on India's east coast. The facility includes blast freezers, a reefer container plug-in yard with 120 points and a customs examination area. Frostline said exporters of shrimp and fish lose significant value when frozen containers wait at the gate without power. \"We want to be the cold chain link between the processing plant and the vessel,\" said CEO Karthik Narayan. The hub will offer temperature data logs to buyers in the US, EU and Japan, which increasingly demand digital proof of cold chain integrity. Frostline plans a similar export facility in Tuticorin next year and is expanding its reefer fleet on east coast routes.",
+    "publishedDaysAgo": 55,
+    "industryTags": [
+      "Cold Chain",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-frostline",
+        "role": "subject"
+      }
+    ],
+    "region": "Visakhapatnam, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-033",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/trendwell-retail-adds-seasonal-hiring-and-sortation-capacity-for-peak",
+    "title": "Trendwell Retail adds seasonal hiring and sortation capacity for peak season sale",
+    "body": "Trendwell Retail is preparing for its biggest peak season yet, adding sortation capacity at two distribution centres and hiring 4,000 seasonal staff across stores and warehouses. The retailer expects online order volumes during its October sale season to be four times the monthly average, with ship-from-store fulfilment handling a quarter of orders. Trendwell has also leased 3 lakh sq ft of temporary warehousing in Bhiwandi and Gurugram. \"Every year the peak arrives earlier and lasts longer. We are building flex capacity that we can switch on and off,\" said Chief Supply Chain Officer Suresh Natarajan. The company is piloting wearable scanners and a labour management module to track productivity at its warehouses. Kavya Reddy, Head of Warehousing, said the retailer aims to dispatch 95% of online orders within 24 hours during the sale.",
+    "publishedDaysAgo": 1,
+    "industryTags": [
+      "Retail",
+      "E-commerce"
+    ],
+    "companies": [
+      {
+        "key": "log-trendwell",
+        "role": "subject"
+      }
+    ],
+    "region": "Pan-India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-034",
+    "source": "SupplyChain Pulse",
+    "url": "https://supplychain-pulse.example/2026/remedix-pharma-distribution-appoints-head-of-logistics-to-lead-network",
+    "title": "Remedix Pharma Distribution appoints Head of Logistics to lead network automation",
+    "body": "Remedix Pharma Distribution has appointed Kavita Bhonsle as Head of Logistics, a newly created role overseeing its 14 distribution centres and 600-vehicle delivery fleet. Bhonsle joins from a global consumer health company, where she led a warehouse automation and track-and-trace programme across South Asia. At Remedix she will drive a supply chain transformation that includes serialisation, automated picking for fast-moving medicines and real-time fleet visibility. \"Pharmacies expect twice-daily deliveries with zero errors. That demands systems, not heroics,\" said COO Dr. Sanjay Kapoor. Bhonsle will work with Head of Warehousing Ananya Bhatt on a network plan that could add three regional hubs by 2028. The distributor serves 28,000 pharmacies, hospitals and clinics across western and central India.",
+    "publishedDaysAgo": 13,
+    "industryTags": [
+      "Pharma",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-remedix",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-035",
+    "source": "SupplyChain Pulse",
+    "url": "https://supplychain-pulse.example/2026/brightcart-superstores-launches-quick-commerce-with-60-dark-stores-in",
+    "title": "BrightCart Superstores launches quick commerce with 60 dark stores in Chennai and Bengaluru",
+    "body": "Hypermarket chain BrightCart Superstores is entering quick commerce with 60 dark stores across Chennai and Bengaluru, promising 15-minute delivery on 5,000 grocery and household items. The retailer will convert back rooms in 20 of its stores into micro-fulfilment sites and open 40 standalone dark stores of about 3,500 sq ft each. A new 2 lakh sq ft distribution centre in Sriperumbudur will replenish both stores and dark stores. \"Our shoppers are already ordering on quick-commerce apps. We would rather serve them from our own network,\" said Prakash Iyengar, VP Supply Chain. BrightCart said it is selecting a store-picking app, a warehouse management system for the new distribution centre and a rider routing platform. The service will launch in phases from December.",
+    "publishedDaysAgo": 17,
+    "industryTags": [
+      "Retail",
+      "E-commerce"
+    ],
+    "companies": [
+      {
+        "key": "log-brightcart",
+        "role": "subject"
+      }
+    ],
+    "region": "Chennai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "log-036",
+    "source": "Consumer Brands Today",
+    "url": "https://consumerbrands-today.example/2026/harvestbowl-foods-scouting-sites-in-east-india-as-it-studies-regional",
+    "title": "HarvestBowl Foods scouting sites in east India as it studies regional growth",
+    "body": "HarvestBowl Foods is scouting potential sites in West Bengal and Odisha as it studies options for growing its presence in east India, according to people familiar with the matter. The company has not decided whether it will build a manufacturing unit, partner with a co-packer or rely on existing distributors, one person said. East India currently accounts for about 12% of HarvestBowl's sales, well below its share in the north and west. A company spokesperson declined to comment on specific locations but said HarvestBowl \"regularly reviews opportunities to serve consumers better across regions.\" The ready-to-cook and snacks maker has been expanding its product range and recently added millet-based breakfast options. Analysts said any east India decision is unlikely before the next financial year, as the company is focused on its current investments in the north.",
+    "publishedDaysAgo": 70,
+    "industryTags": [
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-harvestbowl",
+        "role": "subject"
+      }
+    ],
+    "region": "Kolkata, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-037",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/voltcart-electronics-pilots-drone-delivery-of-small-gadgets-in-jaipur",
+    "title": "VoltCart Electronics pilots drone delivery of small gadgets in Jaipur",
+    "body": "VoltCart Electronics has begun a limited pilot of drone delivery for small gadgets such as earphones, chargers and smartwatches in Jaipur. The trial covers a 5 km radius around one store and is limited to packages under 2 kg. The retailer said the pilot will run for three months, after which it will decide whether to scale it. \"We want to learn what customers value — speed, novelty or convenience — before we commit,\" said Rekha Menon, Fulfilment Operations Manager. VoltCart is working with a drone operator that holds the required aviation approvals. The company did not disclose the number of flights completed so far. Industry experts said drone delivery in India remains constrained by regulation, weather and payload limits, making it a niche option for now.",
+    "publishedDaysAgo": 62,
+    "industryTags": [
+      "Retail",
+      "Consumer Electronics"
+    ],
+    "companies": [
+      {
+        "key": "log-voltcart",
+        "role": "subject"
+      }
+    ],
+    "region": "Jaipur, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-038",
+    "source": "Consumer Brands Today",
+    "url": "https://consumerbrands-today.example/2026/pawpantry-tests-shop-in-shop-format-with-pet-clinics-in-bengaluru",
+    "title": "PawPantry tests shop-in-shop format with pet clinics in Bengaluru",
+    "body": "Pet-care brand PawPantry is testing a shop-in-shop format inside five veterinary clinics in Bengaluru, marking its first physical retail presence. The small counters stock dry food, treats and supplements and allow customers to sign up for subscriptions on the spot. PawPantry said the test is meant to understand whether offline touchpoints improve customer acquisition costs. \"Pet parents trust their vet more than any ad,\" said founder and CEO Kunal Arora. The company has not decided whether to expand the format to other cities. PawPantry currently sells mainly through its app and website and has been growing its subscriber base steadily. The results of the trial will be reviewed at the end of the quarter, the company said.",
+    "publishedDaysAgo": 85,
+    "industryTags": [
+      "E-commerce",
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-pawpantry",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-039",
+    "source": "Harbour & Rail Review",
+    "url": "https://harbourrail-review.example/2026/deccan-railport-icd-in-early-talks-with-state-for-land-near-aurangabad",
+    "title": "Deccan Railport ICD in early talks with state for land near Aurangabad",
+    "body": "Deccan Railport ICD is in early discussions with the Maharashtra government for land near Aurangabad, where it is considering a possible new facility, people aware of the talks said. The discussions are at a preliminary stage and no application has been filed. The operator, which runs terminals in Telangana and Maharashtra, has been studying cargo flows from the automotive and pharmaceutical clusters in the region. \"We look at many locations each year; only a few become projects,\" said Managing Director Venkat Reddy, declining to comment further. State officials said several logistics companies have shown interest in the area as road connectivity improves. A final decision is not expected for at least a year, the people said.",
+    "publishedDaysAgo": 95,
+    "industryTags": [
+      "Ports & Shipping"
+    ],
+    "companies": [
+      {
+        "key": "log-deccanrailport",
+        "role": "subject"
+      }
+    ],
+    "region": "Aurangabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-040",
+    "source": "SupplyChain Pulse",
+    "url": "https://supplychain-pulse.example/2026/gauvika-dairy-explores-entry-into-north-karnataka-through-distributor",
+    "title": "Gauvika Dairy explores entry into north Karnataka through distributor tie-ups",
+    "body": "Gauvika Dairy is exploring an entry into north Karnataka through tie-ups with local distributors, the company's management told a farmer cooperative meeting this week. The dairy brand, which sells milk, curd, paneer and ice cream in four states, is assessing demand in Belagavi, Dharwad and Vijayapura. \"We are studying the market carefully before we commit capital,\" said COO Ramesh Patil. Gauvika said any expansion would initially rely on existing distributor infrastructure rather than new company-owned facilities. The cooperative also discussed rising fodder prices and plans to increase procurement prices for farmers by one rupee per litre from next month. The company reported steady growth in value-added products over the last quarter.",
+    "publishedDaysAgo": 75,
+    "industryTags": [
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-gauvika",
+        "role": "subject"
+      }
+    ],
+    "region": "Belagavi, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-041",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/homenest-furnishings-trials-two-hour-delivery-on-small-decor-items-in",
+    "title": "HomeNest Furnishings trials two-hour delivery on small decor items in Bengaluru",
+    "body": "HomeNest Furnishings has started a trial of two-hour delivery on small decor items such as cushions, lamps and planters in parts of Bengaluru. The trial is limited to three neighbourhoods and uses a partner's bike fleet. The company said it wants to understand whether faster delivery on accessories increases basket sizes for its larger furniture orders. \"It's an experiment. If customers don't care, we'll stop,\" said founder and CEO Ishaan Chopra. HomeNest did not share order numbers from the trial. The brand's core business remains modular sofas and mattresses, which are delivered on scheduled slots with assembly. The company plans to review the trial results in eight weeks.",
+    "publishedDaysAgo": 68,
+    "industryTags": [
+      "E-commerce",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-homenest",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-042",
+    "source": "Freight Ledger Asia",
+    "url": "https://freightledger-asia.example/2026/thameside-home-retail-weighs-opening-a-sourcing-office-in-south-asia",
+    "title": "Thameside Home Retail weighs opening a sourcing office in South Asia",
+    "body": "UK homewares retailer Thameside Home Retail is weighing whether to open a sourcing office in South Asia to work more closely with suppliers of textiles and decor, its chief executive said at the company's investor day. The retailer currently relies on agents for much of its sourcing from the region. \"We are looking at the pros and cons of having our own people on the ground,\" the CEO said, adding that no decision has been made. Thameside has been under pressure from rising costs and weaker consumer spending in Britain. The company also outlined plans to refresh 40 stores and expand its own-brand ranges over the next two years. Analysts welcomed the focus on margins but said the plans lacked detail.",
+    "publishedDaysAgo": 110,
+    "industryTags": [
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-thameside",
+        "role": "subject"
+      }
+    ],
+    "region": "London, UK",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-043",
+    "source": "The Warehouse Wire",
+    "url": "https://warehousewire.example/2026/stackwell-warehousing-parks-in-talks-to-acquire-land-parcel-near-kolka",
+    "title": "Stackwell Warehousing Parks in talks to acquire land parcel near Kolkata",
+    "body": "Stackwell Warehousing Parks is in talks to acquire a 60-acre land parcel near Kolkata, according to two people familiar with the negotiations. The discussions are ongoing and could still fall through over pricing and title issues, they said. Stackwell, which has built its portfolio mainly in south and west India, has been looking to diversify geographically. A company spokesperson said the developer \"evaluates opportunities in all major consumption markets\" but did not confirm the talks. Land prices in the eastern corridor have risen sharply over the past two years as developers compete for sites along highways. Any project on the parcel would take at least 18 months to reach completion after acquisition, the people said.",
+    "publishedDaysAgo": 90,
+    "industryTags": [
+      "Logistics",
+      "Real Estate"
+    ],
+    "companies": [
+      {
+        "key": "log-stackwell",
+        "role": "subject"
+      }
+    ],
+    "region": "Kolkata, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-044",
+    "source": "Freight Ledger Asia",
+    "url": "https://freightledger-asia.example/2026/gulfbridge-trading-signs-exploratory-mou-with-east-african-distributor",
+    "title": "GulfBridge Trading signs exploratory MoU with East African distributor",
+    "body": "GulfBridge Trading has signed a non-binding memorandum of understanding with a Nairobi-based consumer goods distributor to explore a partnership in East Africa. The MoU covers joint market studies, possible co-branding of packaged foods and shared marketing, the companies said. No financial terms were disclosed and neither side has committed to investments. \"Africa is a long-term opportunity for us, and we want to understand it with a strong local partner,\" said CEO Omar Al Mansoori. GulfBridge said it would decide on next steps after a six-month study period. The Dubai-based trading house distributes packaged foods and household goods in the GCC and South Asia.",
+    "publishedDaysAgo": 120,
+    "industryTags": [
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-gulfbridge",
+        "role": "subject"
+      }
+    ],
+    "region": "Nairobi, Kenya",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-045",
+    "source": "SupplyChain Pulse",
+    "url": "https://supplychain-pulse.example/2026/straits-freightways-pilots-digital-booking-platform-with-ten-shippers",
+    "title": "Straits Freightways pilots digital booking platform with ten shippers",
+    "body": "Straits Freightways has begun piloting a digital freight booking platform with ten shippers in Singapore and Malaysia, allowing them to get instant quotes, book space and track shipments online. The pilot will run for four months before the forwarder decides on a wider rollout. \"We want to see how customers actually use it before building more features,\" said Mei Ling Goh, Director – Logistics Technology. The platform was developed in-house and integrates with the company's existing accounting systems. Straits said early feedback has been positive, though some customers still prefer to book by phone for complex shipments. The forwarder handles ocean and air freight across Southeast Asia and India.",
+    "publishedDaysAgo": 100,
+    "industryTags": [
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-straitsfreight",
+        "role": "subject"
+      }
+    ],
+    "region": "Singapore",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "log-046",
+    "source": "Consumer Brands Today",
+    "url": "https://consumerbrands-today.example/2026/glowroot-naturals-signs-film-actor-tara-mehta-as-brand-ambassador",
+    "title": "GlowRoot Naturals signs film actor Tara Mehta as brand ambassador",
+    "body": "Skincare brand GlowRoot Naturals has signed film actor Tara Mehta as its brand ambassador for a two-year campaign promoting its vitamin C and sunscreen range. The campaign, titled \"Glow Your Way\", will run across television, streaming platforms and social media, and features the actor in a series of short films shot in Goa. \"Tara represents the confident, modern Indian woman who cares about what goes on her skin,\" said a GlowRoot marketing executive. The brand said it will also launch a limited-edition gift box designed with the actor. Mehta, who has appeared in several recent hit films, said she has used the brand's products for years. Financial terms of the endorsement were not disclosed.",
+    "publishedDaysAgo": 40,
+    "industryTags": [
+      "E-commerce",
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-glowroot",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-047",
+    "source": "Consumer Brands Today",
+    "url": "https://consumerbrands-today.example/2026/sundhara-consumer-products-reports-9-rise-in-quarterly-net-profit-on-r",
+    "title": "Sundhara Consumer Products reports 9% rise in quarterly net profit on rural recovery",
+    "body": "Sundhara Consumer Products reported a 9% rise in net profit for the quarter, helped by a recovery in rural demand and softer raw material costs. Revenue grew 7% year on year, with home care leading the gains and beverages flat due to an unseasonal monsoon. Gross margins expanded by 120 basis points. \"Rural consumption is clearly improving, and our premium launches are gaining traction in cities,\" Managing Director Anil Sarin said on the earnings call. The company declared an interim dividend and said advertising spending would stay elevated to support new launches. Shares of Sundhara rose 2% after the results. Analysts said valuation remains rich but noted steady execution across categories.",
+    "publishedDaysAgo": 58,
+    "industryTags": [
+      "FMCG"
+    ],
+    "companies": [
+      {
+        "key": "log-sundhara",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-048",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/consumer-commission-orders-bazaarly-to-compensate-buyer-over-counterfe",
+    "title": "Consumer commission orders Bazaarly to compensate buyer over counterfeit headphones",
+    "body": "A district consumer commission in New Delhi has directed Bazaarly Marketplace to pay ₹75,000 in compensation to a buyer who received counterfeit headphones through the platform. The commission held that the marketplace could not escape liability by claiming it was merely an intermediary, noting that it had promoted the listing in its deals section. Bazaarly said it would study the order and consider an appeal. \"We have strict policies against counterfeit products and remove offending sellers promptly,\" a company spokesperson said. Consumer rights advocates said the order adds to a growing body of decisions holding online platforms accountable for seller conduct. The seller involved has been delisted, according to the company.",
+    "publishedDaysAgo": 48,
+    "industryTags": [
+      "E-commerce"
+    ],
+    "companies": [
+      {
+        "key": "log-bazaarly",
+        "role": "subject"
+      }
+    ],
+    "region": "New Delhi, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-049",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/trendwell-retail-wins-store-design-award-for-its-mumbai-flagship",
+    "title": "Trendwell Retail wins store design award for its Mumbai flagship",
+    "body": "Trendwell Retail's flagship store in Mumbai's Lower Parel has won the gold award for store design at an annual retail design ceremony. The jury praised the store's use of natural materials, flexible fixtures and a café that doubles as an event space. Trendwell said the flagship has become its highest-grossing store per square metre since opening. \"We wanted a space where people linger, not just shop,\" said the company's head of visual merchandising. The retailer plans to apply elements of the design to 20 store refurbishments over the next two years. Other winners included a bookstore chain and a luxury watch boutique.",
+    "publishedDaysAgo": 130,
+    "industryTags": [
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-trendwell",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-050",
+    "source": "Consumer Brands Today",
+    "url": "https://consumerbrands-today.example/2026/urbanthread-apparel-launches-recycled-denim-collection-with-artisan-co",
+    "title": "UrbanThread Apparel launches recycled denim collection with artisan collective",
+    "body": "UrbanThread Apparel has launched a recycled denim collection made in partnership with an artisan collective in Kutch, featuring hand-embroidered jackets, jeans and tote bags. The brand said each piece uses at least 60% recycled cotton and natural indigo dyes. A share of proceeds will go towards skill-development programmes for women artisans. \"Sustainability has to be designed in, not marketed on,\" said co-founder and CEO Aakash Varma. The collection is priced between ₹1,999 and ₹6,499 and is available on the brand's app and website. UrbanThread said it plans to release two more collaborative capsules this year.",
+    "publishedDaysAgo": 35,
+    "industryTags": [
+      "E-commerce",
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-urbanthread",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-051",
+    "source": "Harbour & Rail Review",
+    "url": "https://harbourrail-review.example/2026/kaveri-gateway-ports-plants-50-000-mangroves-in-coastal-restoration-dr",
+    "title": "Kaveri Gateway Ports plants 50,000 mangroves in coastal restoration drive",
+    "body": "Kaveri Gateway Ports has planted 50,000 mangrove saplings along a 12 km stretch of the Andhra Pradesh coastline as part of a coastal restoration programme with local fishing communities. The company said the mangroves will help protect against erosion and storm surges and support fish breeding grounds. Villagers were trained and paid to plant and maintain the saplings over three years. \"Healthy coastlines are good for communities and for the environment,\" said COO Srinivas Rao. The programme is part of the company's wider sustainability commitments, which include a target to reduce emissions intensity. A local environmental group said it would monitor survival rates of the saplings.",
+    "publishedDaysAgo": 150,
+    "industryTags": [
+      "Ports & Shipping"
+    ],
+    "companies": [
+      {
+        "key": "log-kaverigateway",
+        "role": "subject"
+      }
+    ],
+    "region": "Andhra Pradesh, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-052",
+    "source": "SupplyChain Pulse",
+    "url": "https://supplychain-pulse.example/2026/movelinx-3pl-wins-national-workplace-safety-award-for-second-year",
+    "title": "MoveLinx 3PL wins national workplace safety award for second year",
+    "body": "MoveLinx 3PL has won a national workplace safety award for the second consecutive year, recognising its zero-fatality record and training programmes for forklift operators and truck drivers. The jury noted the company's near-miss reporting culture and regular safety audits across its sites. \"Safety is the first item on every shift briefing,\" said CEO Harpreet Singh. MoveLinx said it trained more than 8,000 employees and contract workers on safety practices last year. The award ceremony was held in New Delhi and attended by industry leaders and government officials. The company said it would share its safety practices with smaller logistics firms through an industry association.",
+    "publishedDaysAgo": 80,
+    "industryTags": [
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "log-movelinx",
+        "role": "subject"
+      }
+    ],
+    "region": "Pune, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-053",
+    "source": "Consumer Brands Today",
+    "url": "https://consumerbrands-today.example/2026/kiranadash-becomes-official-sponsor-of-city-cricket-league",
+    "title": "KiranaDash becomes official sponsor of city cricket league",
+    "body": "KiranaDash has signed on as the official sponsor of a popular city cricket league in Bengaluru for the next three seasons. The company's logo will appear on team jerseys and stadium boundaries, and it will run in-app contests for fans during matches. \"Cricket is where our customers spend their evenings, and we want to be part of those moments,\" said a KiranaDash marketing head. The league features eight teams and draws large crowds and streaming audiences. Financial details of the sponsorship were not disclosed. KiranaDash has been increasing its brand spending as competition in its category intensifies.",
+    "publishedDaysAgo": 45,
+    "industryTags": [
+      "E-commerce"
+    ],
+    "companies": [
+      {
+        "key": "log-kiranadash",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-054",
+    "source": "SupplyChain Pulse",
+    "url": "https://supplychain-pulse.example/2026/remedix-board-approves-interim-dividend-and-bonus-issue-for-shareholde",
+    "title": "Remedix board approves interim dividend and bonus issue for shareholders",
+    "body": "The board of Remedix has approved an interim dividend of ₹4 per share and a 1:1 bonus issue, the company said in a stock exchange filing. The record date for the dividend has been set for next month. Remedix also announced that it had renewed its credit rating at a stable outlook. \"The bonus issue reflects our confidence in the business and rewards long-term shareholders,\" the company's chief financial officer said. Remedix reported a 12% rise in revenue in the last financial year. Shares of the company rose 4% following the announcement.",
+    "publishedDaysAgo": 65,
+    "industryTags": [
+      "Pharma"
+    ],
+    "companies": [
+      {
+        "key": "log-remedix",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-055",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/siamfresh-retail-relaunches-loyalty-programme-with-partner-airline-mil",
+    "title": "SiamFresh Retail relaunches loyalty programme with partner airline miles",
+    "body": "SiamFresh Retail has relaunched its loyalty programme, allowing members to convert points into airline miles with a regional carrier and earn bonus points on healthy-food purchases. The supermarket operator said its loyalty base has grown to 6.5 million members, who account for 70% of sales. The new programme also introduces personalised offers in the SiamFresh app. \"Our members want rewards that feel meaningful, such as a holiday,\" said the company's chief marketing officer. The relaunch is supported by a nationwide advertising campaign featuring a popular Thai comedian. SiamFresh said it expects the programme to lift visit frequency by 8%.",
+    "publishedDaysAgo": 55,
+    "industryTags": [
+      "Retail"
+    ],
+    "companies": [
+      {
+        "key": "log-siamfresh",
+        "role": "subject"
+      }
+    ],
+    "region": "Bangkok, Thailand",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "log-056",
+    "source": "Coldchain Chronicle",
+    "url": "https://coldchain-chronicle.example/2026/frostline-and-medhavi-hospitals-build-vaccine-cold-chain-hub-in-jaipur",
+    "title": "Frostline and Medhavi Hospitals build vaccine cold chain hub in Jaipur",
+    "body": "Frostline Cold Logistics and Medhavi Hospitals Group will jointly build a ₹65 crore vaccine and biologics cold chain hub in Jaipur to serve Medhavi's 24 hospitals and 140 clinics across north and west India. The facility will have 2-8°C and minus 20 degree chambers, ultra-low freezers for specialty therapies and a dispatch area for insulated shippers. Frostline will operate the hub and a dedicated fleet of 40 temperature-controlled vans. \"Hospitals increasingly depend on complex biologics that cannot tolerate a single excursion,\" said Medhavi COO Dr. Alok Verma. The hospital group will also use the facility to stock critical oncology drugs and blood products. Frostline CEO Karthik Narayan said the site will feature continuous IoT monitoring and alarm escalation, with data shared directly with hospital pharmacies. Operations are expected to begin in April.",
+    "publishedDaysAgo": 10,
+    "industryTags": [
+      "Cold Chain",
+      "Hospitals",
+      "Pharma"
+    ],
+    "companies": [
+      {
+        "key": "log-frostline",
+        "role": "subject"
+      },
+      {
+        "key": "log-medhavi",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Jaipur, India",
+    "amount": 650000000,
+    "currency": "INR",
+    "kind": "cross"
+  },
+  {
+    "externalId": "log-057",
+    "source": "Freight Ledger Asia",
+    "url": "https://freightledger-asia.example/2026/movelinx-3pl-orders-400-electric-delivery-vans-for-urban-distribution",
+    "title": "MoveLinx 3PL orders 400 electric delivery vans for urban distribution",
+    "body": "MoveLinx 3PL has placed an order for 400 electric light commercial vans to be deployed on urban distribution routes in Delhi NCR, Mumbai, Pune and Bengaluru over the next nine months. The vans, with a payload of 1 tonne and a range of about 170 km, will replace diesel vehicles on routes serving retail, e-commerce and consumer brand clients. MoveLinx said it will install 120 fast chargers at its city hubs and use telematics to plan charging around delivery schedules. \"Clients increasingly ask us for zero-emission urban delivery, and the total cost of ownership now works in our favour,\" said CEO Harpreet Singh. The company also plans to trial electric trucks on shorter line-haul routes next year. MoveLinx currently operates about 2,200 vehicles through owned and partner fleets.",
+    "publishedDaysAgo": 23,
+    "industryTags": [
+      "Logistics",
+      "Electric Vehicles",
+      "Commercial Vehicles",
+      "Fleet & Mobility"
+    ],
+    "companies": [
+      {
+        "key": "log-movelinx",
+        "role": "subject"
+      }
+    ],
+    "region": "Pan-India",
+    "amount": null,
+    "currency": null,
+    "kind": "cross"
+  },
+  {
+    "externalId": "log-058",
+    "source": "The Warehouse Wire",
+    "url": "https://warehousewire.example/2026/stackwell-to-build-solar-powered-logistics-park-with-battery-storage-n",
+    "title": "Stackwell to build solar-powered logistics park with battery storage near Hosur",
+    "body": "Stackwell Warehousing Parks will develop a 1.5 million sq ft logistics park near Hosur that will run largely on rooftop solar power backed by battery energy storage. The park's warehouse roofs will host 9 MW of solar panels, and a 12 MWh battery system will supply night-time operations and charging for electric trucks. Stackwell said the design will cut tenants' electricity costs by about 30% and help them meet sustainability goals. \"Occupiers now ask about carbon and power reliability before they ask about rent,\" said COO Nikhil Mehra. The first two buildings, totalling 600,000 sq ft, will be ready within a year, and the developer is in talks with e-commerce and electronics tenants. The park will also include EV charging bays and rainwater harvesting.",
+    "publishedDaysAgo": 32,
+    "industryTags": [
+      "Logistics",
+      "Renewable Energy",
+      "Real Estate"
+    ],
+    "companies": [
+      {
+        "key": "log-stackwell",
+        "role": "subject"
+      }
+    ],
+    "region": "Hosur, India",
+    "amount": null,
+    "currency": null,
+    "kind": "cross"
+  },
+  {
+    "externalId": "log-059",
+    "source": "Freight Ledger Asia",
+    "url": "https://freightledger-asia.example/2026/straits-freightways-to-build-electronics-bonded-warehouse-near-dholera",
+    "title": "Straits Freightways to build electronics bonded warehouse near Dholera chip fab cluster",
+    "body": "Straits Freightways will build a 200,000 sq ft bonded warehouse near the semiconductor fabrication cluster in Dholera, Gujarat, to store imported wafers, chemicals, spare parts and tooling for chip makers and electronics assemblers. The facility will include cleanroom-grade storage zones, humidity and electrostatic controls, and customs-bonded areas that allow duty-deferred storage. \"Fabs cannot afford a missing spare part. They need a local stock point with the discipline of a pharma warehouse,\" said COO Daniel Tan. The forwarder said the site will also handle export consolidation for finished electronic modules. Operations are expected to start in the second half of next year, with dedicated air freight connections through Ahmedabad.",
+    "publishedDaysAgo": 42,
+    "industryTags": [
+      "Logistics",
+      "Semiconductors",
+      "Electronics Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "log-straitsfreight",
+        "role": "subject"
+      }
+    ],
+    "region": "Dholera, India",
+    "amount": null,
+    "currency": null,
+    "kind": "cross"
+  },
+  {
+    "externalId": "log-060",
+    "source": "Retail Circuit",
+    "url": "https://retailcircuit.example/2026/swiftbasket-to-deploy-3-000-electric-scooters-for-dark-store-riders",
+    "title": "Swiftbasket to deploy 3,000 electric scooters for dark store riders",
+    "body": "Quick-commerce app Swiftbasket will deploy 3,000 electric scooters across its dark stores in Pune, Hyderabad and Chennai over the next six months, in partnership with a two-wheeler leasing company. Riders will get the scooters on a daily rental model and access to battery-swapping stations located at or near dark stores. Swiftbasket said electric scooters will help cut per-delivery costs by about 25% compared with petrol bikes. \"Our riders cover 80 to 100 km a day in short hops, which is ideal for electric two-wheelers,\" said co-founder and COO Aditya Malhotra. The company aims to make 70% of its fleet electric by the end of next year. Swiftbasket processes about 220,000 orders a day.",
+    "publishedDaysAgo": 27,
+    "industryTags": [
+      "E-commerce",
+      "Electric Vehicles",
+      "Two-Wheelers"
+    ],
+    "companies": [
+      {
+        "key": "log-swiftbasket",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "cross"
+  }
+]

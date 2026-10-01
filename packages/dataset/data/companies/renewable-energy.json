@@ -1,0 +1,854 @@
+[
+  {
+    "key": "ren-tharline-sunfields",
+    "name": "Tharline Sunfields Ltd",
+    "domain": "tharline-sunfields.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 640,
+    "description": "Independent power producer developing utility-scale solar and solar-plus-storage parks across Rajasthan and Gujarat, with 2.1 GW operational and under construction.",
+    "contacts": [
+      {
+        "name": "Rohan Mehtani",
+        "title": "VP Projects",
+        "persona": "Project Execution Head",
+        "seniority": "VP",
+        "email": "rohan.mehtani@tharline-sunfields.example",
+        "phone": "+919000030107",
+        "whatsapp": "+919000030107",
+        "linkedinUrl": "https://linkedin.example/in/rohan-mehtani-tharli"
+      },
+      {
+        "name": "Farzana Qureshi",
+        "title": "Chief Procurement Officer",
+        "persona": "Procurement Decision Maker",
+        "seniority": "C-Level",
+        "email": "farzana.qureshi@tharline-sunfields.example",
+        "phone": "+919000030114",
+        "whatsapp": "+919000030114",
+        "linkedinUrl": "https://linkedin.example/in/farzana-qureshi-tharli"
+      }
+    ]
+  },
+  {
+    "key": "ren-kaveri-greenpower",
+    "name": "Kaveri Greenpower Ltd",
+    "domain": "kaveri-greenpower.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 480,
+    "description": "Bengaluru-based IPP with a solar, wind and hybrid portfolio in Karnataka, Tamil Nadu and Andhra Pradesh, increasingly bidding storage-linked capacity.",
+    "contacts": [
+      {
+        "name": "Anand Sreenivasan",
+        "title": "Director – Energy Infrastructure",
+        "persona": "Technical Evaluator",
+        "seniority": "Director",
+        "email": "anand.sreenivasan@kaveri-greenpower.example",
+        "phone": "+919000030121",
+        "whatsapp": "+919000030121",
+        "linkedinUrl": "https://linkedin.example/in/anand-sreenivasan-kaveri"
+      },
+      {
+        "name": "Meera Kulkarni",
+        "title": "Head of Procurement",
+        "persona": "Procurement Decision Maker",
+        "seniority": "Director",
+        "email": "meera.kulkarni@kaveri-greenpower.example",
+        "phone": "+919000030128",
+        "whatsapp": "+919000030128",
+        "linkedinUrl": "https://linkedin.example/in/meera-kulkarni-kaveri"
+      }
+    ]
+  },
+  {
+    "key": "ren-vindhya-solar-epc",
+    "name": "Vindhya Solar EPC Pvt Ltd",
+    "domain": "vindhya-solar-epc.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2300,
+    "description": "Engineering, procurement and construction contractor for ground-mount solar parks and hybrid plants, executing roughly 1.5 GW a year for IPPs and PSUs.",
+    "contacts": [
+      {
+        "name": "Karthik Rajan",
+        "title": "VP Projects",
+        "persona": "Project Execution Head",
+        "seniority": "VP",
+        "email": "karthik.rajan@vindhya-solar-epc.example",
+        "phone": "+919000030135",
+        "whatsapp": "+919000030135",
+        "linkedinUrl": "https://linkedin.example/in/karthik-rajan-vindhy"
+      },
+      {
+        "name": "Sunita Bhargava",
+        "title": "Head of Supply Chain",
+        "persona": "Procurement Decision Maker",
+        "seniority": "Director",
+        "email": "sunita.bhargava@vindhya-solar-epc.example",
+        "phone": "+919000030142",
+        "whatsapp": "+919000030142",
+        "linkedinUrl": "https://linkedin.example/in/sunita-bhargava-vindhy"
+      },
+      {
+        "name": "Imran Sheikh",
+        "title": "Design Manager – Electrical",
+        "persona": "Technical Evaluator",
+        "seniority": "Manager",
+        "email": "imran.sheikh@vindhya-solar-epc.example",
+        "phone": "+919000030149",
+        "whatsapp": "+919000030149",
+        "linkedinUrl": "https://linkedin.example/in/imran-sheikh-vindhy"
+      }
+    ]
+  },
+  {
+    "key": "ren-meridian-infraworks",
+    "name": "Meridian Infraworks Ltd",
+    "domain": "meridian-infraworks.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3100,
+    "description": "Diversified infrastructure EPC firm with a growing renewables division building solar, substation and transmission packages in central and western India.",
+    "contacts": [
+      {
+        "name": "Pradeep Nair",
+        "title": "Director – Renewables EPC",
+        "persona": "Project Execution Head",
+        "seniority": "Director",
+        "email": "pradeep.nair@meridian-infraworks.example",
+        "phone": "+919000030156",
+        "whatsapp": "+919000030156",
+        "linkedinUrl": "https://linkedin.example/in/pradeep-nair-meridi"
+      },
+      {
+        "name": "Leena Dsouza",
+        "title": "Chief Procurement Officer",
+        "persona": "Procurement Decision Maker",
+        "seniority": "C-Level",
+        "email": "leena.dsouza@meridian-infraworks.example",
+        "phone": "+919000030163",
+        "whatsapp": "+919000030163",
+        "linkedinUrl": "https://linkedin.example/in/leena-dsouza-meridi"
+      }
+    ]
+  },
+  {
+    "key": "ren-sabarmati-weaves",
+    "name": "Sabarmati Weaves Ltd",
+    "domain": "sabarmati-weaves.example",
+    "industry": "Manufacturing",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 7200,
+    "description": "Vertically integrated textile manufacturer with spinning, weaving and processing plants around Ahmedabad and Surat, exporting to Europe and the US.",
+    "contacts": [
+      {
+        "name": "Hetal Parikh",
+        "title": "Head of Sustainability",
+        "persona": "Sustainability Leader",
+        "seniority": "Director",
+        "email": "hetal.parikh@sabarmati-weaves.example",
+        "phone": "+919000030170",
+        "whatsapp": "+919000030170",
+        "linkedinUrl": "https://linkedin.example/in/hetal-parikh-sabarm"
+      },
+      {
+        "name": "Jignesh Patel",
+        "title": "Plant Head",
+        "persona": "Plant Operations Head",
+        "seniority": "Manager",
+        "email": "jignesh.patel@sabarmati-weaves.example",
+        "phone": "+919000030177",
+        "whatsapp": "+919000030177",
+        "linkedinUrl": "https://linkedin.example/in/jignesh-patel-sabarm"
+      },
+      {
+        "name": "Nikhil Shah",
+        "title": "Chief Financial Officer",
+        "persona": "Economic Buyer",
+        "seniority": "C-Level",
+        "email": "nikhil.shah@sabarmati-weaves.example",
+        "phone": "+919000030184",
+        "whatsapp": "+919000030184",
+        "linkedinUrl": "https://linkedin.example/in/nikhil-shah-sabarm"
+      }
+    ]
+  },
+  {
+    "key": "ren-deccan-crest-cements",
+    "name": "Deccan Crest Cements Ltd",
+    "domain": "deccan-crest-cements.example",
+    "industry": "Manufacturing",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 4100,
+    "description": "Mid-sized cement producer with four integrated plants in Telangana, Karnataka and Maharashtra and a combined capacity of 18 million tonnes per annum.",
+    "contacts": [
+      {
+        "name": "Venkat Reddy",
+        "title": "Chief Operating Officer",
+        "persona": "Economic Buyer",
+        "seniority": "C-Level",
+        "email": "venkat.reddy@deccan-crest-cements.example",
+        "phone": "+919000030191",
+        "whatsapp": "+919000030191",
+        "linkedinUrl": "https://linkedin.example/in/venkat-reddy-deccan"
+      },
+      {
+        "name": "Swathi Iyer",
+        "title": "Head of Sustainability",
+        "persona": "Sustainability Leader",
+        "seniority": "Director",
+        "email": "swathi.iyer@deccan-crest-cements.example",
+        "phone": "+919000030198",
+        "whatsapp": "+919000030198",
+        "linkedinUrl": "https://linkedin.example/in/swathi-iyer-deccan"
+      }
+    ]
+  },
+  {
+    "key": "ren-orbitcore-data-centres",
+    "name": "OrbitCore Data Centres",
+    "domain": "orbitcore-dc.example",
+    "industry": "Data Centers",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 820,
+    "description": "Colocation and hyperscale data-centre developer operating campuses in Navi Mumbai and Chennai, with a pipeline of 400 MW IT capacity.",
+    "contacts": [
+      {
+        "name": "Arjun Malhotra",
+        "title": "Director – Energy Infrastructure",
+        "persona": "Technical Evaluator",
+        "seniority": "Director",
+        "email": "arjun.malhotra@orbitcore-dc.example",
+        "phone": "+919000030205",
+        "whatsapp": "+919000030205",
+        "linkedinUrl": "https://linkedin.example/in/arjun-malhotra-orbitc"
+      },
+      {
+        "name": "Priya Venkatesh",
+        "title": "VP Critical Facilities",
+        "persona": "Project Execution Head",
+        "seniority": "VP",
+        "email": "priya.venkatesh@orbitcore-dc.example",
+        "phone": "+919000030212",
+        "whatsapp": "+919000030212",
+        "linkedinUrl": "https://linkedin.example/in/priya-venkatesh-orbitc"
+      }
+    ]
+  },
+  {
+    "key": "ren-nimbusrack",
+    "name": "NimbusRack Cloud Campuses",
+    "domain": "nimbusrack-campuses.example",
+    "industry": "Data Centers",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 560,
+    "description": "Data-centre platform backed by an infrastructure fund, building modular campuses in Chennai, Hyderabad and Pune for cloud and AI workloads.",
+    "contacts": [
+      {
+        "name": "Siddharth Rao",
+        "title": "Chief Technology Officer",
+        "persona": "Economic Buyer",
+        "seniority": "C-Level",
+        "email": "siddharth.rao@nimbusrack-campuses.example",
+        "phone": "+919000030219",
+        "whatsapp": "+919000030219",
+        "linkedinUrl": "https://linkedin.example/in/siddharth-rao-nimbus"
+      },
+      {
+        "name": "Neha Agarwal",
+        "title": "Head of Energy Procurement",
+        "persona": "Procurement Decision Maker",
+        "seniority": "Director",
+        "email": "neha.agarwal@nimbusrack-campuses.example",
+        "phone": "+919000030226",
+        "whatsapp": "+919000030226",
+        "linkedinUrl": "https://linkedin.example/in/neha-agarwal-nimbus"
+      }
+    ]
+  },
+  {
+    "key": "ren-helix-hydrogen",
+    "name": "Helix Hydrogen Energy Ltd",
+    "domain": "helix-hydrogen.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "IN",
+    "sizeBand": "51-200",
+    "employees": 170,
+    "description": "Green hydrogen and green ammonia developer with projects planned at Kandla and Paradip ports, integrating dedicated solar, wind and storage.",
+    "contacts": [
+      {
+        "name": "Rajesh Kothari",
+        "title": "Chief Executive Officer",
+        "persona": "Economic Buyer",
+        "seniority": "C-Level",
+        "email": "rajesh.kothari@helix-hydrogen.example",
+        "phone": "+919000030233",
+        "whatsapp": "+919000030233",
+        "linkedinUrl": "https://linkedin.example/in/rajesh-kothari-helix"
+      },
+      {
+        "name": "Ananya Ghosh",
+        "title": "VP Projects",
+        "persona": "Project Execution Head",
+        "seniority": "VP",
+        "email": "ananya.ghosh@helix-hydrogen.example",
+        "phone": "+919000030240",
+        "whatsapp": "+919000030240",
+        "linkedinUrl": "https://linkedin.example/in/ananya-ghosh-helix"
+      }
+    ]
+  },
+  {
+    "key": "ren-gulfbay-green-molecules",
+    "name": "GulfBay Green Molecules",
+    "domain": "gulfbay-molecules.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "AE",
+    "sizeBand": "51-200",
+    "employees": 140,
+    "description": "Abu Dhabi-based developer of export-oriented green ammonia and e-fuels projects in the UAE and Oman.",
+    "contacts": [
+      {
+        "name": "Omar Al Mansoori",
+        "title": "Director – Energy Infrastructure",
+        "persona": "Technical Evaluator",
+        "seniority": "Director",
+        "email": "omar.mansoori@gulfbay-molecules.example",
+        "phone": "+971500030247",
+        "whatsapp": "+971500030247",
+        "linkedinUrl": "https://linkedin.example/in/omar-al-mansoori-gulfba"
+      },
+      {
+        "name": "Rachel Fernandes",
+        "title": "Head of Procurement",
+        "persona": "Procurement Decision Maker",
+        "seniority": "Director",
+        "email": "rachel.fernandes@gulfbay-molecules.example",
+        "phone": "+971500030254",
+        "whatsapp": "+971500030254",
+        "linkedinUrl": "https://linkedin.example/in/rachel-fernandes-gulfba"
+      }
+    ]
+  },
+  {
+    "key": "ren-marigold-malls",
+    "name": "Marigold Malls & Spaces",
+    "domain": "marigold-malls.example",
+    "industry": "Real Estate",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 1900,
+    "description": "Retail real-estate owner operating 14 shopping malls and two mixed-use districts across tier-1 and tier-2 Indian cities.",
+    "contacts": [
+      {
+        "name": "Vikram Sethi",
+        "title": "Head of Facilities & Energy",
+        "persona": "Facilities Head",
+        "seniority": "Director",
+        "email": "vikram.sethi@marigold-malls.example",
+        "phone": "+919000030261",
+        "whatsapp": "+919000030261",
+        "linkedinUrl": "https://linkedin.example/in/vikram-sethi-marigo"
+      },
+      {
+        "name": "Kavya Menon",
+        "title": "Head of Sustainability",
+        "persona": "Sustainability Leader",
+        "seniority": "Manager",
+        "email": "kavya.menon@marigold-malls.example",
+        "phone": "+919000030268",
+        "whatsapp": "+919000030268",
+        "linkedinUrl": "https://linkedin.example/in/kavya-menon-marigo"
+      }
+    ]
+  },
+  {
+    "key": "ren-skyline-business-parks",
+    "name": "Skyline Business Parks",
+    "domain": "skyline-parks.example",
+    "industry": "Real Estate",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 690,
+    "description": "Developer and operator of Grade-A IT and office parks in Pune, Hyderabad and Gurugram, with 22 million sq ft under management.",
+    "contacts": [
+      {
+        "name": "Aditya Joshi",
+        "title": "VP Projects",
+        "persona": "Project Execution Head",
+        "seniority": "VP",
+        "email": "aditya.joshi@skyline-parks.example",
+        "phone": "+919000030275",
+        "whatsapp": "+919000030275",
+        "linkedinUrl": "https://linkedin.example/in/aditya-joshi-skylin"
+      },
+      {
+        "name": "Shreya Banerjee",
+        "title": "ESG Manager",
+        "persona": "Sustainability Leader",
+        "seniority": "Manager",
+        "email": "shreya.banerjee@skyline-parks.example",
+        "phone": "+919000030282",
+        "whatsapp": "+919000030282",
+        "linkedinUrl": "https://linkedin.example/in/shreya-banerjee-skylin"
+      }
+    ]
+  },
+  {
+    "key": "ren-narmada-vidyut",
+    "name": "Narmada Vidyut Distribution Company",
+    "domain": "narmada-vidyut.example",
+    "industry": "Utilities",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 9400,
+    "description": "State-owned electricity distribution company serving 6.8 million consumers across central India, procuring renewable and storage capacity to meet RPO targets.",
+    "contacts": [
+      {
+        "name": "Sanjay Tiwari",
+        "title": "Chief Engineer – Planning",
+        "persona": "Technical Evaluator",
+        "seniority": "Director",
+        "email": "sanjay.tiwari@narmada-vidyut.example",
+        "phone": "+919000030289",
+        "whatsapp": "+919000030289",
+        "linkedinUrl": "https://linkedin.example/in/sanjay-tiwari-narmad"
+      },
+      {
+        "name": "Rekha Dubey",
+        "title": "Director – Commercial",
+        "persona": "Procurement Decision Maker",
+        "seniority": "Director",
+        "email": "rekha.dubey@narmada-vidyut.example",
+        "phone": "+919000030296",
+        "whatsapp": "+919000030296",
+        "linkedinUrl": "https://linkedin.example/in/rekha-dubey-narmad"
+      }
+    ]
+  },
+  {
+    "key": "ren-konkan-coast-power",
+    "name": "Konkan Coast Electricity Distribution Ltd",
+    "domain": "konkan-coast-power.example",
+    "industry": "Utilities",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 4800,
+    "description": "Distribution licensee covering coastal districts of western India, running rooftop programmes and grid-scale storage procurement.",
+    "contacts": [
+      {
+        "name": "Mahesh Sawant",
+        "title": "Superintending Engineer – Grid Modernisation",
+        "persona": "Technical Evaluator",
+        "seniority": "Manager",
+        "email": "mahesh.sawant@konkan-coast-power.example",
+        "phone": "+919000030303",
+        "whatsapp": "+919000030303",
+        "linkedinUrl": "https://linkedin.example/in/mahesh-sawant-konkan"
+      },
+      {
+        "name": "Anjali Deshmukh",
+        "title": "Director – Operations",
+        "persona": "Economic Buyer",
+        "seniority": "Director",
+        "email": "anjali.deshmukh@konkan-coast-power.example",
+        "phone": "+919000030310",
+        "whatsapp": "+919000030310",
+        "linkedinUrl": "https://linkedin.example/in/anjali-deshmukh-konkan"
+      }
+    ]
+  },
+  {
+    "key": "ren-aravalli-renewable-agency",
+    "name": "Aravalli State Renewable Development Agency",
+    "domain": "aravalli-sreda.example",
+    "industry": "Government",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 310,
+    "description": "Nodal state agency for renewable energy programmes, rooftop schemes and solar park land allocation in a fictional north-western Indian state.",
+    "contacts": [
+      {
+        "name": "Dinesh Choudhary",
+        "title": "Director – Energy Infrastructure",
+        "persona": "Policy Owner",
+        "seniority": "Director",
+        "email": "dinesh.choudhary@aravalli-sreda.example",
+        "phone": "+919000030317",
+        "whatsapp": "+919000030317",
+        "linkedinUrl": "https://linkedin.example/in/dinesh-choudhary-araval"
+      },
+      {
+        "name": "Pooja Rathore",
+        "title": "Deputy Director – Rooftop Programmes",
+        "persona": "Programme Manager",
+        "seniority": "Manager",
+        "email": "pooja.rathore@aravalli-sreda.example",
+        "phone": "+919000030324",
+        "whatsapp": "+919000030324",
+        "linkedinUrl": "https://linkedin.example/in/pooja-rathore-araval"
+      }
+    ]
+  },
+  {
+    "key": "ren-rann-hybrid-power",
+    "name": "Rann Hybrid Power Pvt Ltd",
+    "domain": "rann-hybrid.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "IN",
+    "sizeBand": "51-200",
+    "employees": 190,
+    "description": "Developer of wind-solar hybrid and round-the-clock renewable projects in the Kutch region, selling to DISCOMs and C&I buyers.",
+    "contacts": [
+      {
+        "name": "Kunal Thakkar",
+        "title": "VP Projects",
+        "persona": "Project Execution Head",
+        "seniority": "VP",
+        "email": "kunal.thakkar@rann-hybrid.example",
+        "phone": "+919000030331",
+        "whatsapp": "+919000030331",
+        "linkedinUrl": "https://linkedin.example/in/kunal-thakkar-rann"
+      },
+      {
+        "name": "Zoya Merchant",
+        "title": "Head of Business Development",
+        "persona": "Commercial Lead",
+        "seniority": "Director",
+        "email": "zoya.merchant@rann-hybrid.example",
+        "phone": "+919000030338",
+        "whatsapp": "+919000030338",
+        "linkedinUrl": "https://linkedin.example/in/zoya-merchant-rann"
+      }
+    ]
+  },
+  {
+    "key": "ren-lotus-forge",
+    "name": "Lotus Forge Auto Components",
+    "domain": "lotus-forge.example",
+    "industry": "Manufacturing",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3600,
+    "description": "Tier-1 supplier of forged and machined drivetrain components to global OEMs, operating five plants in Pune and Chennai.",
+    "contacts": [
+      {
+        "name": "Ganesh Pawar",
+        "title": "Plant Head",
+        "persona": "Plant Operations Head",
+        "seniority": "Manager",
+        "email": "ganesh.pawar@lotus-forge.example",
+        "phone": "+919000030345",
+        "whatsapp": "+919000030345",
+        "linkedinUrl": "https://linkedin.example/in/ganesh-pawar-lotus"
+      },
+      {
+        "name": "Isha Kapoor",
+        "title": "Head of Sustainability",
+        "persona": "Sustainability Leader",
+        "seniority": "Director",
+        "email": "isha.kapoor@lotus-forge.example",
+        "phone": "+919000030352",
+        "whatsapp": "+919000030352",
+        "linkedinUrl": "https://linkedin.example/in/isha-kapoor-lotus"
+      }
+    ]
+  },
+  {
+    "key": "ren-indus-ridge-steel",
+    "name": "Indus Ridge Steelworks",
+    "domain": "indus-ridge-steel.example",
+    "industry": "Manufacturing",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 8800,
+    "description": "Integrated steel producer with 6 MTPA capacity in Odisha, investing in low-carbon DRI and scrap-based routes.",
+    "contacts": [
+      {
+        "name": "Bikash Mohanty",
+        "title": "Chief Procurement Officer",
+        "persona": "Procurement Decision Maker",
+        "seniority": "C-Level",
+        "email": "bikash.mohanty@indus-ridge-steel.example",
+        "phone": "+919000030359",
+        "whatsapp": "+919000030359",
+        "linkedinUrl": "https://linkedin.example/in/bikash-mohanty-indus"
+      },
+      {
+        "name": "Tanvi Saxena",
+        "title": "Head of Decarbonisation",
+        "persona": "Sustainability Leader",
+        "seniority": "Director",
+        "email": "tanvi.saxena@indus-ridge-steel.example",
+        "phone": "+919000030366",
+        "whatsapp": "+919000030366",
+        "linkedinUrl": "https://linkedin.example/in/tanvi-saxena-indus"
+      }
+    ]
+  },
+  {
+    "key": "ren-dunefield-solar",
+    "name": "Dunefield Solar Arabia",
+    "domain": "dunefield-solar.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "SA",
+    "sizeBand": "201-1000",
+    "employees": 420,
+    "description": "Riyadh-based developer and IPP pursuing large solar and storage projects under national renewable programmes.",
+    "contacts": [
+      {
+        "name": "Faisal Al Harbi",
+        "title": "VP Projects",
+        "persona": "Project Execution Head",
+        "seniority": "VP",
+        "email": "faisal.harbi@dunefield-solar.example",
+        "phone": "+966500030373",
+        "whatsapp": "+966500030373",
+        "linkedinUrl": "https://linkedin.example/in/faisal-al-harbi-dunefi"
+      },
+      {
+        "name": "Layla Haddad",
+        "title": "Chief Procurement Officer",
+        "persona": "Procurement Decision Maker",
+        "seniority": "C-Level",
+        "email": "layla.haddad@dunefield-solar.example",
+        "phone": "+966500030380",
+        "whatsapp": "+966500030380",
+        "linkedinUrl": "https://linkedin.example/in/layla-haddad-dunefi"
+      }
+    ]
+  },
+  {
+    "key": "ren-mekong-lightfield",
+    "name": "Mekong Lightfield Energy",
+    "domain": "mekong-lightfield.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "VN",
+    "sizeBand": "201-1000",
+    "employees": 380,
+    "description": "Ho Chi Minh City developer of solar farms and industrial-park rooftop portfolios across southern Vietnam.",
+    "contacts": [
+      {
+        "name": "Nguyen Thi Lan",
+        "title": "Director – Energy Infrastructure",
+        "persona": "Technical Evaluator",
+        "seniority": "Director",
+        "email": "nguyen.lan@mekong-lightfield.example",
+        "phone": "+84900030387",
+        "whatsapp": "+84900030387",
+        "linkedinUrl": "https://linkedin.example/in/nguyen-thi-lan-mekong"
+      },
+      {
+        "name": "Tran Minh Quan",
+        "title": "Head of Procurement",
+        "persona": "Procurement Decision Maker",
+        "seniority": "Director",
+        "email": "tran.quan@mekong-lightfield.example",
+        "phone": "+84900030394",
+        "whatsapp": "+84900030394",
+        "linkedinUrl": "https://linkedin.example/in/tran-minh-quan-mekong"
+      }
+    ]
+  },
+  {
+    "key": "ren-karoo-horizon",
+    "name": "Karoo Horizon Power",
+    "domain": "karoo-horizon.example",
+    "industry": "Renewable Energy",
+    "hqCountry": "ZA",
+    "sizeBand": "51-200",
+    "employees": 150,
+    "description": "Johannesburg-based IPP bidding solar and battery projects into South African procurement rounds and private wheeling deals.",
+    "contacts": [
+      {
+        "name": "Thabo Nkosi",
+        "title": "Chief Executive Officer",
+        "persona": "Economic Buyer",
+        "seniority": "C-Level",
+        "email": "thabo.nkosi@karoo-horizon.example",
+        "phone": "+27600030401",
+        "whatsapp": "+27600030401",
+        "linkedinUrl": "https://linkedin.example/in/thabo-nkosi-karoo"
+      },
+      {
+        "name": "Annelie van Wyk",
+        "title": "VP Projects",
+        "persona": "Project Execution Head",
+        "seniority": "VP",
+        "email": "annelie.wyk@karoo-horizon.example",
+        "phone": "+27600030408",
+        "whatsapp": "+27600030408",
+        "linkedinUrl": "https://linkedin.example/in/annelie-van-wyk-karoo"
+      }
+    ]
+  },
+  {
+    "key": "ren-straits-edge",
+    "name": "Straits Edge Data Hubs",
+    "domain": "straits-edge.example",
+    "industry": "Data Centers",
+    "hqCountry": "SG",
+    "sizeBand": "51-200",
+    "employees": 210,
+    "description": "Singapore-headquartered data-centre operator building edge and hyperscale-ready facilities in Singapore, Johor and Batam.",
+    "contacts": [
+      {
+        "name": "Daniel Tan",
+        "title": "Director – Energy Infrastructure",
+        "persona": "Technical Evaluator",
+        "seniority": "Director",
+        "email": "daniel.tan@straits-edge.example",
+        "phone": "+659003415",
+        "whatsapp": "+659003415",
+        "linkedinUrl": "https://linkedin.example/in/daniel-tan-strait"
+      },
+      {
+        "name": "Aisha Rahman",
+        "title": "Head of Procurement",
+        "persona": "Procurement Decision Maker",
+        "seniority": "Director",
+        "email": "aisha.rahman@straits-edge.example",
+        "phone": "+659003422",
+        "whatsapp": "+659003422",
+        "linkedinUrl": "https://linkedin.example/in/aisha-rahman-strait"
+      }
+    ]
+  },
+  {
+    "key": "ren-aarogyam-hospitals",
+    "name": "Aarogyam Care Hospitals",
+    "domain": "aarogyam-care.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 9100,
+    "description": "Multi-speciality hospital chain with 18 hospitals in western and southern India, expanding into greenfield medical campuses.",
+    "contacts": [
+      {
+        "name": "Suresh Pillai",
+        "title": "Head of Projects & Engineering",
+        "persona": "Project Execution Head",
+        "seniority": "Director",
+        "email": "suresh.pillai@aarogyam-care.example",
+        "phone": "+919000030429",
+        "whatsapp": "+919000030429",
+        "linkedinUrl": "https://linkedin.example/in/suresh-pillai-aarogy"
+      },
+      {
+        "name": "Divya Narang",
+        "title": "Chief Operating Officer",
+        "persona": "Economic Buyer",
+        "seniority": "C-Level",
+        "email": "divya.narang@aarogyam-care.example",
+        "phone": "+919000030436",
+        "whatsapp": "+919000030436",
+        "linkedinUrl": "https://linkedin.example/in/divya-narang-aarogy"
+      }
+    ]
+  },
+  {
+    "key": "ren-swiftmile-logistics",
+    "name": "SwiftMile Logistics Parks",
+    "domain": "swiftmile-parks.example",
+    "industry": "Logistics",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2600,
+    "description": "Developer and operator of Grade-A warehousing and logistics parks along the Delhi–Mumbai and Chennai–Bengaluru corridors.",
+    "contacts": [
+      {
+        "name": "Rahul Bedi",
+        "title": "VP Projects",
+        "persona": "Project Execution Head",
+        "seniority": "VP",
+        "email": "rahul.bedi@swiftmile-parks.example",
+        "phone": "+919000030443",
+        "whatsapp": "+919000030443",
+        "linkedinUrl": "https://linkedin.example/in/rahul-bedi-swiftm"
+      },
+      {
+        "name": "Nandini Rao",
+        "title": "Head of Sustainability",
+        "persona": "Sustainability Leader",
+        "seniority": "Manager",
+        "email": "nandini.rao@swiftmile-parks.example",
+        "phone": "+919000030450",
+        "whatsapp": "+919000030450",
+        "linkedinUrl": "https://linkedin.example/in/nandini-rao-swiftm"
+      }
+    ]
+  },
+  {
+    "key": "ren-velocity-urban-fleet",
+    "name": "Velocity Urban Fleet",
+    "domain": "velocity-fleet.example",
+    "industry": "Fleet & Mobility",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2900,
+    "description": "Operator of electric city buses and last-mile electric cargo fleets under gross-cost contracts with state transport undertakings and e-commerce firms.",
+    "contacts": [
+      {
+        "name": "Amit Chawla",
+        "title": "Director – Depot Infrastructure",
+        "persona": "Technical Evaluator",
+        "seniority": "Director",
+        "email": "amit.chawla@velocity-fleet.example",
+        "phone": "+919000030457",
+        "whatsapp": "+919000030457",
+        "linkedinUrl": "https://linkedin.example/in/amit-chawla-veloci"
+      },
+      {
+        "name": "Sneha Kulshreshtha",
+        "title": "Chief Procurement Officer",
+        "persona": "Procurement Decision Maker",
+        "seniority": "C-Level",
+        "email": "sneha.kulshreshtha@velocity-fleet.example",
+        "phone": "+919000030464",
+        "whatsapp": "+919000030464",
+        "linkedinUrl": "https://linkedin.example/in/sneha-kulshreshtha-veloci"
+      }
+    ]
+  },
+  {
+    "key": "ren-silicore-fab",
+    "name": "Silicore Fabrication Ltd",
+    "domain": "silicore-fab.example",
+    "industry": "Semiconductors",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 1700,
+    "description": "Specialty semiconductor fab producing power and analog devices at a 200 mm facility in Dholera, with a 300 mm line under construction.",
+    "contacts": [
+      {
+        "name": "Vivek Anand",
+        "title": "Director – Facilities & Utilities",
+        "persona": "Facilities Head",
+        "seniority": "Director",
+        "email": "vivek.anand@silicore-fab.example",
+        "phone": "+919000030471",
+        "whatsapp": "+919000030471",
+        "linkedinUrl": "https://linkedin.example/in/vivek-anand-silico"
+      },
+      {
+        "name": "Maria Joseph",
+        "title": "Head of Sustainability",
+        "persona": "Sustainability Leader",
+        "seniority": "Manager",
+        "email": "maria.joseph@silicore-fab.example",
+        "phone": "+919000030478",
+        "whatsapp": "+919000030478",
+        "linkedinUrl": "https://linkedin.example/in/maria-joseph-silico"
+      }
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+---
+title: ADR-0018 — Hybrid offset/keyset pagination with estimated totals for large tables
+description: Platform-data lists use offset pages (25 per page, max 100) with a stable order, a keyset cursor for deep event pages, and pg_class.reltuples estimates for unfiltered totals above 50 000 rows.
+---
+
+**Status:** Accepted · **Date:** 2026-09-28 · Extends [ADR-0005](/docs/decisions/0005-offset-pagination-for-leads)
+
+## Context
+
+Leads use offset pagination because users want "page 3 of 7" and a tenant has at most a few thousand leads
+(ADR-0005). The platform data source is different: `market_events` grows with every import and connector run across
+all tenants, and the Super Admin browses it unfiltered. Two costs grow with the table: `OFFSET n` scans and discards
+`n` rows, so deep pages get slower; and an exact `count(*)` on every request scans the whole table even for page 1.
+
+## Decision
+
+- **Offset pages by default** on every `/platform/data` list: `page` + `pageSize` (default 25, maximum 100) with a
+  stable order (events `published_at desc, id desc`), backed by the indexes added in migration `0002`.
+- **Keyset for deep event pages.** The events list returns `nextAfter` (`<published_at ISO>|<id>` of the last item)
+  whenever more rows exist, fetched with `limit pageSize + 1`. Passing it as `after` seeks with
+  `(published_at, id) < cursor` and ignores the offset, so page cost stays constant. A malformed cursor is a 400.
+- **Estimated totals.** `countWithEstimate()` (`apps/api/src/lib/data.ts`) returns `pg_class.reltuples` with
+  `totalIsEstimate: true` when no filter is applied and the estimate exceeds 50 000; otherwise an exact `count(*)`.
+  Used for events, companies and contacts.
+- **No bodies in lists.** Event lists return a 200-character snippet; the detail endpoint returns the full record.
+- Heavy work (validation, commits, ingestion) runs in the worker in chunks, never on the request path.
+
+## Consequences
+
+- Positive: the first page stays fast at any size; deep browsing costs the same as page 1 when the cursor is used;
+  numbered pages still work for the common case.
+- Negative: two paging modes for clients to understand; keyset only exists for events (companies and contacts return
+  `nextAfter: null`).
+- Negative: estimated totals are approximate (they also include retracted rows) and only as fresh as the last
+  `ANALYZE`; "page N of M" is approximate above 50 000 rows.
+- Negative: with keyset, jumping to an arbitrary page number is not possible.
+
+## Alternatives considered
+
+- **Offset only (as ADR-0005)**: simplest, but deep pages and exact counts degrade linearly with the table.
+- **Keyset only**: fast everywhere, but loses page numbers and totals, which the explorer and reports want.
+- **Cached exact counts** (Redis or a counter table): exact, but another cache to invalidate on every import and
+  rollback.
+
+## Revisit when
+
+- `market_events` exceeds a few million rows or unfiltered page-1 latency goes above 300 ms.
+- Companies or contacts become large enough to need their own keyset cursor.
+- Filtered exact counts become slow (consider capped counts such as "10 000+").

@@ -1,0 +1,606 @@
+{
+  "mode": "mock",
+  "model": "mock",
+  "threshold": 0.6,
+  "ranAt": "2026-09-24T09:49:51.148Z",
+  "overall": {
+    "precision": 0.819672131147541,
+    "recall": 1,
+    "f1": 0.9009009009009009
+  },
+  "perOrg": [
+    {
+      "org": "cargolane-logistics",
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "negativesCorrect": 4,
+      "negatives": 4
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "tp": 9,
+      "fp": 2,
+      "fn": 0,
+      "negativesCorrect": 4,
+      "negatives": 4
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "tp": 10,
+      "fp": 2,
+      "fn": 0,
+      "negativesCorrect": 4,
+      "negatives": 4
+    },
+    {
+      "org": "roadgrip-tyres",
+      "tp": 12,
+      "fp": 0,
+      "fn": 0,
+      "negativesCorrect": 4,
+      "negatives": 4
+    },
+    {
+      "org": "suncrest-energy",
+      "tp": 9,
+      "fp": 7,
+      "fn": 0,
+      "negativesCorrect": 4,
+      "negatives": 4
+    }
+  ],
+  "details": [
+    {
+      "org": "cargolane-logistics",
+      "event": "log-002",
+      "expected": [
+        "New warehouse / fulfilment centre"
+      ],
+      "predicted": [
+        "New warehouse / fulfilment centre"
+      ]
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-003",
+      "expected": [
+        "D2C / e-commerce brand funding"
+      ],
+      "predicted": [
+        "D2C / e-commerce brand funding"
+      ]
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-004",
+      "expected": [
+        "Quick-commerce dark store expansion"
+      ],
+      "predicted": [
+        "Quick-commerce dark store expansion"
+      ]
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-012",
+      "expected": [
+        "Port, rail or freight corridor project"
+      ],
+      "predicted": [
+        "Port, rail or freight corridor project"
+      ]
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-014",
+      "expected": [
+        "Cold-chain expansion"
+      ],
+      "predicted": [
+        "Cold-chain expansion"
+      ]
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-018",
+      "expected": [
+        "Festive / peak-season capacity ramp"
+      ],
+      "predicted": [
+        "Festive / peak-season capacity ramp"
+      ]
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-020",
+      "expected": [
+        "Cross-border trade / export hub",
+        "New warehouse / fulfilment centre"
+      ],
+      "predicted": [
+        "New warehouse / fulfilment centre",
+        "Cross-border trade / export hub"
+      ]
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-022",
+      "expected": [
+        "D2C / e-commerce brand funding",
+        "New warehouse / fulfilment centre"
+      ],
+      "predicted": [
+        "New warehouse / fulfilment centre",
+        "D2C / e-commerce brand funding"
+      ]
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-036",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-041",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-046",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "cargolane-logistics",
+      "event": "log-047",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-001",
+      "expected": [
+        "New Hospital or Wing Opening"
+      ],
+      "predicted": [
+        "New Hospital or Wing Opening",
+        "Clinical or Lab Leadership Hire"
+      ]
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-003",
+      "expected": [
+        "Hospital Chain Funding or M&A"
+      ],
+      "predicted": [
+        "Hospital Chain Funding or M&A"
+      ]
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-007",
+      "expected": [
+        "Hospital Chain Funding or M&A",
+        "Home Sample Collection Expansion"
+      ],
+      "predicted": [
+        "Hospital Chain Funding or M&A",
+        "Home Sample Collection Expansion"
+      ]
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-010",
+      "expected": [
+        "Accreditation & Quality Drive"
+      ],
+      "predicted": [
+        "Accreditation & Quality Drive"
+      ]
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-012",
+      "expected": [
+        "Lab Automation & Digitisation"
+      ],
+      "predicted": [
+        "Lab Automation & Digitisation"
+      ]
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-013",
+      "expected": [
+        "New Oncology / Cardiac / Specialty Centre"
+      ],
+      "predicted": [
+        "New Oncology / Cardiac / Specialty Centre"
+      ]
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-019",
+      "expected": [
+        "Government Health Scheme Tender"
+      ],
+      "predicted": [
+        "Government Health Scheme Tender"
+      ]
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-025",
+      "expected": [
+        "Clinical or Lab Leadership Hire"
+      ],
+      "predicted": [
+        "Accreditation & Quality Drive",
+        "Clinical or Lab Leadership Hire"
+      ]
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-037",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-043",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-046",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "medisphere-diagnostics",
+      "event": "hlt-049",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-001",
+      "expected": [
+        "New Fab or OSAT Plant Announcement"
+      ],
+      "predicted": [
+        "New Fab or OSAT Plant Announcement"
+      ]
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-002",
+      "expected": [
+        "Semiconductor Incentive Approval",
+        "New Fab or OSAT Plant Announcement"
+      ],
+      "predicted": [
+        "New Fab or OSAT Plant Announcement",
+        "Semiconductor Incentive Approval"
+      ]
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-007",
+      "expected": [
+        "Chip & Hardware Startup Funding Round"
+      ],
+      "predicted": [
+        "Chip & Hardware Startup Funding Round"
+      ]
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-008",
+      "expected": [
+        "Chip Design Centre Opening"
+      ],
+      "predicted": [
+        "Chip Design Centre Opening"
+      ]
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-009",
+      "expected": [
+        "EV & 5G OEM Power Electronics Sourcing"
+      ],
+      "predicted": [
+        "EV & 5G OEM Power Electronics Sourcing"
+      ]
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-015",
+      "expected": [
+        "Solar Inverter Capacity Expansion"
+      ],
+      "predicted": [
+        "EV & 5G OEM Power Electronics Sourcing",
+        "Solar Inverter Capacity Expansion"
+      ]
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-020",
+      "expected": [
+        "Electronics Supply-Chain Localization Deal"
+      ],
+      "predicted": [
+        "Electronics Supply-Chain Localization Deal",
+        "EV & 5G OEM Power Electronics Sourcing"
+      ]
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-019",
+      "expected": [
+        "Data-Center Power Hardware Build-out",
+        "EV & 5G OEM Power Electronics Sourcing"
+      ],
+      "predicted": [
+        "EV & 5G OEM Power Electronics Sourcing",
+        "Data-Center Power Hardware Build-out"
+      ]
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-037",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-045",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-046",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "nanoforge-semiconductor",
+      "event": "sem-048",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-001",
+      "expected": [
+        "New vehicle launch"
+      ],
+      "predicted": [
+        "New vehicle launch"
+      ]
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-002",
+      "expected": [
+        "OEM capacity expansion / new plant"
+      ],
+      "predicted": [
+        "OEM capacity expansion / new plant"
+      ]
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-006",
+      "expected": [
+        "New vehicle launch",
+        "EV platform announcement"
+      ],
+      "predicted": [
+        "New vehicle launch",
+        "EV platform announcement"
+      ]
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-015",
+      "expected": [
+        "Government EV subsidy / policy change",
+        "Fleet operator large order / fleet expansion"
+      ],
+      "predicted": [
+        "Fleet operator large order / fleet expansion",
+        "Government EV subsidy / policy change"
+      ]
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-016",
+      "expected": [
+        "Ride-hailing fleet electrification",
+        "Fleet operator large order / fleet expansion"
+      ],
+      "predicted": [
+        "Fleet operator large order / fleet expansion",
+        "Ride-hailing fleet electrification"
+      ]
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-018",
+      "expected": [
+        "Fleet operator large order / fleet expansion"
+      ],
+      "predicted": [
+        "Fleet operator large order / fleet expansion"
+      ]
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-020",
+      "expected": [
+        "Foreign OEM investment in India",
+        "OEM capacity expansion / new plant"
+      ],
+      "predicted": [
+        "OEM capacity expansion / new plant",
+        "Foreign OEM investment in India"
+      ]
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-024",
+      "expected": [
+        "Mining equipment tender"
+      ],
+      "predicted": [
+        "Mining equipment tender"
+      ]
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-036",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-037",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-046",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "roadgrip-tyres",
+      "event": "aut-048",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-001",
+      "expected": [
+        "Utility-Scale Project Awarded"
+      ],
+      "predicted": [
+        "Utility-Scale Project Awarded"
+      ]
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-002",
+      "expected": [
+        "Utility-Scale Project Awarded",
+        "Battery Storage Tender"
+      ],
+      "predicted": [
+        "Utility-Scale Project Awarded",
+        "Battery Storage Tender"
+      ]
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-009",
+      "expected": [
+        "Rooftop Solar Mandate or Policy"
+      ],
+      "predicted": [
+        "Utility-Scale Project Awarded",
+        "Rooftop Solar Mandate or Policy"
+      ]
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-014",
+      "expected": [
+        "Industrial Decarbonisation Pledge"
+      ],
+      "predicted": [
+        "Utility-Scale Project Awarded",
+        "Industrial Decarbonisation Pledge",
+        "Battery Storage Tender"
+      ]
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-018",
+      "expected": [
+        "Data Centre Build-Out"
+      ],
+      "predicted": [
+        "Utility-Scale Project Awarded",
+        "Data Centre Build-Out"
+      ]
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-024",
+      "expected": [
+        "Green Hydrogen Project"
+      ],
+      "predicted": [
+        "Utility-Scale Project Awarded",
+        "Green Hydrogen Project"
+      ]
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-028",
+      "expected": [
+        "Power Purchase Agreement Signed"
+      ],
+      "predicted": [
+        "Utility-Scale Project Awarded",
+        "Power Purchase Agreement Signed"
+      ]
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-032",
+      "expected": [
+        "Battery Storage Tender"
+      ],
+      "predicted": [
+        "Utility-Scale Project Awarded",
+        "Battery Storage Tender"
+      ]
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-037",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-041",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-046",
+      "expected": [],
+      "predicted": []
+    },
+    {
+      "org": "suncrest-energy",
+      "event": "ren-049",
+      "expected": [],
+      "predicted": []
+    }
+  ]
+}

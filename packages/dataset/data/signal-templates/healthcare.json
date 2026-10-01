@@ -1,0 +1,119 @@
+[
+  {
+    "industry": "HEALTHCARE",
+    "key": "new_hospital_opening",
+    "name": "New Hospital or Wing Opening",
+    "description": "A hospital, hospital chain or medical college is opening, inaugurating or commissioning a new hospital, a new block or a new inpatient wing, which requires a fully equipped clinical laboratory.",
+    "matchInstructions": "Match when the event reports a concrete new hospital, new campus, new inpatient wing or bed-capacity addition that has been announced, is under construction, or has been inaugurated, ideally with bed counts, a city and a timeline. A new facility of this kind needs central lab analyzers, point-of-care kits and a laboratory information system. Do NOT match standalone outpatient clinics, pharmacies, wellness centres, renovations without added capacity, rumours of expansion without a named site, or hospital awards and rankings.",
+    "defaultKeywords": [
+      "new hospital",
+      "beds",
+      "bed hospital",
+      "inaugurate",
+      "inaugurated",
+      "new wing",
+      "greenfield",
+      "commissioned",
+      "multi-specialty",
+      "new block"
+    ],
+    "defaultWeight": 1.3
+  },
+  {
+    "industry": "HEALTHCARE",
+    "key": "hospital_funding_ma",
+    "name": "Hospital Chain Funding or M&A",
+    "description": "A hospital chain, diagnostic lab chain or healthcare services company raises capital, receives private equity investment, or acquires/merges with another provider.",
+    "matchInstructions": "Match when a healthcare provider (hospital group, diagnostic lab chain, home-collection or telehealth company) announces a funding round, private equity investment, acquisition, merger or stake purchase with a stated amount or a named target. Fresh capital and integrations typically trigger standardisation of lab equipment and IT systems. Do NOT match pharma drug-licensing deals, investments made by the healthcare company into unrelated businesses, share-price movements, quarterly earnings, or funding for pure software companies with no labs or hospitals.",
+    "defaultKeywords": [
+      "funding",
+      "acquisition",
+      "acquire",
+      "acquires",
+      "raised",
+      "raises",
+      "private equity",
+      "merger",
+      "stake",
+      "investment"
+    ],
+    "defaultWeight": 1.2
+  },
+  {
+    "industry": "HEALTHCARE",
+    "key": "accreditation_drive",
+    "name": "Accreditation & Quality Drive",
+    "description": "A hospital or laboratory is pursuing or has achieved NABL, NABH, JCI or similar quality accreditation, often requiring validated analyzers, QC programmes and audit-ready lab software.",
+    "matchInstructions": "Match when the event describes a hospital or diagnostic laboratory preparing for, applying for, renewing or achieving laboratory or hospital accreditation (NABL, NABH, JCI, CAP-style) or a formal quality-certification programme, especially when it mentions lab upgrades, audits or quality control. Do NOT match generic 'best hospital' awards, magazine rankings, ISO certifications for non-clinical functions, or accreditation of nursing or academic courses.",
+    "defaultKeywords": [
+      "accreditation",
+      "accredited",
+      "nabl accreditation",
+      "nabh",
+      "jci",
+      "quality certification",
+      "quality control",
+      "audit"
+    ],
+    "defaultWeight": 1.0
+  },
+  {
+    "industry": "HEALTHCARE",
+    "key": "government_health_tender",
+    "name": "Government Health Scheme Tender",
+    "description": "A state health department, medical services corporation or national health programme issues a tender or RFP for diagnostic equipment, reagents, test kits or outsourced diagnostic services.",
+    "matchInstructions": "Match when a government health body (state health mission, medical services corporation, municipal health department, public insurance scheme) floats a tender, RFP, e-tender or procurement for laboratory analyzers, reagents, rapid or RT-PCR test kits, hub-and-spoke lab services, or lab IT systems for district hospitals or primary health centres. Do NOT match government tenders for construction only, drugs only, ambulances, uniforms or IT unrelated to laboratories, nor policy announcements with no procurement.",
+    "defaultKeywords": [
+      "tender",
+      "procurement",
+      "rfp",
+      "health mission",
+      "district hospitals",
+      "primary health centres",
+      "government",
+      "bidders",
+      "diagnostic services",
+      "e-tender"
+    ],
+    "defaultWeight": 1.5
+  },
+  {
+    "industry": "HEALTHCARE",
+    "key": "specialty_centre_launch",
+    "name": "New Oncology / Cardiac / Specialty Centre",
+    "description": "A provider launches a new oncology, cardiac, transplant, renal or other high-acuity specialty centre that needs specialised immunoassay, tumour-marker, cardiac-marker and molecular testing.",
+    "matchInstructions": "Match when a hospital or group announces or opens a dedicated cancer centre, cardiac institute, cath lab, transplant unit, bone marrow transplant unit or centre of excellence with a named location. These centres drive demand for tumour markers, troponin and other immunoassays, therapeutic drug monitoring and molecular tests. Do NOT match free screening camps, awareness walks, individual surgeon achievements, research publications or clinical-trial results.",
+    "defaultKeywords": [
+      "oncology",
+      "cancer centre",
+      "cancer center",
+      "cardiac",
+      "cath lab",
+      "specialty centre",
+      "transplant",
+      "centre of excellence",
+      "radiation",
+      "bone marrow"
+    ],
+    "defaultWeight": 1.1
+  },
+  {
+    "industry": "HEALTHCARE",
+    "key": "clinical_leadership_hire",
+    "name": "Clinical or Lab Leadership Hire",
+    "description": "A hospital or lab chain appoints a new Chief Medical Officer, Medical Director, Head of Laboratory Services, COO or CEO, who typically reviews vendors and technology in the first months.",
+    "matchInstructions": "Match when a healthcare provider announces the appointment or promotion of a senior clinical, laboratory or operations leader (CMO, Medical Director, Head of Laboratory/Pathology, COO, CEO). New leaders commonly revisit lab partners, analyzers and LIS choices within six to nine months. Do NOT match board-level independent director appointments with no operating role, doctor recruitment drives, awards to individual doctors, or departures without a successor.",
+    "defaultKeywords": [
+      "appointed",
+      "appoints",
+      "chief medical officer",
+      "head of laboratory",
+      "medical director",
+      "joins as",
+      "chief operating officer",
+      "elevated to",
+      "new ceo"
+    ],
+    "defaultWeight": 0.9
+  }
+]

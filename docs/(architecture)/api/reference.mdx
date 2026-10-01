@@ -1,0 +1,324 @@
+---
+title: API reference
+description: How to use the SelloEasy HTTP API — OpenAPI UI and JSON, cookie and bearer authentication, RFC 7807 errors, pagination, rate limits, and the complete endpoint catalogue by module.
+---
+
+The API is a Fastify 5 application. All business endpoints live under **`/api/v1`**, request and response bodies
+are JSON, and every route is described by Zod schemas that also generate the OpenAPI document.
+
+## Browse the OpenAPI spec
+
+| What         | URL (local)                                                                              |
+| ------------ | ---------------------------------------------------------------------------------------- |
+| Swagger UI   | http://localhost:4000/api/docs, or through the web app at http://localhost:3000/api/docs |
+| OpenAPI JSON | http://localhost:4000/api/docs/json (also `/api/docs/yaml`)                              |
+
+The spec is generated at runtime by `@fastify/swagger` with `jsonSchemaTransform` from
+`fastify-type-provider-zod`, so it always matches the deployed code. Endpoints are grouped by tags: `auth`,
+`platform`, `platform-data`, `org`, `knowledge`, `icps`, `signals`, `pipeline`, `leads`, `crm`, `outreach`,
+`dashboards`, `audit` and `ops`. There were **98** operations in v0.1.0; the platform data source added **27** more
+(`platform-data` tag).
+
+```bash
+# list every operation from the live spec
+curl -s http://localhost:4000/api/docs/json | jq -r '.paths | to_entries[] | .key as $p | .value | keys[] | "\(ascii_upcase) \($p)"'
+```
+
+## Authentication
+
+Sessions are cookie-based:
+
+| Cookie  | Contents                     | Path           | Lifetime                     |
+| ------- | ---------------------------- | -------------- | ---------------------------- |
+| `se_at` | Access JWT (`sub` = user id) | `/`            | `ACCESS_TOKEN_TTL` (15 min)  |
+| `se_rt` | Opaque refresh token         | `/api/v1/auth` | `REFRESH_TOKEN_TTL` (7 days) |
+
+Both are `HttpOnly`, `SameSite=Lax`, and `Secure` when `COOKIE_SECURE=true`. The OpenAPI document declares the
+`cookieAuth` scheme (`se_at`). Non-browser clients can send `Authorization: Bearer <access JWT>` instead.
+
+```bash
+# log in and keep cookies
+curl -c jar.txt -H 'content-type: application/json' \
+  -d '{"email":"admin@roadgrip.local","password":"Password@123"}' \
+  http://localhost:4000/api/v1/auth/login
+
+# call an endpoint with the session
+curl -b jar.txt 'http://localhost:4000/api/v1/leads?page=1&pageSize=6&band=HOT'
+
+# rotate the session when the access token expires (401)
+curl -b jar.txt -c jar.txt -X POST http://localhost:4000/api/v1/auth/refresh
+```
+
+A `401` means the access token is missing or expired. Call `POST /auth/refresh` once and retry, as the web client
+does. See [Security](/docs/architecture/security#authentication) for rotation and reuse detection.
+
+## Errors (RFC 7807)
+
+All errors use `Content-Type: application/problem+json`:
+
+```json
+{
+  "type": "about:blank",
+  "title": "Lead not found",
+  "status": 404,
+  "code": "not_found",
+  "instance": "/api/v1/leads/0199…",
+  "requestId": "6f1c…"
+}
+```
+
+Validation errors add a field list:
+
+```json
+{
+  "title": "Validation failed",
+  "status": 400,
+  "code": "validation_error",
+  "detail": "The request does not match the expected schema.",
+  "errors": [{ "path": "lostReason", "message": "lostReason is required when moving a lead to LOST" }],
+  "instance": "/api/v1/leads/…",
+  "requestId": "…"
+}
+```
+
+| Status | `code`                                  | Typical cause                                                                                                                                                                |
+| ------ | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400    | `validation_error`, `bad_request`       | Schema violation, business rule (e.g. activation prerequisites, last admin)                                                                                                  |
+| 401    | `unauthorized`                          | No or expired session                                                                                                                                                        |
+| 403    | `forbidden`                             | Missing permission, Super Admin on a tenant route, SDR on someone else's lead, locked account                                                                                |
+| 404    | `not_found`, `route_not_found`          | Missing **or cross-tenant** resource                                                                                                                                         |
+| 409    | `conflict`                              | Optimistic-lock conflict (`details.currentVersion`), lead already claimed, run already in progress (`details.runId`), duplicate email, batch or connector in the wrong state |
+| 422    | `unprocessable`                         | Import file rejected at the file layer (`details.batch`), commit refused by the invalid-ratio guard or with nothing to commit                                                |
+| 429    | (rate limit)                            | Too many requests                                                                                                                                                            |
+| 502    | `bad_gateway`                           | Returned by the web proxy when the API is unreachable                                                                                                                        |
+| 503    | `service_unavailable`                   | Outreach draft generation failed                                                                                                                                             |
+| 500    | `internal_error`, `serialization_error` | Unexpected. Search the logs for the `requestId`.                                                                                                                             |
+
+Every response carries an `x-request-id` header. Send your own `x-request-id` (up to 64 chars) to correlate calls.
+
+## Pagination
+
+List endpoints that can grow use **offset pagination** ([ADR-0005](/docs/decisions/0005-offset-pagination-for-leads)):
+
+| Param      | Default                              | Max                |
+| ---------- | ------------------------------------ | ------------------ |
+| `page`     | 1                                    | —                  |
+| `pageSize` | 6 (leads, pipeline runs), 25 (audit) | 50 (100 for audit) |
+
+Response envelope:
+
+```json
+{ "items": [ … ], "page": 1, "pageSize": 6, "total": 42, "totalPages": 7 }
+```
+
+`totalPages` is at least 1. Leads are ordered deterministically (`score_total desc, id desc` by default), so pages
+are stable while data is unchanged.
+
+The `/platform/data/*` lists default to **25** per page (max 100) and return a `DataPage`, which adds
+`totalIsEstimate` (true when an unfiltered total comes from `pg_class.reltuples` on a table above 50 000 rows) and
+`nextAfter`, a keyset cursor for deep event pages
+([ADR-0018](/docs/decisions/0018-hybrid-offset-keyset-pagination),
+[details](/docs/platform-data/explorer-and-pagination#pagination)).
+
+## Rate limits
+
+Global: `RATE_LIMIT_MAX` requests per `RATE_LIMIT_WINDOW` per client (300 per minute), stored in Redis. Tighter
+per-route limits: login 5 per minute (per IP + email), forgot-password 5 per minute, accept-invite and
+reset-password 10 per minute, outreach draft 20 per minute.
+
+## Endpoint catalogue
+
+Paths are relative to `/api/v1` unless they start with `/api/`. "Guard" is the permission checked. Tenant routes
+(`requireOrg`) also reject Super Admins with 403.
+
+### Ops
+
+| Method | Path          | Guard  | Description                                                             |
+| ------ | ------------- | ------ | ----------------------------------------------------------------------- |
+| GET    | `/api/health` | public | Liveness                                                                |
+| GET    | `/api/ready`  | public | Readiness: DB + Redis, LLM mode, provider and model. 503 when degraded. |
+
+### Auth (`modules/auth.ts`)
+
+| Method | Path                    | Guard           | Description                                    |
+| ------ | ----------------------- | --------------- | ---------------------------------------------- |
+| POST   | `/auth/login`           | public (5/min)  | Log in. Sets cookies. Returns `MeResponse`.    |
+| POST   | `/auth/refresh`         | refresh cookie  | Rotate refresh token, new access token         |
+| POST   | `/auth/logout`          | public          | Revoke the token family, clear cookies         |
+| GET    | `/auth/invite?token=`   | public          | Preview an invitation                          |
+| POST   | `/auth/accept-invite`   | public (10/min) | Accept, set name and password, start a session |
+| POST   | `/auth/forgot-password` | public (5/min)  | Queue a reset email (always 200)               |
+| POST   | `/auth/reset-password`  | public (10/min) | Set a new password. Revokes all sessions.      |
+| GET    | `/auth/me`              | signed in       | User, role, permissions, org, feature flags    |
+| PATCH  | `/auth/me`              | signed in       | Update own name, Calendly link, phone          |
+
+### Platform, Super Admin only (`modules/platform.ts`)
+
+| Method | Path                             | Guard                              | Description                                                            |
+| ------ | -------------------------------- | ---------------------------------- | ---------------------------------------------------------------------- |
+| GET    | `/platform/orgs`                 | `platform:orgs:public:read`        | List orgs (public fields, user and invite counts)                      |
+| POST   | `/platform/orgs`                 | `platform:orgs:manage`             | Create org, clone templates, invite admin (201; `inviteLink` in local) |
+| GET    | `/platform/orgs/:id`             | `platform:orgs:public:read`        | Public-level org view (audited)                                        |
+| PATCH  | `/platform/orgs/:id`             | `platform:orgs:manage`             | Rename or re-classify industry                                         |
+| POST   | `/platform/orgs/:id/suspend`     | `platform:orgs:manage`             | Suspend (members lose access)                                          |
+| POST   | `/platform/orgs/:id/reactivate`  | `platform:orgs:manage`             | Reactivate a suspended org                                             |
+| GET    | `/platform/orgs/:id/stats`       | `platform:orgs:aggregates:read`    | Aggregate counts, last run, LLM usage                                  |
+| GET    | `/platform/orgs/:id/users`       | `platform:orgs:public:read`        | Members: name, email, role, status, last login                         |
+| GET    | `/platform/orgs/:id/invites`     | `platform:orgs:manage`             | Invitations                                                            |
+| POST   | `/platform/orgs/:id/invites`     | `platform:orgs:manage`             | (Re)send the org-admin invite                                          |
+| DELETE | `/platform/invites/:id`          | `platform:orgs:manage`             | Revoke a pending invitation                                            |
+| GET    | `/platform/dashboard`            | `platform:dashboard:read`          | Cross-org aggregates                                                   |
+| GET    | `/platform/audit`                | `platform:audit:read`              | PLATFORM-scope audit log (paginated, filters)                          |
+| GET    | `/platform/signal-templates`     | `platform:signal_templates:manage` | List industry templates                                                |
+| POST   | `/platform/signal-templates`     | `platform:signal_templates:manage` | Create a template                                                      |
+| PATCH  | `/platform/signal-templates/:id` | `platform:signal_templates:manage` | Update a template                                                      |
+
+### Platform data, Super Admin only (`modules/platform-data.ts`)
+
+The raw platform data source: explorer, template, two-phase imports, connectors and ingestion. See
+[Platform data](/docs/platform-data). Org roles get 403 on every route.
+
+| Method | Path                                       | Guard                  | Description                                                                                                  |
+| ------ | ------------------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------ |
+| GET    | `/platform/data/overview`                  | `platform:data:read`   | Counts, by source type, by tag, weekly chart, connectors, last ingestion                                     |
+| GET    | `/platform/data/events`                    | `platform:data:read`   | Events (25/page, max 100): `q`, `tag`, `source`, `sourceType`, `batchId`, `from`, `to`, `retracted`, `after` |
+| GET    | `/platform/data/events/:id`                | `platform:data:read`   | Full template-v1 record, provenance and distribution (org names + counts)                                    |
+| GET    | `/platform/data/companies`                 | `platform:data:read`   | Directory companies: `q`, `industry`, `country`, `sourceType`                                                |
+| GET    | `/platform/data/companies/:id`             | `platform:data:read`   | Company with contacts and 20 recent events                                                                   |
+| GET    | `/platform/data/contacts`                  | `platform:data:read`   | Directory contacts: `q`, `sourceType`                                                                        |
+| GET    | `/platform/data/template`                  | `platform:data:read`   | Template v1 field reference and import limits                                                                |
+| GET    | `/platform/data/template.csv`              | `platform:data:read`   | CSV template download                                                                                        |
+| GET    | `/platform/data/template.schema.json`      | `platform:data:read`   | JSON Schema download                                                                                         |
+| GET    | `/platform/data/samples/:name`             | `platform:data:read`   | `sampleData.csv` or `sampleData.invalid.csv`                                                                 |
+| POST   | `/platform/data/imports`                   | `platform:data:import` | Multipart upload (`file`, optional `fanOut`). 202 `UPLOADED`, or 422 with the `FAILED` batch                 |
+| GET    | `/platform/data/batches`                   | `platform:data:read`   | Import and ingestion batches: `kind`, `status`                                                               |
+| GET    | `/platform/data/batches/:id`               | `platform:data:read`   | Batch with stats, `committable` and (once committed) distribution                                            |
+| GET    | `/platform/data/batches/:id/rows`          | `platform:data:read`   | Validation report rows: `status`                                                                             |
+| GET    | `/platform/data/batches/:id/errors.csv`    | `platform:data:read`   | Invalid, duplicate and warning rows with issues                                                              |
+| POST   | `/platform/data/batches/:id/commit`        | `platform:data:import` | Commit valid + warning rows (202). 409 if not `VALIDATED`, 422 above the invalid-ratio limit                 |
+| POST   | `/platform/data/batches/:id/discard`       | `platform:data:import` | Discard an `UPLOADED`, `VALIDATED` or `FAILED` batch                                                         |
+| POST   | `/platform/data/batches/:id/rollback`      | `platform:data:manage` | Retract a `COMMITTED` batch (tenant leads are kept)                                                          |
+| GET    | `/platform/data/connectors`                | `platform:data:read`   | Connectors with cursor, last run and running run id                                                          |
+| POST   | `/platform/data/connectors`                | `platform:data:manage` | Create a connector (201; 409 on a duplicate name)                                                            |
+| PATCH  | `/platform/data/connectors/:id`            | `platform:data:manage` | Update; `config` is merged, omitted `schedule` is kept, `""`/`null` clears it                                |
+| DELETE | `/platform/data/connectors/:id`            | `platform:data:manage` | Delete (409 while running); its data stays                                                                   |
+| POST   | `/platform/data/connectors/:id/test`       | `platform:data:manage` | Fetch and validate up to 5 rows without inserting (10/min)                                                   |
+| POST   | `/platform/data/connectors/:id/run`        | `platform:data:manage` | Run ingestion now (202; 409 if disabled or already running)                                                  |
+| GET    | `/platform/data/ingestion-runs`            | `platform:data:read`   | Run history: `connectorId`                                                                                   |
+| GET    | `/platform/data/ingestion-runs/:id`        | `platform:data:read`   | One run with stats                                                                                           |
+| GET    | `/platform/data/ingestion-runs/:id/events` | `platform:data:read`   | **SSE** progress stream (`text/event-stream`)                                                                |
+
+### Org, members and audit (`modules/org.ts`)
+
+| Method | Path               | Guard               | Description                                                  |
+| ------ | ------------------ | ------------------- | ------------------------------------------------------------ |
+| GET    | `/org`             | `org:profile:read`  | Current org with settings and onboarding checklist           |
+| PATCH  | `/org`             | `org:profile:write` | Update basics and settings                                   |
+| POST   | `/org/activate`    | `org:profile:write` | Activate and queue the first pipeline run                    |
+| GET    | `/org/users`       | `org:profile:read`  | Members                                                      |
+| PATCH  | `/org/users/:id`   | `org:users:manage`  | Change role or status (never the last admin, never yourself) |
+| GET    | `/org/invites`     | `org:users:manage`  | Invitations                                                  |
+| POST   | `/org/invites`     | `org:users:manage`  | Invite a teammate with a role                                |
+| DELETE | `/org/invites/:id` | `org:users:manage`  | Revoke                                                       |
+| GET    | `/audit`           | `audit:org:read`    | ORG-scope audit log with diffs                               |
+
+### Knowledge (`modules/knowledge.ts`)
+
+| Method        | Path                         | Guard               | Description                                |
+| ------------- | ---------------------------- | ------------------- | ------------------------------------------ |
+| GET           | `/org/sources`               | `org:profile:read`  | Sources with status and chunk counts       |
+| POST          | `/org/sources/website`       | `org:profile:write` | Add a website to crawl (SSRF-checked)      |
+| POST          | `/org/sources/text`          | `org:profile:write` | Add pasted text                            |
+| POST          | `/org/sources/upload-url`    | `org:profile:write` | Presigned upload URL for a document        |
+| POST          | `/org/sources/:id/complete`  | `org:profile:write` | Start processing an uploaded document      |
+| POST          | `/org/sources/:id/reprocess` | `org:profile:write` | Re-run processing                          |
+| PATCH         | `/org/sources/:id`           | `org:profile:write` | Change visibility                          |
+| GET           | `/org/sources/:id/download`  | `org:profile:read`  | Presigned download URL (5 min)             |
+| DELETE        | `/org/sources/:id`           | `org:profile:write` | Delete a source, its chunks and its object |
+| GET, POST     | `/org/products`              | read / write        | List / create products                     |
+| PATCH, DELETE | `/org/products/:id`          | `org:profile:write` | Update / delete a product                  |
+| GET, POST     | `/org/plans`                 | read / write        | List / create plans                        |
+| PATCH, DELETE | `/org/plans/:id`             | `org:profile:write` | Update / delete a plan                     |
+| GET, POST     | `/org/policies`              | read / write        | List / create policies                     |
+| PATCH, DELETE | `/org/policies/:id`          | `org:profile:write` | Update / delete a policy                   |
+| GET           | `/org/profile`               | `org:profile:read`  | Knowledge profile (`null` until generated) |
+| PATCH         | `/org/profile`               | `org:profile:write` | Edit the profile                           |
+| POST          | `/org/profile/generate`      | `org:profile:write` | Queue AI generation (202, `jobId`)         |
+| GET           | `/org/profile/jobs/:jobId`   | `org:profile:read`  | Generation job state                       |
+
+### ICPs and signals (`modules/intelligence.ts`)
+
+| Method | Path                         | Guard           | Description                              |
+| ------ | ---------------------------- | --------------- | ---------------------------------------- |
+| GET    | `/icps`                      | `icps:read`     | ICPs with lead counts                    |
+| POST   | `/icps`                      | `icps:write`    | Create a custom ICP                      |
+| POST   | `/icps/accept`               | `icps:write`    | Save an AI-suggested ICP                 |
+| PATCH  | `/icps/:id`                  | `icps:write`    | Update                                   |
+| DELETE | `/icps/:id`                  | `icps:write`    | Delete                                   |
+| POST   | `/icps/suggest`              | `icps:write`    | AI proposals (not saved)                 |
+| GET    | `/signal-templates`          | `signals:read`  | Templates for the org's industry         |
+| GET    | `/signals`                   | `signals:read`  | Signals with match counts                |
+| POST   | `/signals`                   | `signals:write` | Create a custom signal                   |
+| PATCH  | `/signals/:id`               | `signals:write` | Update or toggle                         |
+| DELETE | `/signals/:id`               | `signals:write` | Delete a custom signal (predefined: 400) |
+| POST   | `/signals/restore-templates` | `signals:write` | Clone any missing industry templates     |
+
+### Pipeline (`modules/intelligence.ts`)
+
+| Method | Path                        | Guard           | Description                                   |
+| ------ | --------------------------- | --------------- | --------------------------------------------- |
+| POST   | `/pipeline/runs`            | `pipeline:run`  | Start a run (202; 409 if one is active)       |
+| GET    | `/pipeline/runs`            | `pipeline:read` | Run history (paginated)                       |
+| GET    | `/pipeline/runs/:id`        | `pipeline:read` | One run with stats                            |
+| GET    | `/pipeline/runs/:id/events` | `pipeline:read` | **SSE** progress stream (`text/event-stream`) |
+
+### Leads and CRM (`modules/leads.ts`)
+
+| Method | Path                    | Guard          | Description                                               |
+| ------ | ----------------------- | -------------- | --------------------------------------------------------- |
+| GET    | `/leads`                | `leads:read`   | Paginated leads with filters and sort                     |
+| GET    | `/leads/export.csv`     | `leads:export` | CSV export (≤ 5000 rows)                                  |
+| GET    | `/leads/:id`            | `leads:read`   | Detail: breakdown, evidence, contacts, `version`          |
+| PATCH  | `/leads/:id`            | `leads:update` | Stage, owner (`leads:assign`), primary contact, won value |
+| POST   | `/leads/:id/claim`      | `leads:claim`  | Claim an unassigned lead                                  |
+| POST   | `/leads/bulk`           | `leads:update` | Bulk assign (`leads:assign`) or stage change (≤ 100)      |
+| POST   | `/leads/:id/rescore`    | `leads:update` | Recompute the score with the LLM                          |
+| GET    | `/leads/:id/activities` | `leads:read`   | Timeline (latest 200)                                     |
+| POST   | `/leads/:id/activities` | `leads:update` | Add a note                                                |
+| POST   | `/leads/:id/contacts`   | `leads:update` | Add a contact                                             |
+| PATCH  | `/contacts/:id`         | `leads:update` | Update a contact                                          |
+| GET    | `/tasks`                | `leads:read`   | My or all tasks                                           |
+| GET    | `/leads/:id/tasks`      | `leads:read`   | A lead's tasks                                            |
+| POST   | `/leads/:id/tasks`      | `tasks:write`  | Create a task                                             |
+| PATCH  | `/tasks/:id`            | `tasks:write`  | Update or complete                                        |
+| DELETE | `/tasks/:id`            | `tasks:write`  | Delete                                                    |
+
+### Outreach (`modules/outreach.ts`)
+
+| Method | Path                        | Guard                    | Description                                           |
+| ------ | --------------------------- | ------------------------ | ----------------------------------------------------- |
+| POST   | `/leads/:id/outreach/draft` | `outreach:send` (20/min) | AI draft for email, WhatsApp or call, plus deep links |
+| POST   | `/leads/:id/outreach/send`  | `outreach:send`          | Queue an email (202)                                  |
+| POST   | `/leads/:id/outreach/log`   | `outreach:send`          | Log a WhatsApp message, call or meeting (201)         |
+| GET    | `/leads/:id/outreach`       | `leads:read`             | Outreach messages for the lead                        |
+
+### Dashboards (`modules/dashboards.ts`)
+
+| Method | Path                 | Guard                 | Description                                                           |
+| ------ | -------------------- | --------------------- | --------------------------------------------------------------------- |
+| GET    | `/dashboard?from&to` | `dashboard:self:read` | Org dashboard (`scope: "org"`) or "My stats" for SDRs (`scope: "me"`) |
+
+<Callout type="info">
+  Plan §18 sketched a few endpoints differently (`/dashboard/summary`, `/dashboard/funnel`,
+  `/dashboard/by-signal`, `/dashboard/team`, `DELETE /org/users/:id`, `CRUD /leads/:id/contacts`). v0.1
+  implements a **single** `/dashboard` endpoint that returns all sections, disables members with `PATCH
+  /org/users/:id` (`status: DISABLED`), and adds and edits contacts through `POST /leads/:id/contacts` and
+  `PATCH /contacts/:id`. There is no contact deletion endpoint. The tables above reflect the actual code.
+</Callout>
+
+## Conventions
+
+- Ids are UUIDs (v7). Invalid UUIDs in paths return 400.
+- Timestamps are ISO-8601 strings in UTC. Date-only filters use `YYYY-MM-DD`.
+- Create endpoints return **201**, queued work **202**.
+- `PATCH` bodies are partial. Omitted fields are unchanged, and `null` clears nullable fields where allowed.

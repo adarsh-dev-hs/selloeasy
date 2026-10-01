@@ -1,0 +1,51 @@
+---
+title: ADR-0006 — Deep links and manual logging for WhatsApp, voice and Calendly
+description: "Email is really sent; WhatsApp, phone calls and meetings open wa.me, tel: and Calendly links, and the rep logs the outcome manually."
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+Reps approach leads over four channels: email, WhatsApp, phone and booked meetings. Real integrations for the last
+three need paid accounts and verified assets: the WhatsApp Business Cloud API (verified business and templates),
+Twilio Voice (numbers, compliance), and Calendly webhooks (paid plans, public callback URLs). None of them is
+available in a local evaluation setup, and none can be exercised meaningfully with fictional contacts.
+
+Email, by contrast, can be sent for real everywhere: Mailpit locally, SES on AWS.
+
+## Decision
+
+- **Email is actually sent.** Drafted by AI, edited by the rep, queued, and delivered by the worker through the
+  configured `MailProvider` (SMTP or SES), with delivery status tracked on `outreach_messages`.
+- **WhatsApp:** the AI drafts a message, and the UI opens `https://wa.me/<number>?text=<message>` (click-to-chat). The
+  rep sends it in WhatsApp, then logs it (`POST /leads/:id/outreach/log` with `channel: whatsapp`).
+- **Voice:** the AI drafts a call script with talking points and objection handling. The UI opens `tel:<number>`, and
+  the rep logs the outcome (connected, no answer, voicemail…) and duration.
+- **Meetings:** the UI opens the rep's (or the org's) Calendly link with name and email prefilled. The rep logs the
+  meeting time, which moves the lead to `MEETING_SCHEDULED`.
+- Every channel writes the same kind of outbound activity and triggers the same stage automation, so dashboards treat
+  them uniformly.
+
+## Consequences
+
+- The full outreach loop works in any environment without third-party accounts.
+- Human-in-the-loop for every message, which is also a safety property for AI-drafted content.
+- **Manual logging** for WhatsApp, calls and meetings: data quality depends on reps logging honestly and promptly,
+  and there is no delivery or read status, recording or automatic meeting capture.
+- Only `MailProvider` exists as an abstraction today. Provider interfaces for the other channels are planned, but not
+  in code.
+
+## Alternatives considered
+
+- **Twilio (WhatsApp + Voice) now**: realistic, but it needs paid accounts and verified numbers, and it adds
+  webhook infrastructure. Not evaluable locally.
+- **Email-only**: simpler, but misses channels that are central to B2B selling in the target markets (WhatsApp in
+  particular).
+- **Faking sends for all channels**: misleading. Logging what the human actually did is more honest.
+
+## Revisit when
+
+- A customer provides WhatsApp Business or Twilio credentials, or needs call recording and transcription.
+- Meeting volume makes manual logging a bottleneck. Add Calendly `invitee.created` webhooks (or Cal.com).
+- Email needs tracking (opens, clicks) or reply ingestion.

@@ -1,0 +1,115 @@
+---
+title: CRM
+description: The lightweight CRM around each lead — ownership, assignment and claim, stages, the activity timeline, notes, contacts, tasks, bulk actions, export and re-scoring.
+---
+
+SelloEasy's CRM is intentionally small: enough to take a lead from `NEW` to `WON` or `LOST` with a complete,
+auditable history. It is implemented in `apps/api/src/modules/leads.ts` (leads, activities, contacts, tasks)
+and `outreach.ts` (touches). The lead model and stages are covered in
+[Leads & stages](/docs/concepts/leads-and-stages).
+
+## UI routes
+
+| Route             | Purpose                                                                                                                       |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `/app/leads`      | Paginated card grid (6 per page) with filters, search, sort and bulk actions                                                  |
+| `/app/leads/[id]` | Lead detail: header (account, stage, owner, score), "Why this score?", evidence, contacts, activity timeline, tasks, outreach |
+| `/app/tasks`      | "My tasks" across leads                                                                                                       |
+
+## Ownership, assignment and claiming
+
+| Action             | Endpoint                                                                  | Who                           | Notes                                                                                       |
+| ------------------ | ------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------- |
+| Assign or unassign | `PATCH /leads/:id` `{ ownerUserId }`                                      | Org Admin, Sales Manager      | Owner must be an active member. Writes an `ASSIGNMENT` activity and audits `lead.assigned`. |
+| Claim              | `POST /leads/:id/claim`                                                   | Org Admin, Sales Manager, SDR | Only unassigned leads. Race-safe conditional update. 409 if already owned.                  |
+| Bulk assign        | `POST /leads/bulk` `{ leadIds, action: { type: "assign", ownerUserId } }` | Org Admin, Sales Manager      | Up to 100 leads. Audits `lead.bulk_assigned`.                                               |
+| Implicit claim     | Outreach send or log on an unassigned lead                                | SDR                           | Claims in the same transaction as the touch                                                 |
+
+## Stages
+
+`PATCH /leads/:id` `{ stage, lostReason?, wonValue?, version? }`:
+
+- `LOST` requires `lostReason`. `WON` may carry `wonValue`.
+- Writes a `STAGE_CHANGE` activity (subject `FROM → TO`, body = lost reason) and audits `lead.stage_changed`
+  with before and after.
+- Optimistic locking with `version` (409 on conflict).
+- SDRs can only change stages on leads they own.
+
+Bulk stage changes (`POST /leads/bulk` with `{ type: "stage", stage }`) cover every stage except `LOST`. Leads
+already in the target stage are skipped. Each changed lead gets a `STAGE_CHANGE` activity with
+`metadata.bulk = true`, and one `lead.bulk_stage_changed` audit entry lists the ids.
+
+Outreach advances stages automatically (`NEW → CONTACTED` on a touch, up to `MEETING_SCHEDULED` on a logged
+meeting). See [Outreach](/docs/modules/outreach#stage-automation).
+
+## Activity timeline
+
+`GET /leads/:id/activities` returns the latest 200 activities, newest first, with the actor's name.
+
+| Type                          | Direction | Written by                                                                                                       |
+| ----------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------- |
+| `SIGNAL`                      | inbound   | Pipeline, for each event that produced new evidence (subject = signal names, body = event title, `metadata.url`) |
+| `EMAIL`                       | outbound  | Email send (`metadata.to`, `messageId`, delivery `status` updated by the worker: `queued` → `sent` / `failed`)   |
+| `WHATSAPP`, `CALL`, `MEETING` | outbound  | Outreach log (`metadata`: contact, notes, call `outcome` and `durationMin`, `meetingAt`, `calendlyUrl`)          |
+| `NOTE`                        | internal  | `POST /leads/:id/activities` `{ type: "NOTE", body }` (1–10000 chars)                                            |
+| `STAGE_CHANGE`                | internal  | Manual, bulk or automatic (`metadata.from`, `to`, `auto`, `bulk`)                                                |
+| `ASSIGNMENT`                  | internal  | Assign, claim, bulk assign                                                                                       |
+| `SCORE_CHANGED`               | internal  | Re-scoring that moved the total by 5 points or more ("Score 58 → 71")                                            |
+| `TASK`                        | —         | Reserved in the enum. Tasks are kept in their own table and are not mirrored on the timeline.                    |
+
+Every outbound activity and note also updates `leads.last_activity_at`. The first outbound touch sets
+`first_touch_at`.
+
+## Contacts
+
+Contacts belong to the lead's **account**:
+
+- The pipeline copies the directory contacts (source `SYNTHETIC`) when it creates an account.
+- `POST /leads/:id/contacts` adds a `MANUAL` contact (name, title, persona, email, phone, WhatsApp, LinkedIn). If
+  the lead had no primary contact, the new one becomes primary.
+- `PATCH /contacts/:id` edits a contact (scoped to the caller's org).
+- `PATCH /leads/:id` `{ primaryContactId }` switches the primary contact, which must belong to the lead's account.
+
+Contacts affect scoring: the **authority** dimension is derived from contact titles. Re-score after adding a
+decision-maker. Contact PII is visible only within the org.
+
+## Tasks
+
+| Endpoint                                                             | Behavior                                                                                |
+| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `GET /tasks?scope=mine\|all&status=open\|done\|all`                  | "My tasks" (default: mine, open), sorted by due date, with the account name. Up to 200. |
+| `GET /leads/:id/tasks`                                               | A lead's tasks: open first, then by due date                                            |
+| `POST /leads/:id/tasks` `{ title, dueAt?, assigneeUserId? }`         | Defaults to the caller. Assigning to someone else needs `leads:assign`.                 |
+| `PATCH /tasks/:id` `{ title?, dueAt?, assigneeUserId?, completed? }` | `completed: true` sets `completed_at`. SDRs can only update tasks assigned to them.     |
+| `DELETE /tasks/:id`                                                  | The creator, or a manager or admin                                                      |
+
+Tasks are audited (`task.created`, `task.updated`, `task.completed`, `task.deleted`). The seed creates open
+follow-up tasks for leads in `NEW`, `CONTACTED` and `ENGAGED`.
+
+## Re-scoring
+
+`POST /leads/:id/rescore` recomputes the BANT+ score immediately, using the LLM for budget, need and timeline
+(no run budget applies here). Audited as `lead.rescored` with the old and new totals. Useful after adding
+contacts or after a `PARTIAL` run left heuristic scores. See [BANT+ scoring](/docs/concepts/bant-scoring).
+
+## Export
+
+`GET /leads/export.csv` (Org Admin, Sales Manager) uses the list filters, returns up to 5000 rows with account,
+domain, industry, country, stage, score, band, the four BANT scores, owner, primary contact and title, headline
+signal and last signal date. Formula injection is neutralized, and every export is audited (`lead.exported`,
+with count and filters).
+
+## Concurrency guarantees
+
+| Scenario                                                   | Guarantee                                                                                                |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Two SDRs claim the same lead                               | Exactly one wins. The other gets 409.                                                                    |
+| Two users edit the same lead                               | With `version`, the second gets 409. Without it, the conditional update still prevents a lost update.    |
+| SDR contacts an unassigned lead while a teammate claims it | The auto-claim is conditional, so one of them gets 403 "This lead was just claimed by another teammate". |
+| Stage change and its audit row                             | Written in the same transaction                                                                          |
+
+## Planned
+
+- Notes with @mentions (v2).
+- Soft delete of leads and contacts.
+- Keyboard shortcuts on the leads grid.

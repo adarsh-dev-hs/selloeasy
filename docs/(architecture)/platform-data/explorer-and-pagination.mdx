@@ -1,0 +1,110 @@
+---
+title: Data explorer & pagination
+description: Browsing the platform data source as a Super Admin — overview, events, companies, contacts and the distribution view — and how its paginated endpoints use offset pages, keyset cursors and estimated totals.
+---
+
+The explorer endpoints let the Super Admin browse **every field** of the raw platform data, with provenance, and see
+how it reached orgs. All require `platform:data:read`.
+
+## Overview
+
+`GET /platform/data/overview` returns:
+
+| Field                           | Meaning                                                                            |
+| ------------------------------- | ---------------------------------------------------------------------------------- |
+| `events`, `retractedEvents`     | Live and retracted event counts                                                    |
+| `eventsLast7d`, `eventsLast30d` | Live events **ingested** (created) in the last 7 / 30 days                         |
+| `companies`, `contacts`         | Live (non-retracted) directory rows                                                |
+| `sources`                       | Distinct `source` values                                                           |
+| `newestPublishedAt`             | Newest live `published_at`                                                         |
+| `bySourceType`                  | Live events per `SEED`, `CSV_IMPORT`, `JSONL_IMPORT`, `CONNECTOR`                  |
+| `byTag`                         | Live events per industry tag                                                       |
+| `weekly`                        | Live events per week of `published_at` for the last 26 weeks, split by source type |
+| `connectors`, `lastIngestionAt` | Connector count and the last finished ingestion run                                |
+
+## Events
+
+`GET /platform/data/events` lists events ordered by `published_at desc, id desc`.
+
+| Query param        | Meaning                                                        |
+| ------------------ | -------------------------------------------------------------- |
+| `q`                | Full-text search (`websearch_to_tsquery` on the event's `tsv`) |
+| `tag`              | One market tag                                                 |
+| `source`           | Case-insensitive substring of `source`                         |
+| `sourceType`       | `SEED`, `CSV_IMPORT`, `JSONL_IMPORT` or `CONNECTOR`            |
+| `batchId`          | Events of one batch                                            |
+| `from`, `to`       | `published_at` date range (`YYYY-MM-DD`, inclusive)            |
+| `retracted`        | `exclude` (default), `include` or `only`                       |
+| `page`, `pageSize` | Offset pagination: 25 per page by default, maximum 100         |
+| `after`            | Keyset cursor for deep pages (see [Pagination](#pagination))   |
+
+Each item has the id, `externalId`, dates, title, a **200-character `snippet`** (never the full body), source and URL,
+tags, the subject company (name and domain), amount and currency, region, `retractedAt`, provenance
+(`sourceType` and `batch` with id, label and kind) and **`orgsMatched`**: the number of distinct orgs with a signal
+match on the event.
+
+`GET /platform/data/events/:id` returns the full record in [template-v1](/docs/platform-data/data-template) field
+names (joined with the subject company's directory attributes), `retractedAt`, `ingestedAt`, `ingestedBy` (user name),
+`schemaVersion`, provenance and the **distribution**.
+
+## Companies and contacts
+
+| Endpoint                           | Filters                                                   | Order    | Notes                                                                                                                    |
+| ---------------------------------- | --------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `GET /platform/data/companies`     | `q` (name or domain), `industry`, `country`, `sourceType` | name, id | Live companies only. Each row has `contactsCount` and `eventsCount` (live events whose `companies` reference its domain) |
+| `GET /platform/data/companies/:id` | —                                                         | —        | Also `description`, all its contacts and its 20 most recent events                                                       |
+| `GET /platform/data/contacts`      | `q` (name, email or company name), `sourceType`           | name, id | Live contacts only, with email, phone, WhatsApp, LinkedIn URL and company                                                |
+
+Directory contacts are platform-owned (synthetic) data, so showing their details to the Super Admin is within the
+[ADR-0010](/docs/decisions/0010-superadmin-public-data-boundary) boundary.
+
+## Distribution: how data reached orgs
+
+For an event (`GET /platform/data/events/:id`) and for a committed or rolled-back batch
+(`GET /platform/data/batches/:id`), `distribution` holds:
+
+```json
+{
+  "orgsMatched": 2,
+  "matches": 3,
+  "leads": 2,
+  "byOrg": [{ "orgId": "…", "orgName": "Roadgrip Tyres", "matches": 2, "leads": 1 }]
+}
+```
+
+It is computed from `signal_matches` and `lead_signals`: org **names and counts** only. Lead records, contacts, scores
+and rationales are never returned. This is operational, aggregate metadata that reveals which orgs found an event
+relevant, which the product accepts under ADR-0010.
+
+## Pagination
+
+All list endpoints return a `DataPage`:
+
+```json
+{
+  "items": [],
+  "page": 1,
+  "pageSize": 25,
+  "total": 1240,
+  "totalIsEstimate": false,
+  "totalPages": 50,
+  "nextAfter": "2026-09-22T00:00:00.000Z|0199…"
+}
+```
+
+The rules ([ADR-0018](/docs/decisions/0018-hybrid-offset-keyset-pagination)):
+
+- **Offset pages** with `page` and `pageSize` (default 25, maximum 100) everywhere, with a stable order (events:
+  `published_at desc, id desc`; companies and contacts: `name, id`; batches and runs: newest first; staging rows:
+  `row_number`).
+- **Keyset for deep event pages.** The events list also returns `nextAfter` (`<published_at ISO>|<id>` of the last
+  item) whenever more rows exist. Passing it back as `after` switches to keyset pagination: the query seeks with
+  `(published_at, id) < (after)` and ignores `page`, so deep pages cost the same as the first one. An invalid cursor
+  returns 400. Other lists always return `nextAfter: null`.
+- **Estimated totals.** For events, companies and contacts, when **no filter** is applied and the table's
+  `pg_class.reltuples` is above **50 000**, `total` is that estimate and `totalIsEstimate` is `true` (a UI shows it as
+  "≈ 1.2M"). Filtered queries, smaller tables, batches, staging rows and ingestion runs always use an exact
+  `count(*)`. For events, the retracted filter set to anything but `exclude` counts as a filter.
+- **No bodies in lists.** Event lists carry a 200-character snippet; the full record comes from the detail endpoint.
+
+Heavy work (validation, commits, ingestion) runs in the worker in chunks, never on the request path.

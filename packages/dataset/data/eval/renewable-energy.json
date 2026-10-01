@@ -1,0 +1,79 @@
+[
+  {
+    "eventExternalId": "ren-001",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": [
+      "Utility-Scale Project Awarded"
+    ]
+  },
+  {
+    "eventExternalId": "ren-002",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": [
+      "Utility-Scale Project Awarded",
+      "Battery Storage Tender"
+    ]
+  },
+  {
+    "eventExternalId": "ren-009",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": [
+      "Rooftop Solar Mandate or Policy"
+    ]
+  },
+  {
+    "eventExternalId": "ren-014",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": [
+      "Industrial Decarbonisation Pledge"
+    ]
+  },
+  {
+    "eventExternalId": "ren-018",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": [
+      "Data Centre Build-Out"
+    ]
+  },
+  {
+    "eventExternalId": "ren-024",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": [
+      "Green Hydrogen Project"
+    ]
+  },
+  {
+    "eventExternalId": "ren-028",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": [
+      "Power Purchase Agreement Signed"
+    ]
+  },
+  {
+    "eventExternalId": "ren-032",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": [
+      "Battery Storage Tender"
+    ]
+  },
+  {
+    "eventExternalId": "ren-037",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "ren-041",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "ren-046",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": []
+  },
+  {
+    "eventExternalId": "ren-049",
+    "orgSlug": "suncrest-energy",
+    "expectedSignals": []
+  }
+]

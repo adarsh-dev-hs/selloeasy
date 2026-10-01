@@ -1,0 +1,28 @@
+{
+  "title": "Decisions (ADRs)",
+  "description": "Architecture decision records: every trade-off and why",
+  "icon": "Scale",
+  "root": true,
+  "pages": [
+    "index",
+    "0001-nextjs-over-vite",
+    "0002-drizzle-orm",
+    "0003-bullmq-for-pipeline",
+    "0004-fts-over-vector-retrieval",
+    "0005-offset-pagination-for-leads",
+    "0006-deep-links-for-whatsapp-voice-calendly",
+    "0007-app-level-tenancy-before-rls",
+    "0008-synthetic-dataset",
+    "0009-openrouter-model-from-env",
+    "0010-superadmin-public-data-boundary",
+    "0011-lead-visibility-setting",
+    "0012-env-driven-drivers-for-aws-readiness",
+    "0013-tsx-runtime-no-bundling",
+    "0014-fetch-over-openai-sdk",
+    "0015-canonical-data-template-and-two-phase-import",
+    "0016-retract-instead-of-delete-for-rollback",
+    "0017-provider-adapter-layer",
+    "0018-hybrid-offset-keyset-pagination",
+    "0019-standalone-docs-site"
+  ]
+}

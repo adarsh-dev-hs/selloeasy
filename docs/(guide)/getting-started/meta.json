@@ -1,0 +1,4 @@
+{
+  "title": "Getting started",
+  "pages": ["quickstart", "environment-variables", "seed-data-and-accounts", "local-development"]
+}

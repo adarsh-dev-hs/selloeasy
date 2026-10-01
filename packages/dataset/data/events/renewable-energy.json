@@ -1,0 +1,1329 @@
+[
+  {
+    "externalId": "ren-001",
+    "source": "Solar Ledger India",
+    "url": "https://solar-ledger-india.example/2026/tharline-sunfields-wins-600-mw-solar-tender-for-jodhpur",
+    "title": "Tharline Sunfields wins 600 MW solar tender for Jodhpur solar park",
+    "body": "Tharline Sunfields Ltd has been awarded 600 MW of capacity in the latest state utility-scale solar tender, securing the largest single block at the upcoming Phalodi solar park near Jodhpur. The IPP quoted a tariff of Rs 2.54 per unit and expects to receive the letter of award within two weeks. The project, estimated at Rs 2,850 crore, will use bifacial modules on single-axis trackers and is targeted for commercial operation by December 2027. Tharline has shortlisted Vindhya Solar EPC for the balance-of-system package and said inverter and SCADA procurement will be finalised this quarter. \"We are standardising on high-efficiency string architecture for this site to reduce downtime in a high-dust environment,\" said Rohan Mehtani, VP Projects. The company now has 2.7 GW operational or under construction across Rajasthan and Gujarat.",
+    "publishedDaysAgo": 3,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-tharline-sunfields",
+        "role": "subject"
+      },
+      {
+        "key": "ren-vindhya-solar-epc",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Jodhpur, India",
+    "amount": 28500000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-002",
+    "source": "GreenGrid Journal",
+    "url": "https://greengrid-journal.example/2026/kaveri-greenpower-awarded-300-mw-solar-plus-150-mwh",
+    "title": "Kaveri Greenpower awarded 300 MW solar plus 150 MWh battery storage project",
+    "body": "Kaveri Greenpower Ltd has been awarded a 300 MW solar project paired with a 150 MWh battery energy storage system in a central tender for firm and dispatchable renewable power. The plant will come up in Anantapur district and must deliver assured peak supply for four hours daily, making the BESS component central to bid economics. Kaveri said the combined investment is about Rs 2,100 crore and commissioning is targeted within 24 months of the power sale agreement. \"Storage is now the difference between winning and losing these auctions,\" said Anand Sreenivasan, Director – Energy Infrastructure. The company plans to float EPC and power-conversion packages in the coming weeks, with a preference for integrated inverter-plus-storage suppliers that can guarantee grid-code compliance.",
+    "publishedDaysAgo": 5,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-kaveri-greenpower",
+        "role": "subject"
+      }
+    ],
+    "region": "Anantapur, India",
+    "amount": 21000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-003",
+    "source": "Infra Pulse Asia",
+    "url": "https://infra-pulse-asia.example/2026/vindhya-solar-epc-bags-rs-1-650-crore-epc",
+    "title": "Vindhya Solar EPC bags Rs 1,650 crore EPC contract for 450 MW solar park",
+    "body": "Vindhya Solar EPC has secured an EPC contract worth Rs 1,650 crore to build a 450 MW solar plant in Bikaner for a public-sector generator. The scope covers design, supply of modules and inverters, civil works, a 220 kV pooling substation and three years of operations and maintenance. Work will begin in November, with full commissioning expected by March 2028. Karthik Rajan, VP Projects, said the firm's order book has crossed 3.2 GW. \"We are locking in inverter and transformer supply early because lead times remain tight,\" he said. The award follows two other utility-scale wins in Gujarat earlier this year.",
+    "publishedDaysAgo": 8,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-vindhya-solar-epc",
+        "role": "subject"
+      }
+    ],
+    "region": "Bikaner, India",
+    "amount": 16500000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-004",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/meridian-infraworks-receives-letter-of-award-for-250-mw",
+    "title": "Meridian Infraworks receives letter of award for 250 MW solar project in Madhya Pradesh",
+    "body": "Meridian Infraworks Ltd has received a letter of award to execute a 250 MW solar project in Neemuch district on a turnkey basis for a private IPP. The company's renewables division will handle engineering, procurement and construction, including a 33/220 kV substation. The contract is valued at about Rs 980 crore and the plant is scheduled for commissioning in 18 months. \"This marks our largest solar order to date,\" said Pradeep Nair, Director – Renewables EPC, adding that Meridian would appoint equipment vendors for central inverters and plant monitoring by the end of next month. The firm is also bidding for hybrid packages in Maharashtra.",
+    "publishedDaysAgo": 12,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-meridian-infraworks",
+        "role": "subject"
+      }
+    ],
+    "region": "Neemuch, India",
+    "amount": 9800000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-005",
+    "source": "Gulf Energy Wire",
+    "url": "https://gulf-energy-wire.example/2026/dunefield-solar-arabia-awarded-1-200-mw-utility-scale",
+    "title": "Dunefield Solar Arabia awarded 1,200 MW utility-scale solar plant in Saudi round",
+    "body": "Dunefield Solar Arabia has been awarded a 1,200 MW utility-scale solar project in the latest national renewable procurement round, after submitting one of the lowest bids at 1.29 US cents per kWh. The plant, to be sited near Al Jouf, represents an investment of about USD 890 million and is expected to reach commercial operation in 2028. Faisal Al Harbi, VP Projects, said the developer would run separate packages for trackers, modules and power-conversion equipment, and is evaluating international inverter suppliers with Middle East service footprints. Financial close is targeted for Q1 2027.",
+    "publishedDaysAgo": 15,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-dunefield-solar",
+        "role": "subject"
+      }
+    ],
+    "region": "Al Jouf, Saudi Arabia",
+    "amount": 890000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-006",
+    "source": "Infra Pulse Asia",
+    "url": "https://infra-pulse-asia.example/2026/mekong-lightfield-wins-auction-for-200-mw-solar-farm",
+    "title": "Mekong Lightfield wins auction for 200 MW solar farm in Ninh Thuan",
+    "body": "Mekong Lightfield Energy has won a provincial auction to develop a 200 MW solar farm in Ninh Thuan, one of Vietnam's highest-irradiation regions. The company will invest roughly USD 160 million and aims for commissioning by mid-2028. Nguyen Thi Lan, Director – Energy Infrastructure, said the project would be among the first in the province designed with grid-forming capability to ease curtailment. The developer expects to select an EPC partner and inverter supplier by early next year and is also considering storage for evening ramping.",
+    "publishedDaysAgo": 20,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-mekong-lightfield",
+        "role": "subject"
+      }
+    ],
+    "region": "Ninh Thuan, Vietnam",
+    "amount": 160000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-007",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/karoo-horizon-named-preferred-bidder-for-180-mw-solar",
+    "title": "Karoo Horizon named preferred bidder for 180 MW solar and 100 MWh battery storage",
+    "body": "Karoo Horizon Power has been named preferred bidder for a 180 MW solar PV plant coupled with 100 MWh of battery storage in the Northern Cape, under South Africa's latest procurement window. The hybrid facility, valued at USD 210 million, will provide dispatchable evening supply and frequency regulation services to the national grid. CEO Thabo Nkosi said the company had been awarded grid-connection rights and would appoint an EPC contractor before year-end. \"Our storage design is sized for two cycles a day, so inverter and battery reliability is critical,\" he said.",
+    "publishedDaysAgo": 25,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-karoo-horizon",
+        "role": "subject"
+      }
+    ],
+    "region": "Northern Cape, South Africa",
+    "amount": 210000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-008",
+    "source": "GreenGrid Journal",
+    "url": "https://greengrid-journal.example/2026/rann-hybrid-power-awarded-500-mw-solar-tender-for",
+    "title": "Rann Hybrid Power awarded 500 MW solar tender for Kutch renewable park",
+    "body": "Rann Hybrid Power has been awarded 500 MW in a state utility tender for solar capacity at the Kutch renewable energy park, adding to its 700 MW of wind-solar projects under development. The company quoted Rs 2.61 per unit and expects the letter of award this month. The Rs 2,300 crore project will be executed in two phases, with the first 250 MW scheduled for commissioning by September 2027. Kunal Thakkar, VP Projects, said the developer will issue EPC and inverter packages soon, prioritising suppliers with proven performance in saline, high-temperature conditions.",
+    "publishedDaysAgo": 2,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-rann-hybrid-power",
+        "role": "subject"
+      }
+    ],
+    "region": "Kutch, India",
+    "amount": 23000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-009",
+    "source": "Solar Ledger India",
+    "url": "https://solar-ledger-india.example/2026/aravalli-renewable-agency-notifies-rooftop-solar-mandate-for-large",
+    "title": "Aravalli renewable agency notifies rooftop solar mandate for large commercial buildings",
+    "body": "The Aravalli State Renewable Development Agency has notified a rooftop solar mandate requiring all new commercial buildings with a connected load above 100 kW to install rooftop PV covering at least 30% of the usable roof area. Existing malls, hospitals and office complexes above 500 kW must comply within 24 months. The solar policy also raises the net metering limit to 1 MW per premises and offers a capital subsidy of Rs 4,000 per kWp for MSMEs. \"We expect more than 900 MW of rooftop capacity to be added over three years,\" said Dinesh Choudhary, Director – Energy Infrastructure. The agency will empanel inverter and EPC vendors through an online portal from next month.",
+    "publishedDaysAgo": 6,
+    "industryTags": [
+      "Government",
+      "Renewable Energy",
+      "Real Estate"
+    ],
+    "companies": [
+      {
+        "key": "ren-aravalli-renewable-agency",
+        "role": "subject"
+      }
+    ],
+    "region": "Jaipur, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-010",
+    "source": "Corporate Ledger Weekly",
+    "url": "https://corporate-ledger-weekly.example/2026/marigold-malls-to-install-12-mwp-rooftop-solar-across",
+    "title": "Marigold Malls to install 12 MWp rooftop solar across nine shopping centres",
+    "body": "Marigold Malls & Spaces will install 12 MWp of rooftop solar across nine of its shopping centres, ranging from 800 kWp to 2.1 MWp per site, as part of a Rs 62 crore green building upgrade. The retail landlord said the rooftop PV systems will be paired with smart energy-management software to track tenant consumption and cut common-area power bills by about 35%. Vikram Sethi, Head of Facilities & Energy, said installations will start in Pune and Indore in November and finish by June 2027. The company is evaluating hybrid inverters so selected sites can later add battery backup.",
+    "publishedDaysAgo": 10,
+    "industryTags": [
+      "Real Estate",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-marigold-malls",
+        "role": "subject"
+      }
+    ],
+    "region": "Pune, India",
+    "amount": 620000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-011",
+    "source": "Solar Ledger India",
+    "url": "https://solar-ledger-india.example/2026/skyline-business-parks-commits-to-rooftop-pv-on-all",
+    "title": "Skyline Business Parks commits to rooftop PV on all campuses under green building push",
+    "body": "Skyline Business Parks will add 7.5 MWp of rooftop PV across its office campuses in Pune, Hyderabad and Gurugram to meet platinum green building certification targets demanded by multinational tenants. The Rs 38 crore programme will use net metering where state rules allow and behind-the-meter configurations elsewhere. \"Tenants now ask for renewable share in every lease negotiation,\" said Aditya Joshi, VP Projects. The developer plans to select EPC partners and inverter brands by December and complete the rooftop solar rollout within 15 months.",
+    "publishedDaysAgo": 18,
+    "industryTags": [
+      "Real Estate",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-skyline-business-parks",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": 380000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-012",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/konkan-coast-discom-launches-net-metering-and-rooftop-subsidy",
+    "title": "Konkan Coast DISCOM launches net metering and rooftop subsidy scheme for C&I consumers",
+    "body": "Konkan Coast Electricity Distribution Ltd has launched a revised net metering scheme and rooftop solar subsidy targeted at commercial and industrial consumers, aiming to add 250 MW of rooftop capacity in two years. Consumers installing up to 500 kWp will get simplified approvals within 15 days, while a Rs 3,000 per kWp incentive will be offered to units in notified industrial clusters. Anjali Deshmukh, Director – Operations, said the DISCOM will also pilot aggregated rooftop monitoring to improve feeder-level forecasting.",
+    "publishedDaysAgo": 30,
+    "industryTags": [
+      "Utilities",
+      "Government",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-konkan-coast-power",
+        "role": "subject"
+      }
+    ],
+    "region": "Ratnagiri, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-013",
+    "source": "Solar Ledger India",
+    "url": "https://solar-ledger-india.example/2026/narmada-vidyut-unveils-rooftop-solar-subsidy-for-20-000",
+    "title": "Narmada Vidyut unveils rooftop solar subsidy for 20,000 MSME units",
+    "body": "Narmada Vidyut Distribution Company has unveiled a rooftop solar programme offering a subsidy of up to 25% for MSME units installing between 10 kWp and 200 kWp systems. The utility estimates 20,000 small factories could participate, adding about 400 MW of rooftop capacity. Net metering approvals will move to a single-window portal, and empanelled vendors must supply inverters compliant with the latest grid-connection standards. Sanjay Tiwari, Chief Engineer – Planning, said the scheme is designed to cut daytime peak demand on industrial feeders.",
+    "publishedDaysAgo": 40,
+    "industryTags": [
+      "Utilities",
+      "Government",
+      "Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "ren-narmada-vidyut",
+        "role": "subject"
+      }
+    ],
+    "region": "Bhopal, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-014",
+    "source": "Factory Floor Times",
+    "url": "https://factory-floor-times.example/2026/sabarmati-weaves-sets-2035-net-zero-goal-plans-40",
+    "title": "Sabarmati Weaves sets 2035 net-zero goal, plans 40 MW captive solar and storage",
+    "body": "Sabarmati Weaves Ltd has set a target to reach net-zero operational emissions by 2035 and cut Scope 2 emissions by 70% by 2029. The textile major will invest Rs 310 crore in 40 MW of captive solar across its Ahmedabad and Surat plants, backed by 20 MWh of battery storage to cover evening shifts. \"Our European buyers are asking for verified decarbonisation data, not promises,\" said Hetal Parikh, Head of Sustainability. The company will also deploy a plant-level energy-management platform to track renewable energy share by production line. Tenders for the first 15 MW are expected next month.",
+    "publishedDaysAgo": 4,
+    "industryTags": [
+      "Manufacturing",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-sabarmati-weaves",
+        "role": "subject"
+      }
+    ],
+    "region": "Ahmedabad, India",
+    "amount": 3100000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-015",
+    "source": "Factory Floor Times",
+    "url": "https://factory-floor-times.example/2026/deccan-crest-cements-outlines-rs-1-200-crore-decarbonisation",
+    "title": "Deccan Crest Cements outlines Rs 1,200 crore decarbonisation plan with 150 MW renewable energy",
+    "body": "Deccan Crest Cements has outlined a Rs 1,200 crore decarbonisation roadmap to cut its carbon intensity by 30% by 2030. The plan includes 150 MW of renewable energy capacity through captive solar and wind, waste-heat recovery at all four plants, and battery storage at its Nalgonda unit to reduce diesel generator use. Swathi Iyer, Head of Sustainability, said the company aims to source 60% of its electricity from renewables within four years and has committed to a science-based net-zero target by 2045.",
+    "publishedDaysAgo": 9,
+    "industryTags": [
+      "Manufacturing",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-deccan-crest-cements",
+        "role": "subject"
+      }
+    ],
+    "region": "Nalgonda, India",
+    "amount": 12000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-016",
+    "source": "Factory Floor Times",
+    "url": "https://factory-floor-times.example/2026/lotus-forge-joins-re100-targets-carbon-neutral-plants-by",
+    "title": "Lotus Forge joins RE100, targets carbon neutral plants by 2030",
+    "body": "Lotus Forge Auto Components has joined the RE100 initiative, committing to source 100% renewable energy for its five plants by 2030 and become carbon neutral in its own operations. The forging specialist said global OEM customers now require Scope 2 emissions disclosures in supplier scorecards. The company will install 9 MW of rooftop and ground-mounted captive solar at its Chakan and Oragadam facilities and procure the balance through open access. Isha Kapoor, Head of Sustainability, said energy monitoring would be rolled out at every press line to identify savings.",
+    "publishedDaysAgo": 14,
+    "industryTags": [
+      "Manufacturing",
+      "Automotive",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-lotus-forge",
+        "role": "subject"
+      }
+    ],
+    "region": "Pune, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-017",
+    "source": "GreenGrid Journal",
+    "url": "https://greengrid-journal.example/2026/indus-ridge-steelworks-targets-45-cut-in-scope-2",
+    "title": "Indus Ridge Steelworks targets 45% cut in Scope 2 emissions with captive solar",
+    "body": "Indus Ridge Steelworks has announced an energy transition plan targeting a 45% reduction in Scope 2 emissions by 2030, anchored by 300 MW of captive solar and a 200 MWh storage installation at its Odisha complex. The investment of about Rs 2,400 crore will also fund electrified auxiliaries and a digital energy-management layer. Tanvi Saxena, Head of Decarbonisation, said the company expects EU carbon border costs to make low-carbon steel a commercial necessity. Bids for the first 100 MW phase will be invited this quarter.",
+    "publishedDaysAgo": 22,
+    "industryTags": [
+      "Manufacturing",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-indus-ridge-steel",
+        "role": "subject"
+      }
+    ],
+    "region": "Jajpur, India",
+    "amount": 24000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-018",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/orbitcore-data-centres-to-build-120-mw-it-load",
+    "title": "OrbitCore Data Centres to build 120 MW IT load hyperscale campus in Navi Mumbai",
+    "body": "OrbitCore Data Centres will invest Rs 7,500 crore in a 120 MW IT load hyperscale campus in Navi Mumbai, its largest facility to date. The campus will be built in four phases, with the first 30 MW data centre building going live in Q3 2027. OrbitCore said it would deploy lithium-ion battery storage in place of conventional UPS batteries and add on-site solar to reduce grid draw. \"Customers running AI clusters want uptime and renewable power in the same contract,\" said Arjun Malhotra, Director – Energy Infrastructure. Backup power and electrical packages will be tendered from next quarter.",
+    "publishedDaysAgo": 7,
+    "industryTags": [
+      "Data Centers",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-orbitcore-data-centres",
+        "role": "subject"
+      }
+    ],
+    "region": "Navi Mumbai, India",
+    "amount": 75000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-019",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/nimbusrack-breaks-ground-on-60-mw-data-centre-in",
+    "title": "NimbusRack breaks ground on 60 MW data centre in Chennai",
+    "body": "NimbusRack Cloud Campuses has broken ground on a 60 MW data centre in Chennai's Ambattur industrial belt, backed by a USD 450 million commitment from its infrastructure-fund sponsor. The colocation facility is designed for high-density AI racks and will target a PUE of 1.3. Siddharth Rao, CTO, said the company was evaluating battery storage for load shifting and ride-through alongside diesel backup power. The first 20 MW hall is scheduled to go live in early 2028. Industry analysts said Chennai has emerged as a preferred landing point for subsea cable capacity, and NimbusRack expects at least two anchor tenants to pre-commit before the first hall is energised.",
+    "publishedDaysAgo": 11,
+    "industryTags": [
+      "Data Centers"
+    ],
+    "companies": [
+      {
+        "key": "ren-nimbusrack",
+        "role": "subject"
+      }
+    ],
+    "region": "Chennai, India",
+    "amount": 450000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-020",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/straits-edge-data-hubs-announces-40-mw-data-center",
+    "title": "Straits Edge Data Hubs announces 40 MW data center in Johor with on-site solar",
+    "body": "Straits Edge Data Hubs has announced a 40 MW data center in Johor to serve Singapore-based cloud customers, with an investment of USD 320 million. The facility will integrate 6 MW of on-site solar and a battery storage system to shave peak grid demand and provide uptime resilience during grid disturbances. Daniel Tan, Director – Energy Infrastructure, said the operator had secured land and power allocation and will award electrical and energy-storage packages by the first quarter of 2027. The Johor site sits within a special economic zone that offers expedited approvals, and Straits Edge said it is prioritising suppliers able to deliver containerised electrical rooms within tight construction windows.",
+    "publishedDaysAgo": 16,
+    "industryTags": [
+      "Data Centers",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-straits-edge",
+        "role": "subject"
+      }
+    ],
+    "region": "Johor, Malaysia",
+    "amount": 320000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-021",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/orbitcore-acquires-land-for-second-data-centre-campus-in",
+    "title": "OrbitCore acquires land for second data centre campus in Hyderabad",
+    "body": "OrbitCore Data Centres has acquired 18 acres in Hyderabad's Shamshabad area for a second hyperscale campus with a planned IT load of 80 MW. The Rs 4,200 crore project will host colocation and build-to-suit halls for cloud providers. Priya Venkatesh, VP Critical Facilities, said the design would include grid-scale battery storage to reduce diesel runtime and a rooftop solar array on the administrative block. Construction is expected to begin in early 2027. The Hyderabad campus will be connected by two independent 220 kV feeds, and OrbitCore said it expects anchor demand from domestic cloud platforms and financial-services firms moving workloads onshore.",
+    "publishedDaysAgo": 35,
+    "industryTags": [
+      "Data Centers",
+      "Real Estate"
+    ],
+    "companies": [
+      {
+        "key": "ren-orbitcore-data-centres",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": 42000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-022",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/nimbusrack-signs-150-mw-wind-solar-hybrid-ppa-to",
+    "title": "NimbusRack signs 150 MW wind-solar hybrid PPA to power data centre portfolio",
+    "body": "NimbusRack Cloud Campuses has signed a 20-year power purchase agreement for 150 MW of wind-solar hybrid capacity to power its Chennai and Hyderabad data centre campuses. The group captive PPA, at a tariff of about Rs 3.95 per kWh, will meet roughly 70% of the portfolio's demand from 2028. Neha Agarwal, Head of Energy Procurement, said the company will add battery storage at each campus to firm up supply and improve uptime. The company said the agreement also includes a change-in-law protection clause and that electrical design work for on-site storage will start immediately.",
+    "publishedDaysAgo": 1,
+    "industryTags": [
+      "Data Centers",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-nimbusrack",
+        "role": "subject"
+      }
+    ],
+    "region": "Chennai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-023",
+    "source": "GreenGrid Journal",
+    "url": "https://greengrid-journal.example/2026/helix-hydrogen-to-build-1-gw-electrolyser-green-hydrogen",
+    "title": "Helix Hydrogen to build 1 GW electrolyser green hydrogen project at Kandla",
+    "body": "Helix Hydrogen Energy has announced a 1 GW electrolyser project at Kandla to produce green hydrogen and about 0.4 MTPA of green ammonia for export. The USD 2.8 billion project will be powered by 2.2 GW of dedicated solar and wind capacity with battery storage to smooth electrolyser loads. CEO Rajesh Kothari said the first 250 MW phase is targeted for 2028, and engineering tenders for renewable power, power conversion and plant controls will be issued in the coming months.",
+    "publishedDaysAgo": 13,
+    "industryTags": [
+      "Renewable Energy",
+      "Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "ren-helix-hydrogen",
+        "role": "subject"
+      }
+    ],
+    "region": "Kandla, India",
+    "amount": 2800000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-024",
+    "source": "Gulf Energy Wire",
+    "url": "https://gulf-energy-wire.example/2026/gulfbay-green-molecules-reaches-financial-close-on-green-ammonia",
+    "title": "GulfBay Green Molecules reaches financial close on green ammonia plant in Oman",
+    "body": "GulfBay Green Molecules has reached financial close on a USD 1.1 billion green ammonia facility at Duqm, Oman, with annual output of 0.25 MTPA. The plant will use 500 MW of electrolyzer capacity supplied by 1.3 GW of solar and wind, with green hydrogen converted to ammonia for shipment to Asian buyers. Omar Al Mansoori, Director – Energy Infrastructure, said procurement of renewable power equipment, including inverters and storage, would be completed over the next nine months. The UAE-based developer added that it expects to sign long-term supply contracts with North Asian buyers for most of the plant's output before construction begins next year.",
+    "publishedDaysAgo": 19,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-gulfbay-green-molecules",
+        "role": "subject"
+      }
+    ],
+    "region": "Duqm, Oman",
+    "amount": 1100000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-025",
+    "source": "Factory Floor Times",
+    "url": "https://factory-floor-times.example/2026/indus-ridge-steelworks-to-pilot-green-hydrogen-in-dri",
+    "title": "Indus Ridge Steelworks to pilot green hydrogen in DRI plant with 50 MW electrolyser",
+    "body": "Indus Ridge Steelworks will pilot green hydrogen injection at its direct reduced iron plant using a 50 MW electrolyser, supported by dedicated renewable power from a 120 MW solar block. The Rs 900 crore pilot aims to displace 15% of natural gas in DRI production by 2028. Bikash Mohanty, Chief Procurement Officer, said vendor evaluation for electrolyser, power electronics and storage would begin immediately. The company describes the pilot as central to its decarbonisation plan for export-grade steel. The company said the pilot would help it meet customer requirements to cut emissions intensity per tonne and could be scaled to 500 MW if costs fall as expected.",
+    "publishedDaysAgo": 27,
+    "industryTags": [
+      "Manufacturing",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-indus-ridge-steel",
+        "role": "subject"
+      }
+    ],
+    "region": "Jajpur, India",
+    "amount": 9000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-026",
+    "source": "Gulf Energy Wire",
+    "url": "https://gulf-energy-wire.example/2026/helix-hydrogen-signs-green-ammonia-offtake-with-japanese-utility",
+    "title": "Helix Hydrogen signs green ammonia offtake with Japanese utility consortium",
+    "body": "Helix Hydrogen Energy has signed a 15-year offtake agreement to supply 150,000 tonnes a year of green ammonia to a consortium of Japanese utilities from its Paradip project. The deal underpins a second green hydrogen site with 400 MW of electrolyser capacity. Ananya Ghosh, VP Projects, said the company would now finalise land and renewable power arrangements, including a hybrid solar and storage plant sized to run the electrolysers for 18 hours a day. Pricing under the offtake contract is linked to a fixed tariff with annual indexation, and the company expects a final investment decision on the second site within twelve months.",
+    "publishedDaysAgo": 45,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-helix-hydrogen",
+        "role": "subject"
+      }
+    ],
+    "region": "Paradip, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-027",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/deccan-crest-cements-signs-100-mw-group-captive-wind",
+    "title": "Deccan Crest Cements signs 100 MW group captive wind-solar hybrid PPA",
+    "body": "Deccan Crest Cements has signed a 25-year group captive power purchase agreement for 100 MW of wind-solar hybrid capacity in Karnataka. The PPA, at a landed tariff of about Rs 4.10 per kWh, will supply its Gulbarga and Tandur plants from 2027 and cut energy costs by nearly 30% versus grid power. Venkat Reddy, COO, said the company would also add battery storage at one plant to manage evening peaks and reduce demand charges. Analysts noted that cement makers are increasingly turning to hybrid contracts to stabilise energy costs, which account for up to a third of production expenses in the sector.",
+    "publishedDaysAgo": 17,
+    "industryTags": [
+      "Manufacturing",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-deccan-crest-cements",
+        "role": "subject"
+      }
+    ],
+    "region": "Gulbarga, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-028",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/lotus-forge-signs-30-mw-open-access-solar-ppa",
+    "title": "Lotus Forge signs 30 MW open access solar PPA for Chennai plants",
+    "body": "Lotus Forge Auto Components has signed a 30 MW open access solar power purchase agreement with a Tamil Nadu developer to supply its Oragadam and Sriperumbudur plants. The 15-year PPA carries a fixed tariff of Rs 3.72 per kWh and is expected to meet 55% of the plants' annual consumption. Ganesh Pawar, Plant Head at Oragadam, said on-site storage and power-quality equipment would be evaluated to protect CNC and press lines from voltage fluctuations. The deal follows the company's RE100 commitment, and procurement teams are expected to finalise equipment vendors for the new substations before the end of the financial year.",
+    "publishedDaysAgo": 24,
+    "industryTags": [
+      "Manufacturing",
+      "Automotive",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-lotus-forge",
+        "role": "subject"
+      }
+    ],
+    "region": "Chennai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-029",
+    "source": "Solar Ledger India",
+    "url": "https://solar-ledger-india.example/2026/sabarmati-weaves-inks-25-mw-group-captive-solar-ppa",
+    "title": "Sabarmati Weaves inks 25 MW group captive solar PPA in Gujarat",
+    "body": "Sabarmati Weaves has inked a 25 MW group captive solar PPA in Gujarat, taking a 26% equity stake in the special purpose vehicle as required under captive rules. The 20-year agreement, at an effective tariff of Rs 3.45 per kWh, will supply its Narol and Kheda units. CFO Nikhil Shah said the contract complements the company's rooftop programme and brings its renewable share to about 48% by 2027. The textile maker said the arrangement protects it against future grid price increases and supports customer audits that increasingly require documented renewable sourcing for every shipment.",
+    "publishedDaysAgo": 33,
+    "industryTags": [
+      "Manufacturing",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-sabarmati-weaves",
+        "role": "subject"
+      }
+    ],
+    "region": "Ahmedabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-030",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/tharline-sunfields-signs-25-year-ppa-with-narmada-vidyut",
+    "title": "Tharline Sunfields signs 25-year PPA with Narmada Vidyut at Rs 2.61 per kWh",
+    "body": "Tharline Sunfields has signed a 25-year power purchase agreement with Narmada Vidyut Distribution Company for 350 MW of solar capacity at a tariff of Rs 2.61 per kWh. The plant will be built in Barmer and is scheduled to start supply in mid-2027. Farzana Qureshi, Chief Procurement Officer, said the company would place orders for inverters, transformers and monitoring systems within 60 days of signing. The DISCOM said the project will help it meet its renewable purchase obligation, and Tharline expects to finalise EPC arrangements with a shortlisted contractor in the coming weeks.",
+    "publishedDaysAgo": 50,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-tharline-sunfields",
+        "role": "subject"
+      },
+      {
+        "key": "ren-narmada-vidyut",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Barmer, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-031",
+    "source": "GreenGrid Journal",
+    "url": "https://greengrid-journal.example/2026/narmada-vidyut-floats-250-mw-500-mwh-battery-energy",
+    "title": "Narmada Vidyut floats 250 MW / 500 MWh battery energy storage tender",
+    "body": "Narmada Vidyut Distribution Company has floated a storage tender for 250 MW / 500 MWh of standalone battery energy storage systems across four grid substations. The BESS projects will be developed on a build-own-operate basis with 12-year contracts and will be used for peak shaving and frequency regulation. Rekha Dubey, Director – Commercial, said bids are due in eight weeks and viability gap funding of up to 30% is available. Successful bidders must commission within 18 months. Developers will also be required to provide remote monitoring dashboards and ensure 95% round-trip availability, with penalties for shortfalls assessed every quarter.",
+    "publishedDaysAgo": 9,
+    "industryTags": [
+      "Utilities",
+      "Government",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-narmada-vidyut",
+        "role": "subject"
+      }
+    ],
+    "region": "Jabalpur, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-032",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/konkan-coast-discom-tenders-100-mwh-battery-storage-for",
+    "title": "Konkan Coast DISCOM tenders 100 MWh battery storage for peak shaving at coastal substations",
+    "body": "Konkan Coast Electricity Distribution Ltd has issued a tender for 50 MW / 100 MWh of battery storage at three coastal substations facing evening peak congestion. The utility wants BESS units with at least 6,000-cycle warranties and remote monitoring integrated into its SCADA. Mahesh Sawant, Superintending Engineer – Grid Modernisation, said the storage tender is a first step towards a 400 MWh programme to defer transmission upgrades. Pre-bid meetings are scheduled for next month, and the utility has indicated that containerised solutions with integrated power-conversion systems will be preferred to shorten installation time.",
+    "publishedDaysAgo": 21,
+    "industryTags": [
+      "Utilities",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-konkan-coast-power",
+        "role": "subject"
+      }
+    ],
+    "region": "Ratnagiri, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-033",
+    "source": "Corporate Ledger Weekly",
+    "url": "https://corporate-ledger-weekly.example/2026/skyline-business-parks-rolls-out-ev-charging-hubs-with",
+    "title": "Skyline Business Parks rolls out EV charging hubs with 400 chargers across campuses",
+    "body": "Skyline Business Parks will install 400 chargers across its office campuses, including three fast-charging hubs for corporate cab fleets and tenant vehicles. The Rs 45 crore EV charging programme will be integrated with rooftop solar canopies over parking areas and small battery systems to avoid costly grid upgrades. Shreya Banerjee, ESG Manager, said the first charging hub will open in Hinjewadi in January, with the full rollout complete in 12 months. The developer said demand from tenants for workplace charging had tripled in a year and that load management software will be used to balance charging with building demand.",
+    "publishedDaysAgo": 26,
+    "industryTags": [
+      "Real Estate",
+      "Electric Vehicles",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-skyline-business-parks",
+        "role": "subject"
+      }
+    ],
+    "region": "Pune, India",
+    "amount": 450000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-034",
+    "source": "Solar Ledger India",
+    "url": "https://solar-ledger-india.example/2026/kaveri-greenpower-begins-commissioning-of-200-mw-solar-plant",
+    "title": "Kaveri Greenpower begins commissioning of 200 MW solar plant in Tumakuru",
+    "body": "Kaveri Greenpower has begun phased commissioning of its 200 MW solar plant at the Tumakuru solar park, with the first 80 MW synchronised to the grid this week. The company said balance inverter blocks, plant monitoring and a 60 MWh storage addition will be procured over the next quarter. Meera Kulkarni, Head of Procurement, said Kaveri is standardising equipment across its portfolio to simplify operations and maintenance. The plant is expected to reach full capacity by December, and the company has earmarked Rs 260 crore for storage additions across its southern portfolio.",
+    "publishedDaysAgo": 0,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-kaveri-greenpower",
+        "role": "subject"
+      }
+    ],
+    "region": "Tumakuru, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-035",
+    "source": "GreenGrid Journal",
+    "url": "https://greengrid-journal.example/2026/rann-hybrid-power-signs-300-mw-wind-solar-hybrid",
+    "title": "Rann Hybrid Power signs 300 MW wind-solar hybrid PPA with state utility",
+    "body": "Rann Hybrid Power has signed a power purchase agreement for 300 MW of round-the-clock wind-solar hybrid capacity with a state utility, at a tariff of Rs 4.49 per kWh for 25 years. The project will combine wind, solar and a 600 MWh battery system to guarantee 85% availability. Zoya Merchant, Head of Business Development, said the contract makes Rann one of the largest firm-power suppliers in the region. The project will also add a battery energy storage system at the pooling substation, and equipment procurement is expected to begin early next year.",
+    "publishedDaysAgo": 38,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-rann-hybrid-power",
+        "role": "subject"
+      }
+    ],
+    "region": "Kutch, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "ren-036",
+    "source": "Infra Pulse Asia",
+    "url": "https://infra-pulse-asia.example/2026/meridian-infraworks-studies-entry-into-transmission-and-grid-services",
+    "title": "Meridian Infraworks studies entry into transmission and grid services",
+    "body": "Meridian Infraworks Ltd is studying whether to expand its infrastructure business into transmission lines and grid services, according to people familiar with its planning process. The company has hired an advisory firm to assess market size, competitive intensity and working-capital needs over the next five years. No board decision has been taken, and management indicated that any move would depend on order visibility in its core roads and water segments. Pradeep Nair said the review was part of routine strategic planning.",
+    "publishedDaysAgo": 60,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-meridian-infraworks",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-037",
+    "source": "Infra Pulse Asia",
+    "url": "https://infra-pulse-asia.example/2026/mekong-lightfield-explores-industrial-park-partnerships-in-southern-vietnam",
+    "title": "Mekong Lightfield explores industrial park partnerships in southern Vietnam",
+    "body": "Mekong Lightfield Energy is exploring partnerships with industrial park operators in Binh Duong and Dong Nai to supply clean electricity to factory tenants. Executives said conversations are at an early stage and no commercial terms have been discussed. The developer is monitoring changes to Vietnam's direct electricity trading framework before committing capital. Tran Minh Quan said the company was keen to understand tenant demand before designing any specific offer. Local sources said several foreign investors have approached the developer, but management reiterated that it would move cautiously until regulations are finalised.",
+    "publishedDaysAgo": 75,
+    "industryTags": [
+      "Renewable Energy",
+      "Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "ren-mekong-lightfield",
+        "role": "subject"
+      }
+    ],
+    "region": "Binh Duong, Vietnam",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-038",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/straits-edge-evaluating-sites-in-batam-for-future-expansion",
+    "title": "Straits Edge evaluating sites in Batam for future expansion",
+    "body": "Straits Edge Data Hubs is evaluating several land parcels on Batam island for potential future expansion, the company said in an investor update. Management noted that the evaluation covers fibre connectivity, water availability and local incentives, and that no site has been selected. Aisha Rahman, Head of Procurement, said the company expects to decide on next steps after reviewing customer demand forecasts next year. The update did not include capital expenditure estimates for any new facility, and executives declined to comment on expected capacity or customer commitments.",
+    "publishedDaysAgo": 55,
+    "industryTags": [
+      "Data Centers"
+    ],
+    "companies": [
+      {
+        "key": "ren-straits-edge",
+        "role": "subject"
+      }
+    ],
+    "region": "Batam, Indonesia",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-039",
+    "source": "Gulf Energy Wire",
+    "url": "https://gulf-energy-wire.example/2026/gulfbay-green-molecules-signs-mou-to-study-e-fuels",
+    "title": "GulfBay Green Molecules signs MoU to study e-fuels corridor with port authority",
+    "body": "GulfBay Green Molecules has signed a non-binding memorandum of understanding with a regional port authority to study a possible e-fuels export corridor. The study will examine storage terminals, shipping routes and certification requirements over twelve months. Neither party has committed investment, and GulfBay said any project decision would follow the outcome of the study and discussions with prospective buyers. Analysts said the move reflects growing interest in export-oriented clean fuels across the Gulf, though many similar studies have not progressed to investment decisions.",
+    "publishedDaysAgo": 90,
+    "industryTags": [
+      "Renewable Energy",
+      "Ports & Shipping"
+    ],
+    "companies": [
+      {
+        "key": "ren-gulfbay-green-molecules",
+        "role": "subject"
+      }
+    ],
+    "region": "Abu Dhabi, UAE",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-040",
+    "source": "Corporate Ledger Weekly",
+    "url": "https://corporate-ledger-weekly.example/2026/marigold-malls-reviews-energy-efficiency-options-for-older-properties",
+    "title": "Marigold Malls reviews energy efficiency options for older properties",
+    "body": "Marigold Malls & Spaces has commissioned an energy audit of five of its older properties to identify efficiency improvements in chillers, lighting and escalators. The company said results would inform its capital budget for the next financial year, but did not commit to specific upgrades. Kavya Menon said tenants had raised questions about rising common-area maintenance charges and that the audit was a response to that feedback. Industry consultants said many mall owners are reviewing operating costs after a period of rapid expansion, but decisions often take several budget cycles.",
+    "publishedDaysAgo": 70,
+    "industryTags": [
+      "Real Estate"
+    ],
+    "companies": [
+      {
+        "key": "ren-marigold-malls",
+        "role": "subject"
+      }
+    ],
+    "region": "Indore, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-041",
+    "source": "Factory Floor Times",
+    "url": "https://factory-floor-times.example/2026/indus-ridge-steelworks-weighs-options-for-power-cost-reduction",
+    "title": "Indus Ridge Steelworks weighs options for power cost reduction",
+    "body": "Indus Ridge Steelworks is weighing options to reduce its power costs, which account for nearly a fifth of conversion expenses at its Odisha complex. Management said on an analyst call that it was looking at a mix of efficiency measures, contract renegotiation and new supply arrangements, without giving a timeline. Bikash Mohanty said a detailed plan would be presented to the board later in the year. Analysts said the company's comments were preliminary and that any significant investment would likely require board approval and lender consultation.",
+    "publishedDaysAgo": 85,
+    "industryTags": [
+      "Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "ren-indus-ridge-steel",
+        "role": "subject"
+      }
+    ],
+    "region": "Bhubaneswar, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-042",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/karoo-horizon-power-considers-private-wheeling-market-in-south",
+    "title": "Karoo Horizon Power considers private wheeling market in South Africa",
+    "body": "Karoo Horizon Power is considering entering South Africa's emerging private wheeling market, where generators sell electricity directly to corporate buyers over the national grid. CEO Thabo Nkosi said the company was assessing grid capacity constraints and credit quality of potential customers. He cautioned that regulatory clarity on network charges would be needed before the company commits to new projects. Industry observers said several developers are assessing the segment, although uncertainty over grid access has slowed decisions. Nkosi added that the board would revisit the question at its next strategy session.",
+    "publishedDaysAgo": 110,
+    "industryTags": [
+      "Utilities",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-karoo-horizon",
+        "role": "subject"
+      }
+    ],
+    "region": "Johannesburg, South Africa",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-043",
+    "source": "Solar Ledger India",
+    "url": "https://solar-ledger-india.example/2026/aravalli-agency-invites-stakeholder-feedback-on-draft-clean-energy",
+    "title": "Aravalli agency invites stakeholder feedback on draft clean energy roadmap",
+    "body": "The Aravalli State Renewable Development Agency has invited stakeholder feedback on a draft clean energy roadmap for 2030, which outlines broad goals for grid modernisation, skilling and land use. The document does not yet specify programme budgets or implementation timelines. Pooja Rathore said the agency would hold consultations with industry bodies in three cities before finalising the roadmap. Industry associations welcomed the consultation but asked the agency to publish clearer targets and funding details in the final version. A final version is expected to be published only after the next state budget.",
+    "publishedDaysAgo": 95,
+    "industryTags": [
+      "Government",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-aravalli-renewable-agency",
+        "role": "subject"
+      }
+    ],
+    "region": "Jaipur, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-044",
+    "source": "Gulf Energy Wire",
+    "url": "https://gulf-energy-wire.example/2026/dunefield-solar-arabia-opens-regional-office-to-scout-gulf",
+    "title": "Dunefield Solar Arabia opens regional office to scout Gulf opportunities",
+    "body": "Dunefield Solar Arabia has opened a regional office in Dubai to scout development opportunities across the Gulf Cooperation Council. The company said the office would focus on building relationships with governments and industrial buyers. Layla Haddad said it was too early to discuss specific projects and that the team would prioritise markets with transparent procurement processes. The company currently employs twelve people at the new office and plans to expand the team gradually over the coming year. Haddad said the office would also support existing investor relations work in the region.",
+    "publishedDaysAgo": 120,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-dunefield-solar",
+        "role": "subject"
+      }
+    ],
+    "region": "Dubai, UAE",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-045",
+    "source": "Infra Pulse Asia",
+    "url": "https://infra-pulse-asia.example/2026/vindhya-solar-epc-hires-advisers-to-explore-international-expansion",
+    "title": "Vindhya Solar EPC hires advisers to explore international expansion",
+    "body": "Vindhya Solar EPC has hired advisers to explore expansion into Africa and Southeast Asia as domestic competition intensifies. The company said it would assess partnership, joint-venture and acquisition routes over the next six months. Sunita Bhargava said supply-chain readiness in new geographies would be a key consideration, but no target markets have been finalised. Market watchers noted that several Indian contractors have attempted overseas expansion in recent years with mixed results, citing currency and payment risks. The advisers are expected to present a shortlist of options to the board by early next year.",
+    "publishedDaysAgo": 65,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-vindhya-solar-epc",
+        "role": "subject"
+      }
+    ],
+    "region": "Gandhinagar, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "ren-046",
+    "source": "Corporate Ledger Weekly",
+    "url": "https://corporate-ledger-weekly.example/2026/tharline-sunfields-appoints-former-banker-as-chief-financial-officer",
+    "title": "Tharline Sunfields appoints former banker as chief financial officer",
+    "body": "Tharline Sunfields has appointed Rakesh Ahuja, a former investment banker with two decades of infrastructure financing experience, as its chief financial officer with effect from next month. He succeeds Nirmala Verghese, who is retiring after eleven years with the company. The board said Ahuja would focus on strengthening the balance sheet and investor relations. Shares of the company were largely unchanged after the announcement. Ahuja previously led infrastructure coverage at a large private bank and served on industry committees on project finance. Analysts said the appointment signals a focus on refinancing existing debt.",
+    "publishedDaysAgo": 45,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-tharline-sunfields",
+        "role": "subject"
+      }
+    ],
+    "region": "Jaipur, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-047",
+    "source": "Corporate Ledger Weekly",
+    "url": "https://corporate-ledger-weekly.example/2026/kaveri-greenpower-reports-14-rise-in-quarterly-revenue",
+    "title": "Kaveri Greenpower reports 14% rise in quarterly revenue",
+    "body": "Kaveri Greenpower reported a 14% rise in quarterly revenue to Rs 612 crore, helped by better wind resource and higher plant availability. Net profit rose 9% to Rs 118 crore as finance costs increased. The company maintained its full-year guidance and said receivables from state utilities had improved. Analysts noted that the stock has outperformed the sector index over the past six months. Management highlighted improved collection efficiency and said operating costs per unit declined marginally during the quarter. The board did not announce any change to its dividend policy at the meeting.",
+    "publishedDaysAgo": 80,
+    "industryTags": [
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "ren-kaveri-greenpower",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": 6120000000,
+    "currency": "INR",
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-048",
+    "source": "Corporate Ledger Weekly",
+    "url": "https://corporate-ledger-weekly.example/2026/vindhya-wins-trademark-dispute-over-brand-name-in-gujarat",
+    "title": "Vindhya wins trademark dispute over brand name in Gujarat High Court",
+    "body": "Vindhya has won a trademark dispute in the Gujarat High Court against a smaller contractor that used a similar name and logo in marketing materials. The court ordered the rival firm to stop using the mark and pay legal costs. Vindhya said the ruling protected its brand reputation among clients and lenders. The contractor has thirty days to appeal the decision. Legal experts said the ruling adds to a growing body of case law on brand protection among infrastructure firms. Company executives declined to comment further on the matter.",
+    "publishedDaysAgo": 130,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-vindhya-solar-epc",
+        "role": "subject"
+      }
+    ],
+    "region": "Ahmedabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-049",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/orbitcore-named-among-best-workplaces-in-technology-infrastructure",
+    "title": "OrbitCore named among best workplaces in technology infrastructure",
+    "body": "OrbitCore has been named among the best workplaces in the technology infrastructure category by an independent employee survey. The company cited its flexible shift policies, technical training academy and a mentorship programme for women engineers. Priya Venkatesh said employee retention had improved significantly over the past two years, with attrition falling below 9%. The company also announced expanded parental leave benefits and a new wellness programme for shift staff at all of its facilities. Human resources head Kavitha Suresh said the company intends to double its graduate engineer intake next year.",
+    "publishedDaysAgo": 60,
+    "industryTags": [
+      "Data Centers"
+    ],
+    "companies": [
+      {
+        "key": "ren-orbitcore-data-centres",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-050",
+    "source": "Corporate Ledger Weekly",
+    "url": "https://corporate-ledger-weekly.example/2026/deccan-crest-cements-declares-interim-dividend-of-rs-6",
+    "title": "Deccan Crest Cements declares interim dividend of Rs 6 per share",
+    "body": "Deccan Crest Cements has declared an interim dividend of Rs 6 per share after reporting steady volumes in the first half of the year. Cement realisations were flat as price increases in the south were offset by weaker demand in Maharashtra. The company said its debt levels remained comfortable and the record date for the dividend would be announced shortly. Analysts said the company's cash flows remain healthy and that the payout ratio is in line with its stated dividend policy. Shares rose marginally in early trading.",
+    "publishedDaysAgo": 100,
+    "industryTags": [
+      "Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "ren-deccan-crest-cements",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-051",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/nimbusrack-cloud-campuses-names-new-chief-executive",
+    "title": "NimbusRack Cloud Campuses names new chief executive",
+    "body": "NimbusRack Cloud Campuses has named Rohit Sabharwal, previously head of Asia operations at a global digital infrastructure provider, as its new chief executive. Founder and outgoing CEO Leela Raman will remain on the board as non-executive chair. The company said the transition was planned and that its strategy would remain unchanged. Sabharwal will be based in Chennai. Industry observers said the appointment brings international operating experience to the company as it competes for enterprise customers in a crowded market. He joins at a time when the company is refinancing its existing debt facilities.",
+    "publishedDaysAgo": 140,
+    "industryTags": [
+      "Data Centers"
+    ],
+    "companies": [
+      {
+        "key": "ren-nimbusrack",
+        "role": "subject"
+      }
+    ],
+    "region": "Chennai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-052",
+    "source": "Gulf Energy Wire",
+    "url": "https://gulf-energy-wire.example/2026/helix-settles-arbitration-with-former-engineering-consultant",
+    "title": "Helix settles arbitration with former engineering consultant",
+    "body": "Helix has settled an arbitration claim brought by a former engineering consultant over unpaid invoices. Terms of the settlement were not disclosed. The company said the matter had no material impact on its finances and that it continued to work with a range of advisers. The consultant had sought damages related to work performed three years ago. The company added that it has strengthened its vendor contract review process to avoid similar disputes in future. Legal fees related to the matter were fully provided for in earlier periods, the company noted in a stock-exchange filing.",
+    "publishedDaysAgo": 150,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-helix-hydrogen",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-053",
+    "source": "Factory Floor Times",
+    "url": "https://factory-floor-times.example/2026/sabarmati-weaves-wins-export-excellence-award-for-denim",
+    "title": "Sabarmati Weaves wins export excellence award for denim",
+    "body": "Sabarmati Weaves has received an export excellence award from a textile industry council for its premium denim range, which now ships to more than 30 countries. The company credited investments in design and quality control for the recognition. Nikhil Shah said export orders for the next season were healthy despite softer demand in some European markets. The company said it would continue to invest in design studios in Ahmedabad and Milan, and that new product lines would be showcased at a trade fair in Paris next spring.",
+    "publishedDaysAgo": 115,
+    "industryTags": [
+      "Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "ren-sabarmati-weaves",
+        "role": "subject"
+      }
+    ],
+    "region": "Ahmedabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-054",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/konkan-coast-electricity-distribution-reshuffles-board-appoints-new-chairperson",
+    "title": "Konkan Coast Electricity Distribution reshuffles board, appoints new chairperson",
+    "body": "Konkan Coast Electricity Distribution Ltd has reshuffled its board, appointing a retired senior civil servant as chairperson and inducting two independent directors with finance and consumer-affairs backgrounds. The state government said the changes were aimed at strengthening governance and improving billing efficiency. Anjali Deshmukh continues as Director – Operations. The new board members are expected to review collection efficiency and consumer grievance mechanisms as priorities. Officials said further appointments could follow once the review of senior management roles is completed.",
+    "publishedDaysAgo": 170,
+    "industryTags": [
+      "Utilities",
+      "Government"
+    ],
+    "companies": [
+      {
+        "key": "ren-konkan-coast-power",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-055",
+    "source": "Corporate Ledger Weekly",
+    "url": "https://corporate-ledger-weekly.example/2026/lotus-forge-auto-components-posts-lower-quarterly-profit-on",
+    "title": "Lotus Forge Auto Components posts lower quarterly profit on export slowdown",
+    "body": "Lotus Forge Auto Components posted an 11% decline in quarterly net profit as export volumes to European truck makers slowed. Revenue fell 6% to Rs 840 crore, while domestic passenger-car orders held steady. Management said it expects demand to recover in the second half and is focusing on cost control and new customer programmes in North America. Shares fell 3% after the results. Analysts said the company's diversification into new customer programmes would take several quarters to offset lower export demand.",
+    "publishedDaysAgo": 160,
+    "industryTags": [
+      "Manufacturing",
+      "Automotive"
+    ],
+    "companies": [
+      {
+        "key": "ren-lotus-forge",
+        "role": "subject"
+      }
+    ],
+    "region": "Pune, India",
+    "amount": 8400000000,
+    "currency": "INR",
+    "kind": "negative"
+  },
+  {
+    "externalId": "ren-056",
+    "source": "Infra Pulse Asia",
+    "url": "https://infra-pulse-asia.example/2026/aarogyam-care-hospitals-plans-600-bed-ahmedabad-campus-with",
+    "title": "Aarogyam Care Hospitals plans 600-bed Ahmedabad campus with rooftop solar and battery storage",
+    "body": "Aarogyam Care Hospitals will build a 600-bed multi-speciality campus in Ahmedabad at a cost of Rs 1,450 crore, with operations starting in 2028. The hospital will feature 1.8 MWp of rooftop solar, a 4 MWh battery storage system for backup power to critical care units, and a building management system targeting green building platinum certification. Suresh Pillai, Head of Projects & Engineering, said the group would also procure advanced imaging equipment, modular operating theatres and a central laboratory for the campus.",
+    "publishedDaysAgo": 6,
+    "industryTags": [
+      "Hospitals",
+      "Real Estate",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-aarogyam-hospitals",
+        "role": "subject"
+      }
+    ],
+    "region": "Ahmedabad, India",
+    "amount": 14500000000,
+    "currency": "INR",
+    "kind": "cross"
+  },
+  {
+    "externalId": "ren-057",
+    "source": "Corporate Ledger Weekly",
+    "url": "https://corporate-ledger-weekly.example/2026/swiftmile-logistics-parks-to-add-25-mwp-rooftop-solar",
+    "title": "SwiftMile Logistics Parks to add 25 MWp rooftop solar and EV charging across warehouses",
+    "body": "SwiftMile Logistics Parks will install 25 MWp of rooftop solar across 14 warehousing parks and add 300 EV charging points for electric trucks and last-mile vans. The Rs 190 crore programme will make its parks net-zero ready for tenants in e-commerce and third-party logistics. Rahul Bedi, VP Projects, said the company would also upgrade dock automation and cold-storage modules at its Bhiwandi and Hosur parks. The company said tenants increasingly ask for lower operating costs and cleaner power in lease negotiations, and it expects the rollout to be completed within 18 months.",
+    "publishedDaysAgo": 10,
+    "industryTags": [
+      "Logistics",
+      "Real Estate",
+      "Renewable Energy",
+      "E-commerce"
+    ],
+    "companies": [
+      {
+        "key": "ren-swiftmile-logistics",
+        "role": "subject"
+      }
+    ],
+    "region": "Bhiwandi, India",
+    "amount": 1900000000,
+    "currency": "INR",
+    "kind": "cross"
+  },
+  {
+    "externalId": "ren-058",
+    "source": "Solar Ledger India",
+    "url": "https://solar-ledger-india.example/2026/velocity-urban-fleet-builds-charging-depot-for-250-electric",
+    "title": "Velocity Urban Fleet builds charging depot for 250 electric buses with solar canopy",
+    "body": "Velocity Urban Fleet will build a charging depot for 250 electric buses in Surat, equipped with 120 chargers, a 2 MWp solar canopy and a 5 MWh battery system to cut peak demand charges. The Rs 110 crore depot supports its new gross-cost contract with the city transport undertaking. Amit Chawla, Director – Depot Infrastructure, said the operator is also sourcing tyres, telematics and maintenance equipment for the fleet. The BESS will be sized to support simultaneous overnight charging of the full fleet without exceeding the sanctioned grid connection.",
+    "publishedDaysAgo": 4,
+    "industryTags": [
+      "Fleet & Mobility",
+      "Electric Vehicles",
+      "Commercial Vehicles",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-velocity-urban-fleet",
+        "role": "subject"
+      }
+    ],
+    "region": "Surat, India",
+    "amount": 1100000000,
+    "currency": "INR",
+    "kind": "cross"
+  },
+  {
+    "externalId": "ren-059",
+    "source": "Factory Floor Times",
+    "url": "https://factory-floor-times.example/2026/silicore-fabrication-signs-80-mw-captive-solar-ppa-for",
+    "title": "Silicore Fabrication signs 80 MW captive solar PPA for Dholera fab",
+    "body": "Silicore Fabrication has signed an 80 MW captive solar power purchase agreement to supply its Dholera semiconductor fab and the upcoming 300 mm line. The 25-year PPA at Rs 3.60 per kWh will meet about 45% of the fab's demand, with battery storage planned to ride through voltage dips that can scrap wafers. Vivek Anand, Director – Facilities & Utilities, said the company is also procuring ultra-pure water systems and specialty gas infrastructure for the expansion. The company also committed to a net-zero target for its operations by 2040, with the PPA expected to cut Scope 2 emissions by nearly half.",
+    "publishedDaysAgo": 12,
+    "industryTags": [
+      "Semiconductors",
+      "Electronics Manufacturing",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-silicore-fab",
+        "role": "subject"
+      }
+    ],
+    "region": "Dholera, India",
+    "amount": null,
+    "currency": null,
+    "kind": "cross"
+  },
+  {
+    "externalId": "ren-060",
+    "source": "Power Markets Daily",
+    "url": "https://power-markets-daily.example/2026/velocity-urban-fleet-plans-fleet-electrification-hub-for-400",
+    "title": "Velocity Urban Fleet plans fleet electrification hub for 400 electric trucks",
+    "body": "Velocity Urban Fleet plans a fleet electrification hub near Gurugram to support 400 electric trucks operated for e-commerce and FMCG customers. The Rs 160 crore charging hub will include 3 MWh of battery storage and rooftop solar on maintenance sheds to limit grid connection costs. Sneha Kulshreshtha, Chief Procurement Officer, said the company is also finalising vehicle financing and a tyre management contract for the fleet. The operator said the hub would be operational within a year and would serve as a template for similar facilities in Bengaluru and Pune.",
+    "publishedDaysAgo": 18,
+    "industryTags": [
+      "Fleet & Mobility",
+      "Electric Vehicles",
+      "Logistics",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "ren-velocity-urban-fleet",
+        "role": "subject"
+      }
+    ],
+    "region": "Gurugram, India",
+    "amount": 1600000000,
+    "currency": "INR",
+    "kind": "cross"
+  }
+]

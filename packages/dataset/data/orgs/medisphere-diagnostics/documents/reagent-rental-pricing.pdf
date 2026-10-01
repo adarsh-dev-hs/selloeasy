@@ -1,0 +1,122 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Title (Reagent Rental Pricing \(Internal\)) /Producer (SelloEasy dataset) /Subject (Synthetic demo document) >>
+endobj
+6 0 obj
+<< /Length 2908 >>
+stream
+BT /F2 18 Tf 50 761 Td (Reagent Rental Pricing - INTERNAL) Tj ET
+BT /F1 11 Tf 50 729 Td (Confidential. For MediSphere sales, pre-sales and finance teams only. Do not share with) Tj ET
+BT /F1 11 Tf 50 713 Td (    customers.) Tj ET
+BT /F1 11 Tf 50 681 Td (This note sets out how we price reagent-rental deals and SphereLIS subscriptions, and the) Tj ET
+BT /F1 11 Tf 50 665 Td (    approvals required for discounts. It should be read together with the Pricing & Discount) Tj ET
+BT /F1 11 Tf 50 649 Td (    Authority policy.) Tj ET
+BT /F2 14 Tf 50 598 Td (1. How reagent rental works) Tj ET
+BT /F1 11 Tf 50 566 Td (Under reagent rental, MediSphere places analyzers at the customer site at zero capital cost.) Tj ET
+BT /F1 11 Tf 50 550 Td (    The customer commits to a minimum monthly test volume and pays a per-reportable-test rate) Tj ET
+BT /F1 11 Tf 50 534 Td (    that covers reagents, calibrators, controls, consumables, preventive maintenance, breakdown) Tj ET
+BT /F1 11 Tf 50 518 Td (    service and the depreciation of the placed analyzer. Standard term is 36 months, with a) Tj ET
+BT /F1 11 Tf 50 502 Td (    quarterly true-up if actual volumes fall below the commitment.) Tj ET
+BT /F2 14 Tf 50 451 Td (2. Minimum volume commitments) Tj ET
+BT /F1 11 Tf 50 419 Td (   Analyzer    Minimum committed volume    Typical site   ) Tj ET
+BT /F1 11 Tf 50 403 Td (SphereChem 800    2,500 chemistry tests / month    Hospital with 150+ beds, lab-chain) Tj ET
+BT /F1 11 Tf 50 387 Td (    processing lab   ) Tj ET
+BT /F1 11 Tf 50 371 Td (SphereIA 240    1,200 immunoassay tests / month    Hospital with 200+ beds, oncology or) Tj ET
+BT /F1 11 Tf 50 355 Td (    cardiac centre   ) Tj ET
+BT /F1 11 Tf 50 339 Td (SphereMDx \(open PCR\)    400 reactions / month    Medical college, molecular reference lab   ) Tj ET
+BT /F1 11 Tf 50 307 Td (Sites below these thresholds should be offered outright purchase or a shared hub arrangement) Tj ET
+BT /F1 11 Tf 50 291 Td (    rather than a placement.) Tj ET
+BT /F2 14 Tf 50 240 Td (3. List per-test rates \(India, ex-GST\)) Tj ET
+BT /F1 11 Tf 50 208 Td (   Test category    List rate \(INR\)    Floor rate \(INR\)   ) Tj ET
+BT /F1 11 Tf 50 192 Td (   Routine chemistry \(glucose, urea, creatinine, lipids\)    18-28    14   ) Tj ET
+BT /F1 11 Tf 50 176 Td (   Liver and renal panels \(per parameter\)    22-30    16   ) Tj ET
+BT /F1 11 Tf 50 160 Td (   Thyroid \(TSH, FT3, FT4\)    95-120    78   ) Tj ET
+BT /F1 11 Tf 50 144 Td (   Cardiac markers \(hs-troponin, NT-proBNP\)    380-520    310   ) Tj ET
+BT /F1 11 Tf 50 128 Td (   Tumour markers \(PSA, CEA, CA-125, AFP\)    260-340    210   ) Tj ET
+BT /F1 11 Tf 50 112 Td (   HbA1c    110-140    90   ) Tj ET
+BT /F1 11 Tf 50 96 Td (   RT-PCR panels \(per reaction\)    650-2,400    per panel sheet   ) Tj ET
+BT /F1 11 Tf 50 64 Td (Floor rates are absolute. No quote may go below the floor without written approval from the) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2903 >>
+stream
+BT /F1 11 Tf 50 784 Td (    Head of Sales and Finance.) Tj ET
+BT /F2 14 Tf 50 733 Td (4. Discount authority) Tj ET
+BT /F1 11 Tf 50 701 Td (  - Up to 8% off list: sales representative discretion.) Tj ET
+BT /F1 11 Tf 50 685 Td (  - 8-15%: Regional Sales Manager approval in the CRM.) Tj ET
+BT /F1 11 Tf 50 669 Td (  - Above 15%, or any government tender bid: Head of Sales and Finance approval.) Tj ET
+BT /F1 11 Tf 50 637 Td (Discounts should be linked to volume, term length \(48- or 60-month terms justify an) Tj ET
+BT /F1 11 Tf 50 621 Td (    additional 3-5%\) or multi-site commitments, never offered unconditionally.) Tj ET
+BT /F2 14 Tf 50 570 Td (5. SphereLIS subscription pricing) Tj ET
+BT /F1 11 Tf 50 538 Td (   Plan    List price per site / month    Notes   ) Tj ET
+BT /F1 11 Tf 50 522 Td (   Essentials    INR 18,000    Up to 300 samples/day, 10 instrument interfaces   ) Tj ET
+BT /F1 11 Tf 50 506 Td (Professional    INR 42,000    Up to 2,000 samples/day, auto-verification, home-collection) Tj ET
+BT /F1 11 Tf 50 490 Td (    app integration   ) Tj ET
+BT /F1 11 Tf 50 474 Td (Enterprise    INR 30,000-35,000    10+ sites, annual contract, HIS integration, group) Tj ET
+BT /F1 11 Tf 50 458 Td (    analytics   ) Tj ET
+BT /F1 11 Tf 50 426 Td (One-time implementation fees range from INR 1.5 lakh for Essentials to INR 12 lakh for) Tj ET
+BT /F1 11 Tf 50 410 Td (    Enterprise rollouts. Implementation may be waived for reagent-rental customers committing to) Tj ET
+BT /F1 11 Tf 50 394 Td (    more than 20,000 tests per month across sites.) Tj ET
+BT /F2 14 Tf 50 343 Td (6. Bundling guidance) Tj ET
+BT /F1 11 Tf 50 311 Td (- New hospitals: lead with reagent rental for chemistry and immunoassay, add SpherePOC for) Tj ET
+BT /F1 11 Tf 50 295 Td (    ICU and emergency, and SphereLIS Professional. Target go-live 45 days before patient) Tj ET
+BT /F1 11 Tf 50 279 Td (    admissions.) Tj ET
+BT /F1 11 Tf 50 263 Td (- Lab chains after funding or acquisition: propose platform consolidation across sites with) Tj ET
+BT /F1 11 Tf 50 247 Td (    SphereLIS Enterprise; model savings from reduced service contracts.) Tj ET
+BT /F1 11 Tf 50 231 Td (- Government tenders: use the Hub-and-Spoke Bundle price sheet; include operated-lab) Tj ET
+BT /F1 11 Tf 50 215 Td (    staffing only where the tender requires it.) Tj ET
+BT /F1 11 Tf 50 199 Td (- International \(UAE, Singapore, Kenya, Bangladesh\): add 12-18% to India list rates to cover) Tj ET
+BT /F1 11 Tf 50 183 Td (    freight, duties and partner margin, and confirm local registration status of each kit before) Tj ET
+BT /F1 11 Tf 50 167 Td (    quoting.) Tj ET
+BT /F2 14 Tf 50 116 Td (7. Deal hygiene) Tj ET
+BT /F1 11 Tf 50 84 Td (Every quote must record the committed volume, term, floor check and approver in the CRM.) Tj ET
+BT /F1 11 Tf 50 68 Td (    Quotes are valid for 60 days. Price revisions tied to currency movements may be applied) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 66 >>
+stream
+BT /F1 11 Tf 50 784 Td (    annually with 90 days' notice.) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000128 00000 n 
+0000000225 00000 n 
+0000000327 00000 n 
+0000000458 00000 n 
+0000003417 00000 n 
+0000003553 00000 n 
+0000006507 00000 n 
+0000006643 00000 n 
+0000006759 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R /Info 5 0 R >>
+startxref
+6897
+%%EOF

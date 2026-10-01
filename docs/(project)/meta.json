@@ -1,0 +1,7 @@
+{
+  "title": "Project",
+  "description": "Sprint plan, roles, limitations and changelog",
+  "icon": "CalendarRange",
+  "root": true,
+  "pages": ["...project", "---Status---", "limitations", "changelog"]
+}

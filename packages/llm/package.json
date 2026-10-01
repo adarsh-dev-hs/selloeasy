@@ -1,0 +1,21 @@
+{
+  "name": "@selloeasy/llm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The only place that talks to an LLM. OpenRouter client, versioned prompts with zod output schemas, cache, telemetry hooks and a deterministic mock mode.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@selloeasy/shared": "workspace:*",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.0"
+  }
+}

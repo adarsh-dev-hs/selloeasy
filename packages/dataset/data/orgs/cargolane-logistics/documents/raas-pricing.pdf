@@ -1,0 +1,109 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Title (Robotics-as-a-Service Pricing \(Internal\)) /Producer (SelloEasy dataset) /Subject (Synthetic demo document) >>
+endobj
+6 0 obj
+<< /Length 2673 >>
+stream
+BT /F2 18 Tf 50 761 Td (Robotics-as-a-Service Pricing \(Internal\)) Tj ET
+BT /F1 11 Tf 50 729 Td (Confidential. For Cargolane sales, solutions and finance teams only. Do not share this) Tj ET
+BT /F1 11 Tf 50 713 Td (    document or its figures with customers or partners.) Tj ET
+BT /F2 14 Tf 50 662 Td (Purpose) Tj ET
+BT /F1 11 Tf 50 630 Td (This note sets out the standard commercial framework for Robotics-as-a-Service \(RaaS\) deals) Tj ET
+BT /F1 11 Tf 50 614 Td (    involving LaneBot AMRs and, where bundled, LaneFlow WMS. It explains list prices, approved) Tj ET
+BT /F1 11 Tf 50 598 Td (    discount bands, peak-season flex terms and the approvals needed for exceptions.) Tj ET
+BT /F2 14 Tf 50 547 Td (Standard RaaS subscription) Tj ET
+BT /F1 11 Tf 50 515 Td (   Fleet size \(AMRs\)    Monthly fee per robot \(36-month term\)   ) Tj ET
+BT /F1 11 Tf 50 499 Td (   20-59    INR 52,000   ) Tj ET
+BT /F1 11 Tf 50 483 Td (   60-149    INR 46,000   ) Tj ET
+BT /F1 11 Tf 50 467 Td (   150-299    INR 41,000   ) Tj ET
+BT /F1 11 Tf 50 451 Td (   300+    INR 38,000   ) Tj ET
+BT /F1 11 Tf 50 419 Td (The monthly fee includes robot hardware, charging stations, preventive maintenance, spares,) Tj ET
+BT /F1 11 Tf 50 403 Td (    software updates, 24x7 remote monitoring and on-site response within 4 hours in our 12) Tj ET
+BT /F1 11 Tf 50 387 Td (    service cities. Pick stations, pod shelving and site civil works are quoted separately as) Tj ET
+BT /F1 11 Tf 50 371 Td (    one-time charges, typically INR 3.5-6 lakh per pick station and INR 18,000 per pod.) Tj ET
+BT /F1 11 Tf 50 339 Td (LaneFlow WMS is mandatory for RaaS deployments. When bundled, apply the Growth or Enterprise) Tj ET
+BT /F1 11 Tf 50 323 Td (    software price with a bundle discount of up to 8% on software only.) Tj ET
+BT /F2 14 Tf 50 272 Td (Contract terms) Tj ET
+BT /F1 11 Tf 50 240 Td (- Minimum term: 36 months. A 48-month term earns an additional 4% reduction on the robot) Tj ET
+BT /F1 11 Tf 50 224 Td (    fee.) Tj ET
+BT /F1 11 Tf 50 208 Td (  - Refundable security deposit equal to two months of robot fees.) Tj ET
+BT /F1 11 Tf 50 192 Td (  - Billing monthly in advance; net 30 payment terms.) Tj ET
+BT /F1 11 Tf 50 176 Td (  - Annual escalation of 5% from month 13, capped at CPI plus 2% for enterprise accounts.) Tj ET
+BT /F1 11 Tf 50 160 Td (- Robot availability guarantee of 98.5%, measured monthly. Each 1% shortfall earns a 5%) Tj ET
+BT /F1 11 Tf 50 144 Td (    credit on that month's robot fees, capped at 20%.) Tj ET
+BT /F2 14 Tf 50 93 Td (Peak-season flex robots) Tj ET
+BT /F1 11 Tf 50 61 Td (Customers on an active RaaS contract may add flex robots for festive and peak seasons:) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2755 >>
+stream
+BT /F1 11 Tf 50 768 Td (  - INR 65,000 per robot per month, minimum 2 months, maximum 50% of the base fleet.) Tj ET
+BT /F1 11 Tf 50 752 Td (- Flex requests must be confirmed 10 weeks before the start date so that robots can be) Tj ET
+BT /F1 11 Tf 50 736 Td (    reallocated from the pool.) Tj ET
+BT /F1 11 Tf 50 720 Td (- Flex robots for October-November are limited; prioritise customers with 150+ base robots) Tj ET
+BT /F1 11 Tf 50 704 Td (    and customers renewing within the next 12 months.) Tj ET
+BT /F2 14 Tf 50 653 Td (Discount authority) Tj ET
+BT /F1 11 Tf 50 621 Td (   Discount on list robot fee    Approver   ) Tj ET
+BT /F1 11 Tf 50 605 Td (   Up to 5%    Account executive   ) Tj ET
+BT /F1 11 Tf 50 589 Td (   5-10%    Sales manager   ) Tj ET
+BT /F1 11 Tf 50 573 Td (   10-15%    VP Sales   ) Tj ET
+BT /F1 11 Tf 50 557 Td (   Above 15% or deposit waiver    CFO   ) Tj ET
+BT /F1 11 Tf 50 525 Td (Never quote below INR 36,000 per robot per month without written CFO approval. Pilots of) Tj ET
+BT /F1 11 Tf 50 509 Td (    fewer than 20 robots are priced at INR 58,000 per robot per month for a maximum of 6 months) Tj ET
+BT /F1 11 Tf 50 493 Td (    and must convert to a standard contract or be removed.) Tj ET
+BT /F2 14 Tf 50 442 Td (Deal qualification checklist) Tj ET
+BT /F1 11 Tf 50 410 Td (Before proposing RaaS, confirm that the customer:) Tj ET
+BT /F1 11 Tf 50 378 Td (1. Has a committed site with a signed lease or ownership, and floor flatness suitable for) Tj ET
+BT /F1 11 Tf 50 362 Td (    AMRs.) Tj ET
+BT /F1 11 Tf 50 346 Td (2. Ships at least 8,000 order lines per day, or has a funded plan to reach that within 12) Tj ET
+BT /F1 11 Tf 50 330 Td (    months.) Tj ET
+BT /F1 11 Tf 50 314 Td (3. Has named a project owner at Head of Warehousing level or above.) Tj ET
+BT /F1 11 Tf 50 298 Td (4. Accepts LaneFlow as the controlling WMS, or agrees to a scoped integration \(additional) Tj ET
+BT /F1 11 Tf 50 282 Td (    INR 12-20 lakh\).) Tj ET
+BT /F2 14 Tf 50 231 Td (Positioning guidance) Tj ET
+BT /F1 11 Tf 50 199 Td (Lead with outcomes, not robot counts: throughput per picker, cost per order and the ability) Tj ET
+BT /F1 11 Tf 50 183 Td (    to scale for peaks without capex. Compare RaaS against the customer's current cost of) Tj ET
+BT /F1 11 Tf 50 167 Td (    temporary labour and overtime during festive periods; in most D2C sites the payback against) Tj ET
+BT /F1 11 Tf 50 151 Td (    a manual operation is 14 to 20 months. Recently funded brands and 3PLs opening new) Tj ET
+BT /F1 11 Tf 50 135 Td (    fulfilment centres are the most receptive, because RaaS keeps investor capital free for) Tj ET
+BT /F1 11 Tf 50 119 Td (    growth.) Tj ET
+BT /F1 11 Tf 50 87 Td (For questions, contact the commercial desk in Gurugram.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000000458 00000 n 
+0000003182 00000 n 
+0000003318 00000 n 
+0000006124 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R /Info 5 0 R >>
+startxref
+6260
+%%EOF

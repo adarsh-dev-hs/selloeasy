@@ -1,0 +1,175 @@
+---
+title: Pipeline stages
+description: The exact behavior of each pipeline stage — loading, prefiltering, batched LLM matching and extraction, acceptance, account resolution through the company directory, dedupe and upsert, scoring — plus idempotency, the budget guard and PARTIAL runs.
+---
+
+This page follows `runPipeline()` in `packages/engine/src/pipeline.ts` from top to bottom. Pure helpers live in
+`packages/pipeline/src/stages.ts` and `scoring.ts`.
+
+## Stage 0 — Load org context
+
+The run is marked `RUNNING` (`started_at = now`) and progress `loading` (2%) is published. Then:
+
+- the org and its **profile** (summary, target industries, personas),
+- all **active signals**. With none, the run fails: _"No active signals — add or enable signals before running
+  the pipeline"_,
+- all **active ICPs** and the org's **product names**.
+
+Two derived values drive the rest of the run:
+
+- **Target tags**: profile `targetIndustries` plus every active ICP's `criteria.industries`.
+- **Signals hash**: `sha256` over the sorted lines `id|matchInstructions|keywords|negativeKeywords` of all active
+  signals, truncated to 16 hex chars.
+
+## Stage 1 — Prefilter (no LLM)
+
+Events are loaded from the global `market_events` table where `published_at` falls within the last
+`PIPELINE_EVENT_WINDOW_DAYS` (180) days and `retracted_at` is null (`stats.eventsScanned`). Retracted events belong to
+rolled-back [platform data batches](/docs/platform-data/importing#rollback) and are never matched again
+([ADR-0016](/docs/decisions/0016-retract-instead-of-delete-for-rollback)). Events added by imports and connectors
+are matched exactly like seeded ones. `prefilter()` then drops, in order:
+
+1. **Already evaluated**: the event id is in `org_event_evaluations` for this org **and** this signals hash
+   (`dropped.alreadyEvaluated`).
+2. **Out of window**: published before the cutoff or more than one day in the future (`dropped.outOfWindow`).
+3. **No keyword**: the event's title + body contains **none** of the active signals' `keywords`
+   (whole-phrase, case-insensitive match). An industry-tag overlap alone is **not** enough, because generic
+   industry news would otherwise flood the LLM (`dropped.noOverlap`).
+
+Kept events get a reason such as `tag:Automotive; keywords:launch,new plant` for debugging and are sorted
+**newest first**. `stats.prefiltered` is the number kept. Progress `prefilter` (10%) reports "N of M events
+passed the prefilter".
+
+<Callout type="info">
+  Negative keywords are **not** applied in the prefilter. They are handed to the matcher (prompt: "exclude if:
+  …"). The deterministic mock matcher treats them as hard exclusions.
+</Callout>
+
+## Stage 2 — Batched LLM matching and extraction
+
+Kept events are split into batches of `PIPELINE_BATCH_SIZE` (8). For each batch:
+
+1. **Budget check.** If non-cached calls so far reach `ceil(0.6 × PIPELINE_MAX_LLM_CALLS_PER_RUN)` (36 of 60),
+   matching stops, `budgetExhausted = true`, and the remaining batches are left for the next run.
+2. **One `signal.match` call** ([prompt](/docs/pipeline/prompts#signalmatch-v1)) with the seller context (profile
+   summary, product names, personas, target industries), all active signals (id, name, instructions, keywords,
+   exclusions) and the batch's events (id, date, tags, companies with subject/mentioned roles, title, body up
+   to 2500 chars). The model returns, **per event**: `matches[]` (`signalId`, `confidence` 0–1, `rationale`),
+   the buying `account` (name, domain), 1–3 `personas`, and `dealHints` (amount, currency, timeline).
+3. Stats: a cache hit increments `cacheHits`, otherwise `llmCalls`. `costUsd` accumulates the call's cost.
+
+Then each event of the batch is handled in **its own database transaction**.
+
+## Stage 3 — Accept matches
+
+`acceptMatches()` keeps a match only if `confidence ≥ PIPELINE_MATCH_THRESHOLD` (0.6) **and** `signalId` is one of
+the org's active signals, so ids invented by the model are discarded. The evaluation is recorded:
+
+```sql
+INSERT INTO org_event_evaluations (org_id, event_id, signals_hash, run_id, matched)
+VALUES (…) ON CONFLICT DO NOTHING;
+```
+
+If nothing was accepted, the event is done. Otherwise `stats.matched` grows by the number of accepted matches.
+
+## Stage 4 — Account resolution via the directory
+
+The buyer is the event's **subject** company (from the event's own `companies` list), falling back to the
+first mentioned company and then to the model's `account`:
+
+1. **Directory lookup.** `directory_companies` by exact domain, else by case-insensitive name, ignoring retracted
+   companies. The directory is a global stand-in for a data provider such as Apollo or ZoomInfo, filled from the
+   synthetic dataset and extended by [platform data imports and connectors](/docs/platform-data).
+2. **Existing tenant account?** By `directory_company_id` (or by name when there was no directory hit). If found,
+   it is reused.
+3. **Otherwise create** an `accounts` row in the org, copying name, domain, industry, HQ country, size band,
+   employees and description from the directory, and **copy every live (non-retracted) directory contact** into the org's
+   `contacts` with source `SYNTHETIC`.
+
+Without any resolvable name the event is skipped.
+
+## Stage 5 — Persist matches, dedupe, upsert the lead
+
+1. Insert the accepted matches into `signal_matches` with `extracted` = account name and domain, personas and deal
+   hints. The insert is `ON CONFLICT (org_id, event_id, signal_id) DO NOTHING`. If every match already existed,
+   nothing else happens for this event.
+2. Compute the **dedupe key**:
+   - with a domain: `d:` + lower-case domain without scheme, `www.` or path;
+   - otherwise: `n:` + lower-case name without legal suffixes (`ltd`, `limited`, `pvt`, `private`, `inc`, `llc`,
+     `corp`, `corporation`, `co`, `plc`, `gmbh`) and punctuation.
+3. **Existing lead** for `(org, dedupe_key)`: move `last_signal_at` forward if this event is newer, refresh
+   `suggested_personas`, and count `leadsUpdated`.
+   **New lead:** stage `NEW`, unassigned, primary contact = the account's first contact, a placeholder breakdown
+   ("Pending scoring"), `first_signal_at` = `last_signal_at` = the event date. Counts `leadsCreated`.
+4. Link the new matches to the lead in `lead_signals` (the evidence), and add a `SIGNAL` activity (direction
+   `INBOUND`, subject = matched signal names, body = event title, `occurred_at` = event date).
+
+After each batch, stats are persisted and progress `matching` (10–70%) is published.
+
+## Stage 6 — Score touched leads
+
+Every lead created or updated in this run is scored by `scoreLead()` (see
+[BANT+ scoring](/docs/concepts/bant-scoring)):
+
+- **Deterministic:** authority (contacts versus ICP personas), ICP fit (best active ICP), signal strength (weight ×
+  confidence × 30-day half-life decay), recency.
+- **LLM:** `lead.score-bant` for budget, need and timeline, with up to 5 evidence events. The remaining budget is
+  `PIPELINE_MAX_LLM_CALLS_PER_RUN − llmCalls`. Each non-cached call decrements it.
+- **Budget exhausted:** the deterministic heuristic is used instead, each rationale is suffixed "(heuristic —
+  LLM budget reached; re-score to refine)", and the run is flagged `budgetExhausted`.
+
+The lead's `breakdown`, `score_total`, `score_band`, `fit_score`, `signal_strength`, `recency_score` and `icp_id`
+are updated in one transaction. A move of 5 or more points on an already-scored lead adds a `SCORE_CHANGED`
+activity. Progress `scoring` (70–98%) is published every 5 leads.
+
+## Stage 7 — Finish
+
+- Status is **`PARTIAL`** if the budget was exhausted in matching or scoring, otherwise **`COMPLETED`**.
+- `pipeline_runs` gets the final stats and `finished_at`, and the audit entry `pipeline.run_completed` (scope
+  `ORG`, actor = system, `after` = status + stats) is written **in the same transaction**.
+- The final progress event is published: "Run complete", or "LLM budget reached — remaining events will be
+  processed next run".
+
+On any exception, the run is set to `FAILED` with the error (first 1000 chars), `pipeline.run_failed` is
+audited, a `failed` event is published and the job fails. Work committed by per-event transactions before the
+error is kept.
+
+## Idempotency
+
+| Mechanism                                                                       | Guarantees                                                                        |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `org_event_evaluations (org_id, event_id, signals_hash)` unique                 | An event is sent to the LLM at most once per org per signal-set version           |
+| Signals hash covers instructions, keywords, negatives and the set of active ids | Editing signals triggers re-evaluation. Renaming or re-weighting does not.        |
+| `signal_matches (org_id, event_id, signal_id)` unique                           | Re-evaluation never duplicates evidence                                           |
+| `leads (org_id, dedupe_key)` unique                                             | One lead per account                                                              |
+| `lead_signals` primary key                                                      | Evidence links are unique                                                         |
+| Response cache (Redis, 7 days)                                                  | Identical prompts cost nothing on re-run, even after the evaluation rows are gone |
+| One active run per org                                                          | Two runs never race on the same org                                               |
+
+<Callout type="info">
+  The seed calls `runPipeline()` with `recordEvaluations: false`. Seeded matches exist, but no evaluation rows
+  do, so the **first live run** after seeding re-evaluates the corpus with the real model. Existing matches
+  are kept (no duplicates), and new ones found by the model are added.
+</Callout>
+
+## PARTIAL runs, step by step
+
+With the defaults (budget 60, 8 events per batch):
+
+1. Matching may use calls until 36 non-cached calls have been made, which covers up to about 288 events.
+2. Scoring then has `60 − llmCalls` calls. A run that made 36 matching calls has 24 LLM scorings available.
+   Further touched leads get heuristic scores.
+3. The run ends `PARTIAL`. Events never sent to the LLM have **no** evaluation row, so the next run picks them up
+   (newest first). Heuristically scored leads can be refined with **Re-score**, or are re-scored automatically when
+   new evidence arrives.
+
+Raise `PIPELINE_MAX_LLM_CALLS_PER_RUN` for bigger corpora, or improve keywords to shrink the prefiltered set.
+
+## Knowledge retrieval (used by profile generation)
+
+Not part of a pipeline run, but the same package: uploaded documents and crawled pages are chunked (~800 tokens,
+~100 overlap, on paragraph boundaries) into `org_source_chunks` with a generated `tsvector`. `retrieve()` ranks
+chunks with `ts_rank_cd` over `websearch_to_tsquery('english', …)`, or returns the first chunks of each ready
+source when there is no query. Profile generation uses the no-query form (up to 14 chunks).
+[ADR-0004](/docs/decisions/0004-fts-over-vector-retrieval) explains why this is full-text search rather than
+embeddings.

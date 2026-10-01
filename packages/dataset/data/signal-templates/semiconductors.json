@@ -1,0 +1,122 @@
+[
+  {
+    "industry": "SEMICONDUCTORS",
+    "key": "new_fab_or_osat",
+    "name": "New Fab or OSAT Plant Announcement",
+    "description": "A company announces a new wafer fab, OSAT/ATMP facility, advanced packaging line or a major capacity expansion of an existing semiconductor plant.",
+    "matchInstructions": "Match when the event describes a concrete new or expanded semiconductor manufacturing facility (front-end fab, compound-semiconductor fab, OSAT, ATMP, assembly and test, advanced packaging) with details such as location, wafer size, capacity, investment or construction timeline. Do NOT match rumours without a named company, fabless design activity, earnings commentary on existing utilisation, or plants unrelated to semiconductors.",
+    "defaultKeywords": [
+      "fab",
+      "osat",
+      "atmp",
+      "assembly and test",
+      "wafer",
+      "wafers per month",
+      "clean room",
+      "advanced packaging",
+      "groundbreaking",
+      "greenfield",
+      "production line"
+    ],
+    "defaultWeight": 1.5
+  },
+  {
+    "industry": "SEMICONDUCTORS",
+    "key": "government_incentive_approval",
+    "name": "Semiconductor Incentive Approval",
+    "description": "A government body approves fiscal incentives, capital subsidy or production-linked incentives for a semiconductor, display or electronics component project.",
+    "matchInstructions": "Match when a central or state government, or a semiconductor mission, formally approves or disburses incentives, capital subsidy, land allotment or PLI/DLI support for a specific company project. Do NOT match general policy speeches, draft schemes without a named beneficiary, or tax disputes and penalties.",
+    "defaultKeywords": [
+      "incentive",
+      "subsidy",
+      "capital subsidy",
+      "fiscal support",
+      "cabinet approval",
+      "semiconductor mission",
+      "production-linked incentive",
+      "pli scheme",
+      "design-linked incentive",
+      "land allotment"
+    ],
+    "defaultWeight": 1.2
+  },
+  {
+    "industry": "SEMICONDUCTORS",
+    "key": "design_centre_opening",
+    "name": "Chip Design Centre Opening",
+    "description": "A company opens or expands a chip design centre, VLSI/embedded R&D centre or silicon validation lab.",
+    "matchInstructions": "Match when a company opens, inaugurates or significantly expands a design centre, R&D centre or validation lab focused on semiconductors, power electronics or embedded hardware, ideally with headcount or focus areas. Do NOT match software-only IT offices, sales offices, or university partnerships with no facility.",
+    "defaultKeywords": [
+      "design centre",
+      "design center",
+      "r&d centre",
+      "chip design",
+      "vlsi",
+      "tape-out",
+      "silicon validation",
+      "validation lab",
+      "engineering centre"
+    ],
+    "defaultWeight": 1.0
+  },
+  {
+    "industry": "SEMICONDUCTORS",
+    "key": "supply_chain_localization",
+    "name": "Electronics Supply-Chain Localization Deal",
+    "description": "An OEM, EMS provider or component maker signs an agreement to localize electronics or semiconductor supply, add a domestic second source or set up a local component ecosystem.",
+    "matchInstructions": "Match when a named company signs or announces a supply agreement, local sourcing commitment, vendor development programme or joint venture to localize electronic components, modules or semiconductors. Do NOT match generic 'Make in India' commentary, trade statistics, or tariff news without a company-level commitment.",
+    "defaultKeywords": [
+      "localization",
+      "localisation",
+      "local sourcing",
+      "supply agreement",
+      "second source",
+      "domestic supply",
+      "long-term supply",
+      "vendor development",
+      "component ecosystem"
+    ],
+    "defaultWeight": 1.1
+  },
+  {
+    "industry": "SEMICONDUCTORS",
+    "key": "hardware_startup_funding",
+    "name": "Chip & Hardware Startup Funding Round",
+    "description": "A fabless chip, power-electronics or deep-tech hardware startup raises a significant funding round, signalling tape-outs, pilot production and component purchases.",
+    "matchInstructions": "Match when a semiconductor, fabless, power-electronics or electronics hardware startup announces a priced funding round (seed of meaningful size, Series A/B/C, growth round) with stated use of funds such as tape-out, qualification or manufacturing ramp. Do NOT match pure software startups, debt restructuring, or valuation gossip without a closed round.",
+    "defaultKeywords": [
+      "series a",
+      "series b",
+      "series c",
+      "funding round",
+      "raised",
+      "fabless",
+      "startup",
+      "tape-out",
+      "seed round",
+      "investors"
+    ],
+    "defaultWeight": 1.0
+  },
+  {
+    "industry": "SEMICONDUCTORS",
+    "key": "oem_power_electronics_sourcing",
+    "name": "EV & 5G OEM Power Electronics Sourcing",
+    "description": "An EV, two-wheeler, telecom or data-center hardware OEM announces in-house power electronics, a new inverter/BMS programme or an RFQ/sourcing drive for power semiconductors.",
+    "matchInstructions": "Match when an OEM announces in-house development or sourcing of power electronics (traction inverters, motor controllers, BMS, on-board chargers, radio power amplifiers, server power supplies) or issues an RFQ for SiC/GaN/power ICs. Do NOT match vehicle launches that only discuss styling or pricing, sales volume updates, or dealer expansion.",
+    "defaultKeywords": [
+      "power electronics",
+      "sourcing",
+      "traction inverter",
+      "motor controller",
+      "battery management",
+      "bms",
+      "silicon carbide",
+      "gallium nitride",
+      "on-board charger",
+      "rfq",
+      "power module"
+    ],
+    "defaultWeight": 1.3
+  }
+]

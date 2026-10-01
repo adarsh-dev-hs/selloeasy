@@ -1,0 +1,60 @@
+---
+title: ADR-0015 — One canonical data template and a two-phase import with an invalid-ratio guard
+description: All platform data follows template v1; file imports are validated into staging, reviewed, and committed partially (valid + warning rows) unless more than 20% of rows are invalid.
+---
+
+**Status:** Accepted · **Date:** 2026-09-28
+
+## Context
+
+The Super Admin needs to add market data to the platform (plan2 §4, §7): by uploading CSV or JSONL files and by
+pulling from feeds. Everything that lands in `market_events` is matched against every org's signals, so garbage in the
+data source becomes wrong leads in many tenants at once. Files come from other systems and spreadsheets: wrong
+columns, wrong encodings, placeholder text, duplicates of what is already there. At the same time a single bad row
+should not make a 5 000-row file unusable.
+
+## Decision
+
+- **One canonical format, template v1** (`packages/shared/src/data-template.ts`): the "Market Event Record" with
+  named fields, types and rules. `TEMPLATE_V1_FIELDS` and the zod schema `marketEventRecordV1` are the single source
+  for the validator, the docs field table, the downloadable CSV template and the JSON Schema. Unknown columns are
+  **rejected**, not ignored (except `_comment`). Stored events carry `schema_version = 1`.
+- **Same validator everywhere.** Pure checks (`packages/pipeline/src/data-quality.ts`) and database checks
+  (`enrichValidation`) run for imports, connector runs and "Test connection".
+- **Two-phase import.** Upload → the worker validates into `data_batch_rows` (status `VALID`, `WARNING`, `INVALID`,
+  `DUPLICATE` with field-level issues) → the admin reviews the report and `errors.csv` → commit or discard. Nothing
+  reaches `market_events` before commit. The file layer fails fast in the API, so a garbage file never creates
+  staging rows.
+- **Partial commit with a guard.** A commit inserts `VALID` and `WARNING` rows and skips the rest, but is **refused**
+  when `invalid / rows > IMPORT_MAX_INVALID_RATIO` (default `0.2`) or when nothing is committable. The guard is checked
+  in the API (422) and again in the worker (`assertCommittable`).
+- **Limits:** `IMPORT_MAX_MB` (10), `IMPORT_MAX_ROWS` (5 000); larger loads go through connectors. CSV and JSONL (and
+  JSON arrays) are accepted.
+- **Optional AI quality gate** (`IMPORT_AI_GATE_ENABLED`, off by default): the `data.quality-gate` prompt can only add
+  warnings, never reject or drop rows.
+
+## Consequences
+
+- Positive: one documented contract for integrators and admins; a mostly-garbage file is stopped as a whole, while a
+  file with a few bad rows still loads; every rejected row has a reason the admin can fix; the report is reviewable
+  before any tenant is affected.
+- Positive: the pure validator is unit-tested against `sampleData.csv` and `sampleData.invalid.csv`.
+- Negative: two steps and a worker round trip instead of one request; staged rows use database space until
+  `STAGING_RETENTION_DAYS` (30).
+- Negative: strict columns reject files with extra columns even when the rest is fine; users must remove them.
+- Negative: the 20 % threshold is a heuristic. A file with 19 % invalid rows still commits its good rows.
+
+## Alternatives considered
+
+- **All-or-nothing commit**: simplest to reason about, but one bad row blocks thousands of good ones.
+- **Commit everything that parses, flag the rest later**: fast, but puts unreviewed data in front of every org's
+  pipeline.
+- **Per-source column mapping in the UI**: flexible, but more UI and more ways to map wrongly; a fixed template plus a
+  JSON Schema is easier to validate and document.
+- **Ignore unknown columns**: friendlier, but hides exports from the wrong system.
+
+## Revisit when
+
+- Admins regularly import files above 5 000 rows or 10 MB (move to streamed parsing or connector-only bulk loads).
+- A second record type or a v2 template is needed (add a parser, keep v1 accepted).
+- The invalid-ratio guard is overridden or complained about often enough to need a per-import override.

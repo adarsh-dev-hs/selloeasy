@@ -1,0 +1,11 @@
+{
+  "title": "Platform data",
+  "pages": [
+    "index",
+    "data-template",
+    "importing",
+    "validation-rules",
+    "connectors-and-ingestion",
+    "explorer-and-pagination"
+  ]
+}

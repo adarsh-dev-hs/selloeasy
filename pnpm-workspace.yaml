@@ -1,0 +1,11 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "infra"
+  - "e2e"
+onlyBuiltDependencies:
+  - argon2
+  - esbuild
+  - sharp
+  - "@parcel/watcher"
+  - msgpackr-extract

@@ -1,0 +1,1348 @@
+[
+  {
+    "externalId": "sem-001",
+    "source": "FabLine Weekly",
+    "url": "https://fabline-weekly.example/2026/saurashtra-microfab-breaks-ground-on-300-mm-fab-at-dholera-with-30-000-wafers-pe",
+    "title": "Saurashtra Microfab breaks ground on 300 mm fab at Dholera with 30,000 wafers per month target",
+    "body": "Saurashtra Microfab held the groundbreaking ceremony for its greenfield 300 mm fab at the Dholera Special Investment Region on Monday, marking the start of civil works on what the company says will be the largest mature-node facility in western India. The INR 91,000 crore project will initially run 28 nm to 110 nm processes for power management ICs, display drivers and automotive microcontrollers, ramping to 30,000 wafers per month by the end of 2029. The first phase includes a 42,000 square metre clean room, a utilities block with ultra-pure water and bulk gas plants, and an adjacent ATMP building for assembly and test. Tool move-in is scheduled for the third quarter of 2027, with risk production twelve months later. \"We are ordering lithography, deposition and inline metrology tools over the next four quarters, and we want local service partners wherever possible,\" said CEO Hemant Desai. The company expects to hire 3,200 engineers and technicians, and is in talks with equipment vendors for process-control and yield analytics platforms.",
+    "publishedDaysAgo": 3,
+    "industryTags": [
+      "Semiconductors",
+      "Government"
+    ],
+    "companies": [
+      {
+        "key": "sem-saurashtra-microfab",
+        "role": "subject"
+      }
+    ],
+    "region": "Dholera, India",
+    "amount": 910000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-002",
+    "source": "Deccan Business Wire",
+    "url": "https://deccan-business-wire.example/2026/cabinet-approval-clears-inr-31-800-crore-fiscal-support-for-saurashtra-microfab",
+    "title": "Cabinet approval clears INR 31,800 crore fiscal support for Saurashtra Microfab project",
+    "body": "The Union Cabinet has granted cabinet approval for fiscal support of INR 31,800 crore to Saurashtra Microfab under the national semiconductor mission, covering 50 percent of eligible project cost for its 300 mm fab at Dholera. The Gujarat government will add a state capital subsidy of 20 percent and has confirmed land allotment of 160 acres with dedicated power and water connections. The approval follows an eight-month appraisal in which the project's technology partnership with Taiwanese foundry Jadeite Foundry was reviewed. Disbursement will be milestone-based, linked to clean room completion, tool installation and first wafer output. Officials said the incentive package is conditional on the company building a domestic supplier base for spares, chemicals and inline inspection services. Saurashtra Microfab VP Fab Operations Kavya Nair said the company will publish supplier qualification requirements for metrology, defect inspection and yield management software before the end of the year.",
+    "publishedDaysAgo": 9,
+    "industryTags": [
+      "Semiconductors",
+      "Government"
+    ],
+    "companies": [
+      {
+        "key": "sem-saurashtra-microfab",
+        "role": "subject"
+      },
+      {
+        "key": "sem-jadeite-foundry",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Gandhinagar, India",
+    "amount": 318000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-003",
+    "source": "SiliconBeat Asia",
+    "url": "https://siliconbeat-asia.example/2026/vardhan-silicon-works-to-add-300-mm-mixed-signal-fab-line-alongside-existing-200",
+    "title": "Vardhan Silicon Works to add 300 mm mixed-signal fab line alongside existing 200 mm wafer plant",
+    "body": "Specialty foundry Vardhan Silicon Works will invest INR 12,800 crore to add a 300 mm mixed-signal fab next to its existing 200 mm wafer plant in Sanand, the company said in a filing on Thursday. The new production line will target 12,000 wafers per month at 65 nm and 90 nm BCD nodes, serving automotive power management, battery monitoring and industrial motor-drive customers. Construction of a 15,000 square metre clean room begins in November, with first silicon expected in mid-2028. The company said it will reuse part of its current process team but plans to hire around 900 people. \"Automotive customers are asking for AEC-Q100 capacity on 300 mm, and our 200 mm lines are fully booked,\" said Rajesh Iyengar, VP Fab Operations. He added that the company is evaluating new inline defect inspection and yield analytics systems to shorten the learning curve on the new line, and expects to finalise equipment orders by March.",
+    "publishedDaysAgo": 6,
+    "industryTags": [
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-vardhan-silicon",
+        "role": "subject"
+      }
+    ],
+    "region": "Sanand, India",
+    "amount": 128000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-004",
+    "source": "Deccan Business Wire",
+    "url": "https://deccan-business-wire.example/2026/gujarat-approves-capital-subsidy-and-power-tariff-incentive-for-vardhan-silicon",
+    "title": "Gujarat approves capital subsidy and power tariff incentive for Vardhan Silicon's 300 mm expansion",
+    "body": "The Gujarat state cabinet has approved a capital subsidy of INR 2,560 crore for Vardhan Silicon Works' 300 mm fab expansion in Sanand, alongside a ten-year electricity tariff incentive and stamp-duty exemption. The package was cleared under the state's semiconductor policy and complements the central scheme application that the company filed in June. Officials said the incentive will be released in four tranches tied to construction milestones, the first on completion of the clean room shell. The company must also meet local employment and supplier-development conditions. Vardhan Silicon's Director – Strategic Sourcing, Arvind Rao, said the approval allows the company to lock in equipment budgets. \"We will run competitive tenders for metrology, inspection and automation in the next two quarters, with a preference for vendors who can support us from within India,\" he said.",
+    "publishedDaysAgo": 21,
+    "industryTags": [
+      "Semiconductors",
+      "Government"
+    ],
+    "companies": [
+      {
+        "key": "sem-vardhan-silicon",
+        "role": "subject"
+      }
+    ],
+    "region": "Gandhinagar, India",
+    "amount": 25600000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-005",
+    "source": "FabLine Weekly",
+    "url": "https://fabline-weekly.example/2026/kaveri-assembly-test-opens-inr-1-450-crore-osat-unit-for-sic-power-modules-in-my",
+    "title": "Kaveri Assembly & Test opens INR 1,450 crore OSAT unit for SiC power modules in Mysuru",
+    "body": "Kaveri Assembly & Test has commissioned a new OSAT facility in Mysuru dedicated to power-module assembly and test for electric vehicle and renewable-energy customers. The INR 1,450 crore unit houses sintering, wire-bond and transfer-moulding lines for silicon carbide half-bridge and six-pack modules, with an initial output of 1.2 million modules a year. The plant includes a 6,500 square metre clean room, burn-in and high-temperature reverse-bias test cells, and an automated optical inspection line. A second production line for discrete TO-247 and surface-mount power packages is due in early 2027. \"EV makers want modules assembled close to their inverter lines, and they want traceable test data down to the die,\" said COO Sunitha Gowda. Farhan Siddiqui, Head of Test Engineering, said the company is qualifying suppliers of SiC MOSFET die and inline inspection equipment for the ramp.",
+    "publishedDaysAgo": 4,
+    "industryTags": [
+      "Semiconductors",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-kaveri-osat",
+        "role": "subject"
+      }
+    ],
+    "region": "Mysuru, India",
+    "amount": 14500000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-006",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/kaveri-assembly-test-signs-long-term-supply-agreement-with-voltrix-motors-to-loc",
+    "title": "Kaveri Assembly & Test signs long-term supply agreement with Voltrix Motors to localize power modules",
+    "body": "Kaveri Assembly & Test and electric two-wheeler maker Voltrix Motors have signed a five-year long-term supply agreement under which Kaveri will package and test inverter power modules in India, replacing modules currently imported from East Asia. The deal is valued at about INR 600 crore over its term. The localization programme covers a 650 V silicon carbide module for Voltrix's performance scooters and an IGBT module for its entry range. Kaveri will source die from multiple vendors and act as a second source for Voltrix's current Japanese supplier from mid-2027. \"Local sourcing cuts our lead time from sixteen weeks to five and gives our engineers direct access to the packaging line,\" said Priyanka Sharma, Director – Strategic Sourcing at Voltrix. Both companies said they are also looking for domestic suppliers of gate-driver and current-sensing ICs to complete the bill of materials.",
+    "publishedDaysAgo": 12,
+    "industryTags": [
+      "Semiconductors",
+      "Electric Vehicles",
+      "Two-Wheelers"
+    ],
+    "companies": [
+      {
+        "key": "sem-kaveri-osat",
+        "role": "subject"
+      },
+      {
+        "key": "sem-voltrix-motors",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": 6000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-007",
+    "source": "SiliconBeat Asia",
+    "url": "https://siliconbeat-asia.example/2026/fabless-startup-luminachip-labs-raises-usd-38-million-series-b-for-battery-manag",
+    "title": "Fabless startup Luminachip Labs raises USD 38 million Series B for battery-management SoCs",
+    "body": "Bengaluru-based fabless startup Luminachip Labs has raised USD 38 million in a Series B funding round to take its battery-management and motor-control chips into volume production. The round was co-led by two regional deep-tech funds, with existing investors participating. The company said it will use the funds for two tape-out cycles on a 55 nm BCD process, AEC-Q100 qualification of its 16-cell battery monitor, and a reference design programme with electric two-wheeler and energy-storage customers. It expects production shipments in the second half of 2027. \"Indian EV makers are ready to design in local silicon, but they need automotive-grade quality and a reliable supply of companion power devices,\" said CTO Aditi Menon. Head of Silicon Operations Rohit Bhatia said the startup is lining up OSAT, test and power MOSFET partners so it can offer complete BMS reference boards to customers.",
+    "publishedDaysAgo": 2,
+    "industryTags": [
+      "Semiconductors",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-luminachip-labs",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": 38000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-008",
+    "source": "The Circuit Ledger",
+    "url": "https://the-circuit-ledger.example/2026/luminachip-labs-opens-second-chip-design-centre-in-hyderabad-with-silicon-valida",
+    "title": "Luminachip Labs opens second chip design centre in Hyderabad with silicon validation lab",
+    "body": "Luminachip Labs has opened a second chip design centre in Hyderabad's HITEC City, adding 120 engineers for analog, mixed-signal and embedded firmware work. The site includes a silicon validation lab equipped for automotive temperature cycling, battery emulation and functional safety testing. The company said the Hyderabad team will lead development of its next-generation battery monitor and gate-driver ICs, while the Bengaluru headquarters focuses on digital design and customer applications. \"Hyderabad gives us access to experienced VLSI talent and to the growing base of EV and energy-storage companies in Telangana,\" said CTO Aditi Menon. The validation lab will also support customer evaluation of reference designs that pair Luminachip controllers with third-party SiC and silicon power stages. The company plans to double headcount at the centre by 2028.",
+    "publishedDaysAgo": 27,
+    "industryTags": [
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-luminachip-labs",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-009",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/voltrix-motors-issues-rfq-for-silicon-carbide-power-modules-as-it-brings-tractio",
+    "title": "Voltrix Motors issues RFQ for silicon carbide power modules as it brings traction inverter in-house",
+    "body": "Electric two-wheeler maker Voltrix Motors has issued an RFQ for silicon carbide MOSFET power modules and gate-driver ICs as it moves development of its traction inverter fully in-house. The company plans to launch a 12 kW inverter on its 2027 scooter platform and a 25 kW variant for a motorcycle due in 2028. Head of Power Electronics Nikhil Joshi said the sourcing exercise covers 650 V and 1200 V modules, current sensors and a battery management chipset for its new 4 kWh pack. \"We want a partner who can support automotive qualification, provide application engineering in India and commit to allocation through 2030,\" he said. Voltrix expects annual volumes of 350,000 inverters by 2028. The company is also building a power electronics test lab in Pune and is looking for local suppliers of on-board charger components.",
+    "publishedDaysAgo": 1,
+    "industryTags": [
+      "Electric Vehicles",
+      "Two-Wheelers"
+    ],
+    "companies": [
+      {
+        "key": "sem-voltrix-motors",
+        "role": "subject"
+      }
+    ],
+    "region": "Pune, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-010",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/arohan-mobility-starts-sourcing-for-in-house-motor-controller-and-on-board-charg",
+    "title": "Arohan Mobility starts sourcing for in-house motor controller and on-board charger",
+    "body": "Arohan Mobility has begun sourcing power semiconductors and passive components for an in-house motor controller and a 6.6 kW on-board charger that will go into its electric three-wheelers and light trucks from 2027. The move ends the company's reliance on imported drivetrain electronics. VP Electrification Lakshmi Narayanan said the power electronics team has grown to 140 engineers across Hosur and Hyderabad. \"Controlling the inverter and charger design lets us tune efficiency for Indian duty cycles and bring down cost,\" she said. Arohan is evaluating silicon and silicon carbide MOSFETs, gate drivers and isolated power supply ICs, with a target of 400,000 controller sets a year. Senior Manager – Electronics Sourcing Imran Qureshi said the company will shortlist vendors by December and prefers suppliers with local stock, AEC-Q101 qualified parts and field application support.",
+    "publishedDaysAgo": 8,
+    "industryTags": [
+      "Electric Vehicles",
+      "Commercial Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-arohan-mobility",
+        "role": "subject"
+      }
+    ],
+    "region": "Hosur, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-011",
+    "source": "Asia Electronics Journal",
+    "url": "https://asia-electronics-journal.example/2026/arohan-mobility-and-meghdoot-electronics-sign-localization-deal-for-ev-controlle",
+    "title": "Arohan Mobility and Meghdoot Electronics sign localization deal for EV controller assembly",
+    "body": "Arohan Mobility has signed a supply agreement with Meghdoot Electronics to assemble its EV motor controllers and vehicle control units at Meghdoot's Hyderabad plant, part of a wider localization plan for its electric three-wheeler range. The contract is valued at around INR 420 crore over four years. Under the agreement, Meghdoot will set up two dedicated SMT and conformal-coating lines and an end-of-line test station for high-voltage boards. Arohan will control the design and approve component vendors, with a stated goal of 70 percent domestic supply by value by 2028. \"We have done the design work in India; now the component ecosystem has to follow,\" said Arohan VP Electrification Lakshmi Narayanan. Meghdoot said it is building a vendor development programme for power semiconductors, magnetics and connectors to meet the target.",
+    "publishedDaysAgo": 19,
+    "industryTags": [
+      "Electric Vehicles",
+      "Electronics Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "sem-arohan-mobility",
+        "role": "subject"
+      },
+      {
+        "key": "sem-meghdoot-electronics",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": 4200000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-012",
+    "source": "Asia Electronics Journal",
+    "url": "https://asia-electronics-journal.example/2026/meghdoot-electronics-commits-inr-950-crore-to-local-sourcing-of-power-electronic",
+    "title": "Meghdoot Electronics commits INR 950 crore to local sourcing of power electronics components",
+    "body": "Meghdoot Electronics said it will spend INR 950 crore over three years on a local sourcing programme for power electronics components used in EV controllers, telecom rectifiers and fast chargers it builds for customers. The EMS company aims to raise domestic value addition on these products from 18 percent to 45 percent. The plan includes long-term supply contracts with Indian module makers, joint vendor development with two OSATs and a component qualification lab in Noida. President of EMS Operations Vikram Chawla said customers increasingly require a second source outside China for MOSFETs, gate drivers and battery management ICs. \"Our customers are asking us to secure allocation years ahead,\" said Ananya Bose, Director – Component Sourcing. \"We are shortlisting partners that can offer automotive-grade parts, application support and buffer stock in India.\"",
+    "publishedDaysAgo": 14,
+    "industryTags": [
+      "Electronics Manufacturing",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-meghdoot-electronics",
+        "role": "subject"
+      }
+    ],
+    "region": "Noida, India",
+    "amount": 9500000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-013",
+    "source": "Deccan Business Wire",
+    "url": "https://deccan-business-wire.example/2026/meghdoot-electronics-wins-approval-under-component-pli-scheme-for-sriperumbudur",
+    "title": "Meghdoot Electronics wins approval under component PLI scheme for Sriperumbudur module plant",
+    "body": "Meghdoot Electronics has received approval under the electronics component PLI scheme for a new module and sub-assembly plant in Sriperumbudur, Tamil Nadu. The project, with committed investment of INR 1,120 crore, is eligible for a production-linked incentive of up to 6 percent on incremental sales over six years. The plant will make camera modules, battery packs for phones and power sub-assemblies for EV chargers, employing about 4,000 people at full scale. Tamil Nadu will provide an additional capital subsidy on plant and machinery. Company officials said the incentive approval makes it viable to set up in-house SMT, reflow and test lines instead of buying finished modules. Procurement of semiconductors, passives and test equipment for the first phase will begin in the current quarter.",
+    "publishedDaysAgo": 33,
+    "industryTags": [
+      "Electronics Manufacturing",
+      "Government"
+    ],
+    "companies": [
+      {
+        "key": "sem-meghdoot-electronics",
+        "role": "subject"
+      }
+    ],
+    "region": "New Delhi, India",
+    "amount": 11200000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-014",
+    "source": "The Circuit Ledger",
+    "url": "https://the-circuit-ledger.example/2026/prithvi-contract-manufacturing-launches-vendor-development-programme-to-localize",
+    "title": "Prithvi Contract Manufacturing launches vendor development programme to localize power-conversion parts",
+    "body": "Chennai-based EMS provider Prithvi Contract Manufacturing has launched a vendor development programme aimed at localizing power semiconductors, magnetics and heat sinks for the solar inverter and industrial drive boards it builds. Anchor customer Suryatej Power Systems has committed to qualify parts sourced through the programme. Managing Director Karthik Subramanian said the company wants a domestic supply base for at least 60 percent of its power-conversion bill of materials within three years. \"Our customers are asking for localization because import lead times keep disrupting builds,\" he said. Head of Supply Chain Divya Raghavan said Prithvi will sign long-term supply agreements with shortlisted vendors and share demand forecasts eighteen months ahead. The first round covers IGBT and SiC modules, gate drivers and current sensors.",
+    "publishedDaysAgo": 16,
+    "industryTags": [
+      "Electronics Manufacturing",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "sem-prithvi-contract",
+        "role": "subject"
+      },
+      {
+        "key": "sem-suryatej-power",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Chennai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-015",
+    "source": "Grid & Inverter Today",
+    "url": "https://grid-inverter-today.example/2026/suryatej-power-systems-announces-capacity-expansion-to-12-gw-of-solar-inverter-m",
+    "title": "Suryatej Power Systems announces capacity expansion to 12 GW of solar inverter manufacturing",
+    "body": "Suryatej Power Systems will invest INR 780 crore in a capacity expansion that takes its annual solar inverter manufacturing output from 5 GW to 12 GW, the company said on Tuesday. The expansion adds a new plant at Genome Valley near Hyderabad producing 350 kW string inverter platforms, 4.4 MW central inverter skids and hybrid inverter units for battery storage. Production will start in phases from April 2027. CTO Gaurav Mehta said the new string inverter platform moves to silicon carbide MOSFETs to cut losses by 30 percent. \"We are qualifying new power semiconductor suppliers and want domestic supply wherever possible to meet domestic content rules,\" he said. Director – Strategic Sourcing Swati Pandey said the company expects to buy more than 1.5 million power modules a year once both plants run at full capacity.",
+    "publishedDaysAgo": 5,
+    "industryTags": [
+      "Renewable Energy",
+      "Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "sem-suryatej-power",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": 7800000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-016",
+    "source": "Grid & Inverter Today",
+    "url": "https://grid-inverter-today.example/2026/helionix-inverters-doubles-hybrid-inverter-capacity-with-new-ahmedabad-line",
+    "title": "Helionix Inverters doubles hybrid inverter capacity with new Ahmedabad line",
+    "body": "Rooftop solar inverter maker Helionix Inverters has commissioned a second production line in Ahmedabad, doubling its hybrid inverter capacity to 3 GW a year. The INR 210 crore capacity expansion also adds a line for 125 kW commercial string inverter models and battery energy storage converters. Founder and CEO Jignesh Patel said demand from the residential rooftop programme and from commercial buyers adding batteries had outstripped supply for three quarters. \"Hybrid inverter orders have tripled since January,\" he said. Head of Power Electronics Neha Vora said the new designs use silicon carbide switches and a new battery management interface, and that Helionix is sourcing power devices from two new vendors to reduce reliance on a single importer.",
+    "publishedDaysAgo": 11,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "sem-helionix-inverters",
+        "role": "subject"
+      }
+    ],
+    "region": "Ahmedabad, India",
+    "amount": 2100000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-017",
+    "source": "Telecom Frontier",
+    "url": "https://telecom-frontier.example/2026/tarangam-networks-floats-rfq-for-gallium-nitride-power-amplifiers-for-domestic-5",
+    "title": "Tarangam Networks floats RFQ for gallium nitride power amplifiers for domestic 5G radios",
+    "body": "Telecom equipment maker Tarangam Networks has issued an RFQ for gallium nitride power amplifiers, RF front-end modules and high-efficiency power supply ICs for its next-generation 5G massive-MIMO radio units. The company expects to ship 60,000 radio units a year from 2027 to Indian and South-East Asian operators. VP Hardware Engineering Suresh Venkatesan said the sourcing drive aims to cut radio power consumption by 25 percent. \"Power electronics is now the biggest lever on operator energy bills, from the PA to the DC-DC stage,\" he said. Tarangam is evaluating domestic fabless startup Vyomika RF Systems alongside established suppliers. Director – Strategic Sourcing Pooja Agarwal said shortlisted vendors will be asked to support trusted-source certification and local stocking under the government's telecom trusted-sources rules.",
+    "publishedDaysAgo": 7,
+    "industryTags": [
+      "Telecom",
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-tarangam-networks",
+        "role": "subject"
+      },
+      {
+        "key": "sem-vyomika-rf",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-018",
+    "source": "Telecom Frontier",
+    "url": "https://telecom-frontier.example/2026/tarangam-networks-opens-hardware-design-centre-in-bengaluru-for-5g-radio-and-pow",
+    "title": "Tarangam Networks opens hardware design centre in Bengaluru for 5G radio and power boards",
+    "body": "Tarangam Networks has opened a 60,000 square foot hardware design centre in Bengaluru to develop radio units, baseband boards and power subsystems for 5G and future 6G networks. The centre will house 450 engineers by 2027, including RF, power, FPGA and VLSI teams. The facility includes an anechoic chamber, a thermal lab and a power electronics bench for testing rectifiers and DC-DC converters. VP Hardware Engineering Suresh Venkatesan said the company is also building an ASIC team to take its front-haul processing into custom silicon. \"We want more of the radio designed and validated in India, from the board to the chip,\" he said. The company said it will work with local component vendors to co-design power stages and qualify parts in the new lab.",
+    "publishedDaysAgo": 38,
+    "industryTags": [
+      "Telecom"
+    ],
+    "companies": [
+      {
+        "key": "sem-tarangam-networks",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-019",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/nimbusrack-systems-to-build-ai-server-racks-and-48v-rack-power-shelves-at-new-hy",
+    "title": "Nimbusrack Systems to build AI server racks and 48V rack power shelves at new Hyderabad plant",
+    "body": "Nimbusrack Systems will invest INR 340 crore in a Hyderabad plant to assemble liquid-cooled AI server racks, 48V rack power shelves and server power supply units for Indian hyperscale and colocation operators. The plant will produce 2,000 racks a year from mid-2027. CTO Anirudh Kapoor said the in-house power shelf design uses gallium nitride and silicon carbide stages to reach 97.5 percent efficiency. \"Power density is now the bottleneck for AI data center hardware, so we are taking the power electronics in-house,\" he said. Manager – Power Hardware Fatima Sheikh said the company is sourcing power modules, controllers and hot-swap ICs, and wants suppliers with local application support and firm allocation commitments.",
+    "publishedDaysAgo": 10,
+    "industryTags": [
+      "Data Centers",
+      "Electronics Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "sem-nimbusrack-systems",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": 3400000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-020",
+    "source": "SiliconBeat Asia",
+    "url": "https://siliconbeat-asia.example/2026/orbis-consumer-devices-signs-local-sourcing-pact-for-gan-fast-charger-chips-adds",
+    "title": "Orbis Consumer Devices signs local sourcing pact for GaN fast-charger chips, adds second source",
+    "body": "Orbis Consumer Devices has signed a local sourcing agreement for gallium nitride power ICs used in its 65 W and 120 W fast chargers, adding a second source to its current single supplier. The company sells around 9 million chargers a year with its phones and as accessories. Head of Hardware Products Rahul Khanna said the agreement is part of a localization drive that will see charger boards assembled entirely in its Uttar Pradesh plant. \"We want the power chip, the controller and the magnetics sourced domestically or from partners stocking in India,\" he said. Senior Manager – Semiconductor Sourcing Shreya Iyer said the company is now looking at a similar domestic supply arrangement for battery management and USB-PD controller ICs.",
+    "publishedDaysAgo": 15,
+    "industryTags": [
+      "Consumer Electronics",
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-orbis-devices",
+        "role": "subject"
+      }
+    ],
+    "region": "Noida, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-021",
+    "source": "FabLine Weekly",
+    "url": "https://fabline-weekly.example/2026/merbok-precision-packaging-to-build-usd-420-million-advanced-packaging-plant-in",
+    "title": "Merbok Precision Packaging to build USD 420 million advanced packaging plant in Penang",
+    "body": "Malaysian OSAT Merbok Precision Packaging will build a USD 420 million advanced packaging plant in Batu Kawan, Penang, focused on automotive power modules and system-in-package products. Groundbreaking is planned for December, with production starting in 2028. The plant will add 40,000 square metres of manufacturing space including a class 1,000 clean room, sintering and double-side cooling lines, and a dedicated assembly and test hall for EV traction modules. \"Our customers want redundancy outside North Asia and they want it qualified to automotive standards,\" said VP Operations Tan Wei Ling. Yield Engineering Manager Muthu Krishnan said the plant will deploy inline X-ray and acoustic inspection with a central yield analytics platform linking every production line.",
+    "publishedDaysAgo": 13,
+    "industryTags": [
+      "Semiconductors",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-merbok-precision",
+        "role": "subject"
+      }
+    ],
+    "region": "Penang, Malaysia",
+    "amount": 420000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-022",
+    "source": "FabLine Weekly",
+    "url": "https://fabline-weekly.example/2026/lionbay-semiconductor-converts-200-mm-fab-line-to-silicon-carbide-power-devices",
+    "title": "Lionbay Semiconductor converts 200 mm fab line to silicon carbide power devices",
+    "body": "Singapore specialty foundry Lionbay Semiconductor will spend USD 310 million to convert one of its 200 mm fab lines to silicon carbide power devices, adding capacity of 8,000 wafers per month by 2028. The move responds to demand from EV and renewable-energy customers for 1200 V MOSFETs. The conversion includes high-temperature implant and anneal tools, epitaxy reactors and new defect inspection systems suited to silicon carbide substrates. VP Fab Operations Daniel Koh said the company will reuse its existing clean room and utilities. \"Silicon carbide yield is all about substrate and epi defect control, so we are investing heavily in inline metrology,\" said Rachel Lim, Director – Process Integration. The company expects to announce customer capacity reservations in the first quarter.",
+    "publishedDaysAgo": 24,
+    "industryTags": [
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-lionbay-semiconductor",
+        "role": "subject"
+      }
+    ],
+    "region": "Singapore",
+    "amount": 310000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-023",
+    "source": "SiliconBeat Asia",
+    "url": "https://siliconbeat-asia.example/2026/jadeite-foundry-picks-andhra-pradesh-for-300-mm-fab-after-land-allotment-and-inc",
+    "title": "Jadeite Foundry picks Andhra Pradesh for 300 mm fab after land allotment and incentive offer",
+    "body": "Taiwanese mature-node foundry Jadeite Foundry has chosen Anakapalli in Andhra Pradesh for its first overseas 300 mm fab, following land allotment of 220 acres and a state incentive offer covering a 25 percent capital subsidy. The USD 5.2 billion project would produce power management and display-driver ICs at 40 nm to 90 nm. The company will apply for central fiscal support in the coming weeks. Senior Director – Overseas Fabs Chen Yu-Ting said the fab is planned for 40,000 wafers per month in two phases, with the clean room shell to be completed in 2028. Jadeite is also the technology partner for Saurashtra Microfab's Dholera project. Chen said the company expects to build a local supply chain for chemicals, gases and equipment services, and will require on-site service capability for inspection and metrology tools.",
+    "publishedDaysAgo": 18,
+    "industryTags": [
+      "Semiconductors",
+      "Government"
+    ],
+    "companies": [
+      {
+        "key": "sem-jadeite-foundry",
+        "role": "subject"
+      },
+      {
+        "key": "sem-saurashtra-microfab",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Anakapalli, India",
+    "amount": 5200000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-024",
+    "source": "The Circuit Ledger",
+    "url": "https://the-circuit-ledger.example/2026/hoshizora-power-devices-opens-design-centre-in-hyderabad-for-sic-power-modules",
+    "title": "Hoshizora Power Devices opens design centre in Hyderabad for SiC power modules",
+    "body": "Japanese power device maker Hoshizora Power Devices has opened a design centre in Hyderabad to develop silicon carbide power modules and gate-driver reference designs for Indian EV and renewable-energy customers. The centre will employ 80 engineers within two years. The site includes a silicon validation lab for dynamic characterisation, short-circuit testing and power cycling. Aiko Tanaka, Head of Automotive Business, said Indian two-wheeler and bus makers are moving traction inverter design in-house and want local application engineering. \"Hyderabad is close to our customers and to India's new OSAT cluster,\" she said. Kenji Watanabe, General Manager – Global Procurement, said the company is also evaluating Indian partners for module assembly and for test services to support local customers.",
+    "publishedDaysAgo": 22,
+    "industryTags": [
+      "Semiconductors",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-hoshizora-power",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-025",
+    "source": "Asia Electronics Journal",
+    "url": "https://asia-electronics-journal.example/2026/mekong-circuitworks-signs-long-term-supply-agreement-to-localize-power-modules-f",
+    "title": "Mekong Circuitworks signs long-term supply agreement to localize power modules for telecom builds",
+    "body": "Vietnamese EMS group Mekong Circuitworks has signed a long-term supply agreement with two regional component makers to localize power modules and DC-DC converters used in the telecom and networking equipment it builds in Hai Phong. The agreement runs for five years and covers an estimated 14 million units. Director – Strategic Sourcing Nguyen Thi Lan said the company wants a second source in South-East Asia for every critical power part by 2027. \"Customers are asking us to show supply resilience at the component level,\" she said. Mekong is also expanding its test operation. Head of Test Engineering Pham Quoc Bao said the company is investing in automated optical inspection and board-level functional testers to support the new local sourcing arrangements.",
+    "publishedDaysAgo": 26,
+    "industryTags": [
+      "Electronics Manufacturing",
+      "Telecom"
+    ],
+    "companies": [
+      {
+        "key": "sem-mekong-circuitworks",
+        "role": "subject"
+      }
+    ],
+    "region": "Hai Phong, Vietnam",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-026",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/pinecrest-compute-raises-usd-120-million-series-c-to-scale-liquid-cooled-ai-serv",
+    "title": "Pinecrest Compute raises USD 120 million Series C to scale liquid-cooled AI server racks",
+    "body": "US hardware startup Pinecrest Compute has raised USD 120 million in a Series C funding round to scale production of its liquid-cooled AI server racks and 48V rack power systems. Growth investors led the round, with existing investors participating. The company will use the funds to expand contract manufacturing in Asia, including a new line in India, and to finish its next-generation power shelf. VP Hardware Emily Carter said the power shelf delivers 33 kW per rack with gallium nitride and silicon carbide stages. \"Every AI server we ship is power-limited, so rack power is where we differentiate,\" she said. Director – Supply Chain Marcus Bell said the startup is signing multi-year allocation agreements for power modules and controllers.",
+    "publishedDaysAgo": 4,
+    "industryTags": [
+      "Data Centers",
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-pinecrest-compute",
+        "role": "subject"
+      }
+    ],
+    "region": "Austin, USA",
+    "amount": 120000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-027",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/gangotri-electric-raises-inr-420-crore-series-b-to-expand-in-house-power-electro",
+    "title": "Gangotri Electric raises INR 420 crore Series B to expand in-house power electronics",
+    "body": "Electric motorcycle startup Gangotri Electric has raised INR 420 crore in a Series B funding round from domestic and Gulf-based investors. The Coimbatore company said the money will fund a second assembly line and an in-house power electronics facility producing motor controllers and chargers. Co-founder and CTO Vishal Rajan said the startup has designed a 15 kW controller that it will build from 2027. \"Owning the power electronics lets us deliver better range and faster over-the-air tuning,\" he said. Gangotri plans to reach 150,000 units a year by 2028 and is in discussions with semiconductor suppliers for power modules and battery management ICs.",
+    "publishedDaysAgo": 17,
+    "industryTags": [
+      "Two-Wheelers",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-gangotri-electric",
+        "role": "subject"
+      }
+    ],
+    "region": "Coimbatore, India",
+    "amount": 4200000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-028",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/gangotri-electric-begins-sourcing-sic-mosfets-for-in-house-motor-controller",
+    "title": "Gangotri Electric begins sourcing SiC MOSFETs for in-house motor controller",
+    "body": "Gangotri Electric has started sourcing silicon carbide MOSFETs, gate drivers and current-sense ICs for the in-house motor controller it will build at its Coimbatore plant from next year. The company issued an RFQ to six suppliers last week, including Indian OSAT Kaveri Assembly & Test for module packaging. Manager – Electronics Procurement Harini Srinivasan said the RFQ covers 180,000 controller sets a year with an option to double. \"We need automotive-qualified parts, stable allocation and engineers who can visit our lab,\" she said. CTO Vishal Rajan added that the team is also finalising an on-board charger design and will run a separate sourcing round for its power stage in the first quarter.",
+    "publishedDaysAgo": 2,
+    "industryTags": [
+      "Two-Wheelers",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-gangotri-electric",
+        "role": "subject"
+      },
+      {
+        "key": "sem-kaveri-osat",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Coimbatore, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-029",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/deccan-cellworks-takes-battery-management-in-house-issues-rfq-for-bms-chipsets",
+    "title": "Deccan Cellworks takes battery management in-house, issues RFQ for BMS chipsets",
+    "body": "Battery pack integrator Deccan Cellworks has brought battery management system design in-house and issued an RFQ for cell-monitoring ICs, balancing MOSFETs and isolated communication chips. The company supplies packs for electric three-wheelers and commercial energy storage. Head of BMS Engineering Mounika Varma said the new BMS platform supports 16 to 24 cells for mobility and up to 400 cells for storage racks. \"Moving BMS in-house gives us control over safety and warranty data,\" she said. CEO Sandeep Reddy said Deccan expects to build 220,000 BMS boards in 2027 and wants suppliers with automotive-grade parts and design support. The company is also evaluating domestic sourcing of power electronics for its storage converters.",
+    "publishedDaysAgo": 6,
+    "industryTags": [
+      "Electric Vehicles",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "sem-deccan-cellworks",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-030",
+    "source": "FabLine Weekly",
+    "url": "https://fabline-weekly.example/2026/kalinga-compound-semiconductors-wins-semiconductor-mission-approval-for-sic-and",
+    "title": "Kalinga Compound Semiconductors wins semiconductor mission approval for SiC and GaN fab in Odisha",
+    "body": "Kalinga Compound Semiconductors has received approval under the national semiconductor mission for a INR 4,800 crore compound-semiconductor fab near Bhubaneswar, making it eligible for fiscal support covering half of project cost. The Odisha government has matched with a capital subsidy and land allotment of 60 acres. The fab will produce 150 mm silicon carbide wafers for power MOSFETs and gallium nitride-on-silicon devices for RF, with capacity of 10,000 wafers per month by 2029. Managing Director Debashis Mohanty said construction starts in January. \"We are sourcing epitaxy, implant, inspection and metrology tools now,\" said VP Fab Operations Oliver Grant. Yield Engineering Manager Sneha Patnaik said SiC defect inspection and yield analytics would be among the first systems to be installed.",
+    "publishedDaysAgo": 20,
+    "industryTags": [
+      "Semiconductors",
+      "Government"
+    ],
+    "companies": [
+      {
+        "key": "sem-kalinga-compound",
+        "role": "subject"
+      }
+    ],
+    "region": "Bhubaneswar, India",
+    "amount": 48000000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-031",
+    "source": "FabLine Weekly",
+    "url": "https://fabline-weekly.example/2026/kalinga-compound-completes-clean-room-shell-orders-pilot-production-line-tools",
+    "title": "Kalinga Compound completes clean room shell, orders pilot production line tools",
+    "body": "Kalinga Compound Semiconductors said it has completed the clean room shell of its silicon carbide fab near Bhubaneswar three months ahead of schedule, and has placed orders for a pilot production line capable of 1,500 wafers per month. The pilot line will qualify 1200 V MOSFETs and Schottky diodes for automotive customers. VP Fab Operations Oliver Grant said tool move-in begins in November. \"We are prioritising inline metrology and defect inspection so we learn fast on yield from the first wafer,\" he said. The company is in the final stage of selecting a yield management software vendor and said it will name suppliers for surface inspection and photoluminescence mapping within weeks.",
+    "publishedDaysAgo": 0,
+    "industryTags": [
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-kalinga-compound",
+        "role": "subject"
+      }
+    ],
+    "region": "Bhubaneswar, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-032",
+    "source": "SiliconBeat Asia",
+    "url": "https://siliconbeat-asia.example/2026/vyomika-rf-systems-raises-usd-14-million-series-a-for-gan-rf-front-end-chips",
+    "title": "Vyomika RF Systems raises USD 14 million Series A for GaN RF front-end chips",
+    "body": "Fabless startup Vyomika RF Systems has raised USD 14 million in a Series A funding round led by a semiconductor-focused venture fund. The Bengaluru company designs gallium nitride power amplifiers and RF front-end modules for 5G radios and satellite terminals. Founder and CEO Arjun Malhotra said the funds will pay for two tape-out runs at a foundry partner, reliability qualification and a customer sampling programme. Tarangam Networks is evaluating the company's first power amplifier for its massive-MIMO radios. \"Indian telecom OEMs want domestic RF silicon that meets trusted-source rules,\" said Director – Silicon Engineering Ishita Ghosh. The startup plans to grow to 160 people and is lining up packaging and test partners in India.",
+    "publishedDaysAgo": 9,
+    "industryTags": [
+      "Semiconductors",
+      "Telecom"
+    ],
+    "companies": [
+      {
+        "key": "sem-vyomika-rf",
+        "role": "subject"
+      },
+      {
+        "key": "sem-tarangam-networks",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": 14000000,
+    "currency": "USD",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-033",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/agnivahan-commercial-vehicles-sources-traction-inverter-and-on-board-charger-for",
+    "title": "Agnivahan Commercial Vehicles sources traction inverter and on-board charger for e-bus range",
+    "body": "Agnivahan Commercial Vehicles has begun sourcing power electronics for its electric bus and last-mile truck range, including a 250 kW traction inverter, DC-DC converters and a 22 kW on-board charger. The company has 3,400 electric buses on order from state transport undertakings. VP Electric Powertrain Manoj Tiwari said Agnivahan will integrate the inverter in-house using bought-in silicon carbide power modules. \"Bus duty cycles are brutal, so we need modules with proven power-cycling life and local support,\" he said. Director – Strategic Sourcing Rekha Joshi said the company will select suppliers by January and wants domestic assembly of modules to meet localisation requirements in state tenders.",
+    "publishedDaysAgo": 12,
+    "industryTags": [
+      "Commercial Vehicles",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-agnivahan-cv",
+        "role": "subject"
+      }
+    ],
+    "region": "Lucknow, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-034",
+    "source": "Telecom Frontier",
+    "url": "https://telecom-frontier.example/2026/nilgiri-wireless-signs-domestic-supply-agreements-for-rural-5g-base-station-powe",
+    "title": "Nilgiri Wireless signs domestic supply agreements for rural 5G base station power systems",
+    "body": "Nilgiri Wireless has signed domestic supply agreements with three Indian component makers for rectifiers, solar charge controllers and battery management units used in its rural 5G base stations. The move is part of a localization plan tied to a government-funded rural connectivity programme requiring 60 percent domestic value addition. CTO Balaji Krishnamurthy said the company will deploy 18,000 solar-powered sites over three years. \"Power is the single biggest cost at a rural site, so we are redesigning the power chain around efficient local parts,\" he said. Manager – Hardware Sourcing Zoya Khan said Nilgiri is also looking for a second source for power MOSFETs and controllers.",
+    "publishedDaysAgo": 29,
+    "industryTags": [
+      "Telecom",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "sem-nilgiri-wireless",
+        "role": "subject"
+      }
+    ],
+    "region": "Chennai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-035",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/nimbusrack-systems-approved-for-it-hardware-pli-scheme-incentive-on-server-manuf",
+    "title": "Nimbusrack Systems approved for IT hardware PLI scheme incentive on server manufacturing",
+    "body": "Nimbusrack Systems is among seven companies approved under the IT hardware PLI scheme, making it eligible for a production-linked incentive on servers and rack power equipment made in India. The company committed INR 260 crore in investment over five years. CTO Anirudh Kapoor said the incentive improves the economics of domestic assembly for server power supply units and power shelves. \"It lets us build power electronics locally at a price that competes with imports,\" he said. Nimbusrack said it would expand its supplier base for power semiconductors and controllers as volumes grow.",
+    "publishedDaysAgo": 31,
+    "industryTags": [
+      "Data Centers",
+      "Government"
+    ],
+    "companies": [
+      {
+        "key": "sem-nimbusrack-systems",
+        "role": "subject"
+      }
+    ],
+    "region": "New Delhi, India",
+    "amount": 2600000000,
+    "currency": "INR",
+    "kind": "strong"
+  },
+  {
+    "externalId": "sem-036",
+    "source": "Asia Electronics Journal",
+    "url": "https://asia-electronics-journal.example/2026/orbis-consumer-devices-chief-says-brand-is-studying-options-for-deeper-manufactu",
+    "title": "Orbis Consumer Devices chief says brand is 'studying options' for deeper manufacturing in India",
+    "body": "Speaking at a consumer technology summit in Mumbai, the chief executive of Orbis Consumer Devices said the company was studying options to deepen its manufacturing footprint in India but had made no decisions. He said rising component costs and currency movements were forcing the brand to rethink its product roadmap. The executive said Orbis would continue to focus on mid-range smartphones and wearables, and hinted at a larger accessories portfolio next year. Asked about new plants, he said the company was \"happy with current partners\" and would revisit the question after the festive season. Analysts at the event said Orbis had gained market share in smaller cities thanks to aggressive pricing and offline retail partnerships.",
+    "publishedDaysAgo": 44,
+    "industryTags": [
+      "Consumer Electronics"
+    ],
+    "companies": [
+      {
+        "key": "sem-orbis-devices",
+        "role": "subject"
+      }
+    ],
+    "region": "Mumbai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-037",
+    "source": "The Circuit Ledger",
+    "url": "https://the-circuit-ledger.example/2026/lionbay-semiconductor-signs-mou-with-singapore-university-on-photonics-research",
+    "title": "Lionbay Semiconductor signs MoU with Singapore university on photonics research",
+    "body": "Lionbay Semiconductor has signed a memorandum of understanding with a Singapore university to explore joint research in silicon photonics and advanced sensors. The agreement covers student internships, shared use of characterisation equipment and possible joint grant applications. The company said the MoU does not include any commitment to new facilities or investment. Director – Process Integration Rachel Lim said collaboration would help the company build a talent pipeline for photonics engineering. The university's engineering dean said the partnership would give researchers access to industrial process expertise and help translate lab results into products over the coming years.",
+    "publishedDaysAgo": 63,
+    "industryTags": [
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-lionbay-semiconductor",
+        "role": "subject"
+      }
+    ],
+    "region": "Singapore",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-038",
+    "source": "Grid & Inverter Today",
+    "url": "https://grid-inverter-today.example/2026/helionix-founder-calls-for-grid-code-clarity-at-rooftop-solar-conclave",
+    "title": "Helionix founder calls for grid-code clarity at rooftop solar conclave",
+    "body": "Helionix Inverters founder Jignesh Patel used a panel at a rooftop solar conclave in Gandhinagar to call for clearer grid-code rules on export limits and reactive power support. He said inconsistent rules across distribution companies were confusing installers and slowing approvals for residential customers. Patel said the industry would benefit from a single national testing protocol for rooftop equipment and faster net-metering approvals. Other panellists raised concerns about installer training and after-sales service in smaller towns. He declined to comment on the company's expansion plans, saying only that demand in Gujarat and Maharashtra remained healthy.",
+    "publishedDaysAgo": 71,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "sem-helionix-inverters",
+        "role": "subject"
+      }
+    ],
+    "region": "Gandhinagar, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-039",
+    "source": "SiliconBeat Asia",
+    "url": "https://siliconbeat-asia.example/2026/hoshizora-power-devices-explores-india-partnerships-at-electronics-trade-show",
+    "title": "Hoshizora Power Devices explores India partnerships at electronics trade show",
+    "body": "Hoshizora Power Devices showcased its IGBT and power device portfolio at an electronics trade show in Greater Noida, where executives said they were meeting potential Indian partners. The company did not announce any agreements. Aiko Tanaka, Head of Automotive Business, told visitors that India was an important growth market and that the company was listening to customers about local support needs. She said Hoshizora had seen interest from rail and industrial drive customers as well as automotive buyers. The company's booth featured demonstrations of rail traction systems and industrial drives.",
+    "publishedDaysAgo": 52,
+    "industryTags": [
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-hoshizora-power",
+        "role": "subject"
+      }
+    ],
+    "region": "Greater Noida, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-040",
+    "source": "Asia Electronics Journal",
+    "url": "https://asia-electronics-journal.example/2026/mekong-circuitworks-reviewing-northern-vietnam-sites-as-customer-demand-shifts",
+    "title": "Mekong Circuitworks reviewing northern Vietnam sites as customer demand shifts",
+    "body": "Mekong Circuitworks is reviewing possible sites in northern Vietnam for future expansion, according to people familiar with the matter, though the company said no decision had been made. The EMS group has been growing with networking and consumer customers diversifying their manufacturing across Asia. A spokesperson said the company routinely assesses options and that any expansion would depend on customer commitments. Local officials in two provinces confirmed they had hosted visits from Mekong executives. Industry consultants said land and labour availability around Hanoi was tightening, pushing manufacturers to consider provinces further from the capital.",
+    "publishedDaysAgo": 88,
+    "industryTags": [
+      "Electronics Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "sem-mekong-circuitworks",
+        "role": "subject"
+      }
+    ],
+    "region": "Bac Ninh, Vietnam",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-041",
+    "source": "The Circuit Ledger",
+    "url": "https://the-circuit-ledger.example/2026/prithvi-contract-manufacturing-eyes-ev-electronics-as-it-exhibits-at-chennai-exp",
+    "title": "Prithvi Contract Manufacturing eyes EV electronics as it exhibits at Chennai expo",
+    "body": "Prithvi Contract Manufacturing exhibited at a Chennai industrial electronics expo this week, where managing director Karthik Subramanian said the company saw electric vehicle electronics as a promising area. He did not share specific plans or customer names. Subramanian said the company's industrial customers remained its core business and that it would pursue new segments carefully. \"We are having conversations, but it is early,\" he said. The company displayed industrial drive boards, smart metering assemblies and test fixtures made at its Chennai plant.",
+    "publishedDaysAgo": 57,
+    "industryTags": [
+      "Electronics Manufacturing",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-prithvi-contract",
+        "role": "subject"
+      }
+    ],
+    "region": "Chennai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-042",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/agnivahan-runs-three-month-electric-bus-pilot-with-indore-city-transport",
+    "title": "Agnivahan runs three-month electric bus pilot with Indore city transport",
+    "body": "Agnivahan Commercial Vehicles has started a three-month pilot of two electric buses with Indore's city transport company to gather data on range, passenger load and charging patterns. The pilot will run on four routes of varying length. The city transport company said the trial would inform a future tender but that no purchase decision had been taken. Agnivahan engineers will monitor battery temperature and energy use daily. VP Electric Powertrain Manoj Tiwari said real-world data from Indian cities was essential to tune vehicle software and driver training programmes.",
+    "publishedDaysAgo": 66,
+    "industryTags": [
+      "Commercial Vehicles",
+      "Fleet & Mobility"
+    ],
+    "companies": [
+      {
+        "key": "sem-agnivahan-cv",
+        "role": "subject"
+      }
+    ],
+    "region": "Indore, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-043",
+    "source": "Telecom Frontier",
+    "url": "https://telecom-frontier.example/2026/nilgiri-wireless-joins-field-trials-of-rural-connectivity-technology-in-hill-dis",
+    "title": "Nilgiri Wireless joins field trials of rural connectivity technology in hill districts",
+    "body": "Nilgiri Wireless is one of four companies taking part in field trials of rural connectivity technology in the hill districts of Tamil Nadu, organised by a state technology agency. The trials will test coverage, backhaul reliability and maintenance needs in difficult terrain over six months. CTO Balaji Krishnamurthy said the company would contribute equipment and engineering support. The agency said results would be shared with operators and could shape future programmes, but no procurement is linked to the trial. Local officials said better mobile coverage would help tourism, agriculture and schools in the region.",
+    "publishedDaysAgo": 80,
+    "industryTags": [
+      "Telecom"
+    ],
+    "companies": [
+      {
+        "key": "sem-nilgiri-wireless",
+        "role": "subject"
+      }
+    ],
+    "region": "Ooty, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-044",
+    "source": "Deccan Business Wire",
+    "url": "https://deccan-business-wire.example/2026/deccan-cellworks-signs-mou-with-telangana-to-explore-energy-storage-pilots",
+    "title": "Deccan Cellworks signs MoU with Telangana to explore energy storage pilots",
+    "body": "Deccan Cellworks has signed a memorandum of understanding with the Telangana government to explore battery energy storage pilots at government buildings and rural substations. The MoU is non-binding and does not specify investment or capacity. CEO Sandeep Reddy said the pilots, if approved, would help demonstrate the value of storage for peak shaving and backup power. State officials said the MoU was one of several signed with clean-energy companies during an investor meet. The company said it would share a detailed proposal with the state energy department in the coming months.",
+    "publishedDaysAgo": 95,
+    "industryTags": [
+      "Electric Vehicles",
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "sem-deccan-cellworks",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-045",
+    "source": "Telecom Frontier",
+    "url": "https://telecom-frontier.example/2026/tarangam-networks-executive-outlines-6g-research-priorities-at-industry-forum",
+    "title": "Tarangam Networks executive outlines 6G research priorities at industry forum",
+    "body": "A senior Tarangam Networks executive outlined the company's 6G research priorities at an industry forum in New Delhi, highlighting integrated sensing and communication, sub-terahertz spectrum and energy-efficient radios. He said commercial 6G was unlikely before 2030. The executive said the company participates in standards working groups and academic collaborations, and encouraged regulators to release test spectrum. He did not announce new products or investments. Other speakers at the forum discussed spectrum pricing, satellite broadband and the role of open radio access networks in India.",
+    "publishedDaysAgo": 49,
+    "industryTags": [
+      "Telecom"
+    ],
+    "companies": [
+      {
+        "key": "sem-tarangam-networks",
+        "role": "subject"
+      }
+    ],
+    "region": "New Delhi, India",
+    "amount": null,
+    "currency": null,
+    "kind": "weak"
+  },
+  {
+    "externalId": "sem-046",
+    "source": "Deccan Business Wire",
+    "url": "https://deccan-business-wire.example/2026/vardhan-silicon-works-reports-11-revenue-growth-warns-of-softer-industrial-deman",
+    "title": "Vardhan Silicon Works reports 11% revenue growth, warns of softer industrial demand",
+    "body": "Vardhan Silicon Works reported an 11 percent rise in quarterly revenue, helped by automotive customers, but warned that industrial demand was softening heading into the second half of the year. Net profit rose 6 percent as higher depreciation and energy costs weighed on margins. Chief financial officer Leena Shah said pricing remained stable for long-term contracts while spot orders from industrial customers had slowed. The company kept its full-year guidance unchanged and declared an interim dividend. Shares closed 2 percent lower after the results as analysts questioned the outlook for industrial chips. One brokerage cut its target price, citing a cautious view on global demand.",
+    "publishedDaysAgo": 40,
+    "industryTags": [
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-vardhan-silicon",
+        "role": "subject"
+      }
+    ],
+    "region": "Ahmedabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-047",
+    "source": "SiliconBeat Asia",
+    "url": "https://siliconbeat-asia.example/2026/jadeite-foundry-settles-patent-dispute-with-us-display-technology-firm",
+    "title": "Jadeite Foundry settles patent dispute with US display technology firm",
+    "body": "Jadeite Foundry has settled a patent dispute with a US display technology firm over process technology used in display-driver chips, ending two years of litigation in courts in Taiwan and the United States. Terms were not disclosed. The US firm had alleged that Jadeite infringed three patents related to transistor isolation. Jadeite denied wrongdoing and said the settlement allowed both companies to focus on customers. Neither company expects the settlement to affect financial guidance. Legal analysts said settlements of this kind have become more common as companies seek to avoid lengthy court battles amid tight engineering schedules.",
+    "publishedDaysAgo": 75,
+    "industryTags": [
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-jadeite-foundry",
+        "role": "subject"
+      }
+    ],
+    "region": "Hsinchu, Taiwan",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-048",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/voltrix-motors-scooter-wins-design-award-at-national-mobility-show",
+    "title": "Voltrix Motors scooter wins design award at national mobility show",
+    "body": "The Voltrix Motors flagship scooter won the best design award at a national mobility show in Pune, with judges praising its lighting signature and ergonomic seat. The company's chief designer accepted the award on behalf of a team of 40 designers. Voltrix said the scooter had received positive feedback from customers in tier-two cities. The company also launched two new colour options and a limited edition for the festive season. Other winners at the show included a folding electric bicycle and a cargo three-wheeler designed for dense urban markets.",
+    "publishedDaysAgo": 60,
+    "industryTags": [
+      "Two-Wheelers",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-voltrix-motors",
+        "role": "subject"
+      }
+    ],
+    "region": "Pune, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-049",
+    "source": "Asia Electronics Journal",
+    "url": "https://asia-electronics-journal.example/2026/meghdoot-electronics-appoints-new-chief-financial-officer",
+    "title": "Meghdoot Electronics appoints new chief financial officer",
+    "body": "Meghdoot Electronics has appointed Ashok Menon as chief financial officer with effect from next month. Menon previously led finance at a listed consumer durables company and has over 25 years of experience in corporate finance and investor relations. He succeeds the outgoing chief financial officer, who is retiring after eleven years with the company. The board thanked him for his contribution to the company's growth. Menon will report to the managing director and will oversee treasury, taxation and capital allocation. The company said the transition would be smooth and that there was no change to its financial outlook.",
+    "publishedDaysAgo": 110,
+    "industryTags": [
+      "Electronics Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "sem-meghdoot-electronics",
+        "role": "subject"
+      }
+    ],
+    "region": "Noida, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-050",
+    "source": "Telecom Frontier",
+    "url": "https://telecom-frontier.example/2026/tarangam-networks-trims-180-roles-in-software-services-unit",
+    "title": "Tarangam Networks trims 180 roles in software services unit",
+    "body": "Tarangam Networks has cut about 180 roles in its software services unit as operators delay network management upgrades, according to an internal memo seen by this publication. The company said the reductions affect less than 7 percent of its workforce. A spokesperson said affected employees would receive severance and outplacement support. The company said its hardware business was unaffected. Industry observers said telecom software vendors were facing a slowdown as operators focused spending on coverage rather than new management platforms.",
+    "publishedDaysAgo": 130,
+    "industryTags": [
+      "Telecom"
+    ],
+    "companies": [
+      {
+        "key": "sem-tarangam-networks",
+        "role": "subject"
+      }
+    ],
+    "region": "Bengaluru, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-051",
+    "source": "DataHall Review",
+    "url": "https://datahall-review.example/2026/nimbusrack-systems-sponsors-hyderabad-hackathon-on-data-center-sustainability",
+    "title": "Nimbusrack Systems sponsors Hyderabad hackathon on data center sustainability",
+    "body": "Nimbusrack Systems sponsored a two-day hackathon in Hyderabad where 60 student teams built tools for monitoring data center sustainability metrics. The winning team created a dashboard that estimates water usage from cooling system telemetry. Company executives served as mentors and judges. Nimbusrack said the event was part of its outreach to universities and would be held annually. The winning team received a cash prize and internship offers. Organisers said more than a third of participants were women, and several teams focused on heat reuse and water recycling. Nimbusrack said it would publish the anonymised datasets used in the event for researchers.",
+    "publishedDaysAgo": 86,
+    "industryTags": [
+      "Data Centers"
+    ],
+    "companies": [
+      {
+        "key": "sem-nimbusrack-systems",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-052",
+    "source": "Grid & Inverter Today",
+    "url": "https://grid-inverter-today.example/2026/suryatej-power-systems-quarterly-profit-falls-on-warranty-provisions",
+    "title": "Suryatej Power Systems quarterly profit falls on warranty provisions",
+    "body": "Suryatej Power Systems reported a 14 percent fall in quarterly net profit after setting aside higher warranty provisions for units installed in coastal regions. Revenue rose 9 percent year on year. The company said field failures were linked to corrosion in older enclosures and that it had upgraded designs last year. Management said the provision was a one-time measure and the order book remained healthy. Shares fell 4 percent in early trade before recovering some losses by the close. Analysts said the market would watch the next two quarters closely for any further provisions and for the company's cash conversion, which weakened during the period.",
+    "publishedDaysAgo": 140,
+    "industryTags": [
+      "Renewable Energy"
+    ],
+    "companies": [
+      {
+        "key": "sem-suryatej-power",
+        "role": "subject"
+      }
+    ],
+    "region": "Hyderabad, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-053",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/arohan-mobility-recalls-2-300-three-wheelers-over-brake-hose-issue",
+    "title": "Arohan Mobility recalls 2,300 three-wheelers over brake hose issue",
+    "body": "Arohan Mobility is recalling 2,300 electric three-wheelers to replace a brake hose that may wear prematurely under heavy loads. The company said no accidents had been reported. Owners will be contacted by dealers and the replacement will be carried out free of charge. The affected vehicles were made between January and March. The company said it had changed its hose supplier and strengthened inspection at its assembly plant. Arohan said the recall was voluntary and that it had informed the transport ministry. Dealers have been asked to complete the work within a single visit to minimise downtime for drivers who depend on the vehicles for income.",
+    "publishedDaysAgo": 150,
+    "industryTags": [
+      "Electric Vehicles",
+      "Commercial Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-arohan-mobility",
+        "role": "subject"
+      }
+    ],
+    "region": "Chennai, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-054",
+    "source": "SiliconBeat Asia",
+    "url": "https://siliconbeat-asia.example/2026/merbok-precision-packaging-named-top-employer-in-penang-survey",
+    "title": "Merbok Precision Packaging named top employer in Penang survey",
+    "body": "Merbok Precision Packaging was named one of the top employers in Penang in an annual workplace survey, ranking highly on training opportunities and employee wellbeing. The company has run an apprenticeship scheme with local technical colleges for ten years. VP Operations Tan Wei Ling said the recognition reflected the commitment of the company's staff. The survey covered more than 200 companies across manufacturing and services. Merbok also announced a new childcare allowance for employees starting next quarter, along with extended parental leave for technicians and engineers on shift rosters.",
+    "publishedDaysAgo": 170,
+    "industryTags": [
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-merbok-precision",
+        "role": "subject"
+      }
+    ],
+    "region": "Penang, Malaysia",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-055",
+    "source": "Deccan Business Wire",
+    "url": "https://deccan-business-wire.example/2026/gangotri-electric-names-cricket-star-as-brand-ambassador",
+    "title": "Gangotri Electric names cricket star as brand ambassador",
+    "body": "Gangotri Electric has signed a leading cricket all-rounder as its brand ambassador for the next two years, the company said. The player will appear in a national advertising campaign starting during the festive season. The company said the partnership would help raise awareness of electric motorcycles among younger buyers in smaller cities. Financial terms were not disclosed. Gangotri also opened five new showrooms across Kerala and Karnataka this month. Marketing head Divya Prakash said the campaign would run on television, streaming platforms and social media, with local-language versions in six states and test-ride events at college campuses.",
+    "publishedDaysAgo": 120,
+    "industryTags": [
+      "Two-Wheelers"
+    ],
+    "companies": [
+      {
+        "key": "sem-gangotri-electric",
+        "role": "subject"
+      }
+    ],
+    "region": "Coimbatore, India",
+    "amount": null,
+    "currency": null,
+    "kind": "negative"
+  },
+  {
+    "externalId": "sem-056",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/arohan-mobility-to-build-inr-1-600-crore-battery-and-power-electronics-plant-wit",
+    "title": "Arohan Mobility to build INR 1,600 crore battery and power electronics plant with in-house tyre fitment line",
+    "body": "Arohan Mobility will invest INR 1,600 crore in a new vehicle and component plant at Zaheerabad, Telangana, combining battery pack assembly, a power electronics line for motor controllers and chargers, and final vehicle assembly with an in-house wheel and tyre fitment line. The plant will make 250,000 electric three-wheelers and light trucks a year from 2028. The power electronics block will assemble 400,000 motor controller sets and battery management units a year. VP Electrification Lakshmi Narayanan said the company will source power modules, BMS chipsets and tyres from suppliers able to deliver just-in-time to the site. The company is also tendering for material-handling systems and a rooftop solar installation of 12 MW.",
+    "publishedDaysAgo": 5,
+    "industryTags": [
+      "Electric Vehicles",
+      "Automotive",
+      "Manufacturing"
+    ],
+    "companies": [
+      {
+        "key": "sem-arohan-mobility",
+        "role": "subject"
+      }
+    ],
+    "region": "Zaheerabad, India",
+    "amount": 16000000000,
+    "currency": "INR",
+    "kind": "cross"
+  },
+  {
+    "externalId": "sem-057",
+    "source": "Grid & Inverter Today",
+    "url": "https://grid-inverter-today.example/2026/saurashtra-microfab-signs-300-mw-captive-solar-ppa-to-power-dholera-fab",
+    "title": "Saurashtra Microfab signs 300 MW captive solar PPA to power Dholera fab",
+    "body": "Saurashtra Microfab has signed a 25-year power purchase agreement for 300 MW of captive solar and 150 MWh of battery storage to supply its upcoming 300 mm fab at Dholera. The solar park will be built on 1,200 acres nearby by a developer to be selected through a tender next month. The company said round-the-clock clean power is essential because the fab will draw about 180 MW at full capacity of 30,000 wafers per month. The PPA also includes a green hydrogen pilot for process gases. CEO Hemant Desai said customers in Europe and Japan require low-carbon supply chains. The company is also seeking bids for a substation and transmission link.",
+    "publishedDaysAgo": 8,
+    "industryTags": [
+      "Semiconductors",
+      "Renewable Energy",
+      "Utilities"
+    ],
+    "companies": [
+      {
+        "key": "sem-saurashtra-microfab",
+        "role": "subject"
+      }
+    ],
+    "region": "Dholera, India",
+    "amount": null,
+    "currency": null,
+    "kind": "cross"
+  },
+  {
+    "externalId": "sem-058",
+    "source": "Asia Electronics Journal",
+    "url": "https://asia-electronics-journal.example/2026/sankalp-electronics-logistics-opens-bonded-warehouse-for-osat-and-ems-clients-ne",
+    "title": "Sankalp Electronics Logistics opens bonded warehouse for OSAT and EMS clients near Sriperumbudur",
+    "body": "Sankalp Electronics Logistics has opened a 450,000 square foot bonded warehouse near Sriperumbudur designed for semiconductor and electronics supply chains. The INR 350 crore facility includes ESD-safe zones, a humidity-controlled wafer and die store, and on-site customs clearance. Anchor tenants include OSAT Kaveri Assembly & Test and EMS company Meghdoot Electronics, which will use the site to hold imported materials and finished modules. Head of Hi-Tech Logistics Ritesh Agrawal said the company plans a second site in Gujarat near the new fab cluster. Sankalp is also adding a fleet of 60 air-suspension trucks for sensitive equipment moves and has begun tendering for warehouse automation.",
+    "publishedDaysAgo": 11,
+    "industryTags": [
+      "Logistics",
+      "Electronics Manufacturing",
+      "Semiconductors"
+    ],
+    "companies": [
+      {
+        "key": "sem-sankalp-logistics",
+        "role": "subject"
+      },
+      {
+        "key": "sem-kaveri-osat",
+        "role": "mentioned"
+      },
+      {
+        "key": "sem-meghdoot-electronics",
+        "role": "mentioned"
+      }
+    ],
+    "region": "Sriperumbudur, India",
+    "amount": 3500000000,
+    "currency": "INR",
+    "kind": "cross"
+  },
+  {
+    "externalId": "sem-059",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/agnivahan-wins-1-200-e-bus-order-to-set-up-depot-charging-and-power-electronics",
+    "title": "Agnivahan wins 1,200 e-bus order, to set up depot charging and power electronics assembly",
+    "body": "Agnivahan Commercial Vehicles has won an order for 1,200 electric buses from Uttar Pradesh's state transport undertaking under a gross-cost contract worth about INR 900 crore over twelve years. The contract includes fleet operations, depot charging infrastructure at 14 depots and maintenance. To meet local content requirements, Agnivahan will set up a power electronics assembly line in Lucknow for traction inverters and on-board chargers. VP Electric Powertrain Manoj Tiwari said the company is sourcing power modules and chargers and will hire 300 technicians. The order also includes a telematics platform for route and energy management and a driver training academy.",
+    "publishedDaysAgo": 15,
+    "industryTags": [
+      "Commercial Vehicles",
+      "Fleet & Mobility",
+      "Electric Vehicles"
+    ],
+    "companies": [
+      {
+        "key": "sem-agnivahan-cv",
+        "role": "subject"
+      }
+    ],
+    "region": "Lucknow, India",
+    "amount": 9000000000,
+    "currency": "INR",
+    "kind": "cross"
+  },
+  {
+    "externalId": "sem-060",
+    "source": "EV Powertrain Report",
+    "url": "https://ev-powertrain-report.example/2026/voltrix-motors-opens-chakan-power-electronics-plant-with-rooftop-solar-and-in-pl",
+    "title": "Voltrix Motors opens Chakan power electronics plant with rooftop solar and in-plant logistics park",
+    "body": "Voltrix Motors has opened a INR 1,100 crore plant at Chakan near Pune that assembles traction inverter units, chargers and battery packs for its electric scooters. The site includes an 8 MW rooftop solar array, a 20 MWh storage system and an in-plant logistics park operated by a third-party provider. The power electronics hall can build 350,000 inverters a year. Head of Power Electronics Nikhil Joshi said the company will increase sourcing of power modules from Indian suppliers as volumes rise. Voltrix said the solar array will meet 40 percent of the plant's electricity demand, and the logistics park will cut inbound parts lead time by two days.",
+    "publishedDaysAgo": 23,
+    "industryTags": [
+      "Two-Wheelers",
+      "Electric Vehicles",
+      "Renewable Energy",
+      "Logistics"
+    ],
+    "companies": [
+      {
+        "key": "sem-voltrix-motors",
+        "role": "subject"
+      }
+    ],
+    "region": "Chakan, India",
+    "amount": 11000000000,
+    "currency": "INR",
+    "kind": "cross"
+  }
+]

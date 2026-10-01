@@ -1,0 +1,44 @@
+{
+  "name": "@selloeasy/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --port ${WEB_PORT:-3000}",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "next typegen && tsc --noEmit",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.0",
+    "@selloeasy/shared": "workspace:*",
+    "@tanstack/react-query": "^5.85.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "fumadocs-core": "16.15.14",
+    "fumadocs-mdx": "15.4.4",
+    "fumadocs-ui": "npm:@fumadocs/base-ui@16.15.14",
+    "lucide-react": "^1.47.0",
+    "mermaid": "^11.10.0",
+    "next": "16.3.5",
+    "next-themes": "^0.4.6",
+    "radix-ui": "^1.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-hook-form": "^7.62.0",
+    "recharts": "^3.1.0",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.3.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/mdx": "^2.0.14",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.3.3"
+  }
+}

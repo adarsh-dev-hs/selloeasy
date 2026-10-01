@@ -1,0 +1,139 @@
+---
+title: Multi-tenancy
+description: How tenant isolation is enforced in code — shared schema with org_id, tenant resolved from membership, 404 on cross-tenant access, 403 for Super Admins on tenant routes, allow-list DTOs for platform endpoints, and what RLS will add later.
+---
+
+SelloEasy uses a **shared database, shared schema** model: every tenant table has an `org_id` column
+(indexed, `NOT NULL`, `ON DELETE CASCADE`) and every tenant query is scoped by it. Isolation is enforced at the
+application level. Postgres Row-Level Security is a **planned** defense-in-depth layer, not implemented in
+v0.1 ([ADR-0007](/docs/decisions/0007-app-level-tenancy-before-rls)).
+
+## The rules
+
+<div className="fd-steps">
+<div className="fd-step">
+
+### The tenant comes from the membership, never from the request
+
+The access token contains only the user id (`sub`). On every request, the auth plugin loads the user and their
+**active membership** and sets `request.auth.orgId`. There is no `x-org-id` header, no org id in request bodies
+and no impersonation. Route handlers read the tenant with `orgIdOf(req)` or `authOf(req).orgId`.
+
+</div>
+<div className="fd-step">
+
+### Every tenant route requires an org
+
+Tenant routes use `requireOrg(permission)`. It rejects unauthenticated callers (401), rejects callers without an
+org (Super Admins) with **403** "Platform administrators cannot access organization data", and checks the
+permission (403).
+
+</div>
+<div className="fd-step">
+
+### Every tenant query filters by `org_id`
+
+Reads and writes include `eq(table.orgId, orgId)` in the `WHERE` clause, and lookups by id always combine id
+**and** org, e.g. `WHERE id = $1 AND org_id = $2`. Inserts take `org_id` from the auth context. Joined child
+resources are reached through a parent loaded with that filter (for example, `loadLead()` loads the lead
+scoped to the org and to the visibility filter first, and activities, tasks, outreach and contacts are then
+read for that lead).
+
+</div>
+<div className="fd-step">
+
+### Cross-tenant access returns 404
+
+A valid id that belongs to another org is indistinguishable from a missing one: the scoped query finds nothing and
+the API throws `notFound()` (**404**), not 403. This avoids leaking whether a resource exists. The same applies to
+leads hidden by the `ASSIGNED_ONLY` visibility setting.
+
+</div>
+<div className="fd-step">
+
+### Platform endpoints never reuse tenant DTOs
+
+`/api/v1/platform/*` responses are built field by field from explicit allow-list interfaces in
+`packages/shared/src/dto.ts` (`PlatformOrgPublicView`, `PlatformOrgListItem`, `PlatformOrgStats`,
+`PlatformOrgUser`, `PlatformInvite`, `PlatformDashboard`). A new internal column added to a tenant table therefore
+cannot leak to the Super Admin by accident. Aggregates are SQL `count()` queries that return numbers, never rows.
+
+</div>
+</div>
+
+## Examples from the code
+
+```ts
+// apps/api/src/lib/leads.ts: load a lead the caller may see; 404 otherwise
+export async function loadLead(auth: AuthContext, id: string) {
+  const vis = await visibilityFilter(auth);
+  const [row] = await getDb()
+    .select()
+    .from(leads)
+    .where(and(eq(leads.id, id), eq(leads.orgId, auth.orgId!), vis));
+  if (!row) throw notFound('Lead');
+  return row;
+}
+```
+
+```ts
+// apps/api/src/plugins/auth.ts: tenant guard
+export function requireOrg(permission: Permission): preHandlerAsyncHookHandler {
+  return async (req) => {
+    if (!req.auth) throw unauthorized();
+    if (req.auth.isSuperAdmin || !req.auth.orgId) {
+      throw forbidden('Platform administrators cannot access organization data');
+    }
+    if (!can(req.auth.role, permission)) throw forbidden();
+  };
+}
+```
+
+## Status codes at a glance
+
+| Situation                                                          | Status                                                   |
+| ------------------------------------------------------------------ | -------------------------------------------------------- |
+| No or invalid session                                              | 401 `unauthorized`                                       |
+| Super Admin calls a tenant route (`/org`, `/leads`, `/signals`, …) | 403 `forbidden`                                          |
+| Org user calls a platform route                                    | 403 `forbidden` (lacks `platform:*`)                     |
+| Org user lacks the permission (e.g. Viewer updating a lead)        | 403 `forbidden`                                          |
+| SDR mutates a lead owned by someone else                           | 403 `forbidden`                                          |
+| Id belongs to another org, or is hidden by lead visibility         | **404** `not_found`                                      |
+| Member of a suspended org                                          | Login 403. Existing sessions resolve to no user, so 401. |
+
+## Cross-cutting data that is global on purpose
+
+Some tables are platform-wide: `market_events`, `directory_companies`, `directory_contacts` and
+`signal_templates`. They contain no tenant data. Everything derived from them for an org (matches, evaluations,
+accounts, contacts, leads) is written to tenant tables with the org's id. The pipeline **copies** directory data
+into the tenant's `accounts` and `contacts`, so an org's edits to a contact never affect other orgs.
+
+`llm_calls.org_id` is nullable (calls made outside an org context, such as the seed's mock calls, have no org).
+Per-org cost figures filter by it.
+
+## Tenant-aware caching and pub/sub
+
+| Key / channel                              | Scope                                                                                                                                                                |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dash:<orgId>:<org or userId>:<from>:<to>` | Dashboard cache (60 s), per org and per scope                                                                                                                        |
+| `pipeline:progress:<runId>`                | SSE channel. The API checks the run belongs to the caller's org before subscribing.                                                                                  |
+| `llm:<promptHash>`                         | LLM response cache, keyed by model + prompt id/version + fully rendered prompt. Tenant content is part of the hash input, so different orgs' prompts cannot collide. |
+| `rl:*`                                     | Rate-limit counters                                                                                                                                                  |
+
+## Planned hardening: Row-Level Security
+
+<Callout type="warn">
+  **Not implemented in v0.1.** Isolation currently depends on every query including the `org_id` filter. There
+  is no lint rule or `tenantScoped()` wrapper enforcing it yet. Reviewers should check every new query for the
+  filter.
+</Callout>
+
+The planned design (plan §8.1, Phase 7 hardening):
+
+- enable RLS on tenant tables with a policy `org_id = current_setting('app.org_id')::uuid`;
+- run each request in a transaction that does `SET LOCAL app.org_id = '<orgId>'`;
+- give the application role `INSERT, SELECT` only on `audit_logs` (today the trigger enforces append-only);
+- extend the existing integration tests (`apps/api/test/tenancy.test.ts`, which already assert cross-tenant 404s
+  and Super Admin 403s on the main tenant routes) to run with RLS enabled.
+
+See [ADR-0007](/docs/decisions/0007-app-level-tenancy-before-rls) for the trade-off.

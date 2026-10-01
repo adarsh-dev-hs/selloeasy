@@ -1,0 +1,884 @@
+[
+  {
+    "key": "hlt-carevista-hospitals",
+    "name": "CareVista Hospitals",
+    "domain": "carevistahospitals.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "10000+",
+    "employees": 18500,
+    "description": "Multi-specialty hospital chain with 22 hospitals and roughly 6,800 beds across South and West India, headquartered in Hyderabad.",
+    "contacts": [
+      {
+        "name": "Ravi Shankar Menon",
+        "title": "Chief Medical Officer",
+        "persona": "Clinical Leadership",
+        "seniority": "C-Level",
+        "email": "ravi.menon@carevistahospitals.example",
+        "phone": "+919000010001",
+        "whatsapp": "+919000010001",
+        "linkedinUrl": "https://linkedin.example/in/ravi-shankar-menon-hlt"
+      },
+      {
+        "name": "Deepa Iyer",
+        "title": "Head of Laboratory Services",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "deepa.iyer@carevistahospitals.example",
+        "phone": "+919000010002",
+        "whatsapp": "+919000010002",
+        "linkedinUrl": "https://linkedin.example/in/deepa-iyer-hlt"
+      },
+      {
+        "name": "Anil Kothari",
+        "title": "VP Procurement",
+        "persona": "Procurement",
+        "seniority": "VP",
+        "email": "anil.kothari@carevistahospitals.example",
+        "phone": "+919000010003",
+        "whatsapp": "+919000010003",
+        "linkedinUrl": "https://linkedin.example/in/anil-kothari-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-aarogya-lifeline",
+    "name": "Aarogya Lifeline Hospitals",
+    "domain": "aarogyalifeline.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 9200,
+    "description": "North India hospital group operating 11 multi-specialty hospitals in Uttar Pradesh, Uttarakhand and Delhi NCR, focused on tier-2 cities.",
+    "contacts": [
+      {
+        "name": "Sanjay Prakash Tripathi",
+        "title": "Chief Executive Officer",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "sanjay.tripathi@aarogyalifeline.example",
+        "phone": "+919000010004",
+        "whatsapp": "+919000010004",
+        "linkedinUrl": "https://linkedin.example/in/sanjay-prakash-tripathi-hlt"
+      },
+      {
+        "name": "Neha Bansal",
+        "title": "Director – Laboratory Medicine",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "neha.bansal@aarogyalifeline.example",
+        "phone": "+919000010005",
+        "whatsapp": "+919000010005",
+        "linkedinUrl": "https://linkedin.example/in/neha-bansal-hlt"
+      },
+      {
+        "name": "Imran Qureshi",
+        "title": "Head of Procurement",
+        "persona": "Procurement",
+        "seniority": "Director",
+        "email": "imran.qureshi@aarogyalifeline.example",
+        "phone": "+919000010006",
+        "whatsapp": "+919000010006",
+        "linkedinUrl": "https://linkedin.example/in/imran-qureshi-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-sunrise-multispeciality",
+    "name": "Sunrise Multispeciality Hospitals",
+    "domain": "sunrisemultispeciality.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3100,
+    "description": "Pune-based group of four multi-specialty hospitals known for orthopaedics, critical care and a large emergency network in western Maharashtra.",
+    "contacts": [
+      {
+        "name": "Madhavi Kulkarni",
+        "title": "Chief Operating Officer",
+        "persona": "Operations",
+        "seniority": "C-Level",
+        "email": "madhavi.kulkarni@sunrisemultispeciality.example",
+        "phone": "+919000010007",
+        "whatsapp": "+919000010007",
+        "linkedinUrl": "https://linkedin.example/in/madhavi-kulkarni-hlt"
+      },
+      {
+        "name": "Rohan Deshpande",
+        "title": "Director – Biomedical Engineering",
+        "persona": "Biomedical Engineering",
+        "seniority": "Director",
+        "email": "rohan.deshpande@sunrisemultispeciality.example",
+        "phone": "+919000010008",
+        "whatsapp": "+919000010008",
+        "linkedinUrl": "https://linkedin.example/in/rohan-deshpande-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-medinova-labs",
+    "name": "MediNova Diagnostic Labs",
+    "domain": "medinovalabs.example",
+    "industry": "Diagnostics",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 4200,
+    "description": "Diagnostic lab chain with 38 processing labs and 900 collection points across Karnataka, Tamil Nadu, Kerala and Telangana.",
+    "contacts": [
+      {
+        "name": "Karthik Subramanian",
+        "title": "Chief Executive Officer",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "karthik.subramanian@medinovalabs.example",
+        "phone": "+919000010009",
+        "whatsapp": "+919000010009",
+        "linkedinUrl": "https://linkedin.example/in/karthik-subramanian-hlt"
+      },
+      {
+        "name": "Dr. Lakshmi Narayanan",
+        "title": "Head of Laboratory Operations",
+        "persona": "Lab Head",
+        "seniority": "VP",
+        "email": "lakshmi.narayanan@medinovalabs.example",
+        "phone": "+919000010010",
+        "whatsapp": "+919000010010",
+        "linkedinUrl": "https://linkedin.example/in/lakshmi-narayanan-hlt"
+      },
+      {
+        "name": "Pooja Hegde",
+        "title": "Senior Manager – Strategic Sourcing",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "pooja.hegde@medinovalabs.example",
+        "phone": "+919000010011",
+        "whatsapp": "+919000010011",
+        "linkedinUrl": "https://linkedin.example/in/pooja-hegde-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-pathcrest-diagnostics",
+    "name": "PathCrest Diagnostics",
+    "domain": "pathcrestdiagnostics.example",
+    "industry": "Diagnostics",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2600,
+    "description": "Ahmedabad-headquartered pathology and radiology chain operating 24 labs across Gujarat, Rajasthan and Madhya Pradesh.",
+    "contacts": [
+      {
+        "name": "Hardik Mehta",
+        "title": "Managing Director",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "hardik.mehta@pathcrestdiagnostics.example",
+        "phone": "+919000010012",
+        "whatsapp": "+919000010012",
+        "linkedinUrl": "https://linkedin.example/in/hardik-mehta-hlt"
+      },
+      {
+        "name": "Dr. Farzana Shaikh",
+        "title": "Chief of Pathology",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "farzana.shaikh@pathcrestdiagnostics.example",
+        "phone": "+919000010013",
+        "whatsapp": "+919000010013",
+        "linkedinUrl": "https://linkedin.example/in/farzana-shaikh-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-trueline-pathology",
+    "name": "TrueLine Pathology Network",
+    "domain": "truelinepathology.example",
+    "industry": "Diagnostics",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 850,
+    "description": "Kolkata-based pathology network running a central reference lab and 140 collection centres across eastern India.",
+    "contacts": [
+      {
+        "name": "Subhajit Banerjee",
+        "title": "Founder & CEO",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "subhajit.banerjee@truelinepathology.example",
+        "phone": "+919000010014",
+        "whatsapp": "+919000010014",
+        "linkedinUrl": "https://linkedin.example/in/subhajit-banerjee-hlt"
+      },
+      {
+        "name": "Dr. Moumita Ghosh",
+        "title": "Head of Laboratory",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "moumita.ghosh@truelinepathology.example",
+        "phone": "+919000010015",
+        "whatsapp": "+919000010015",
+        "linkedinUrl": "https://linkedin.example/in/moumita-ghosh-hlt"
+      },
+      {
+        "name": "Arindam Sen",
+        "title": "Head of IT",
+        "persona": "IT Leadership",
+        "seniority": "Director",
+        "email": "arindam.sen@truelinepathology.example",
+        "phone": "+919000010016",
+        "whatsapp": "+919000010016",
+        "linkedinUrl": "https://linkedin.example/in/arindam-sen-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-onkocare-cancer-centres",
+    "name": "OnkoCare Cancer Centres",
+    "domain": "onkocare.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2300,
+    "description": "Standalone oncology hospital network with nine comprehensive cancer centres offering surgical, medical and radiation oncology.",
+    "contacts": [
+      {
+        "name": "Dr. Thomas Varghese",
+        "title": "Chief Medical Officer",
+        "persona": "Clinical Leadership",
+        "seniority": "C-Level",
+        "email": "thomas.varghese@onkocare.example",
+        "phone": "+919000010017",
+        "whatsapp": "+919000010017",
+        "linkedinUrl": "https://linkedin.example/in/thomas-varghese-hlt"
+      },
+      {
+        "name": "Dr. Shalini Rao",
+        "title": "Head – Laboratory & Molecular Oncology",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "shalini.rao@onkocare.example",
+        "phone": "+919000010018",
+        "whatsapp": "+919000010018",
+        "linkedinUrl": "https://linkedin.example/in/shalini-rao-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-hridaya-heart-institute",
+    "name": "Hridaya Heart Institute",
+    "domain": "hridayaheart.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 1900,
+    "description": "Cardiac speciality hospital group with five heart institutes in Rajasthan, Gujarat and Madhya Pradesh.",
+    "contacts": [
+      {
+        "name": "Dr. Vikram Singh Rathore",
+        "title": "Medical Director",
+        "persona": "Clinical Leadership",
+        "seniority": "C-Level",
+        "email": "vikram.rathore@hridayaheart.example",
+        "phone": "+919000010019",
+        "whatsapp": "+919000010019",
+        "linkedinUrl": "https://linkedin.example/in/vikram-singh-rathore-hlt"
+      },
+      {
+        "name": "Kavita Sharma",
+        "title": "Quality & Accreditation Manager",
+        "persona": "Quality",
+        "seniority": "Manager",
+        "email": "kavita.sharma@hridayaheart.example",
+        "phone": "+919000010020",
+        "whatsapp": "+919000010020",
+        "linkedinUrl": "https://linkedin.example/in/kavita-sharma-hlt"
+      },
+      {
+        "name": "Manish Agarwal",
+        "title": "VP Operations",
+        "persona": "Operations",
+        "seniority": "VP",
+        "email": "manish.agarwal@hridayaheart.example",
+        "phone": "+919000010021",
+        "whatsapp": "+919000010021",
+        "linkedinUrl": "https://linkedin.example/in/manish-agarwal-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-dhanvantari-medical-college",
+    "name": "Dhanvantari Institute of Medical Sciences",
+    "domain": "dhanvantariims.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3400,
+    "description": "Private medical college and 900-bed teaching hospital in Mysuru admitting 250 MBBS students a year.",
+    "contacts": [
+      {
+        "name": "Dr. Prakash Gowda",
+        "title": "Dean & Principal",
+        "persona": "Academic Leadership",
+        "seniority": "C-Level",
+        "email": "prakash.gowda@dhanvantariims.example",
+        "phone": "+919000010022",
+        "whatsapp": "+919000010022",
+        "linkedinUrl": "https://linkedin.example/in/prakash-gowda-hlt"
+      },
+      {
+        "name": "Dr. Anitha Ramesh",
+        "title": "Professor & Head – Biochemistry and Central Lab",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "anitha.ramesh@dhanvantariims.example",
+        "phone": "+919000010023",
+        "whatsapp": "+919000010023",
+        "linkedinUrl": "https://linkedin.example/in/anitha-ramesh-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-deccan-health-services-corp",
+    "name": "Deccan State Health Services Corporation",
+    "domain": "deccanhealthservices.example",
+    "industry": "Government",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 1400,
+    "description": "Fictional state-owned corporation that procures drugs, equipment and diagnostic services for 42 district hospitals and 1,800 primary health centres.",
+    "contacts": [
+      {
+        "name": "Suresh Babu Reddy",
+        "title": "Managing Director",
+        "persona": "Government Procurement",
+        "seniority": "C-Level",
+        "email": "suresh.reddy@deccanhealthservices.example",
+        "phone": "+919000010024",
+        "whatsapp": "+919000010024",
+        "linkedinUrl": "https://linkedin.example/in/suresh-babu-reddy-hlt"
+      },
+      {
+        "name": "Dr. Padmaja Rao",
+        "title": "General Manager – Equipment & Diagnostics",
+        "persona": "Government Procurement",
+        "seniority": "Director",
+        "email": "padmaja.rao@deccanhealthservices.example",
+        "phone": "+919000010025",
+        "whatsapp": "+919000010025",
+        "linkedinUrl": "https://linkedin.example/in/padmaja-rao-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-vindhya-medical-supplies-corp",
+    "name": "Vindhya Medical Supplies Corporation",
+    "domain": "vindhyamedicalsupplies.example",
+    "industry": "Government",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 620,
+    "description": "Fictional public-sector medical supplies corporation running centralised procurement for a central Indian state's public health system.",
+    "contacts": [
+      {
+        "name": "Rajendra Chouhan",
+        "title": "Chief General Manager – Procurement",
+        "persona": "Government Procurement",
+        "seniority": "VP",
+        "email": "rajendra.chouhan@vindhyamedicalsupplies.example",
+        "phone": "+919000010026",
+        "whatsapp": "+919000010026",
+        "linkedinUrl": "https://linkedin.example/in/rajendra-chouhan-hlt"
+      },
+      {
+        "name": "Dr. Meera Dubey",
+        "title": "Deputy Director – Laboratory Services",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "meera.dubey@vindhyamedicalsupplies.example",
+        "phone": "+919000010027",
+        "whatsapp": "+919000010027",
+        "linkedinUrl": "https://linkedin.example/in/meera-dubey-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-homelab-express",
+    "name": "HomeLab Express",
+    "domain": "homelabexpress.example",
+    "industry": "Healthcare Services",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 780,
+    "description": "Bengaluru-based home sample collection startup offering 60-minute phlebotomist visits and partner-lab testing in eight metros.",
+    "contacts": [
+      {
+        "name": "Aditya Rao",
+        "title": "Co-founder & CEO",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "aditya.rao@homelabexpress.example",
+        "phone": "+919000010028",
+        "whatsapp": "+919000010028",
+        "linkedinUrl": "https://linkedin.example/in/aditya-rao-hlt"
+      },
+      {
+        "name": "Sneha Pillai",
+        "title": "Head of Lab Partnerships",
+        "persona": "Partnerships",
+        "seniority": "Director",
+        "email": "sneha.pillai@homelabexpress.example",
+        "phone": "+919000010029",
+        "whatsapp": "+919000010029",
+        "linkedinUrl": "https://linkedin.example/in/sneha-pillai-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-cliniq-connect",
+    "name": "CliniQ Connect",
+    "domain": "cliniqconnect.example",
+    "industry": "Healthcare Services",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 540,
+    "description": "Telehealth platform providing video consultations, e-pharmacy and diagnostics for 3.5 million registered users.",
+    "contacts": [
+      {
+        "name": "Nikhil Jain",
+        "title": "Chief Operating Officer",
+        "persona": "Operations",
+        "seniority": "C-Level",
+        "email": "nikhil.jain@cliniqconnect.example",
+        "phone": "+919000010030",
+        "whatsapp": "+919000010030",
+        "linkedinUrl": "https://linkedin.example/in/nikhil-jain-hlt"
+      },
+      {
+        "name": "Dr. Ayesha Khan",
+        "title": "Medical Director",
+        "persona": "Clinical Leadership",
+        "seniority": "Director",
+        "email": "ayesha.khan@cliniqconnect.example",
+        "phone": "+919000010031",
+        "whatsapp": "+919000010031",
+        "linkedinUrl": "https://linkedin.example/in/ayesha-khan-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-nilgiri-health-group",
+    "name": "Nilgiri Health Group",
+    "domain": "nilgirihealth.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 4700,
+    "description": "Coimbatore-based hospital group with six hospitals across western Tamil Nadu and Kerala.",
+    "contacts": [
+      {
+        "name": "Senthil Kumar Palanisamy",
+        "title": "Managing Director",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "senthil.palanisamy@nilgirihealth.example",
+        "phone": "+919000010032",
+        "whatsapp": "+919000010032",
+        "linkedinUrl": "https://linkedin.example/in/senthil-kumar-palanisamy-hlt"
+      },
+      {
+        "name": "Dr. Revathi Krishnan",
+        "title": "Head of Laboratory Medicine",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "revathi.krishnan@nilgirihealth.example",
+        "phone": "+919000010033",
+        "whatsapp": "+919000010033",
+        "linkedinUrl": "https://linkedin.example/in/revathi-krishnan-hlt"
+      },
+      {
+        "name": "Gokul Ramaswamy",
+        "title": "General Manager – Purchase",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "gokul.ramaswamy@nilgirihealth.example",
+        "phone": "+919000010034",
+        "whatsapp": "+919000010034",
+        "linkedinUrl": "https://linkedin.example/in/gokul-ramaswamy-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-gulfcare-medical-group",
+    "name": "GulfCare Medical Group",
+    "domain": "gulfcaremedical.example",
+    "industry": "Hospitals",
+    "hqCountry": "AE",
+    "sizeBand": "5001-10000",
+    "employees": 7600,
+    "description": "UAE hospital and clinic operator with four hospitals and 30 clinics in Abu Dhabi, Dubai and Sharjah.",
+    "contacts": [
+      {
+        "name": "Dr. Faisal Al Mansoori",
+        "title": "Group Chief Medical Officer",
+        "persona": "Clinical Leadership",
+        "seniority": "C-Level",
+        "email": "faisal.mansoori@gulfcaremedical.example",
+        "phone": "+971500000035",
+        "whatsapp": "+971500000035",
+        "linkedinUrl": "https://linkedin.example/in/faisal-al-mansoori-hlt"
+      },
+      {
+        "name": "Priya Menon",
+        "title": "Director – Laboratory Services",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "priya.menon@gulfcaremedical.example",
+        "phone": "+971500000036",
+        "whatsapp": "+971500000036",
+        "linkedinUrl": "https://linkedin.example/in/priya-menon-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-lionpoint-healthcare",
+    "name": "Lionpoint Healthcare",
+    "domain": "lionpointhealth.example",
+    "industry": "Healthcare Services",
+    "hqCountry": "SG",
+    "sizeBand": "1001-5000",
+    "employees": 2100,
+    "description": "Singapore-based integrated primary care and diagnostics group with 70 clinics and two reference labs in Singapore and Malaysia.",
+    "contacts": [
+      {
+        "name": "Daniel Tan Wei Ming",
+        "title": "Group CEO",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "daniel.ming@lionpointhealth.example",
+        "phone": "+6590000037",
+        "whatsapp": "+6590000037",
+        "linkedinUrl": "https://linkedin.example/in/daniel-tan-wei-ming-hlt"
+      },
+      {
+        "name": "Dr. Grace Lim",
+        "title": "Head of Laboratory",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "grace.lim@lionpointhealth.example",
+        "phone": "+6590000038",
+        "whatsapp": "+6590000038",
+        "linkedinUrl": "https://linkedin.example/in/grace-lim-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-savannah-diagnostics",
+    "name": "Savannah Diagnostics",
+    "domain": "savannahdiagnostics.example",
+    "industry": "Diagnostics",
+    "hqCountry": "KE",
+    "sizeBand": "201-1000",
+    "employees": 690,
+    "description": "Nairobi-based laboratory chain with 45 branches across Kenya, Uganda and Tanzania.",
+    "contacts": [
+      {
+        "name": "Wanjiru Kamau",
+        "title": "Chief Executive Officer",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "wanjiru.kamau@savannahdiagnostics.example",
+        "phone": "+254700000039",
+        "whatsapp": "+254700000039",
+        "linkedinUrl": "https://linkedin.example/in/wanjiru-kamau-hlt"
+      },
+      {
+        "name": "Dr. Otieno Ochieng",
+        "title": "Laboratory Director",
+        "persona": "Lab Head",
+        "seniority": "Director",
+        "email": "otieno.ochieng@savannahdiagnostics.example",
+        "phone": "+254700000040",
+        "whatsapp": "+254700000040",
+        "linkedinUrl": "https://linkedin.example/in/otieno-ochieng-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-padma-general-hospital",
+    "name": "Padma General Hospital",
+    "domain": "padmageneral.example",
+    "industry": "Hospitals",
+    "hqCountry": "BD",
+    "sizeBand": "1001-5000",
+    "employees": 2800,
+    "description": "Private tertiary-care hospital in Dhaka with 520 beds and a growing network of diagnostic centres.",
+    "contacts": [
+      {
+        "name": "Dr. Rezaul Karim",
+        "title": "Chief Executive Officer",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "rezaul.karim@padmageneral.example",
+        "phone": "+8801700000041",
+        "whatsapp": "+8801700000041",
+        "linkedinUrl": "https://linkedin.example/in/rezaul-karim-hlt"
+      },
+      {
+        "name": "Nusrat Jahan",
+        "title": "Head of Procurement",
+        "persona": "Procurement",
+        "seniority": "Director",
+        "email": "nusrat.jahan@padmageneral.example",
+        "phone": "+8801700000042",
+        "whatsapp": "+8801700000042",
+        "linkedinUrl": "https://linkedin.example/in/nusrat-jahan-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-matrika-women-child",
+    "name": "Matrika Women & Child Hospitals",
+    "domain": "matrikahospitals.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2400,
+    "description": "Women and children's hospital chain with 14 facilities in Maharashtra, Karnataka and Telangana.",
+    "contacts": [
+      {
+        "name": "Dr. Sunita Joshi",
+        "title": "Chief Medical Officer",
+        "persona": "Clinical Leadership",
+        "seniority": "C-Level",
+        "email": "sunita.joshi@matrikahospitals.example",
+        "phone": "+919000010043",
+        "whatsapp": "+919000010043",
+        "linkedinUrl": "https://linkedin.example/in/sunita-joshi-hlt"
+      },
+      {
+        "name": "Vivek Patil",
+        "title": "VP Projects",
+        "persona": "Projects",
+        "seniority": "VP",
+        "email": "vivek.patil@matrikahospitals.example",
+        "phone": "+919000010044",
+        "whatsapp": "+919000010044",
+        "linkedinUrl": "https://linkedin.example/in/vivek-patil-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-kaveri-kidney-care",
+    "name": "Kaveri Kidney Care",
+    "domain": "kaverikidneycare.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 760,
+    "description": "Nephrology, urology and transplant hospital group with three hospitals and 60 dialysis centres in Karnataka and Tamil Nadu.",
+    "contacts": [
+      {
+        "name": "Dr. Harish Nagaraj",
+        "title": "Managing Director & Chief Nephrologist",
+        "persona": "Clinical Leadership",
+        "seniority": "C-Level",
+        "email": "harish.nagaraj@kaverikidneycare.example",
+        "phone": "+919000010045",
+        "whatsapp": "+919000010045",
+        "linkedinUrl": "https://linkedin.example/in/harish-nagaraj-hlt"
+      },
+      {
+        "name": "Bhavana Shetty",
+        "title": "Operations Manager – Labs",
+        "persona": "Lab Head",
+        "seniority": "Manager",
+        "email": "bhavana.shetty@kaverikidneycare.example",
+        "phone": "+919000010046",
+        "whatsapp": "+919000010046",
+        "linkedinUrl": "https://linkedin.example/in/bhavana-shetty-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-bluepeak-healthcare-partners",
+    "name": "BluePeak Healthcare Partners",
+    "domain": "bluepeakpartners.example",
+    "industry": "Healthcare Services",
+    "hqCountry": "IN",
+    "sizeBand": "51-200",
+    "employees": 85,
+    "description": "Mumbai-based private equity firm investing exclusively in hospitals, diagnostics and healthcare services businesses.",
+    "contacts": [
+      {
+        "name": "Rahul Khanna",
+        "title": "Managing Partner",
+        "persona": "Investor",
+        "seniority": "C-Level",
+        "email": "rahul.khanna@bluepeakpartners.example",
+        "phone": "+919000010047",
+        "whatsapp": "+919000010047",
+        "linkedinUrl": "https://linkedin.example/in/rahul-khanna-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-vitalis-life-sciences",
+    "name": "Vitalis Life Sciences",
+    "domain": "vitalislifesciences.example",
+    "industry": "Pharma",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 6300,
+    "description": "Vaccine, biologics and medical-device maker headquartered in Hyderabad with plants in Telangana and Gujarat.",
+    "contacts": [
+      {
+        "name": "Dr. Kiran Chandra",
+        "title": "Chief Executive Officer",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "kiran.chandra@vitalislifesciences.example",
+        "phone": "+919000010048",
+        "whatsapp": "+919000010048",
+        "linkedinUrl": "https://linkedin.example/in/kiran-chandra-hlt"
+      },
+      {
+        "name": "Swati Mishra",
+        "title": "Head – Supply Chain",
+        "persona": "Supply Chain",
+        "seniority": "VP",
+        "email": "swati.mishra@vitalislifesciences.example",
+        "phone": "+919000010049",
+        "whatsapp": "+919000010049",
+        "linkedinUrl": "https://linkedin.example/in/swati-mishra-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-samarth-hospitals",
+    "name": "Samarth Hospitals",
+    "domain": "samarthhospitals.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3600,
+    "description": "Nagpur-headquartered hospital chain with seven hospitals across Vidarbha, Chhattisgarh and Telangana.",
+    "contacts": [
+      {
+        "name": "Ashok Wankhede",
+        "title": "Chairman & Managing Director",
+        "persona": "Executive Leadership",
+        "seniority": "C-Level",
+        "email": "ashok.wankhede@samarthhospitals.example",
+        "phone": "+919000010050",
+        "whatsapp": "+919000010050",
+        "linkedinUrl": "https://linkedin.example/in/ashok-wankhede-hlt"
+      },
+      {
+        "name": "Dr. Manasi Bhonsle",
+        "title": "Chief Medical Officer",
+        "persona": "Clinical Leadership",
+        "seniority": "C-Level",
+        "email": "manasi.bhonsle@samarthhospitals.example",
+        "phone": "+919000010051",
+        "whatsapp": "+919000010051",
+        "linkedinUrl": "https://linkedin.example/in/manasi-bhonsle-hlt"
+      },
+      {
+        "name": "Sachin Tidke",
+        "title": "Manager – Biomedical & Procurement",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "sachin.tidke@samarthhospitals.example",
+        "phone": "+919000010052",
+        "whatsapp": "+919000010052",
+        "linkedinUrl": "https://linkedin.example/in/sachin-tidke-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-arogyam-clinics",
+    "name": "Arogyam Neighbourhood Clinics",
+    "domain": "arogyamclinics.example",
+    "industry": "Healthcare Services",
+    "hqCountry": "IN",
+    "sizeBand": "51-200",
+    "employees": 160,
+    "description": "Chain of 18 neighbourhood primary care clinics in Chennai offering GP consultations and basic tests.",
+    "contacts": [
+      {
+        "name": "Dr. Kavya Sundaram",
+        "title": "Founder & Medical Director",
+        "persona": "Clinical Leadership",
+        "seniority": "C-Level",
+        "email": "kavya.sundaram@arogyamclinics.example",
+        "phone": "+919000010053",
+        "whatsapp": "+919000010053",
+        "linkedinUrl": "https://linkedin.example/in/kavya-sundaram-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-jeevanrekha-hospital",
+    "name": "JeevanRekha Charitable Hospital",
+    "domain": "jeevanrekhahospital.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 1700,
+    "description": "Trust-run 600-bed tertiary hospital in Indore serving patients from Madhya Pradesh and Rajasthan at subsidised rates.",
+    "contacts": [
+      {
+        "name": "Dr. Alok Verma",
+        "title": "Medical Superintendent",
+        "persona": "Clinical Leadership",
+        "seniority": "C-Level",
+        "email": "alok.verma@jeevanrekhahospital.example",
+        "phone": "+919000010054",
+        "whatsapp": "+919000010054",
+        "linkedinUrl": "https://linkedin.example/in/alok-verma-hlt"
+      },
+      {
+        "name": "Ritu Saxena",
+        "title": "Head – Purchase & Stores",
+        "persona": "Procurement",
+        "seniority": "Manager",
+        "email": "ritu.saxena@jeevanrekhahospital.example",
+        "phone": "+919000010055",
+        "whatsapp": "+919000010055",
+        "linkedinUrl": "https://linkedin.example/in/ritu-saxena-hlt"
+      }
+    ]
+  },
+  {
+    "key": "hlt-ekam-genomics",
+    "name": "Ekam Genomics",
+    "domain": "ekamgenomics.example",
+    "industry": "Diagnostics",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 420,
+    "description": "Molecular diagnostics and genomics laboratory in Chennai offering RT-PCR infectious disease panels, oncology NGS and reproductive genetics.",
+    "contacts": [
+      {
+        "name": "Dr. Arvind Raghavan",
+        "title": "Co-founder & Chief Scientific Officer",
+        "persona": "Lab Head",
+        "seniority": "C-Level",
+        "email": "arvind.raghavan@ekamgenomics.example",
+        "phone": "+919000010056",
+        "whatsapp": "+919000010056",
+        "linkedinUrl": "https://linkedin.example/in/arvind-raghavan-hlt"
+      },
+      {
+        "name": "Meenakshi Sundar",
+        "title": "Head of Quality",
+        "persona": "Quality",
+        "seniority": "Manager",
+        "email": "meenakshi.sundar@ekamgenomics.example",
+        "phone": "+919000010057",
+        "whatsapp": "+919000010057",
+        "linkedinUrl": "https://linkedin.example/in/meenakshi-sundar-hlt"
+      }
+    ]
+  }
+]

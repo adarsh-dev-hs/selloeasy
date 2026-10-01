@@ -1,0 +1,297 @@
+---
+title: Environment variables
+description: Every configuration key SelloEasy reads, grouped as in .env.example, with its default, when it is required and what it does.
+---
+
+All configuration is environment-driven. There is one `.env.example` at the repository root that lists every
+key the platform knows about, for local runs, AWS runtime and AWS deployment alike
+([ADR-0012](/docs/decisions/0012-env-driven-drivers-for-aws-readiness)).
+
+## How configuration is loaded
+
+- **Single schema.** Every runtime key is declared in `packages/shared/src/env.ts` as a Zod schema
+  (`runtimeEnvSchema`). Deploy-time keys (group 12) are declared in `deployEnvSchema` in the same file.
+- **Single loader.** Apps read configuration only through `getConfig()` / `initConfig()` from
+  `@selloeasy/core` (`packages/core/src/config.ts`). Nothing else reads `process.env` directly. The one exception
+  is the web app's `/api/*` proxy route, which reads `API_INTERNAL_URL` at runtime.
+- **Fail fast.** Invalid or missing values stop the process at boot with a message listing each offending key,
+  for example `- SES_REGION: SES_REGION is required when MAIL_DRIVER=ses`.
+- **Conditional validation.** Some keys are only required when a driver needs them (see the
+  "Required when" column).
+- **`.env` loading for host-side development.** When running on the host, `loadDotEnv()` walks up from the working
+  directory to the workspace root and loads `.env` with `process.loadEnvFile`. Values already in the process
+  environment always win, so Docker and ECS-provided values are never overridden. `.env` files are excluded
+  from Docker images by `.dockerignore`.
+- **Secrets Manager.** With `SECRETS_SOURCE=aws-secrets-manager`, `initConfig()` first fetches the JSON secret
+  `AWS_SECRETS_ID` and merges its keys over `process.env`, then validates.
+- **Automatic mock mode.** If `LLM_MODE=live` (the default) but the API key of the **selected provider**
+  (`LLM_PROVIDER`) is empty, the loader switches to `LLM_MODE=mock` _before_ validation and sets an internal
+  `llmAutoMocked` flag. The API and worker log a warning naming the provider, and `/api/ready` reports
+  `"autoMocked": true`.
+
+<Callout type="warn">
+  Booleans accept `true`, `1`, `yes` or `on` (case-insensitive). Anything else, including an empty string, is
+  `false`. Empty strings for optional keys are treated as "not set".
+</Callout>
+
+<Callout type="info">
+  **Docker Compose overrides.** `docker-compose.yml` injects container-network values that win over `.env`:
+  `DATABASE_URL` (host `postgres`), `REDIS_URL` (`redis://redis:6379`), `S3_ENDPOINT` (`http://minio:9000`),
+  `SMTP_HOST=mailpit`, `SMTP_PORT=1025`, `API_INTERNAL_URL=http://api:4000` and `NODE_ENV=production`. It also
+  provides fallbacks for `STORAGE_DRIVER`, the S3 keys, `S3_FORCE_PATH_STYLE`, both JWT secrets and `APP_ENV`.
+  A host-oriented `.env` (with `localhost` URLs) therefore works for both `pnpm dev` and `docker compose up`.
+</Callout>
+
+## 1. LLM — provider switch
+
+The LLM provider is chosen by `LLM_PROVIDER`. Only the selected provider's key and model are required; the model is
+**exactly** that provider's `*_MODEL` value and no model name exists in source code
+([ADR-0009](/docs/decisions/0009-openrouter-model-from-env), [ADR-0017](/docs/decisions/0017-provider-adapter-layer)).
+See [LLM layer & providers](/docs/pipeline/llm-providers).
+
+| Key                         | Default           | Required when | Description                                                                                                                                                                                                                    |
+| --------------------------- | ----------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `LLM_PROVIDER`              | `openrouter`      | —             | `openrouter`, `openai` or `anthropic`. OpenRouter is the documented default in `.env.example`. Also a deploy key (group 12).                                                                                                   |
+| `LLM_MODE`                  | `live`            | —             | `live` or `mock`. `mock` returns deterministic fixtures for every prompt and needs no key.                                                                                                                                     |
+| `LLM_MAX_CONCURRENCY`       | `4`               | —             | Maximum concurrent LLM requests **per process** (in-process semaphore).                                                                                                                                                        |
+| `LLM_TIMEOUT_MS`            | `30000`           | —             | Per-request timeout. A timed-out request is retried with backoff and then fails with HTTP 408 semantics.                                                                                                                       |
+| `LLM_CACHE_TTL_SECONDS`     | `604800` (7 days) | —             | TTL of the Redis response cache keyed by provider + model + prompt version + rendered prompt.                                                                                                                                  |
+| `LLM_FALLBACK_PROVIDER`     | _(empty)_         | —             | Optional failover provider (`openrouter`, `openai` or `anthropic`), used when the primary still fails after retries with a retryable or 5xx error. Must differ from `LLM_PROVIDER`, and its own key and model become required. |
+| `LLM_SUPPORTS_TEMPERATURE`  | _(empty = auto)_  | —             | `true` or `false` to override the built-in capability table for models newer than it. `false` stops sending `temperature`.                                                                                                     |
+| `LLM_SUPPORTS_JSON_SCHEMA`  | _(empty = auto)_  | —             | `true` or `false` to force structured output on or off (`json_schema` for OpenAI-compatible APIs, a forced tool call for Anthropic).                                                                                           |
+| `LLM_PRICE_INPUT_PER_MTOK`  | _(empty)_         | —             | USD per 1M input tokens, used to compute cost for providers that do not report it (OpenAI, Anthropic). Empty = cost recorded as 0.                                                                                             |
+| `LLM_PRICE_OUTPUT_PER_MTOK` | _(empty)_         | —             | USD per 1M output tokens, as above.                                                                                                                                                                                            |
+
+### OpenRouter (default)
+
+| Key                   | Default                        | Required when                                 | Description                                                                                                                                             |
+| --------------------- | ------------------------------ | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `OPENROUTER_API_KEY`  | _(empty)_                      | `LLM_MODE=live` and `LLM_PROVIDER=openrouter` | OpenRouter API key. If empty while it is the selected provider, the app falls back to mock mode automatically and logs a warning.                       |
+| `OPENROUTER_MODEL`    | _(none in code)_               | `LLM_MODE=live` and `LLM_PROVIDER=openrouter` | The model id sent to OpenRouter (`$OPENROUTER_MODEL`). `.env.example` ships a concrete value, which the README quotes. Stored on every `llm_calls` row. |
+| `OPENROUTER_BASE_URL` | `https://openrouter.ai/api/v1` | —                                             | Base URL of the OpenAI-compatible API. Requests go to `<base>/chat/completions`.                                                                        |
+
+### OpenAI (direct)
+
+| Key                       | Default                     | Required when                             | Description                                                                                                                            |
+| ------------------------- | --------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `OPENAI_API_KEY`          | _(empty)_                   | `LLM_MODE=live` and `LLM_PROVIDER=openai` | OpenAI API key. Keep it in your own gitignored `.env` or in Secrets Manager; never commit it.                                          |
+| `OPENAI_MODEL`            | _(none in code)_            | `LLM_MODE=live` and `LLM_PROVIDER=openai` | The model id sent to OpenAI (`$OPENAI_MODEL`). Reasoning models (`gpt-5*`, `o*`) get no `temperature` and use `max_completion_tokens`. |
+| `OPENAI_BASE_URL`         | `https://api.openai.com/v1` | —                                         | Base URL; also works for Azure-compatible gateways. Requests go to `<base>/chat/completions`.                                          |
+| `OPENAI_REASONING_EFFORT` | `low`                       | —                                         | `minimal`, `low`, `medium`, `high` or empty (not sent). Sent as `reasoning_effort` to reasoning models only.                           |
+
+### Anthropic (direct)
+
+| Key                  | Default                     | Required when                                | Description                                                                          |
+| -------------------- | --------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `ANTHROPIC_API_KEY`  | _(empty)_                   | `LLM_MODE=live` and `LLM_PROVIDER=anthropic` | Anthropic API key.                                                                   |
+| `ANTHROPIC_MODEL`    | _(none in code)_            | `LLM_MODE=live` and `LLM_PROVIDER=anthropic` | The model id sent to Anthropic (`$ANTHROPIC_MODEL`). `.env.example` leaves it empty. |
+| `ANTHROPIC_BASE_URL` | `https://api.anthropic.com` | —                                            | Base URL. Requests go to `<base>/v1/messages` with `anthropic-version: 2023-06-01`.  |
+
+## 2. App runtime
+
+| Key                | Default                 | Required when                                        | Description                                                                                                                                                                                                                                                                                         |
+| ------------------ | ----------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NODE_ENV`         | `development`           | —                                                    | `development`, `production` or `test`. Pretty logs only in `development` on a TTY. Compose sets `production`.                                                                                                                                                                                       |
+| `APP_ENV`          | `local`                 | —                                                    | `local`, `staging`, `production` or `test`. Outside `local`: invite links are not returned in API responses, the demo invite token is not seeded, and `db:reset` refuses to run. In `staging`/`production`, `COOKIE_SECURE` must be true and the JWT access secret must not start with `change-me`. |
+| `LOG_LEVEL`        | `info`                  | —                                                    | `fatal`, `error`, `warn`, `info`, `debug`, `trace` or `silent`.                                                                                                                                                                                                                                     |
+| `WEB_URL`          | `http://localhost:3000` | —                                                    | Public URL of the web app. Used to build invite and password-reset links and as the `HTTP-Referer` sent to OpenRouter.                                                                                                                                                                              |
+| `API_INTERNAL_URL` | `http://localhost:4000` | —                                                    | Where the Next.js `/api/*` proxy forwards requests. Compose sets `http://api:4000`.                                                                                                                                                                                                                 |
+| `API_PORT`         | `4000`                  | —                                                    | Port the Fastify API listens on. Keep `4000` inside Compose; change the published port with `API_HOST_PORT` instead.                                                                                                                                                                                |
+| `DOCS_PORT`        | `3001`                  | —                                                    | Port of the standalone docs site (`apps/docs-site`) for `pnpm dev` / `pnpm dev:docs`. The docs container always listens on 3001; it reads `WEB_URL` for its "Open the app" links ([ADR-0019](/docs/decisions/0019-standalone-docs-site)).                                                           |
+| `WEB_PORT`         | `3000`                  | —                                                    | Port for `next dev` (`pnpm dev`). The production web container always listens on 3000.                                                                                                                                                                                                              |
+| `CORS_ORIGINS`     | `http://localhost:3000` | —                                                    | Comma-separated allowed origins for the API's CORS policy (credentials enabled) and for the MinIO bucket CORS rule.                                                                                                                                                                                 |
+| `COOKIE_DOMAIN`    | _(unset)_               | —                                                    | Domain attribute for the session cookies. Leave empty for host-only cookies.                                                                                                                                                                                                                        |
+| `COOKIE_SECURE`    | `false`                 | `APP_ENV` is `staging`/`production` (must be `true`) | Sets the `Secure` flag on session cookies. Required behind HTTPS.                                                                                                                                                                                                                                   |
+| `TRUST_PROXY`      | `false`                 | —                                                    | Trust `X-Forwarded-*` headers (Fastify `trustProxy`). Set `true` behind an ALB or CloudFront so audit logs record the real client IP.                                                                                                                                                               |
+
+## 3. Auth & security
+
+| Key                   | Default                      | Required when         | Description                                                                                                                                                     |
+| --------------------- | ---------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `JWT_ACCESS_SECRET`   | _(none)_                     | Always (min 32 chars) | HMAC secret for the short-lived access JWT (`se_at` cookie). Must not start with `change-me` in staging/production.                                             |
+| `JWT_REFRESH_SECRET`  | _(none)_                     | Always (min 32 chars) | Validated and reserved. Refresh tokens are currently **opaque random tokens stored as SHA-256 hashes**, not JWTs, so this secret is not used for signing today. |
+| `ACCESS_TOKEN_TTL`    | `15m`                        | —                     | Access token lifetime (JWT `expiresIn`).                                                                                                                        |
+| `REFRESH_TOKEN_TTL`   | `7d`                         | —                     | Refresh token lifetime. Accepts `ms`, `s`, `m`, `h` or `d` suffixes.                                                                                            |
+| `INVITE_TTL_HOURS`    | `72`                         | —                     | Invitation link lifetime. Invites are single use.                                                                                                               |
+| `RATE_LIMIT_MAX`      | `300`                        | —                     | Global rate limit: requests per window per client IP (Redis-backed).                                                                                            |
+| `RATE_LIMIT_WINDOW`   | `1m`                         | —                     | Global rate-limit window. Individual routes have tighter limits (login: 5 per minute per IP + email).                                                           |
+| `SUPERADMIN_EMAIL`    | `superadmin@selloeasy.local` | —                     | Bootstrap Super Admin, created by the seed if missing. Must be a valid email.                                                                                   |
+| `SUPERADMIN_PASSWORD` | `Admin@123`                  | —                     | Bootstrap Super Admin password (dev only). In AWS, supply it through Secrets Manager.                                                                           |
+
+## 4. Database — Postgres
+
+| Key                    | Default                            | Required when | Description                                                                                                                                         |
+| ---------------------- | ---------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DATABASE_URL`         | _(none)_                           | Always        | Postgres connection string.                                                                                                                         |
+| `DATABASE_SSL`         | `false`                            | —             | Enable TLS to Postgres (RDS). When true and the CA file exists, the certificate is verified against it. Otherwise TLS is used without verification. |
+| `DATABASE_SSL_CA_FILE` | `/app/certs/rds-global-bundle.pem` | —             | Path to the CA bundle. The API and worker images download the AWS RDS global bundle to this path at build time.                                     |
+| `DATABASE_POOL_MAX`    | `10`                               | —             | Maximum connections in the `pg` pool per process.                                                                                                   |
+| `POSTGRES_USER`        | `selloeasy`                        | Compose only  | Used by the local `postgres` container and to build the compose `DATABASE_URL`. Not read by the apps.                                               |
+| `POSTGRES_PASSWORD`    | `selloeasy`                        | Compose only  | As above.                                                                                                                                           |
+| `POSTGRES_DB`          | `selloeasy`                        | Compose only  | As above.                                                                                                                                           |
+
+## 5. Redis
+
+| Key         | Default  | Required when | Description                                                                                                                                             |
+| ----------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `REDIS_URL` | _(none)_ | Always        | Redis connection string. Used for BullMQ, the LLM cache, rate limiting, dashboard caching and SSE pub/sub. A `rediss://` URL enables TLS automatically. |
+| `REDIS_TLS` | `false`  | —             | Force TLS (ElastiCache in-transit encryption) even with a `redis://` URL.                                                                               |
+
+## 6. Object storage — MinIO or S3
+
+| Key                    | Default             | Required when          | Description                                                                                                                               |
+| ---------------------- | ------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `STORAGE_DRIVER`       | `minio`             | —                      | `minio` (static keys, local) or `s3` (AWS default credential chain, e.g. ECS task role).                                                  |
+| `S3_BUCKET`            | `selloeasy-uploads` | —                      | Bucket for uploaded documents and pasted text sources.                                                                                    |
+| `S3_REGION`            | `ap-south-1`        | —                      | Region for the S3 client.                                                                                                                 |
+| `S3_ENDPOINT`          | _(unset)_           | `STORAGE_DRIVER=minio` | Endpoint the API and worker use (Compose: `http://minio:9000`). Leave empty for AWS S3.                                                   |
+| `S3_PUBLIC_ENDPOINT`   | _(unset)_           | —                      | Browser-reachable endpoint used to sign presigned upload and download URLs (local: `http://localhost:9000`). Falls back to `S3_ENDPOINT`. |
+| `S3_FORCE_PATH_STYLE`  | `false`             | —                      | Path-style URLs. Set `true` for MinIO (`.env.example` does).                                                                              |
+| `S3_ACCESS_KEY_ID`     | _(unset)_           | `STORAGE_DRIVER=minio` | Static access key. Leave empty on AWS so the task role is used.                                                                           |
+| `S3_SECRET_ACCESS_KEY` | _(unset)_           | `STORAGE_DRIVER=minio` | Static secret key.                                                                                                                        |
+| `UPLOAD_MAX_MB`        | `20`                | —                      | Maximum size of an uploaded document. Checked when the upload URL is requested and again when the worker processes the file.              |
+
+## 7. Email — SMTP or SES
+
+| Key                     | Default                                           | Required when     | Description                                                                                              |
+| ----------------------- | ------------------------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------- |
+| `MAIL_DRIVER`           | `smtp`                                            | —                 | `smtp` (Nodemailer; Mailpit locally or any relay) or `ses` (AWS SES v2).                                 |
+| `MAIL_FROM`             | `SelloEasy <no-reply@selloeasy.local>`            | —                 | Sender address. Outreach emails keep this address and replace the display name with "Sender Name (Org)". |
+| `SMTP_HOST`             | `localhost`                                       | —                 | SMTP host (Compose: `mailpit`).                                                                          |
+| `SMTP_PORT`             | `1025`                                            | —                 | SMTP port.                                                                                               |
+| `SMTP_USER`             | _(unset)_                                         | —                 | SMTP username. Authentication is only used when this is set.                                             |
+| `SMTP_PASSWORD`         | _(unset)_                                         | —                 | SMTP password.                                                                                           |
+| `SMTP_SECURE`           | `false`                                           | —                 | Use implicit TLS for SMTP.                                                                               |
+| `SES_REGION`            | _(unset in schema; `.env.example`: `ap-south-1`)_ | `MAIL_DRIVER=ses` | Region of the SES v2 client.                                                                             |
+| `SES_CONFIGURATION_SET` | _(unset)_                                         | —                 | Optional SES configuration set name attached to every send.                                              |
+
+## 8. Pipeline & product defaults
+
+| Key                              | Default       | Required when | Description                                                                                                                                                                                        |
+| -------------------------------- | ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PIPELINE_SCHEDULE_CRON`         | `0 */6 * * *` | —             | Cron pattern for the repeatable `pipeline.schedule-tick` job, which queues a `SCHEDULED` run for every `ACTIVE` org without a run in progress.                                                     |
+| `PIPELINE_MATCH_THRESHOLD`       | `0.6`         | —             | Minimum match confidence (0–1) for an LLM signal match to be accepted.                                                                                                                             |
+| `PIPELINE_MAX_LLM_CALLS_PER_RUN` | `60`          | —             | Budget guard: maximum non-cached LLM calls per run. About 60% is available to matching; the rest is kept for scoring.                                                                              |
+| `PIPELINE_EVENT_WINDOW_DAYS`     | `180`         | —             | Recency window. Only events published in the last N days are considered.                                                                                                                           |
+| `PIPELINE_BATCH_SIZE`            | `8`           | —             | Events per `signal.match` LLM call.                                                                                                                                                                |
+| `LEADS_PAGE_SIZE_DEFAULT`        | `6`           | —             | Validated and documented, but the API currently uses the constant `DEFAULT_PAGE_SIZE = 6` from `packages/shared/src/pagination.ts`. Changing this key has no effect yet.                           |
+| `CRAWL_MAX_PAGES`                | `25`          | —             | Maximum pages fetched when crawling an org website.                                                                                                                                                |
+| `CRAWL_MAX_DEPTH`                | `2`           | —             | Maximum link depth from the root URL.                                                                                                                                                              |
+| `FEATURE_LEAD_VISIBILITY_TOGGLE` | `false`       | —             | When `false`, `PATCH /org` rejects changes to `settings.leadVisibility` with 403. Exposed to the UI as `features.leadVisibilityToggle` ([ADR-0011](/docs/decisions/0011-lead-visibility-setting)). |
+| `AUDIT_RETENTION_DAYS`           | `365`         | —             | The daily retention job deletes audit rows older than this many days.                                                                                                                              |
+
+`AUDIT_RETENTION_DAYS` is listed under section 8b in `.env.example`.
+
+## 8b. Platform data source — imports & ingestion
+
+See [Platform data](/docs/platform-data).
+
+| Key                          | Default | Required when | Description                                                                                                                                                             |
+| ---------------------------- | ------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `IMPORT_MAX_MB`              | `10`    | —             | Maximum size of an uploaded CSV / JSONL / JSON file (multipart limit and file-layer check).                                                                             |
+| `IMPORT_MAX_ROWS`            | `5000`  | —             | Maximum data rows per import file.                                                                                                                                      |
+| `IMPORT_MAX_INVALID_RATIO`   | `0.2`   | —             | 0–1. A commit is refused when `invalid / rows` is above this share (garbage-file guard, [ADR-0015](/docs/decisions/0015-canonical-data-template-and-two-phase-import)). |
+| `DATA_MAX_AGE_DAYS`          | `730`   | —             | Oldest acceptable `published_at` for imported or ingested events, in days.                                                                                              |
+| `INGESTION_MAX_ROWS_PER_RUN` | `500`   | —             | Upper bound of rows pulled by one connector ingestion run (a connector's own `maxRowsPerRun` can only lower it).                                                        |
+| `IMPORT_AI_GATE_ENABLED`     | `false` | —             | Run the optional `data.quality-gate` LLM check on imports. Low scores only add warnings.                                                                                |
+| `IMPORT_AI_GATE_MAX_CALLS`   | `10`    | —             | Maximum AI-gate calls per import file (20 rows per call).                                                                                                               |
+| `STAGING_RETENTION_DAYS`     | `30`    | —             | Staged import rows (`data_batch_rows`) of finished batches are purged after this many days by the daily `staging-purge` job.                                            |
+
+### Connector secrets
+
+`HTTP_FEED` connectors that need an auth header store only the **name** of an env var in their config. The value is
+read at run time from the process environment (or the Secrets Manager JSON secret), and **only names matching
+`CONNECTOR_[A-Z0-9_]{1,60}`** are readable, so a connector can never send a platform secret to an external URL. These
+keys are free-form, are not part of the env schema and are not listed in `.env.example`. Add them to your own `.env`,
+for example `CONNECTOR_ACME_FEED_TOKEN=...`, and restart the API and worker. See
+[Connectors & ingestion](/docs/platform-data/connectors-and-ingestion#connector-secrets-connector_).
+
+## 9. Seed / demo
+
+| Key              | Default | Required when | Description                                                                                                                          |
+| ---------------- | ------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `SEED_ON_START`  | `true`  | —             | Read by the Compose `migrate` service. When `true`, `pnpm db:seed` runs after migrations. Set `false` in AWS staging/production.     |
+| `SEED_DEMO_DATA` | `true`  | —             | When `false`, the seed creates only the Super Admin, signal templates, company directory and market events, and skips the demo orgs. |
+
+## 10. Observability
+
+| Key                           | Default     | Required when | Description                                                                 |
+| ----------------------------- | ----------- | ------------- | --------------------------------------------------------------------------- |
+| `OTEL_ENABLED`                | `false`     | —             | **Reserved.** Validated, but no OpenTelemetry SDK or exporter is wired yet. |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | _(unset)_   | —             | **Reserved** for the OTLP exporter endpoint.                                |
+| `OTEL_SERVICE_NAMESPACE`      | `selloeasy` | —             | **Reserved** service namespace for traces.                                  |
+
+## 11. Secrets source
+
+| Key              | Default                     | Required when                        | Description                                                                                                             |
+| ---------------- | --------------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `SECRETS_SOURCE` | `env`                       | —                                    | `env` or `aws-secrets-manager`. With the latter, a JSON secret is loaded at boot and its keys override the environment. |
+| `AWS_SECRETS_ID` | _(unset)_                   | `SECRETS_SOURCE=aws-secrets-manager` | Secret id or ARN, e.g. `selloeasy/production/app`.                                                                      |
+| `AWS_REGION`     | _(unset in runtime schema)_ | `SECRETS_SOURCE=aws-secrets-manager` | Region for the Secrets Manager client. Also a deploy key (group 12, default `ap-south-1`).                              |
+
+## 12. AWS deployment
+
+These keys are read by the deployment tooling (`deployEnvSchema`), not by the running apps. Leave them empty
+for local use. See [AWS deployment](/docs/operations/aws-deployment).
+
+| Key                                                                 | Default              | Required to deploy | Description                                                             |
+| ------------------------------------------------------------------- | -------------------- | ------------------ | ----------------------------------------------------------------------- |
+| `AWS_ACCOUNT_ID`                                                    | —                    | Yes (12 digits)    | Target AWS account.                                                     |
+| `AWS_REGION`                                                        | `ap-south-1`         | —                  | Target region (Mumbai).                                                 |
+| `AWS_PROFILE`                                                       | _(unset)_            | —                  | Local AWS CLI profile used by `pnpm deploy:aws`. CI uses OIDC instead.  |
+| `DEPLOY_ENV`                                                        | `staging`            | —                  | `staging` or `production`. Prefixes all stack and resource names.       |
+| `DOMAIN_NAME`                                                       | —                    | Yes                | Public hostname, e.g. `app.selloeasy.com`.                              |
+| `HOSTED_ZONE_ID`                                                    | —                    | Yes                | Route 53 hosted zone for `DOMAIN_NAME`.                                 |
+| `ACM_CERTIFICATE_ARN`                                               | _(unset)_            | —                  | Existing certificate. If empty, a DNS-validated certificate is created. |
+| `ECR_REPOSITORY_PREFIX`                                             | `selloeasy`          | —                  | Prefix for the ECR repositories.                                        |
+| `IMAGE_TAG`                                                         | `latest`             | —                  | Image tag to deploy. CI sets the git SHA.                               |
+| `VPC_ID`                                                            | _(unset)_            | —                  | Existing VPC. If empty, a new VPC is created.                           |
+| `NAT_GATEWAYS`                                                      | `1`                  | —                  | Number of NAT gateways.                                                 |
+| `RDS_INSTANCE_CLASS`                                                | `t4g.micro`          | —                  | RDS instance class.                                                     |
+| `RDS_ALLOCATED_STORAGE_GB`                                          | `20`                 | —                  | RDS storage.                                                            |
+| `RDS_MULTI_AZ`                                                      | `false`              | —                  | Multi-AZ RDS.                                                           |
+| `RDS_BACKUP_RETENTION_DAYS`                                         | `7`                  | —                  | Automated backup retention.                                             |
+| `REDIS_NODE_TYPE`                                                   | `cache.t4g.micro`    | —                  | ElastiCache node type.                                                  |
+| `ECS_API_CPU` / `ECS_API_MEMORY` / `ECS_API_DESIRED_COUNT`          | `512` / `1024` / `1` | —                  | API Fargate task size and count.                                        |
+| `ECS_WORKER_CPU` / `ECS_WORKER_MEMORY` / `ECS_WORKER_DESIRED_COUNT` | `512` / `1024` / `1` | —                  | Worker Fargate task size and count.                                     |
+| `ECS_WEB_CPU` / `ECS_WEB_MEMORY` / `ECS_WEB_DESIRED_COUNT`          | `256` / `512` / `1`  | —                  | Web Fargate task size and count.                                        |
+| `ALARM_EMAIL`                                                       | _(unset)_            | —                  | SNS email subscription for CloudWatch alarms.                           |
+| `GITHUB_OIDC_ROLE_ARN`                                              | _(unset)_            | —                  | CI deploy role (created by the bootstrap stack).                        |
+
+The deploy schema also carries the LLM settings: `LLM_PROVIDER` (default `openrouter`), `OPENROUTER_API_KEY`,
+`OPENROUTER_MODEL`, `OPENAI_API_KEY`, `OPENAI_MODEL`, `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL`. The **selected
+provider's** key and model must be non-empty to deploy. API keys are pushed into the Secrets Manager app secret by the
+deploy script (the selected provider's key is required, others are copied when set); `LLM_PROVIDER` and the
+`*_MODEL` values become plain task environment variables. `MAIL_FROM` is required, and `SES_REGION` defaults to
+`ap-south-1`.
+
+## Compose-only host ports
+
+These are read only by `docker-compose.yml` to choose the published host port. Container ports never change.
+
+| Key                       | Default | Service / container port         |
+| ------------------------- | ------- | -------------------------------- |
+| `WEB_HOST_PORT`           | `3000`  | `web` :3000                      |
+| `API_HOST_PORT`           | `4000`  | `api` :4000                      |
+| `POSTGRES_HOST_PORT`      | `5432`  | `postgres` :5432                 |
+| `REDIS_HOST_PORT`         | `6379`  | `redis` :6379                    |
+| `MINIO_HOST_PORT`         | `9000`  | `minio` API :9000                |
+| `MINIO_CONSOLE_HOST_PORT` | `9001`  | `minio` console :9001            |
+| `SMTP_HOST_PORT`          | `1025`  | `mailpit` SMTP :1025             |
+| `MAILPIT_UI_HOST_PORT`    | `8025`  | `mailpit` UI :8025               |
+| `DOCS_HOST_PORT`          | `3001`  | `docs` :3001                     |
+| `ALLURE_HOST_PORT`        | `5252`  | `allure` (profile `reports`) :80 |
+
+<Callout type="warn">
+  If you change `WEB_HOST_PORT`, also set `WEB_URL` (so invite and reset links point to the right port) and
+  `CORS_ORIGINS`. If you change `MINIO_HOST_PORT`, also set `S3_PUBLIC_ENDPOINT` so browsers can reach
+  presigned upload URLs.
+</Callout>
+
+## Validating a file
+
+`package.json` defines `pnpm env:check` (`tsx scripts/env-check.ts`) to validate an env file against the
+schemas, including `--target aws` for group 12. The script is part of the AWS deploy-readiness work described
+in [AWS deployment](/docs/operations/aws-deployment). Until it is present, the runtime validation at boot is the
+authoritative check. Any misconfiguration fails the API, worker, migrate or seed process immediately with the
+list of invalid keys.

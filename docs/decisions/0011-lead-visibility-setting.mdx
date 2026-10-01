@@ -1,0 +1,46 @@
+---
+title: ADR-0011 — SDR lead visibility is an org setting (ALL in v1)
+description: SDRs can read every lead in their org by default; switching to assigned-only is an org setting enforced in one place, gated by a platform feature flag.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+Should an SDR see every lead in the org, or only leads assigned to them? Small teams want transparency: everyone
+sees the pipeline, avoids double-contacting and can claim unassigned leads. Larger or more competitive teams want
+isolation between reps. The review decision for v1 was "all leads for now, assigned-only later, without a code change".
+
+## Decision
+
+- An org setting `organizations.settings.leadVisibility`: `ALL` (default) or `ASSIGNED_ONLY`.
+- Enforced in **one function**, `visibilityFilter(auth)` in `apps/api/src/lib/leads.ts`. For SDRs under
+  `ASSIGNED_ONLY` it adds `owner_user_id = <me>`. It is applied to the leads list, CSV export, lead detail and all lead
+  sub-resources (through `loadLead()`), bulk actions and the dashboard's lead and channel queries. Hidden leads return
+  **404**.
+- Mutations are always restricted for SDRs, whatever the setting: they can only change leads they own
+  (claiming unassigned leads is allowed).
+- Changing the setting through `PATCH /org` is refused (403) unless the platform flag
+  `FEATURE_LEAD_VISIBILITY_TOGGLE=true`. The flag is exposed to the UI as `features.leadVisibilityToggle` so the
+  toggle can stay hidden until enabled.
+
+## Consequences
+
+- v1 behaves transparently: SDRs can browse and claim any lead.
+- Switching an org to assigned-only needs no code change: enable the flag and change the org setting.
+- A single enforcement point keeps the behavior consistent and testable.
+- **Less isolation between SDRs by default.** Under `ASSIGNED_ONLY`, SDRs can no longer see (and therefore claim)
+  unassigned leads through the list. Managers must assign them.
+- The visibility check adds one small query (the org's settings) per lead request for SDRs.
+
+## Alternatives considered
+
+- **Assigned-only from day one**: more isolation, but less transparency, and it requires managers to assign every
+  lead before anyone can work it.
+- **A per-user permission**: more flexible, but more complex to manage and explain.
+- **Territories or teams**: the proper long-term model for larger orgs. Out of scope for v1.
+
+## Revisit when
+
+- Customers ask for territory, team or pod-based visibility.
+- Assigned-only orgs need a "pool" view of unassigned leads for SDRs.

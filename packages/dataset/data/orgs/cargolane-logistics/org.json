@@ -1,0 +1,217 @@
+{
+  "slug": "cargolane-logistics",
+  "name": "Cargolane Logistics Tech",
+  "industry": "LOGISTICS",
+  "websiteUrl": "https://cargolane-logistics.example",
+  "hq": "Gurugram, India",
+  "regions": ["India", "Middle East", "South-East Asia", "United Kingdom"],
+  "companySize": "201-1000",
+  "description": "Cargolane Logistics Tech is a Gurugram-based supply chain technology company that designs, deploys and runs warehouse automation (autonomous mobile robots, sortation and AS/RS), the LaneFlow warehouse management system, the LaneRoute transport management system with route optimisation, and FrostEye cold-chain monitoring for brands, retailers, 3PLs, ports and pharma distributors.",
+  "profile": {
+    "summary": "Cargolane Logistics Tech helps D2C brands, e-commerce marketplaces, omnichannel retailers, FMCG companies, 3PLs, port and ICD operators and pharma distributors move more orders with fewer errors and lower cost per unit. We combine automation hardware (AMRs, cross-belt and pouch sortation, shuttle AS/RS) with our own cloud software (LaneFlow WMS, LaneRoute TMS and FrostEye cold-chain IoT) and offer robots on a Robotics-as-a-Service subscription, so customers can go live in 8 to 14 weeks without large upfront capex and scale capacity up for festive peaks.",
+    "valueProps": [
+      "Go live on a new warehouse or fulfilment centre in 8–14 weeks with pre-integrated hardware and software",
+      "Up to 3x order throughput per picker with goods-to-person AMRs",
+      "Robotics-as-a-Service: flex robot fleet up for festive peaks and down after, with no capex",
+      "10–18% lower freight cost through LaneRoute load planning and route optimisation",
+      "End-to-end temperature visibility from cold room to last mile with FrostEye sensors",
+      "Native connectors to 40+ marketplaces, ERPs and carrier platforms"
+    ],
+    "differentiators": [
+      "One accountable vendor for robots, WMS, TMS and cold-chain IoT",
+      "Built in India for Indian warehouse realities: mixed floors, power fluctuations, high SKU churn",
+      "Multi-tenant WMS designed for 3PLs with client-level billing and dashboards",
+      "24x7 remote robotics operations centre in Gurugram with 4-hour on-site response in 12 cities",
+      "Customs-aware bonded warehouse and free-zone workflows for export hubs"
+    ],
+    "targetIndustries": ["E-commerce", "Retail", "FMCG", "Logistics", "Ports & Shipping", "Cold Chain", "Pharma"],
+    "geographies": ["India", "UAE", "Singapore", "Indonesia", "Thailand", "United Kingdom"],
+    "personas": [
+      {
+        "title": "VP Supply Chain",
+        "goals": ["Cut cost per order", "Hit next-day delivery promise", "Scale for festive peaks without chaos"],
+        "painPoints": ["Manual pick-and-pack cannot keep up with growth", "Temporary labour quality during peaks", "Fragmented systems across sites"]
+      },
+      {
+        "title": "Head of Warehousing",
+        "goals": ["Higher picks per hour", "Inventory accuracy above 99.5%", "Faster new-site ramp-up"],
+        "painPoints": ["Legacy WMS without automation support", "Space constraints in existing sites", "High attrition of trained pickers"]
+      },
+      {
+        "title": "Director – Logistics Technology",
+        "goals": ["Single integrated platform", "Real-time visibility", "Clean integrations with ERP and marketplaces"],
+        "painPoints": ["Point solutions that do not talk to each other", "Long, risky implementations", "Vendor lock-in on proprietary robots"]
+      },
+      {
+        "title": "Chief Operating Officer",
+        "goals": ["Predictable operating cost", "Capacity for expansion plans", "Resilient network"],
+        "painPoints": ["Large capex for automation", "Uncertain ROI", "Execution risk on new facilities"]
+      },
+      {
+        "title": "Head of Cold Chain / Quality",
+        "goals": ["Zero temperature excursions", "Audit-ready records", "Lower spoilage"],
+        "painPoints": ["Manual data loggers read after the fact", "No visibility on reefer trucks", "Regulatory audit findings"]
+      }
+    ]
+  },
+  "products": [
+    {
+      "name": "LaneFlow WMS",
+      "category": "Warehouse Management System (SaaS)",
+      "description": "Cloud warehouse management system for single and multi-client sites covering inbound, putaway, wave and zone picking, packing, returns, batch and expiry tracking, and native control of AMRs, sorters and AS/RS.",
+      "targetSegments": ["D2C brands", "E-commerce marketplaces", "Omnichannel retailers", "3PLs", "Pharma distributors"],
+      "priceNotes": "Subscription per site per month based on order volume; typical mid-size site INR 2.5–6 lakh per month plus one-time implementation.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "LaneRoute TMS",
+      "category": "Transport Management System (SaaS)",
+      "description": "Transport management system with load planning, route optimisation, carrier procurement, freight audit, driver app and customer tracking links for primary, secondary and last-mile distribution.",
+      "targetSegments": ["FMCG companies", "Retailers", "3PLs", "Dairy and cold-chain fleets"],
+      "priceNotes": "Priced per vehicle per month (INR 1,200–2,500) with a minimum of 50 vehicles; freight audit module billed per invoice.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "LaneBot AMR Fleet",
+      "category": "Warehouse Robotics",
+      "description": "Goods-to-person autonomous mobile robots that bring shelving pods to ergonomic pick stations, lifting picker productivity from about 90 to 300 lines per hour, orchestrated by LaneFlow.",
+      "targetSegments": ["D2C brands", "E-commerce fulfilment centres", "Quick-commerce mother warehouses"],
+      "priceNotes": "Available on Robotics-as-a-Service subscription or outright purchase; typical deployment 60–250 robots.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "LaneSort",
+      "category": "Sortation Systems",
+      "description": "Modular cross-belt and pouch sortation with dimensioning and weighing, handling 4,000 to 20,000 parcels per hour for sortation hubs, fulfilment centres and returns centres.",
+      "targetSegments": ["Marketplaces", "3PL sortation hubs", "Courier networks"],
+      "priceNotes": "Project-priced; capex typically INR 4–18 crore depending on induction points and chutes. Lease options through financing partners.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "LaneStack AS/RS",
+      "category": "Automated Storage and Retrieval",
+      "description": "Shuttle and pallet AS/RS for high-density storage, including frozen-store variants rated to minus 25 degrees, integrated with LaneFlow for FMCG, retail and cold-chain distribution centres.",
+      "targetSegments": ["FMCG mother hubs", "Retail distribution centres", "Cold storage operators"],
+      "priceNotes": "Delivered with an integration partner; indicative INR 18,000–32,000 per pallet position. Floor pricing requires CFO approval.",
+      "visibility": "INTERNAL"
+    },
+    {
+      "name": "FrostEye Cold-Chain Monitoring",
+      "category": "Cold-Chain IoT",
+      "description": "Wireless temperature and humidity sensors for cold rooms, reefer trucks, retail freezers and insulated shippers, with real-time alerts, GDP-compliant audit reports and integration with LaneRoute for excursion-aware routing.",
+      "targetSegments": ["Pharma distributors", "Dairy and frozen foods", "Cold-chain 3PLs", "Hospital networks"],
+      "priceNotes": "Hardware INR 3,500–9,000 per sensor plus INR 250 per sensor per month for the platform.",
+      "visibility": "PUBLIC"
+    }
+  ],
+  "plans": [
+    {
+      "name": "LaneFlow Growth",
+      "pricing": "INR 2.5 lakh per site per month up to 15,000 orders/day; implementation INR 8 lakh one-time.",
+      "features": ["Core WMS with marketplace connectors", "Batch and expiry tracking", "Standard dashboards", "Business-hours support"],
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "LaneFlow + LaneRoute Enterprise",
+      "pricing": "Custom annual contract; typical INR 1.2–4 crore per year for multi-site WMS plus TMS. Discounts above 12% need VP Sales approval.",
+      "features": ["Multi-site and multi-client WMS", "TMS with route optimisation and freight audit", "Automation control layer", "24x7 support with 99.9% uptime SLA", "Dedicated customer success manager"],
+      "visibility": "INTERNAL"
+    },
+    {
+      "name": "Robotics-as-a-Service",
+      "pricing": "INR 38,000–52,000 per AMR per month on a 36-month term, including maintenance, spares and remote monitoring; peak-season flex robots at INR 65,000 per robot per month (minimum 2 months).",
+      "features": ["No upfront capex", "Seasonal flex fleet", "Remote robotics operations centre", "Guaranteed 98.5% robot availability"],
+      "visibility": "INTERNAL"
+    }
+  ],
+  "policies": [
+    {
+      "title": "Service Level Agreement and Uptime",
+      "type": "SLA",
+      "body": "LaneFlow WMS and LaneRoute TMS are provided with a 99.9% monthly uptime commitment on Enterprise plans and 99.5% on Growth plans, excluding scheduled maintenance announced 72 hours in advance. Priority-1 incidents (warehouse or dispatch stopped) receive a 15-minute response and continuous work until resolved. Robotics deployments carry a 98.5% robot availability guarantee with 4-hour on-site response in our 12 service cities. Missed commitments earn service credits of up to 20% of the monthly fee.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "title": "Data Security and Privacy",
+      "type": "Security",
+      "body": "Customer data is hosted in India-region cloud data centres (with in-region hosting for UAE, Singapore and UK customers on request), encrypted at rest with AES-256 and in transit with TLS 1.2 or higher. Cargolane maintains ISO 27001 certification, role-based access control, single sign-on, audit logs and annual third-party penetration tests. Customer data is never used to train models shared with other customers and is deleted within 60 days of contract termination.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "title": "Implementation and Payment Terms",
+      "type": "Commercial",
+      "body": "Standard implementation is 8–14 weeks for software and 12–20 weeks for automation projects. Software subscriptions are billed annually in advance or quarterly with a 4% premium. Automation capex projects are billed 30% on order, 50% on delivery and 20% on go-live acceptance. RaaS contracts require a 36-month minimum term and a refundable deposit equal to two months of fees. Payment terms are net 30; extensions to net 60 require finance approval.",
+      "visibility": "INTERNAL"
+    }
+  ],
+  "icps": [
+    {
+      "name": "Scaling D2C and e-commerce brands",
+      "description": "Funded D2C brands, marketplaces and quick-commerce players shipping 5,000–200,000 orders a day that are opening or automating fulfilment centres.",
+      "criteria": {
+        "industries": ["E-commerce", "Retail", "FMCG"],
+        "companySize": { "minEmployees": 50, "maxEmployees": 10000 },
+        "revenueBand": "INR 50 crore – 5,000 crore",
+        "geographies": ["India", "Indonesia", "Thailand", "UAE"],
+        "personas": ["VP Supply Chain", "Head of Warehousing", "Chief Operating Officer", "Fulfilment Operations Manager"],
+        "painPoints": ["Manual picking limits throughput", "Missed next-day delivery promises", "Festive peak capacity crunch"],
+        "keywords": ["fulfilment centre", "funding", "d2c", "dark store", "festive season", "warehouse automation"]
+      }
+    },
+    {
+      "name": "Enterprise FMCG, retail and 3PL networks",
+      "description": "FMCG majors, omnichannel retailers and 3PLs redesigning depot and distribution networks, building mother hubs and needing WMS plus TMS at scale.",
+      "criteria": {
+        "industries": ["FMCG", "Retail", "Logistics"],
+        "companySize": { "minEmployees": 1000 },
+        "revenueBand": "INR 1,000 crore+",
+        "geographies": ["India", "UAE", "Singapore", "United Kingdom"],
+        "personas": ["Chief Supply Chain Officer", "Director – Logistics Technology", "Head of Warehousing"],
+        "painPoints": ["Too many depots with poor utilisation", "High primary freight costs", "Legacy WMS without automation"],
+        "keywords": ["distribution centre", "mother hub", "logistics park", "sq ft", "transport management"]
+      }
+    },
+    {
+      "name": "Cold-chain, pharma and port operators",
+      "description": "Cold-chain 3PLs, dairy and frozen-food companies, pharma distributors and port/ICD operators investing in temperature-controlled or multimodal capacity.",
+      "criteria": {
+        "industries": ["Cold Chain", "Pharma", "Ports & Shipping"],
+        "companySize": { "minEmployees": 200 },
+        "geographies": ["India", "UAE", "Singapore", "Thailand"],
+        "personas": ["Chief Operating Officer", "Head of Cold Chain / Quality", "Head of Terminal Technology"],
+        "painPoints": ["Temperature excursions and spoilage", "Audit gaps in GDP compliance", "Yard and gate congestion"],
+        "keywords": ["cold chain", "reefer", "temperature-controlled", "icd", "container terminal", "bonded warehouse"]
+      }
+    }
+  ],
+  "customSignals": [
+    {
+      "name": "Quick-commerce dark store expansion",
+      "description": "A quick-commerce player or retailer opens or plans a batch of dark stores or micro-fulfilment sites, needing store-picking workflows, replenishment and rider routing.",
+      "matchInstructions": "Match when a quick-commerce startup, grocery app or retailer announces a specific number of new dark stores or micro-fulfilment centres, city launches for 10–30 minute delivery, or funding explicitly tied to dark store expansion. Do NOT match rider welfare or marketing news, store closures, or restaurant cloud kitchens.",
+      "keywords": ["dark store", "quick commerce", "quick-commerce", "10-minute delivery", "micro-fulfilment", "q-commerce"],
+      "negativeKeywords": ["cloud kitchen", "store closures", "sponsor"],
+      "weight": 1.3,
+      "icpIndex": 0
+    },
+    {
+      "name": "Supply chain leadership change",
+      "description": "A target account appoints a new supply chain, logistics or warehousing leader, who typically reviews vendors and launches transformation programmes within the first year.",
+      "matchInstructions": "Match when a retailer, brand, FMCG company, 3PL or distributor appoints a new Chief Supply Chain Officer, VP Supply Chain, Head of Logistics or similar leader, especially when a supply chain transformation is mentioned. Do NOT match board appointments, finance or marketing hires, or executive departures without a named successor.",
+      "keywords": ["appointed", "chief supply chain officer", "head of logistics", "vp supply chain", "supply chain transformation", "joins from"],
+      "negativeKeywords": ["resigns", "board of directors", "independent director"],
+      "weight": 0.9,
+      "icpIndex": 1
+    }
+  ],
+  "users": [
+    { "name": "Rohit Bhardwaj", "email": "admin@cargolane.local", "role": "ORG_ADMIN" },
+    { "name": "Shreya Kapadia", "email": "manager@cargolane.local", "role": "SALES_MANAGER" },
+    { "name": "Imran Sheikh", "email": "sdr1@cargolane.local", "role": "SDR" }
+  ],
+  "documents": [
+    { "file": "brochure.md", "title": "Cargolane Platform Overview", "visibility": "PUBLIC", "asPdf": true },
+    { "file": "raas-pricing.md", "title": "Robotics-as-a-Service Pricing (Internal)", "visibility": "INTERNAL", "asPdf": true },
+    { "file": "case-study-d2c.md", "title": "Case Study: 3x Order Throughput for a D2C Brand", "visibility": "PUBLIC", "asPdf": false }
+  ]
+}

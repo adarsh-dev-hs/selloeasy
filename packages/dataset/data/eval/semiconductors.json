@@ -1,0 +1,14 @@
+[
+  { "eventExternalId": "sem-001", "orgSlug": "nanoforge-semiconductor", "expectedSignals": ["New Fab or OSAT Plant Announcement"] },
+  { "eventExternalId": "sem-002", "orgSlug": "nanoforge-semiconductor", "expectedSignals": ["Semiconductor Incentive Approval", "New Fab or OSAT Plant Announcement"] },
+  { "eventExternalId": "sem-007", "orgSlug": "nanoforge-semiconductor", "expectedSignals": ["Chip & Hardware Startup Funding Round"] },
+  { "eventExternalId": "sem-008", "orgSlug": "nanoforge-semiconductor", "expectedSignals": ["Chip Design Centre Opening"] },
+  { "eventExternalId": "sem-009", "orgSlug": "nanoforge-semiconductor", "expectedSignals": ["EV & 5G OEM Power Electronics Sourcing"] },
+  { "eventExternalId": "sem-015", "orgSlug": "nanoforge-semiconductor", "expectedSignals": ["Solar Inverter Capacity Expansion"] },
+  { "eventExternalId": "sem-020", "orgSlug": "nanoforge-semiconductor", "expectedSignals": ["Electronics Supply-Chain Localization Deal"] },
+  { "eventExternalId": "sem-019", "orgSlug": "nanoforge-semiconductor", "expectedSignals": ["Data-Center Power Hardware Build-out", "EV & 5G OEM Power Electronics Sourcing"] },
+  { "eventExternalId": "sem-037", "orgSlug": "nanoforge-semiconductor", "expectedSignals": [] },
+  { "eventExternalId": "sem-045", "orgSlug": "nanoforge-semiconductor", "expectedSignals": [] },
+  { "eventExternalId": "sem-046", "orgSlug": "nanoforge-semiconductor", "expectedSignals": [] },
+  { "eventExternalId": "sem-048", "orgSlug": "nanoforge-semiconductor", "expectedSignals": [] }
+]

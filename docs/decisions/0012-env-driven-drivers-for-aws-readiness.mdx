@@ -1,0 +1,54 @@
+---
+title: ADR-0012 — Environment-driven drivers for AWS readiness
+description: One validated env schema and driver switches (storage, mail, secrets, TLS) let the same images run locally and on AWS without code branches.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+The platform is evaluated locally with Docker Compose (Postgres, Redis, MinIO, Mailpit) but targets AWS (RDS,
+ElastiCache, S3, SES, Secrets Manager, ECS). The goal is **deploy-ready**: going live should only require filling in
+AWS configuration and running one command. Separate code paths for "local" and "cloud" drift apart and hide bugs
+until deployment.
+
+## Decision
+
+1. **One schema for all configuration.** Every key is declared once in `packages/shared/src/env.ts`: a runtime schema
+   for the apps and a deploy schema for the infrastructure tooling. It is validated at boot with conditional rules
+   (e.g. `MAIL_DRIVER=ses` requires `SES_REGION`). One `.env.example` lists every key.
+2. **One loader.** Only `@selloeasy/core`'s `getConfig()` / `initConfig()` read `process.env`. The loader can pull a
+   JSON secret from **AWS Secrets Manager** (`SECRETS_SOURCE=aws-secrets-manager`) before validating.
+3. **Driver switches instead of branches:**
+   - `STORAGE_DRIVER=minio|s3`: one S3 client. MinIO uses an endpoint, path-style URLs and static keys. S3 uses the
+     default credential chain (the ECS task role).
+   - `MAIL_DRIVER=smtp|ses`: Nodemailer or SES v2 behind a `MailProvider` interface.
+   - `SECRETS_SOURCE=env|aws-secrets-manager`.
+   - `DATABASE_SSL` (+ `DATABASE_SSL_CA_FILE`, with the RDS CA bundle baked into the images) and `REDIS_TLS` /
+     `rediss://`.
+   - `TRUST_PROXY`, `COOKIE_SECURE`, `APP_ENV` for proxy awareness, cookie security and environment-specific safety
+     rails.
+4. **Same images everywhere.** Compose overrides only container-network hostnames. ECS injects different values into
+   the same images.
+
+## Consequences
+
+- The AWS code paths (S3 client, SES client, Secrets Manager loader, TLS) are exercised by the same code that runs
+  locally. Only the driver choice differs.
+- Misconfiguration fails fast at boot with a precise list of keys.
+- Operators have one place to look for every setting ([Environment variables](/docs/getting-started/environment-variables)).
+- A thin abstraction layer (`StorageProvider`, `MailProvider`) and a larger config surface.
+- A few keys are validated but not yet used by the code (`JWT_REFRESH_SECRET`, `LEADS_PAGE_SIZE_DEFAULT`,
+  `OTEL_*`). They are documented as reserved.
+
+## Alternatives considered
+
+- **Separate config files per environment** (`config.local.ts`, `config.aws.ts`): easy to diverge and hard to validate.
+- **LocalStack for AWS services locally**: closer to AWS, but heavier and slower, and it still needs driver-level
+  switches for real SMTP testing.
+- **Code branches on `NODE_ENV`**: hides cloud-only paths from local testing.
+
+## Revisit when
+
+- A second cloud provider is needed (add drivers, keep the pattern).
+- The config surface becomes hard to manage. Consider grouping into typed sections or a config service.

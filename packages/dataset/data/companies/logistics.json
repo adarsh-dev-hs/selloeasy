@@ -1,0 +1,844 @@
+[
+  {
+    "key": "log-urbanthread",
+    "name": "UrbanThread Apparel",
+    "domain": "urbanthread.example",
+    "industry": "E-commerce",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 640,
+    "description": "Bengaluru-based direct-to-consumer fashion label selling casualwear and denim online and through its own app, shipping roughly 45,000 orders a day across India.",
+    "contacts": [
+      {
+        "name": "Ritika Menon",
+        "title": "VP Supply Chain",
+        "persona": "Supply chain leader",
+        "seniority": "VP",
+        "email": "ritika.menon@urbanthread.example",
+        "phone": "+919000040001",
+        "whatsapp": "+919000040001",
+        "linkedinUrl": "https://linkedin.example/in/ritika-menon-urbanthread"
+      },
+      {
+        "name": "Arjun Kulkarni",
+        "title": "Fulfilment Operations Manager",
+        "persona": "Fulfilment operator",
+        "seniority": "Manager",
+        "email": "arjun.kulkarni@urbanthread.example",
+        "phone": "+919000040002",
+        "whatsapp": "+919000040002",
+        "linkedinUrl": "https://linkedin.example/in/arjun-kulkarni-urbanthread"
+      }
+    ]
+  },
+  {
+    "key": "log-glowroot",
+    "name": "GlowRoot Naturals",
+    "domain": "glowroot.example",
+    "industry": "E-commerce",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 420,
+    "description": "Mumbai-headquartered D2C skincare and personal-care brand with a fast-growing marketplace and modern-trade presence.",
+    "contacts": [
+      {
+        "name": "Sneha Iyer",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "sneha.iyer@glowroot.example",
+        "phone": "+919000040003",
+        "whatsapp": "+919000040003",
+        "linkedinUrl": "https://linkedin.example/in/sneha-iyer-glowroot"
+      },
+      {
+        "name": "Faisal Qureshi",
+        "title": "Head of Warehousing",
+        "persona": "Warehouse leader",
+        "seniority": "Director",
+        "email": "faisal.qureshi@glowroot.example",
+        "phone": "+919000040004",
+        "whatsapp": "+919000040004",
+        "linkedinUrl": "https://linkedin.example/in/faisal-qureshi-glowroot"
+      }
+    ]
+  },
+  {
+    "key": "log-kiranadash",
+    "name": "KiranaDash",
+    "domain": "kiranadash.example",
+    "industry": "E-commerce",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3200,
+    "description": "Quick-commerce startup delivering groceries and essentials in under 15 minutes from a network of dark stores across nine Indian cities.",
+    "contacts": [
+      {
+        "name": "Vikram Sethi",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "vikram.sethi@kiranadash.example",
+        "phone": "+919000040005",
+        "whatsapp": "+919000040005",
+        "linkedinUrl": "https://linkedin.example/in/vikram-sethi-kiranadash"
+      },
+      {
+        "name": "Neha Bansal",
+        "title": "Director – Logistics Technology",
+        "persona": "Logistics technology leader",
+        "seniority": "Director",
+        "email": "neha.bansal@kiranadash.example",
+        "phone": "+919000040006",
+        "whatsapp": "+919000040006",
+        "linkedinUrl": "https://linkedin.example/in/neha-bansal-kiranadash"
+      },
+      {
+        "name": "Rohan D'Souza",
+        "title": "Head of Dark Store Operations",
+        "persona": "Fulfilment operator",
+        "seniority": "Director",
+        "email": "rohan.dsouza@kiranadash.example",
+        "phone": "+919000040007",
+        "whatsapp": "+919000040007",
+        "linkedinUrl": "https://linkedin.example/in/rohan-dsouza-kiranadash"
+      }
+    ]
+  },
+  {
+    "key": "log-bazaarly",
+    "name": "Bazaarly Marketplace",
+    "domain": "bazaarly.example",
+    "industry": "E-commerce",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 7800,
+    "description": "Value-focused online marketplace serving Tier-2 and Tier-3 India with fashion, home and electronics from over 60,000 sellers.",
+    "contacts": [
+      {
+        "name": "Anand Raghavan",
+        "title": "VP Supply Chain",
+        "persona": "Supply chain leader",
+        "seniority": "VP",
+        "email": "anand.raghavan@bazaarly.example",
+        "phone": "+919000040008",
+        "whatsapp": "+919000040008",
+        "linkedinUrl": "https://linkedin.example/in/anand-raghavan-bazaarly"
+      },
+      {
+        "name": "Pooja Chatterjee",
+        "title": "Director – Logistics Technology",
+        "persona": "Logistics technology leader",
+        "seniority": "Director",
+        "email": "pooja.chatterjee@bazaarly.example",
+        "phone": "+919000040009",
+        "whatsapp": "+919000040009",
+        "linkedinUrl": "https://linkedin.example/in/pooja-chatterjee-bazaarly"
+      }
+    ]
+  },
+  {
+    "key": "log-trendwell",
+    "name": "Trendwell Retail",
+    "domain": "trendwell.example",
+    "industry": "Retail",
+    "hqCountry": "IN",
+    "sizeBand": "10000+",
+    "employees": 14500,
+    "description": "Omnichannel lifestyle and home retailer operating 380 stores and a growing online business across India.",
+    "contacts": [
+      {
+        "name": "Suresh Natarajan",
+        "title": "Chief Supply Chain Officer",
+        "persona": "Supply chain leader",
+        "seniority": "C-Level",
+        "email": "suresh.natarajan@trendwell.example",
+        "phone": "+919000040010",
+        "whatsapp": "+919000040010",
+        "linkedinUrl": "https://linkedin.example/in/suresh-natarajan-trendwell"
+      },
+      {
+        "name": "Kavya Reddy",
+        "title": "Head of Warehousing",
+        "persona": "Warehouse leader",
+        "seniority": "Director",
+        "email": "kavya.reddy@trendwell.example",
+        "phone": "+919000040011",
+        "whatsapp": "+919000040011",
+        "linkedinUrl": "https://linkedin.example/in/kavya-reddy-trendwell"
+      }
+    ]
+  },
+  {
+    "key": "log-harvestbowl",
+    "name": "HarvestBowl Foods",
+    "domain": "harvestbowl.example",
+    "industry": "FMCG",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2600,
+    "description": "Packaged foods company making ready-to-cook meals, frozen snacks and breakfast cereals, distributed through general trade, modern trade and e-commerce.",
+    "contacts": [
+      {
+        "name": "Manoj Agarwal",
+        "title": "VP Supply Chain",
+        "persona": "Supply chain leader",
+        "seniority": "VP",
+        "email": "manoj.agarwal@harvestbowl.example",
+        "phone": "+919000040012",
+        "whatsapp": "+919000040012",
+        "linkedinUrl": "https://linkedin.example/in/manoj-agarwal-harvestbowl"
+      },
+      {
+        "name": "Divya Pillai",
+        "title": "Distribution Planning Manager",
+        "persona": "Distribution planner",
+        "seniority": "Manager",
+        "email": "divya.pillai@harvestbowl.example",
+        "phone": "+919000040013",
+        "whatsapp": "+919000040013",
+        "linkedinUrl": "https://linkedin.example/in/divya-pillai-harvestbowl"
+      }
+    ]
+  },
+  {
+    "key": "log-sundhara",
+    "name": "Sundhara Consumer Products",
+    "domain": "sundhara.example",
+    "industry": "FMCG",
+    "hqCountry": "IN",
+    "sizeBand": "10000+",
+    "employees": 18000,
+    "description": "Diversified FMCG major in home care, personal care and packaged beverages with 22 factories and more than 40 depots nationwide.",
+    "contacts": [
+      {
+        "name": "Rajesh Khanna",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "rajesh.khanna@sundhara.example",
+        "phone": "+919000040014",
+        "whatsapp": "+919000040014",
+        "linkedinUrl": "https://linkedin.example/in/rajesh-khanna-sundhara"
+      },
+      {
+        "name": "Meera Joshi",
+        "title": "Director – Logistics Technology",
+        "persona": "Logistics technology leader",
+        "seniority": "Director",
+        "email": "meera.joshi@sundhara.example",
+        "phone": "+919000040015",
+        "whatsapp": "+919000040015",
+        "linkedinUrl": "https://linkedin.example/in/meera-joshi-sundhara"
+      },
+      {
+        "name": "Abhishek Tiwari",
+        "title": "Head of Warehousing",
+        "persona": "Warehouse leader",
+        "seniority": "Director",
+        "email": "abhishek.tiwari@sundhara.example",
+        "phone": "+919000040016",
+        "whatsapp": "+919000040016",
+        "linkedinUrl": "https://linkedin.example/in/abhishek-tiwari-sundhara"
+      }
+    ]
+  },
+  {
+    "key": "log-movelinx",
+    "name": "MoveLinx 3PL",
+    "domain": "movelinx.example",
+    "industry": "Logistics",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 6200,
+    "description": "Third-party logistics provider running 9 million sq ft of contract warehousing and line-haul transport for consumer, retail and auto clients.",
+    "contacts": [
+      {
+        "name": "Harpreet Singh",
+        "title": "Chief Executive Officer",
+        "persona": "Business owner",
+        "seniority": "C-Level",
+        "email": "harpreet.singh@movelinx.example",
+        "phone": "+919000040017",
+        "whatsapp": "+919000040017",
+        "linkedinUrl": "https://linkedin.example/in/harpreet-singh-movelinx"
+      },
+      {
+        "name": "Lakshmi Venkatesh",
+        "title": "VP Solutions Design",
+        "persona": "Solutions architect",
+        "seniority": "VP",
+        "email": "lakshmi.venkatesh@movelinx.example",
+        "phone": "+919000040018",
+        "whatsapp": "+919000040018",
+        "linkedinUrl": "https://linkedin.example/in/lakshmi-venkatesh-movelinx"
+      }
+    ]
+  },
+  {
+    "key": "log-stackwell",
+    "name": "Stackwell Warehousing Parks",
+    "domain": "stackwell.example",
+    "industry": "Logistics",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 380,
+    "description": "Developer and operator of Grade A industrial and logistics parks leased to e-commerce, FMCG and 3PL occupiers.",
+    "contacts": [
+      {
+        "name": "Nikhil Mehra",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "nikhil.mehra@stackwell.example",
+        "phone": "+919000040019",
+        "whatsapp": "+919000040019",
+        "linkedinUrl": "https://linkedin.example/in/nikhil-mehra-stackwell"
+      },
+      {
+        "name": "Ayesha Khan",
+        "title": "Director – Tenant Solutions",
+        "persona": "Partnerships leader",
+        "seniority": "Director",
+        "email": "ayesha.khan@stackwell.example",
+        "phone": "+919000040020",
+        "whatsapp": "+919000040020",
+        "linkedinUrl": "https://linkedin.example/in/ayesha-khan-stackwell"
+      }
+    ]
+  },
+  {
+    "key": "log-kaverigateway",
+    "name": "Kaveri Gateway Ports",
+    "domain": "kaverigateway.example",
+    "industry": "Ports & Shipping",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2100,
+    "description": "Private port operator running a deep-water multipurpose port and container terminal on India's south-east coast.",
+    "contacts": [
+      {
+        "name": "Srinivas Rao",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "srinivas.rao@kaverigateway.example",
+        "phone": "+919000040021",
+        "whatsapp": "+919000040021",
+        "linkedinUrl": "https://linkedin.example/in/srinivas-rao-kaverigateway"
+      },
+      {
+        "name": "Priya Subramaniam",
+        "title": "Head of Terminal Technology",
+        "persona": "Logistics technology leader",
+        "seniority": "Director",
+        "email": "priya.subramaniam@kaverigateway.example",
+        "phone": "+919000040022",
+        "whatsapp": "+919000040022",
+        "linkedinUrl": "https://linkedin.example/in/priya-subramaniam-kaverigateway"
+      }
+    ]
+  },
+  {
+    "key": "log-deccanrailport",
+    "name": "Deccan Railport ICD",
+    "domain": "deccanrailport.example",
+    "industry": "Ports & Shipping",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 560,
+    "description": "Operator of inland container depots and rail-linked logistics terminals in Telangana and Maharashtra.",
+    "contacts": [
+      {
+        "name": "Venkat Reddy",
+        "title": "Managing Director",
+        "persona": "Business owner",
+        "seniority": "C-Level",
+        "email": "venkat.reddy@deccanrailport.example",
+        "phone": "+919000040023",
+        "whatsapp": "+919000040023",
+        "linkedinUrl": "https://linkedin.example/in/venkat-reddy-deccanrailport"
+      },
+      {
+        "name": "Swati Deshpande",
+        "title": "Terminal Operations Manager",
+        "persona": "Terminal operator",
+        "seniority": "Manager",
+        "email": "swati.deshpande@deccanrailport.example",
+        "phone": "+919000040024",
+        "whatsapp": "+919000040024",
+        "linkedinUrl": "https://linkedin.example/in/swati-deshpande-deccanrailport"
+      }
+    ]
+  },
+  {
+    "key": "log-frostline",
+    "name": "Frostline Cold Logistics",
+    "domain": "frostline.example",
+    "industry": "Cold Chain",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 1900,
+    "description": "Temperature-controlled warehousing and reefer transport company serving dairy, frozen foods, QSR and pharma customers.",
+    "contacts": [
+      {
+        "name": "Karthik Narayan",
+        "title": "Chief Executive Officer",
+        "persona": "Business owner",
+        "seniority": "C-Level",
+        "email": "karthik.narayan@frostline.example",
+        "phone": "+919000040025",
+        "whatsapp": "+919000040025",
+        "linkedinUrl": "https://linkedin.example/in/karthik-narayan-frostline"
+      },
+      {
+        "name": "Shalini Gupta",
+        "title": "VP Operations",
+        "persona": "Operations executive",
+        "seniority": "VP",
+        "email": "shalini.gupta@frostline.example",
+        "phone": "+919000040026",
+        "whatsapp": "+919000040026",
+        "linkedinUrl": "https://linkedin.example/in/shalini-gupta-frostline"
+      }
+    ]
+  },
+  {
+    "key": "log-remedix",
+    "name": "Remedix Pharma Distribution",
+    "domain": "remedix.example",
+    "industry": "Pharma",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2400,
+    "description": "Pharmaceutical distributor supplying 28,000 pharmacies, hospitals and clinics across western and central India.",
+    "contacts": [
+      {
+        "name": "Dr. Sanjay Kapoor",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "sanjay.kapoor@remedix.example",
+        "phone": "+919000040027",
+        "whatsapp": "+919000040027",
+        "linkedinUrl": "https://linkedin.example/in/sanjay-kapoor-remedix"
+      },
+      {
+        "name": "Ananya Bhatt",
+        "title": "Head of Warehousing",
+        "persona": "Warehouse leader",
+        "seniority": "Director",
+        "email": "ananya.bhatt@remedix.example",
+        "phone": "+919000040028",
+        "whatsapp": "+919000040028",
+        "linkedinUrl": "https://linkedin.example/in/ananya-bhatt-remedix"
+      }
+    ]
+  },
+  {
+    "key": "log-swiftbasket",
+    "name": "Swiftbasket",
+    "domain": "swiftbasket.example",
+    "industry": "E-commerce",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2900,
+    "description": "Quick-commerce grocery and pharmacy delivery app operating micro-fulfilment dark stores in Pune, Hyderabad and Chennai.",
+    "contacts": [
+      {
+        "name": "Aditya Malhotra",
+        "title": "Co-founder & COO",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "aditya.malhotra@swiftbasket.example",
+        "phone": "+919000040029",
+        "whatsapp": "+919000040029",
+        "linkedinUrl": "https://linkedin.example/in/aditya-malhotra-swiftbasket"
+      },
+      {
+        "name": "Farah Siddiqui",
+        "title": "Fulfilment Operations Manager",
+        "persona": "Fulfilment operator",
+        "seniority": "Manager",
+        "email": "farah.siddiqui@swiftbasket.example",
+        "phone": "+919000040030",
+        "whatsapp": "+919000040030",
+        "linkedinUrl": "https://linkedin.example/in/farah-siddiqui-swiftbasket"
+      }
+    ]
+  },
+  {
+    "key": "log-homenest",
+    "name": "HomeNest Furnishings",
+    "domain": "homenest.example",
+    "industry": "E-commerce",
+    "hqCountry": "IN",
+    "sizeBand": "51-200",
+    "employees": 180,
+    "description": "D2C furniture and home-furnishings brand selling modular sofas, mattresses and decor online with next-day delivery in metros.",
+    "contacts": [
+      {
+        "name": "Ishaan Chopra",
+        "title": "Founder & CEO",
+        "persona": "Business owner",
+        "seniority": "C-Level",
+        "email": "ishaan.chopra@homenest.example",
+        "phone": "+919000040031",
+        "whatsapp": "+919000040031",
+        "linkedinUrl": "https://linkedin.example/in/ishaan-chopra-homenest"
+      },
+      {
+        "name": "Tanvi Shah",
+        "title": "Head of Supply Chain",
+        "persona": "Supply chain leader",
+        "seniority": "Director",
+        "email": "tanvi.shah@homenest.example",
+        "phone": "+919000040032",
+        "whatsapp": "+919000040032",
+        "linkedinUrl": "https://linkedin.example/in/tanvi-shah-homenest"
+      }
+    ]
+  },
+  {
+    "key": "log-voltcart",
+    "name": "VoltCart Electronics",
+    "domain": "voltcart.example",
+    "industry": "Retail",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 3400,
+    "description": "Consumer-electronics retail chain with 210 stores and an online storefront offering same-city delivery and installation.",
+    "contacts": [
+      {
+        "name": "Gaurav Saxena",
+        "title": "VP Supply Chain",
+        "persona": "Supply chain leader",
+        "seniority": "VP",
+        "email": "gaurav.saxena@voltcart.example",
+        "phone": "+919000040033",
+        "whatsapp": "+919000040033",
+        "linkedinUrl": "https://linkedin.example/in/gaurav-saxena-voltcart"
+      },
+      {
+        "name": "Rekha Menon",
+        "title": "Fulfilment Operations Manager",
+        "persona": "Fulfilment operator",
+        "seniority": "Manager",
+        "email": "rekha.menon@voltcart.example",
+        "phone": "+919000040034",
+        "whatsapp": "+919000040034",
+        "linkedinUrl": "https://linkedin.example/in/rekha-menon-voltcart"
+      }
+    ]
+  },
+  {
+    "key": "log-gauvika",
+    "name": "Gauvika Dairy",
+    "domain": "gauvika.example",
+    "industry": "FMCG",
+    "hqCountry": "IN",
+    "sizeBand": "1001-5000",
+    "employees": 2700,
+    "description": "Farmer-owned dairy brand processing 1.8 million litres of milk per day, selling milk, curd, paneer and ice cream across four states.",
+    "contacts": [
+      {
+        "name": "Ramesh Patil",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "ramesh.patil@gauvika.example",
+        "phone": "+919000040035",
+        "whatsapp": "+919000040035",
+        "linkedinUrl": "https://linkedin.example/in/ramesh-patil-gauvika"
+      },
+      {
+        "name": "Sunita Yadav",
+        "title": "Head of Distribution",
+        "persona": "Distribution planner",
+        "seniority": "Director",
+        "email": "sunita.yadav@gauvika.example",
+        "phone": "+919000040036",
+        "whatsapp": "+919000040036",
+        "linkedinUrl": "https://linkedin.example/in/sunita-yadav-gauvika"
+      }
+    ]
+  },
+  {
+    "key": "log-gulfbridge",
+    "name": "GulfBridge Trading",
+    "domain": "gulfbridge.example",
+    "industry": "Logistics",
+    "hqCountry": "AE",
+    "sizeBand": "201-1000",
+    "employees": 650,
+    "description": "Dubai-based trading and distribution house re-exporting consumer goods and food products to the GCC, East Africa and South Asia.",
+    "contacts": [
+      {
+        "name": "Omar Al Mansoori",
+        "title": "Chief Executive Officer",
+        "persona": "Business owner",
+        "seniority": "C-Level",
+        "email": "omar.mansoori@gulfbridge.example",
+        "phone": "+971500040037",
+        "whatsapp": "+971500040037",
+        "linkedinUrl": "https://linkedin.example/in/omar-al-mansoori-gulfbridge"
+      },
+      {
+        "name": "Deepa Nair",
+        "title": "Head of Warehousing",
+        "persona": "Warehouse leader",
+        "seniority": "Director",
+        "email": "deepa.nair@gulfbridge.example",
+        "phone": "+971500040038",
+        "whatsapp": "+971500040038",
+        "linkedinUrl": "https://linkedin.example/in/deepa-nair-gulfbridge"
+      }
+    ]
+  },
+  {
+    "key": "log-straitsfreight",
+    "name": "Straits Freightways",
+    "domain": "straitsfreight.example",
+    "industry": "Logistics",
+    "hqCountry": "SG",
+    "sizeBand": "1001-5000",
+    "employees": 1500,
+    "description": "Singapore-headquartered freight forwarder and contract logistics provider with bonded facilities in Singapore, Malaysia and India.",
+    "contacts": [
+      {
+        "name": "Daniel Tan",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "daniel.tan@straitsfreight.example",
+        "phone": "+659000040039",
+        "whatsapp": "+659000040039",
+        "linkedinUrl": "https://linkedin.example/in/daniel-tan-straitsfreight"
+      },
+      {
+        "name": "Mei Ling Goh",
+        "title": "Director – Logistics Technology",
+        "persona": "Logistics technology leader",
+        "seniority": "Director",
+        "email": "mei.goh@straitsfreight.example",
+        "phone": "+659000040040",
+        "whatsapp": "+659000040040",
+        "linkedinUrl": "https://linkedin.example/in/mei-ling-goh-straitsfreight"
+      }
+    ]
+  },
+  {
+    "key": "log-nusantara",
+    "name": "Nusantara Commerce",
+    "domain": "nusantara.example",
+    "industry": "E-commerce",
+    "hqCountry": "ID",
+    "sizeBand": "1001-5000",
+    "employees": 2200,
+    "description": "Jakarta-based online marketplace for home, beauty and grocery serving shoppers across Java and Sumatra.",
+    "contacts": [
+      {
+        "name": "Budi Santoso",
+        "title": "VP Supply Chain",
+        "persona": "Supply chain leader",
+        "seniority": "VP",
+        "email": "budi.santoso@nusantara.example",
+        "phone": "+628110040041",
+        "whatsapp": "+628110040041",
+        "linkedinUrl": "https://linkedin.example/in/budi-santoso-nusantara"
+      },
+      {
+        "name": "Sari Wulandari",
+        "title": "Fulfilment Operations Manager",
+        "persona": "Fulfilment operator",
+        "seniority": "Manager",
+        "email": "sari.wulandari@nusantara.example",
+        "phone": "+628110040042",
+        "whatsapp": "+628110040042",
+        "linkedinUrl": "https://linkedin.example/in/sari-wulandari-nusantara"
+      }
+    ]
+  },
+  {
+    "key": "log-siamfresh",
+    "name": "SiamFresh Retail",
+    "domain": "siamfresh.example",
+    "industry": "Retail",
+    "hqCountry": "TH",
+    "sizeBand": "5001-10000",
+    "employees": 8600,
+    "description": "Thai supermarket and convenience-store operator with 540 outlets and a growing online grocery channel.",
+    "contacts": [
+      {
+        "name": "Somchai Wongsakul",
+        "title": "Chief Supply Chain Officer",
+        "persona": "Supply chain leader",
+        "seniority": "C-Level",
+        "email": "somchai.wongsakul@siamfresh.example",
+        "phone": "+668100040043",
+        "whatsapp": "+668100040043",
+        "linkedinUrl": "https://linkedin.example/in/somchai-wongsakul-siamfresh"
+      },
+      {
+        "name": "Nattaya Srisuk",
+        "title": "Head of Distribution Centres",
+        "persona": "Warehouse leader",
+        "seniority": "Director",
+        "email": "nattaya.srisuk@siamfresh.example",
+        "phone": "+668100040044",
+        "whatsapp": "+668100040044",
+        "linkedinUrl": "https://linkedin.example/in/nattaya-srisuk-siamfresh"
+      }
+    ]
+  },
+  {
+    "key": "log-thameside",
+    "name": "Thameside Home Retail",
+    "domain": "thameside.example",
+    "industry": "Retail",
+    "hqCountry": "GB",
+    "sizeBand": "5001-10000",
+    "employees": 6400,
+    "description": "UK homewares and furniture retailer with 190 stores that sources a large share of its textiles and decor from South Asia.",
+    "contacts": [
+      {
+        "name": "Oliver Bennett",
+        "title": "Director of International Sourcing",
+        "persona": "Sourcing leader",
+        "seniority": "Director",
+        "email": "oliver.bennett@thameside.example",
+        "phone": "+447700004045",
+        "whatsapp": "+447700004045",
+        "linkedinUrl": "https://linkedin.example/in/oliver-bennett-thameside"
+      },
+      {
+        "name": "Hannah Clarke",
+        "title": "VP Supply Chain",
+        "persona": "Supply chain leader",
+        "seniority": "VP",
+        "email": "hannah.clarke@thameside.example",
+        "phone": "+447700004046",
+        "whatsapp": "+447700004046",
+        "linkedinUrl": "https://linkedin.example/in/hannah-clarke-thameside"
+      }
+    ]
+  },
+  {
+    "key": "log-pawpantry",
+    "name": "PawPantry",
+    "domain": "pawpantry.example",
+    "industry": "E-commerce",
+    "hqCountry": "IN",
+    "sizeBand": "51-200",
+    "employees": 150,
+    "description": "D2C pet food and pet-care brand selling fresh and dry food via subscription and its own app in 14 cities.",
+    "contacts": [
+      {
+        "name": "Kunal Arora",
+        "title": "Founder & CEO",
+        "persona": "Business owner",
+        "seniority": "C-Level",
+        "email": "kunal.arora@pawpantry.example",
+        "phone": "+919000040047",
+        "whatsapp": "+919000040047",
+        "linkedinUrl": "https://linkedin.example/in/kunal-arora-pawpantry"
+      },
+      {
+        "name": "Mansi Dutta",
+        "title": "Fulfilment Operations Manager",
+        "persona": "Fulfilment operator",
+        "seniority": "Manager",
+        "email": "mansi.dutta@pawpantry.example",
+        "phone": "+919000040048",
+        "whatsapp": "+919000040048",
+        "linkedinUrl": "https://linkedin.example/in/mansi-dutta-pawpantry"
+      }
+    ]
+  },
+  {
+    "key": "log-terraleaf",
+    "name": "TerraLeaf Organics",
+    "domain": "terraleaf.example",
+    "industry": "FMCG",
+    "hqCountry": "IN",
+    "sizeBand": "201-1000",
+    "employees": 520,
+    "description": "Organic staples, spices and tea company exporting to Europe, the Middle East and North America alongside a domestic retail business.",
+    "contacts": [
+      {
+        "name": "Aravind Krishnan",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "aravind.krishnan@terraleaf.example",
+        "phone": "+919000040049",
+        "whatsapp": "+919000040049",
+        "linkedinUrl": "https://linkedin.example/in/aravind-krishnan-terraleaf"
+      },
+      {
+        "name": "Nisha Thomas",
+        "title": "Export Logistics Manager",
+        "persona": "Export logistics lead",
+        "seniority": "Manager",
+        "email": "nisha.thomas@terraleaf.example",
+        "phone": "+919000040050",
+        "whatsapp": "+919000040050",
+        "linkedinUrl": "https://linkedin.example/in/nisha-thomas-terraleaf"
+      }
+    ]
+  },
+  {
+    "key": "log-medhavi",
+    "name": "Medhavi Hospitals Group",
+    "domain": "medhavi.example",
+    "industry": "Hospitals",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 9200,
+    "description": "Multi-specialty hospital network with 24 hospitals and 140 clinics across north and west India.",
+    "contacts": [
+      {
+        "name": "Dr. Alok Verma",
+        "title": "Chief Operating Officer",
+        "persona": "Operations executive",
+        "seniority": "C-Level",
+        "email": "alok.verma@medhavi.example",
+        "phone": "+919000040051",
+        "whatsapp": "+919000040051",
+        "linkedinUrl": "https://linkedin.example/in/alok-verma-medhavi"
+      }
+    ]
+  },
+  {
+    "key": "log-brightcart",
+    "name": "BrightCart Superstores",
+    "domain": "brightcart.example",
+    "industry": "Retail",
+    "hqCountry": "IN",
+    "sizeBand": "5001-10000",
+    "employees": 7100,
+    "description": "Hypermarket and supermarket chain with 160 stores in south India and an app-based home delivery service.",
+    "contacts": [
+      {
+        "name": "Prakash Iyengar",
+        "title": "VP Supply Chain",
+        "persona": "Supply chain leader",
+        "seniority": "VP",
+        "email": "prakash.iyengar@brightcart.example",
+        "phone": "+919000040052",
+        "whatsapp": "+919000040052",
+        "linkedinUrl": "https://linkedin.example/in/prakash-iyengar-brightcart"
+      },
+      {
+        "name": "Joanna Fernandes",
+        "title": "Head of Warehousing",
+        "persona": "Warehouse leader",
+        "seniority": "Director",
+        "email": "joanna.fernandes@brightcart.example",
+        "phone": "+919000040053",
+        "whatsapp": "+919000040053",
+        "linkedinUrl": "https://linkedin.example/in/joanna-fernandes-brightcart"
+      }
+    ]
+  }
+]

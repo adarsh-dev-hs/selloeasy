@@ -1,0 +1,128 @@
+---
+title: Audit trail
+description: Who did what, when, to which record and from where — what is logged, PLATFORM versus ORG scope, explicit entries and the safety net, field-level diffs with redaction, the append-only trigger, retention and the audit views.
+---
+
+Every mutating action in SelloEasy is recorded in `audit_logs`, an **append-only** table. The trail answers
+"who did what, when, to which record, and from where".
+
+## Anatomy of an entry
+
+| Column                           | Meaning                                                                                 |
+| -------------------------------- | --------------------------------------------------------------------------------------- |
+| `id`                             | `bigserial`, monotonically increasing                                                   |
+| `occurred_at`                    | Timestamp (defaults to now)                                                             |
+| `scope`                          | `PLATFORM` or `ORG` (see below)                                                         |
+| `org_id`                         | The org concerned (nullable, e.g. failed logins, template changes)                      |
+| `actor_user_id`, `actor_role`    | Who did it. Null actor = the system (pipeline, worker jobs).                            |
+| `action`                         | Dotted verb, e.g. `lead.stage_changed`                                                  |
+| `entity_type`, `entity_id`       | What it was done to                                                                     |
+| `before`, `after`                | Field-level **diff** (JSONB)                                                            |
+| `ip`, `user_agent`, `request_id` | Where from. The request id matches the API logs and the `x-request-id` response header. |
+
+The table has **no foreign keys** on purpose: audit rows must outlive deleted users, leads and orgs.
+
+## How entries are written
+
+1. **Explicit entries.** Route handlers call `req.audit({ action, entityType, entityId, before, after }, tx)` for
+   domain events. The helper fills in scope, org, actor, role, IP, user agent and request id from the request.
+   Passing the **transaction** of the change means the audit row commits or rolls back with it: no lost audits
+   and no phantom ones.
+2. **Worker and system entries** call `writeAudit(db, …)` from `@selloeasy/engine` directly (for example
+   `pipeline.run_completed`, `profile.generated`).
+3. **Safety net.** An `onResponse` hook records `http.mutation` (entity type `route`, entity id
+   `"METHOD /route/pattern"`) for any successful `POST`, `PUT`, `PATCH` or `DELETE` that did not record an explicit
+   entry. Excluded: token refresh, outreach drafts, ICP suggestions and upload-URL requests, which change nothing
+   meaningful.
+
+## Diffs and redaction
+
+`diff(before, after)` in `packages/engine/src/audit.ts`:
+
+- stores **only the fields that changed** (a create stores the full `after`, a delete the full `before`);
+- ignores `updatedAt`, `createdAt`, `version` and `tsv`;
+- replaces the values of `password`, `passwordHash`, `password_hash`, `token`, `tokenHash`, `token_hash`,
+  `refreshToken`, `apiKey` and `secret` with `"[redacted]"` at any depth;
+- truncates strings longer than 500 characters;
+- normalizes dates to ISO strings.
+
+Example `lead.stage_changed`:
+
+```json
+{
+  "before": { "stage": "ENGAGED" },
+  "after": { "stage": "LOST", "lostReason": "Chose incumbent vendor", "wonValue": null }
+}
+```
+
+## Scopes
+
+| Scope      | Contents                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Who can read                                                          |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `PLATFORM` | Org lifecycle (`org.created`, `org.updated`, `org.suspended`, `org.reactivated`, `org.activated`, `org.onboarding_started`), Super Admin invites (`invite.sent`, `invite.revoked`), Super Admin actions (`platform.org_viewed`, `signal_template.created`/`updated`), Super Admin logins, authentication security events (`auth.login_failed`, `auth.login_locked`, `auth.refresh_reuse_detected`, `auth.password_reset_requested`, `auth.password_reset`) | Super Admin (`GET /api/v1/platform/audit`, UI `/platform/audit`)      |
+| `ORG`      | Everything inside a tenant: org user logins and logouts, members, invites sent by org admins, knowledge, profile, ICPs, signals, pipeline runs, leads, contacts, notes, tasks, outreach, exports                                                                                                                                                                                                                                                           | Org Admin of that org (`GET /api/v1/audit`, UI `/app/settings/audit`) |
+
+The scope defaults to `PLATFORM` when the actor is a Super Admin and `ORG` otherwise. Handlers override it
+explicitly where needed (e.g. `org.activated` is written in **both** scopes: the org records its activation, and
+the platform sees that an org went live). The Super Admin never sees ORG-scope entries or their diffs
+([ADR-0010](/docs/decisions/0010-superadmin-public-data-boundary)).
+
+## Action catalogue
+
+| Area           | Actions                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Auth           | `auth.login_succeeded`, `auth.login_failed` (with reason), `auth.login_locked`, `auth.logout`, `auth.refresh_reuse_detected`, `auth.password_reset_requested`, `auth.password_reset`, `user.profile_updated`                                                                                                                                                                                                                                                                |
+| Platform       | `org.created`, `org.updated`, `org.suspended`, `org.reactivated`, `invite.sent`, `invite.revoked`, `platform.org_viewed`, `signal_template.created`, `signal_template.updated`                                                                                                                                                                                                                                                                                              |
+| Platform data  | `data.import_uploaded`, `data.import_rejected`, `data.import_validated`, `data.import_commit_requested`, `data.import_committed`, `data.import_discarded`, `data.batch_rolled_back`, `data.fanout_enqueued`, `data.connector_created`, `data.connector_updated`, `data.connector_deleted`, `data.ingestion_requested`, `data.ingestion_started`, `data.ingestion_completed`, `data.ingestion_failed` (all `PLATFORM` scope; see [Platform data](/docs/platform-data#audit)) |
+| Org & members  | `org.updated`, `org.activated`, `org.onboarding_started`, `invite.sent`, `invite.accepted`, `invite.revoked`, `member.role_changed`, `member.updated`                                                                                                                                                                                                                                                                                                                       |
+| Knowledge      | `source.created`, `source.reprocessed`, `source.visibility_changed`, `source.deleted`, `product.*`, `plan.*`, `policy.*` (`created`/`updated`/`deleted`), `profile.generation_requested`, `profile.generated`, `profile.updated`                                                                                                                                                                                                                                            |
+| ICPs & signals | `icp.created`, `icp.accepted`, `icp.updated`, `icp.deleted`, `signal.created`, `signal.updated`, `signal.enabled`, `signal.disabled`, `signal.deleted`, `signal.templates_restored`                                                                                                                                                                                                                                                                                         |
+| Pipeline       | `pipeline.run_requested`, `pipeline.run_completed` (status + stats), `pipeline.run_failed`                                                                                                                                                                                                                                                                                                                                                                                  |
+| Leads & CRM    | `lead.stage_changed`, `lead.assigned`, `lead.claimed`, `lead.updated`, `lead.bulk_assigned`, `lead.bulk_stage_changed`, `lead.rescored`, `lead.exported`, `lead.note_added`, `contact.created`, `contact.updated`, `task.created`, `task.updated`, `task.completed`, `task.deleted`                                                                                                                                                                                         |
+| Outreach       | `outreach.email_sent`, `outreach.whatsapp_logged`, `outreach.call_logged`, `outreach.meeting_logged`                                                                                                                                                                                                                                                                                                                                                                        |
+| Fallback       | `http.mutation`                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+
+## Querying
+
+Both audit endpoints accept the same filters and return a page (`{ items, page, pageSize, total, totalPages }`,
+default page size **25**, max 100), newest first:
+
+| Param                    | Filter                                         |
+| ------------------------ | ---------------------------------------------- |
+| `actorUserId`            | exact actor                                    |
+| `action`                 | **prefix** match, e.g. `lead.` or `auth.login` |
+| `entityType`, `entityId` | exact                                          |
+| `from`, `to`             | `YYYY-MM-DD`, inclusive                        |
+
+Items include the actor's name and email (and the org name on the platform view), plus the diff, IP, user agent
+and request id. In the UI, a row expands to show the diff.
+
+## Append-only integrity
+
+Migration `0001_audit_append_only.sql` installs a `BEFORE UPDATE OR DELETE` trigger on `audit_logs` that raises
+`audit_logs is append-only (UPDATE blocked)` for every update, and for every delete unless the transaction has
+set `selloeasy.audit_retention = 'on'`. The application therefore cannot rewrite history, even through a bug.
+
+<Callout type="info">
+  **Planned hardening:** restrict the application database role to `INSERT, SELECT` on `audit_logs` (plan
+  §15). Today the trigger is the enforcement mechanism, so a database superuser could still drop it.
+</Callout>
+
+## Retention
+
+The worker registers a repeatable job `maintenance.audit-retention` that runs **daily at 03:30** (server time):
+
+```sql
+BEGIN;
+SET LOCAL selloeasy.audit_retention = 'on';   -- only this transaction may delete
+DELETE FROM audit_logs WHERE occurred_at < now() - (AUDIT_RETENTION_DAYS || ' days')::interval;
+COMMIT;
+```
+
+`AUDIT_RETENTION_DAYS` defaults to **365**. The job logs how many rows it deleted. Monthly partitioning is a
+possible future optimization if volume demands it.
+
+## Planned
+
+- CSV export of audit entries (plan §15), not implemented yet.
+- Database role restriction (above).

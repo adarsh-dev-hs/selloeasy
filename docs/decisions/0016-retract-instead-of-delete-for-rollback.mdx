@@ -1,0 +1,53 @@
+---
+title: ADR-0016 — Retract instead of delete; the data source is append/retract only
+description: Rolling back a batch sets retracted_at on its events and on directory rows only it created; nothing is deleted, tenant leads are kept, and stored records are never edited in place.
+---
+
+**Status:** Accepted · **Date:** 2026-09-28
+
+## Context
+
+Imports and ingestion runs can bring in wrong data, so a committed batch must be reversible (plan2 §7.4). By the time
+someone notices, org pipelines may already have matched the events and created leads, evidence and activities in
+tenant tables. Deleting events would cascade into or orphan tenant evidence, and the Super Admin must not touch tenant
+data ([ADR-0010](/docs/decisions/0010-superadmin-public-data-boundary)). Editing records in place would break
+provenance: a lead's evidence would silently change under it.
+
+## Decision
+
+- `POST /platform/data/batches/:id/rollback` (`platform:data:manage`, `COMMITTED` batches only) runs one
+  transaction that sets `retracted_at` on the batch's live events, on directory companies **created** by the batch
+  that no live event still references, and on directory contacts created by the batch; marks the batch `ROLLED_BACK`;
+  and audits `data.batch_rolled_back` with the counts (`rollbackBatch` in `packages/engine/src/data/imports.ts`).
+- Retracted events are excluded when the pipeline loads events, and retracted companies are ignored by account
+  resolution. The explorer hides retracted rows by default (`retracted=include|only` shows them).
+- **Tenant leads, matches, accounts and contacts already created are kept.** They remain valid evidence of what the
+  org saw at the time.
+- The data source is **append/retract only**: no endpoint edits stored events, companies or contacts. Corrections are
+  made by rolling back and re-importing.
+
+## Consequences
+
+- Positive: rollback is instant, reversible in principle (the rows still exist), audited, and never touches tenant
+  tables. Provenance stays intact: every lead's evidence event still exists.
+- Negative: retracted rows keep occupying storage and unique keys. Duplicate detection also matches retracted events,
+  so a corrected record needs a new `external_id` and `source_url`.
+- Negative: orgs keep leads built on data the platform now considers wrong; admins must tell affected orgs (the batch
+  distribution shows which orgs) if that matters.
+- Negative: directory contacts retracted by a rollback can still be copied to a tenant when their company stays live,
+  and are not revived by a later import (see [Known limitations](/docs/limitations#platform-data)).
+
+## Alternatives considered
+
+- **Hard delete with cascade**: removes tenant evidence and breaks the Super Admin boundary.
+- **Hard delete of events only, leaving leads**: leaves dangling evidence and loses the audit story.
+- **In-place edits in the explorer**: convenient, but changes evidence under existing leads and needs field-level
+  versioning to stay auditable.
+- **Also remove leads created from the batch**: would mean the Super Admin mutating tenant data.
+
+## Revisit when
+
+- Retracted rows grow large enough to matter for storage or index size (add an archive/purge job for old retractions).
+- Admins need to re-import corrected versions of the same URLs often (exclude retracted rows from dedupe and relax the
+  unique indexes to partial ones on live rows).
+- Orgs ask to be notified when evidence behind their leads is retracted.

@@ -1,0 +1,114 @@
+[
+  {
+    "industry": "RENEWABLE_ENERGY",
+    "key": "utility_scale_project_awarded",
+    "name": "Utility-Scale Project Awarded",
+    "description": "An IPP, developer or EPC contractor wins a utility-scale solar (or solar-plus-storage) tender, auction or EPC contract, creating near-term demand for central/string inverters, BESS and plant monitoring.",
+    "matchInstructions": "Match when a named company has been awarded, won, or received a letter of award for a grid-connected solar or hybrid project of roughly 20 MW or more, or has been appointed EPC contractor for one, with capacity, site or timeline stated. Also match announced commissioning of a newly won plant still procuring balance-of-system equipment. Do NOT match feasibility studies, expressions of interest, rumoured bids, quarterly results, board changes, or awards/recognition events that do not involve a specific project.",
+    "defaultKeywords": [
+      "mw",
+      "solar",
+      "tender",
+      "awarded",
+      "utility-scale",
+      "solar park",
+      "letter of award",
+      "epc contract",
+      "auction",
+      "commissioning"
+    ],
+    "defaultWeight": 1.5
+  },
+  {
+    "industry": "RENEWABLE_ENERGY",
+    "key": "rooftop_solar_mandate",
+    "name": "Rooftop Solar Mandate or Policy",
+    "description": "A government body, DISCOM or large property owner announces a rooftop solar mandate, net-metering scheme, subsidy or portfolio-wide rooftop programme that will drive C&I inverter and hybrid-inverter purchases.",
+    "matchInstructions": "Match when an event announces a binding rooftop solar mandate, a new or revised net metering / rooftop subsidy scheme, or a named commercial landlord committing to rooftop PV across multiple sites with a stated kWp/MWp size or deadline. Do NOT match generic sustainability statements with no rooftop commitment, consultations still at the draft-comment stage with no timeline, or residential-only consumer offers.",
+    "defaultKeywords": [
+      "rooftop",
+      "rooftop solar",
+      "mandate",
+      "net metering",
+      "kwp",
+      "subsidy",
+      "solar policy",
+      "rooftop pv",
+      "green building"
+    ],
+    "defaultWeight": 1.1
+  },
+  {
+    "industry": "RENEWABLE_ENERGY",
+    "key": "industrial_decarbonisation_pledge",
+    "name": "Industrial Decarbonisation Pledge",
+    "description": "A manufacturer or industrial group commits to net-zero, RE100 or a Scope 2 reduction target backed by captive solar, storage or renewable sourcing plans — a trigger for C&I solar, BESS and energy-management SaaS.",
+    "matchInstructions": "Match when a manufacturing or industrial company publicly sets a dated net-zero, carbon neutral, RE100 or Scope 2 emissions target and names concrete levers such as captive solar, rooftop plants, storage or renewable energy sourcing, ideally with a capex figure. Do NOT match ESG ratings, sustainability awards, CSR tree-planting drives, or reports that restate old targets without new investment.",
+    "defaultKeywords": [
+      "net-zero",
+      "decarbonisation",
+      "decarbonization",
+      "carbon neutral",
+      "scope 2",
+      "re100",
+      "captive solar",
+      "renewable energy",
+      "emissions",
+      "energy transition"
+    ],
+    "defaultWeight": 1.2
+  },
+  {
+    "industry": "RENEWABLE_ENERGY",
+    "key": "data_centre_build_out",
+    "name": "Data Centre Build-Out",
+    "description": "A data-centre operator announces a new campus, expansion or significant IT-load addition, creating demand for battery storage, backup power, on-site solar and energy-management software.",
+    "matchInstructions": "Match when a colocation, hyperscale or enterprise data-centre operator announces a new facility, land acquisition, construction start or expansion with a stated IT load (MW), investment or go-live date, or a tender for backup power / battery storage at a data centre. Do NOT match customer wins, cloud pricing news, cybersecurity incidents, or leadership changes at data-centre companies.",
+    "defaultKeywords": [
+      "data centre",
+      "data center",
+      "hyperscale",
+      "it load",
+      "colocation",
+      "backup power",
+      "battery storage",
+      "uptime"
+    ],
+    "defaultWeight": 1.3
+  },
+  {
+    "industry": "RENEWABLE_ENERGY",
+    "key": "green_hydrogen_project",
+    "name": "Green Hydrogen Project",
+    "description": "A developer or industrial offtaker announces a green hydrogen or green ammonia project that will need dedicated renewable power, storage and power-conversion equipment.",
+    "matchInstructions": "Match when a company announces, reaches financial close on, or receives an allocation for a green hydrogen, green ammonia or electrolyser project with capacity (MW electrolyser or MTPA output), location or dedicated renewable power stated. Do NOT match grey/blue hydrogen, fuel-cell vehicle marketing, academic research grants, or non-binding MoUs with no capacity or site.",
+    "defaultKeywords": [
+      "green hydrogen",
+      "electrolyser",
+      "electrolyzer",
+      "hydrogen",
+      "green ammonia",
+      "mtpa",
+      "renewable power"
+    ],
+    "defaultWeight": 1.2
+  },
+  {
+    "industry": "RENEWABLE_ENERGY",
+    "key": "ppa_signed",
+    "name": "Power Purchase Agreement Signed",
+    "description": "A buyer or generator signs a power purchase agreement (utility, corporate, open access or group captive), locking in a project that must now be built and equipped.",
+    "matchInstructions": "Match when a named company signs a PPA — utility, corporate, group captive or open access — for new solar, wind-solar hybrid or storage-backed capacity, with tariff, term or capacity stated. Do NOT match PPA renegotiation disputes, regulatory tariff petitions without a signed contract, or retail electricity plan changes.",
+    "defaultKeywords": [
+      "ppa",
+      "power purchase agreement",
+      "tariff",
+      "per kwh",
+      "offtake",
+      "wind-solar hybrid",
+      "group captive",
+      "open access"
+    ],
+    "defaultWeight": 1.0
+  }
+]

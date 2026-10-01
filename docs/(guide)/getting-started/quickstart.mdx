@@ -1,0 +1,157 @@
+---
+title: Quickstart
+description: Run the whole platform locally with one Docker Compose command, sign in with the seeded demo accounts and walk through the happy flow.
+---
+
+SelloEasy runs locally as a Docker Compose stack of eight services: Postgres, Redis, MinIO, Mailpit, a one-shot
+`migrate` job, the API, the worker and the web app. You do not need an OpenRouter key to evaluate it. Without
+one, the platform switches to **mock mode** automatically and the seeded data is fully browsable.
+
+## Prerequisites
+
+- Docker Desktop (or Docker Engine) with Compose v2.
+- About 4 GB of free memory for the containers.
+- Optional: an [OpenRouter](https://openrouter.ai) API key if you want live AI calls.
+
+## Run it
+
+<div className="fd-steps">
+<div className="fd-step">
+
+### Create your `.env`
+
+```bash
+cp .env.example .env
+```
+
+The defaults work as-is for local use. To enable live AI, set `OPENROUTER_API_KEY` in `.env`. The model is
+whatever `OPENROUTER_MODEL` says; `.env.example` ships `google/gemini-2.5-flash`. To use OpenAI or Anthropic directly
+instead, set `LLM_PROVIDER` and that provider's key and model in your own `.env`
+([LLM layer & providers](/docs/pipeline/llm-providers#choosing-a-provider)).
+
+</div>
+<div className="fd-step">
+
+### Build and start the stack
+
+```bash
+docker compose up --build
+```
+
+The first build takes a few minutes. Compose starts the infrastructure, waits for it to be healthy, runs the
+`migrate` service (migrations, then the demo seed when `SEED_ON_START=true`) and only then starts `api`,
+`worker` and `web`. The `web` service waits for the API's `/api/ready` healthcheck.
+
+</div>
+<div className="fd-step">
+
+### Open the app
+
+Go to [http://localhost:3000](http://localhost:3000) and sign in with one of the accounts below.
+
+</div>
+</div>
+
+<Callout type="info">
+  With an empty API key for the selected provider (`OPENROUTER_API_KEY` with the default
+  `LLM_PROVIDER=openrouter`) the API and worker log `No API key for the selected LLM provider — …
+  LLM_MODE=mock` and use deterministic fixtures for every prompt. Everything works, including pipeline runs
+  and outreach drafts. The drafts and matches are simply produced by rules instead of a model. To use OpenAI
+  or Anthropic instead, see [LLM layer & providers](/docs/pipeline/llm-providers#choosing-a-provider) and
+  [mock mode](/docs/pipeline/llm-providers#mock-mode).
+</Callout>
+
+## URLs
+
+| What               | URL                                                               | Notes                                                                                      |
+| ------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Web app            | http://localhost:3000                                             | Product UI; `/app/*` for org users, `/platform/*` for the Super Admin                      |
+| Documentation      | http://localhost:3000/docs                                        | This site, inside the web app                                                              |
+| Docs site          | http://localhost:3001                                             | The same docs as a standalone site ([ADR-0019](/docs/decisions/0019-standalone-docs-site)) |
+| API (direct)       | http://localhost:4000                                             | Fastify; all routes under `/api/v1`                                                        |
+| OpenAPI UI         | http://localhost:4000/api/docs                                    | Also reachable through the web proxy at http://localhost:3000/api/docs                     |
+| OpenAPI JSON       | http://localhost:4000/api/docs/json                               | Machine-readable spec                                                                      |
+| Health / readiness | http://localhost:4000/api/health, http://localhost:4000/api/ready | Readiness checks Postgres and Redis and reports the LLM mode                               |
+| Mailpit            | http://localhost:8025                                             | Every email the platform sends (invites, password resets, outreach)                        |
+| MinIO console      | http://localhost:9001                                             | Login `minioadmin` / `minioadmin`; bucket `selloeasy-uploads`                              |
+| Postgres           | `localhost:5432`                                                  | `selloeasy` / `selloeasy`, database `selloeasy`                                            |
+| Redis              | `localhost:6379`                                                  |                                                                                            |
+
+Every published port can be changed without editing the compose file. Set the matching `*_HOST_PORT`
+variable (`WEB_HOST_PORT`, `API_HOST_PORT`, `POSTGRES_HOST_PORT`, `REDIS_HOST_PORT`, `MINIO_HOST_PORT`,
+`MINIO_CONSOLE_HOST_PORT`, `SMTP_HOST_PORT`, `MAILPIT_UI_HOST_PORT`) in `.env` or your shell. See
+[Docker operations](/docs/operations/docker#port-conflicts).
+
+## Demo accounts
+
+All org users share the password **`Password@123`**. The Super Admin uses **`Admin@123`**
+(`SUPERADMIN_EMAIL` / `SUPERADMIN_PASSWORD`).
+
+| Organization             | Industry         | Email                                            | Role          |
+| ------------------------ | ---------------- | ------------------------------------------------ | ------------- |
+| Platform                 | —                | `superadmin@selloeasy.local`                     | Super Admin   |
+| Roadgrip Tyres Ltd.      | Automotive       | `admin@roadgrip.local`                           | Org Admin     |
+|                          |                  | `manager@roadgrip.local`                         | Sales Manager |
+|                          |                  | `sdr1@roadgrip.local`, `sdr2@roadgrip.local`     | SDR           |
+|                          |                  | `viewer@roadgrip.local`                          | Viewer        |
+| MediSphere Diagnostics   | Healthcare       | `admin@medisphere.local`                         | Org Admin     |
+|                          |                  | `sdr1@medisphere.local`, `sdr2@medisphere.local` | SDR           |
+|                          |                  | `viewer@medisphere.local`                        | Viewer        |
+| Nanoforge Semiconductor  | Semiconductors   | `admin@nanoforge.local`                          | Org Admin     |
+|                          |                  | `manager@nanoforge.local`                        | Sales Manager |
+|                          |                  | `sdr1@nanoforge.local`                           | SDR           |
+| Suncrest Energy Systems  | Renewable Energy | `admin@suncrest.local`                           | Org Admin     |
+|                          |                  | `sdr1@suncrest.local`                            | SDR           |
+| Cargolane Logistics Tech | Logistics        | `admin@cargolane.local`                          | Org Admin     |
+|                          |                  | `manager@cargolane.local`                        | Sales Manager |
+|                          |                  | `sdr1@cargolane.local`                           | SDR           |
+
+A sixth organization, **Voltedge Mobility** (Automotive), is seeded in the `INVITED` state to demo onboarding.
+Its admin invite link is deterministic in local mode:
+
+```text
+http://localhost:3000/accept-invite?token=demo-invite-voltedge-mobility-2026-local-only
+```
+
+The invite is for `admin@voltedge.local` and is only created when `APP_ENV=local`. Details are on
+[Seed data & accounts](/docs/getting-started/seed-data-and-accounts).
+
+## First things to try
+
+1. **Work a lead as an SDR.** Sign in as `sdr1@roadgrip.local`, open **Leads**, pick a `HOT` lead and open
+   **Why this score?** to see each BANT+ dimension with its rationale and the evidence events.
+2. **Send a real email.** On a lead you own (or an unassigned one: contacting it claims it for you), choose
+   **Email → Draft with AI**, edit and send. Open [Mailpit](http://localhost:8025) to see the message. The
+   lead moves from `NEW` to `CONTACTED` and an activity plus an audit row are written.
+3. **Log a WhatsApp message, call or meeting.** These open a `wa.me`, `tel:` or Calendly link and ask you to
+   log the outcome. Logging a meeting moves the lead to `MEETING_SCHEDULED`.
+4. **Run the pipeline.** Sign in as `manager@roadgrip.local` (or the admin), open **Pipeline runs** and start a
+   run. Progress streams over Server-Sent Events. Because the seed already evaluated the corpus, a re-run with
+   unchanged signals processes only events that were not evaluated before (see
+   [idempotency](/docs/pipeline/stages#idempotency)).
+5. **Edit a signal.** Change a signal's keywords or match instructions under **Signals** and run again. The
+   changed signal set has a new hash, so events are re-evaluated.
+6. **Check the dashboard and audit log** as `admin@roadgrip.local`: KPIs, funnel, leads by signal, team
+   leaderboard, channel stats, and the org-scope audit log with field-level diffs.
+7. **Act as the Super Admin.** Sign in as `superadmin@selloeasy.local`. Create an organization (the invite
+   email lands in Mailpit, and in local mode the API response also contains the link), view the cross-org
+   dashboard and the platform audit log. Note that the Super Admin **cannot** open any org's leads. That is
+   deliberate ([ADR-0010](/docs/decisions/0010-superadmin-public-data-boundary)).
+8. **Onboard Voltedge Mobility** through the demo invite link above. Add a knowledge source, generate the
+   profile, accept ICPs and activate. Activation queues the first pipeline run.
+
+## Stopping and resetting
+
+```bash
+docker compose down          # stop, keep data volumes
+docker compose down -v       # stop and delete Postgres, Redis and MinIO volumes (full reset)
+```
+
+After `down -v`, the next `up` re-migrates and re-seeds from scratch. The seed is idempotent, so restarting
+without deleting volumes does not duplicate data. See [Runbooks → Resetting demo data](/docs/operations/runbooks#resetting-demo-data).
+
+## Next steps
+
+- [Environment variables](/docs/getting-started/environment-variables): every key the platform reads.
+- [Local development](/docs/getting-started/local-development): run infrastructure in Docker and the apps with hot reload.
+- [Architecture overview](/docs/architecture/overview).

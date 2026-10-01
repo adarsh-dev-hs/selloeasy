@@ -1,0 +1,195 @@
+---
+title: Roles & responsibilities
+description: What the Product Manager, Senior Developer, Developer, Stakeholder and Subject Matter Expert own, decide and deliver on SelloEasy — with a RACI matrix and working agreements.
+---
+
+SelloEasy is delivered by five project roles. Each section below says what the role is for, what it is
+responsible for, what it decides, which repository artifacts it owns, and how its focus changes across the
+[8-week sprint plan](/docs/project/sprint-plan).
+
+<Callout title="Not the in-product roles">
+  These are **delivery-team** roles. The roles users have inside SelloEasy (Super Admin, Org Admin, Sales
+  Manager, SDR, Viewer) are documented in [Roles & permissions](/docs/concepts/roles-and-permissions).
+</Callout>
+
+## At a glance
+
+| Role                                            | One-line purpose                                        | Decides                                                 | Main artifacts                                                                     |
+| ----------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [Product Manager](#product-manager)             | Builds the right thing, in the right order              | Scope, priority, acceptance, release content            | Backlog, `plan.md` / `plan2.md` scope, acceptance criteria, changelog, limitations |
+| [Senior Developer](#senior-developer)           | Builds it right: architecture, quality, security        | Technical design, trade-offs (ADRs), merge approval     | `CLAUDE.md`, ADRs, schema and migrations, CI, infrastructure, LLM layer            |
+| [Developer](#developer)                         | Turns stories into working, tested, documented features | How a story is implemented within the agreed design     | Modules, pages, tests, docs pages and changelog entries                            |
+| [Stakeholder](#stakeholder)                     | Owns the business outcome and funds the work            | Goals, budget, scope trade-offs, UAT sign-off, go/no-go | Sign-offs and decision records                                                     |
+| [Subject Matter Expert](#subject-matter-expert) | Makes the intelligence correct for real B2B sales       | Domain correctness: signals, scoring rubric, data rules | Signal templates, BANT+ rubric, evaluation gold set, data-template review          |
+
+## Product Manager
+
+**Purpose:** keep the team building the most valuable thing next, and make every sprint end with something the
+Stakeholder can accept or reject.
+
+**Responsibilities**
+
+- Own and order the product backlog. Turn `plan.md` and `plan2.md` into user stories with acceptance criteria,
+  starting from the happy flow (Super Admin onboards an org → org builds its profile → pipeline creates leads →
+  SDR converts one).
+- Run sprint planning, refinement, reviews and retrospectives ([cadence](/docs/project/sprint-plan#team-and-cadence)).
+- Gather and resolve open questions with the Stakeholder; record the answers (as `plan.md` §29 did) so they are not
+  re-litigated.
+- Book the Subject Matter Expert's time for the sprints that need domain input (S1–S7).
+- Accept or reject stories at the sprint review against their acceptance criteria.
+- Keep [Known limitations](/docs/limitations) honest and turn it into the post-v1 backlog; write release notes
+  from the [changelog](/docs/changelog).
+- Plan and run user acceptance testing with the Stakeholder and pilot users.
+
+**Decides:** what is in or out of a sprint, priority order, whether a story is accepted, what goes into a release.
+**Does not decide:** technical design (Senior Developer) or domain correctness (SME).
+
+**Success looks like:** every sprint has one clear goal; milestones M1–M5 are hit or re-planned early, never
+missed silently; the Stakeholder is never surprised at a demo.
+
+## Senior Developer
+
+**Purpose:** own the technical quality of SelloEasy: the architecture holds, the rules in `CLAUDE.md` are
+followed, and the system is secure and operable.
+
+**Responsibilities**
+
+- Own the architecture and its boundaries ([Monorepo](/docs/architecture/monorepo), [Architecture](/docs/architecture/overview)):
+  `packages/*` never import `apps/*`, only `packages/llm` talks to a model, only `packages/core` reads env.
+- Enforce the non-negotiables in `CLAUDE.md` in every review: tenant scoping, RBAC on every route, audit in the
+  same transaction, the Super Admin public-data boundary, no hard-coded model names.
+- Record every trade-off as an [ADR](/docs/decisions) in the same change as the code.
+- Own the database schema and migrations (never edit an applied migration), the LLM layer and prompts, the
+  pipeline and scoring maths, CI, Docker and the AWS CDK stacks.
+- Approve every merge; pair with Developers on risky work; break down large stories with the PM.
+- Lead the security pass (`security-auditor` skill) and the performance pass; own the
+  [runbooks](/docs/operations/runbooks) and the go-live.
+- Keep the test strategy healthy: unit, API-integration, E2E and the Allure report (`pnpm test:report`).
+
+**Decides:** technical design, library choices, how a trade-off is resolved (via ADR), whether code is mergeable,
+whether a release is technically ready.
+
+**Success looks like:** no cross-tenant leaks; CI stays green; ADRs explain every non-obvious choice; a new
+Developer can ship a feature in their first week by following `CLAUDE.md` and the skills.
+
+## Developer
+
+**Purpose:** deliver stories end to end, from API to UI, with tests and docs, in the way the codebase already
+works.
+
+**Responsibilities**
+
+- Implement stories across `apps/api`, `apps/worker`, `apps/web` and `packages/*`, following
+  [where new code goes](/docs/architecture/monorepo) and the Claude Code flow in `.claude/skills/`:
+  `code-writer` → `tester` → `doc-keeper` → `reviewer`.
+- Write tests alongside code: unit tests for pure logic; for every new endpoint, RBAC-per-role tests and a
+  cross-tenant negative test (org B gets 404 on org A's resource).
+- Keep docs in sync in the same change: the relevant page, the [changelog](/docs/changelog) entry, env-var docs for
+  new keys; make `pnpm docs:check` pass.
+- Use the existing DTOs, error helpers, pagination and audit helpers instead of writing new ones.
+- Demo their own stories at the sprint review; raise blockers at stand-up the same day.
+- Fix UAT findings assigned to them in S7.
+
+**Decides:** implementation details inside the agreed design (naming, component structure, query shape), raising
+an ADR proposal to the Senior Developer when a story needs a new trade-off.
+
+**Success looks like:** stories meet acceptance criteria first time; the definition of done holds without
+reminders; reviews focus on design, not on missing tests or docs.
+
+## Stakeholder
+
+**Purpose:** represent the business that pays for and will use SelloEasy; make the decisions only the business can
+make.
+
+**Responsibilities**
+
+- Set the goals and success measures for v1, and the budget (including LLM spend and AWS costs).
+- Make business decisions when asked: the kind recorded in `plan.md` §29, such as fictional company names, the
+  Super Admin seeing only public data, SDRs seeing all leads first and assigned-only later, the AWS region.
+- Attend the sprint review each Friday; accept or redirect the direction of the work.
+- Provide access the team cannot get alone: AWS account, domain, production LLM keys, pilot users.
+- Sign off UAT (M4) and make the go/no-go call for the staging go-live (M5).
+
+**Decides:** business goals, priorities when they conflict, budget, UAT acceptance, go/no-go.
+**Does not decide:** technical design or day-to-day task order; requests go through the PM's backlog.
+
+**Success looks like:** decisions arrive within a day or two of being asked; demos get concrete feedback; pilot
+users are ready for UAT in S7.
+
+## Subject Matter Expert
+
+**Purpose:** make SelloEasy's intelligence right for real B2B sales in the five target industries: Healthcare,
+Automotive, Semiconductors, Renewable Energy and Logistics.
+
+**Responsibilities**
+
+- Run discovery in S1: how buyers in each industry signal intent, who the personas are, which events matter.
+- Author and review the industry signal templates and their keywords ([Signals](/docs/concepts/signals)) and
+  the example ICPs ([ICPs](/docs/concepts/icps)).
+- Define and calibrate the BANT+ rubric: what Budget, Authority, Need and Timing evidence looks like, the weights
+  and the hot / warm / cold bands ([BANT scoring](/docs/concepts/bant-scoring)).
+- Label the evaluation gold set and judge the results of `pnpm eval:pipeline` in mock and live mode
+  ([Evaluation](/docs/pipeline/evaluation)).
+- Review the realism of the synthetic dataset, the platform-data template and validation rules, and the sample
+  files ([Data template](/docs/platform-data/data-template), [Validation rules](/docs/platform-data/validation-rules)).
+- Review AI email drafts, stage definitions and the outreach playbook for tone and accuracy.
+- Take part in UAT, focusing on whether leads and scores make sense to a salesperson.
+
+**Decides:** whether signals, scores, evidence and data rules are correct for the domain. Changes to the scoring
+model go through the Senior Developer as an ADR or prompt version bump.
+
+**Success looks like:** the SME would trust a "hot" lead enough to call it; evaluation precision and recall are
+acceptable on the gold set; sales users recognise the signals as real buying triggers.
+
+## RACI matrix
+
+**R** responsible (does the work) · **A** accountable (one owner, signs off) · **C** consulted · **I** informed.
+The bold letter marks the role that drives the item day to day.
+
+| Deliverable / activity                               | Product Manager | Senior Developer | Developer | Stakeholder |  SME  |
+| ---------------------------------------------------- | :-------------: | :--------------: | :-------: | :---------: | :---: |
+| Product goals, budget, success measures              |        C        |        C         |     I     |    **A**    |   C   |
+| Backlog, priorities, sprint goals                    |      **A**      |        C         |     C     |      C      |   C   |
+| User stories and acceptance criteria                 |      **A**      |        C         |     C     |      I      |   C   |
+| Architecture, ADRs, technical trade-offs             |        C        |      **A**       |     R     |      I      |   I   |
+| Feature implementation (API, worker, UI)             |        I        |        A         |   **R**   |      I      |   I   |
+| Database schema and migrations                       |        I        |      **A**       |     R     |      –      |   –   |
+| Tenant isolation, RBAC, audit, Super Admin boundary  |        I        |      **A**       |     R     |      C      |   –   |
+| Signal templates, ICP examples                       |        C        |        C         |     R     |      I      | **A** |
+| BANT+ rubric, weights and bands                      |        C        |        R         |     C     |      I      | **A** |
+| Prompts and LLM provider configuration               |        I        |      **A**       |     R     |      I      |   C   |
+| Evaluation gold set and results                      |        I        |        R         |     C     |      I      | **A** |
+| Synthetic dataset and platform-data template         |        I        |        C         |     R     |      I      | **A** |
+| Tests (unit, integration, E2E) and the Allure report |        I        |      **A**       |     R     |      –      |   –   |
+| Documentation, changelog, `docs:check`               |        C        |        A         |   **R**   |      I      |   C   |
+| Security pass                                        |        I        |      **A**       |     R     |      I      |   –   |
+| Sprint review demo                                   |      **A**      |        R         |     R     |      C      |   C   |
+| User acceptance testing                              |        R        |        C         |     C     |    **A**    |   R   |
+| AWS staging deployment and runbooks                  |        I        |      **A**       |     R     |      I      |   –   |
+| Release notes and go/no-go                           |        R        |        C         |     I     |    **A**    |   I   |
+| Post-v1 backlog from known limitations               |      **A**      |        C         |     C     |      C      |   C   |
+
+## Focus by sprint
+
+| Sprint                              | Product Manager                  | Senior Developer                        | Developer                                 | Stakeholder               | SME                                 |
+| ----------------------------------- | -------------------------------- | --------------------------------------- | ----------------------------------------- | ------------------------- | ----------------------------------- |
+| S1 Foundation & discovery           | Backlog, happy flow, kickoff     | Monorepo, config, CI, first ADRs        | Docker, drivers, docs skeleton            | Kickoff decisions, access | Industry discovery, signal taxonomy |
+| S2 Identity, tenancy, RBAC, audit   | Acceptance for invites and roles | Auth, RBAC, tenant guard, boundary DTOs | Org CRUD, invites, audit screens          | Sign off data boundary    | Template review, dataset spec       |
+| S3 Knowledge, LLM, ICPs, signals    | Onboarding acceptance            | LLM layer, providers, prompts           | Uploads, crawler, wizard, ICP/signal CRUD | –                         | Signal templates, realism, gold set |
+| S4 Pipeline & scoring               | M2 demo                          | Pipeline, scoring, eval harness         | Runs page, SSE, leads grid                | M2 demo feedback          | Gold-set labels, BANT+ calibration  |
+| S5 Leads, CRM, outreach, dashboards | Sales-loop acceptance            | Reviews, query performance              | CRM, outreach, dashboards                 | Pilot walkthrough         | Stages, email tone, playbook        |
+| S6 Platform data source             | Data-source acceptance           | Template, migration, connectors         | Import pipeline, validation, rollback     | –                         | Template and validation-rule review |
+| S7 Data UI, hardening, docs, UAT    | UAT plan and triage              | Security and performance pass           | Data UI, E2E, docs, UAT fixes             | **UAT sign-off (M4)**     | UAT on lead and score quality       |
+| S8 AWS go-live & handover           | Release notes, handover          | Staging deploy, live eval, runbooks     | Deploy support, lint in CI                | **Go/no-go (M5)**         | Live evaluation review              |
+
+## Working agreements
+
+- **One owner per item.** Every backlog item has exactly one accountable role; the RACI above is the default.
+- **Decisions are written down.** Business decisions go in the plan's decision log; technical trade-offs go in an
+  ADR in the same pull request as the code.
+- **The server enforces, the UI hides.** Nobody accepts a story that relies on the web app to protect data.
+- **Docs ship with code.** A change is not done until `pnpm docs:check` passes and the changelog has an entry.
+- **Secrets never travel.** Keys live in `.env` (git-ignored) or AWS Secrets Manager, never in chat, tickets or
+  commits. A key that was shared anywhere else is rotated.
+- **Escalation.** Developer → Senior Developer for technical blockers, → Product Manager for scope or priority,
+  → Stakeholder for budget, access or business trade-offs. Raise it at stand-up the same day.

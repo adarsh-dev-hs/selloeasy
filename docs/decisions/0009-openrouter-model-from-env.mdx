@@ -1,0 +1,55 @@
+---
+title: ADR-0009 — The model comes only from OPENROUTER_MODEL
+description: All LLM calls go through OpenRouter and use exactly the model named in the OPENROUTER_MODEL environment variable; no model name exists in source code.
+---
+
+**Status:** Accepted, extended by [ADR-0017](/docs/decisions/0017-provider-adapter-layer) · **Date:** 2026-09-24
+
+<Callout type="info">
+  **Update (2026-09-28).** The principle stands and now covers every provider: the model is exactly the
+  selected provider's env value (`$OPENROUTER_MODEL`, `$OPENAI_MODEL` or `$ANTHROPIC_MODEL`), chosen by
+  `LLM_PROVIDER`. OpenRouter remains the default and the value shipped in `.env.example`. The "all calls go
+  through OpenRouter" part of this record is relaxed by
+  [ADR-0017](/docs/decisions/0017-provider-adapter-layer); the text below is kept as written on 2026-09-24.
+</Callout>
+
+## Context
+
+The platform must call LLMs through **OpenRouter**, and it must be possible to state exactly which model a deployment
+uses. Models change quickly: better, cheaper or faster options appear monthly. Hard-coding a model (or a fallback
+default) in code would mean rebuilds to switch, and a risk of silently running a different model than the operator
+believes.
+
+## Decision
+
+- The model is **exactly** `OPENROUTER_MODEL`. There is **no model name in source code** and **no default in code**.
+- With `LLM_MODE=live`, the env schema requires `OPENROUTER_MODEL` and `OPENROUTER_API_KEY`. Boot fails with a clear
+  message if either is missing (unless the key is empty, in which case the app deliberately switches to mock mode and
+  logs a warning).
+- `.env.example` ships a concrete value, currently **`google/gemini-2.5-flash`**, so the submitted configuration is
+  explicit.
+- The model in use is visible everywhere: the startup log, `/api/ready`, every `llm_calls` row, every outreach draft
+  response, `org_profiles.generated_by_model` and the platform dashboard.
+- Prompts are model-agnostic: an explicit JSON shape in the prompt, `json_schema` structured output when the model
+  supports it (with automatic fallback when it does not), Zod validation, and one repair retry.
+
+## Consequences
+
+- Switching models is a one-line environment change plus a restart. No rebuild.
+- An auditable answer to "which model produced this?" for every call.
+- **Prompts must stay model-agnostic**, and output quality varies by model. The [evaluation harness](/docs/pipeline/evaluation)
+  exists to measure it before switching.
+- The model id is part of the cache key, so switching models never returns another model's cached answers.
+- Operators must keep the value valid. A typo fails at the first call (a 400 from OpenRouter), not at boot.
+
+## Alternatives considered
+
+- **Hard-coded model with an env override**: convenient, but violates "no model in code" and risks silent defaults.
+- **Per-prompt models** (e.g. a cheaper model for matching, a stronger one for drafting): useful later, but more
+  configuration surface. It could be added as optional per-purpose env keys without changing this principle.
+- **Direct provider SDKs**: OpenRouter's single API gives access to many providers with one key.
+
+## Revisit when
+
+- Per-purpose model selection is needed for cost or quality reasons.
+- OpenRouter is replaced or complemented by another gateway.

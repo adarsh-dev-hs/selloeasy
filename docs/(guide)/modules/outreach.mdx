@@ -1,0 +1,158 @@
+---
+title: Outreach
+description: Contacting leads by email, WhatsApp, phone and meeting — AI drafts, what is really sent versus opened as a deep link and logged, stage automation, delivery tracking and the provider upgrade path.
+---
+
+Outreach lets a rep contact a lead's people with an AI-drafted, evidence-grounded message. In v0.1, **email is
+sent for real** (SMTP/Mailpit locally, SES on AWS). **WhatsApp, voice calls and Calendly meetings open a deep link,
+and the rep logs the outcome by hand** ([ADR-0006](/docs/decisions/0006-deep-links-for-whatsapp-voice-calendly)).
+
+| Channel  | Draft                                                       | Delivery                                                            | Logged as                                  | Stage effect              |
+| -------- | ----------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------ | ------------------------- |
+| Email    | `outreach.email` (subject + body)                           | **Sent** by the worker from `MAIL_FROM`, reply-to = the rep's email | `EMAIL` activity + `outreach_messages` row | `NEW → CONTACTED`         |
+| WhatsApp | `outreach.whatsapp` (short message)                         | Opens `https://wa.me/<digits>?text=<message>`                       | `WHATSAPP` activity via "Log"              | `NEW → CONTACTED`         |
+| Call     | `outreach.call-script` (opener, talking points, objections) | Opens `tel:<number>`                                                | `CALL` activity with outcome and duration  | `NEW → CONTACTED`         |
+| Meeting  | —                                                           | Opens the rep's Calendly link with name and email prefilled         | `MEETING` activity with `meetingAt`        | up to `MEETING_SCHEDULED` |
+
+## Permissions
+
+`outreach:send`: Org Admin, Sales Manager, SDR. SDRs can contact leads they own. Contacting an **unassigned** lead
+claims it automatically (in the same transaction, audited `lead.claimed` with `via: "outreach"`). A lead owned by
+a teammate returns 403.
+
+## 1. Draft with AI
+
+`POST /api/v1/leads/:id/outreach/draft`
+
+```json
+{ "channel": "email", "contactId": "…optional…", "tone": "formal", "regenerate": false }
+```
+
+- `channel`: `email`, `whatsapp` or `call`. `tone`: `formal` (default), `friendly` or `concise`.
+- The recipient is `contactId`, otherwise the lead's primary contact, otherwise the account's first contact. A
+  `contactId` from another account returns 400.
+- Grounding: the sender (name, role, org sender name, Calendly link), the org profile summary, up to 5 value
+  props, up to 6 products, up to 3 policy titles, the recipient's likely pain points (from the matching profile
+  persona) and up to **3 evidence events** ("why now").
+- `regenerate: true` bypasses the LLM response cache.
+- Rate-limited to **20 per minute**. If generation fails after retries: `503` "Could not generate a draft right now".
+
+Response:
+
+```json
+{
+  "channel": "email",
+  "subject": "Acme Motors: new vehicle launch — idea from Roadgrip Tyres",
+  "body": "Hi Priya, …",
+  "model": "<value of $OPENROUTER_MODEL>",
+  "contact": {
+    "id": "…",
+    "name": "Priya Nair",
+    "email": "priya.nair@acme-motors.example",
+    "phone": "+91…",
+    "whatsapp": "+91…"
+  },
+  "links": {
+    "whatsapp": "https://wa.me/91…?text=…",
+    "tel": "tel:+91…",
+    "calendly": "https://calendly.com/…/20min?name=Priya%20Nair&email=…"
+  }
+}
+```
+
+Call drafts add `talkingPoints[]` and `objections[{ objection, response }]`. Drafting is not audited (nothing
+changes), and drafts are never sent automatically. See [Prompts](/docs/pipeline/prompts#outreach-prompts).
+
+## 2a. Send an email
+
+`POST /api/v1/leads/:id/outreach/send`
+
+```json
+{
+  "channel": "email",
+  "contactId": "…optional…",
+  "to": "priya.nair@acme-motors.example",
+  "subject": "…",
+  "body": "…"
+}
+```
+
+In one transaction the API:
+
+1. auto-claims the lead for an SDR if it is unassigned;
+2. inserts an `outreach_messages` row (status `DRAFT`, `sent_by` = the rep);
+3. inserts an `EMAIL` activity (`metadata.status = "queued"`, `messageId`) and applies stage automation;
+4. audits `outreach.email_sent` (to, subject, message id).
+
+It then queues `outreach.send-email` and returns **202** `{ messageId, stage, status: "QUEUED" }`.
+
+The **worker** sends the message through the configured `MailProvider`:
+
+| Field    | Value                                                    |
+| -------- | -------------------------------------------------------- |
+| From     | `"<Rep name> (<org sender name>)" <MAIL_FROM address>`   |
+| Reply-To | The rep's email                                          |
+| Body     | Plain text, plus an HTML version with escaped paragraphs |
+| Header   | `X-SelloEasy-Message-Id: <message id>`                   |
+
+On success, the message becomes `SENT` with `provider_message_id` and `sent_at`, and the activity metadata gets
+`status: "sent"`. On failure the job retries (3 attempts, exponential backoff). After the last attempt the message
+becomes `FAILED` with the error, and the activity metadata gets `status: "failed"`. Already-sent messages are never
+re-sent (idempotent on retry).
+
+`GET /api/v1/leads/:id/outreach` lists the lead's messages with status, error, sender and timestamps.
+
+<Callout type="info">
+  Locally every email goes to **Mailpit** (http://localhost:8025), including outreach to the synthetic
+  `*.example` addresses. Nothing leaves your machine. With `MAIL_DRIVER=ses`, emails are really delivered, so
+  do not point a real SES identity at the demo data.
+</Callout>
+
+## 2b. Log WhatsApp, call or meeting
+
+After using the deep link, the rep records what happened with `POST /api/v1/leads/:id/outreach/log`:
+
+```json
+{ "channel": "whatsapp", "contactId": "…", "body": "message text", "notes": "…" }
+{ "channel": "call", "contactId": "…", "outcome": "CONNECTED", "durationMin": 12, "notes": "…" }
+{ "channel": "meeting", "contactId": "…", "meetingAt": "2026-10-02T10:30:00+05:30", "calendlyUrl": "…", "notes": "…" }
+```
+
+Call outcomes: `CONNECTED`, `NO_ANSWER`, `VOICEMAIL`, `WRONG_NUMBER`, `CALLBACK_REQUESTED`. The API writes the
+activity, applies stage automation and audits `outreach.whatsapp_logged`, `outreach.call_logged` or
+`outreach.meeting_logged`. It returns **201** `{ stage }`.
+
+### Deep links
+
+| Link     | Built from                                                                                                                                      |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| WhatsApp | Digits of the contact's WhatsApp number + URL-encoded draft body: `https://wa.me/<digits>?text=<body>`                                          |
+| Phone    | `tel:` + the contact's phone (digits and `+` only)                                                                                              |
+| Calendly | The rep's `calendlyUrl` (profile, `PATCH /auth/me`), otherwise the org default `settings.calendlyUrl`, with `name` and `email` query parameters |
+
+Links are `null` when the data is missing (no WhatsApp number, no phone, no booking link).
+
+## Stage automation
+
+Every touch writes an outbound activity, sets `last_activity_at` and (the first time) `first_touch_at`. Then:
+
+- email, WhatsApp and call move the lead to **`CONTACTED`** if it is still `NEW`;
+- a meeting moves it to **`MEETING_SCHEDULED`** if it is earlier in the funnel;
+- leads in `WON` or `LOST`, or already past the target, are never moved;
+- an automatic change adds a `STAGE_CHANGE` activity with `metadata.auto = true`.
+
+## Upgrade path (planned)
+
+All channels were designed to sit behind a provider interface so real integrations can be dropped in:
+
+| Channel  | Today                                | Planned upgrade                                                             |
+| -------- | ------------------------------------ | --------------------------------------------------------------------------- |
+| Email    | SMTP / SES (`MailProvider`)          | Open and click tracking, sequences, reply ingestion                         |
+| WhatsApp | `wa.me` click-to-chat + manual log   | WhatsApp Business Cloud API or Twilio adapter                               |
+| Voice    | `tel:` + AI call script + manual log | Twilio Voice click-to-call, recording, transcription                        |
+| Meetings | Calendly link + manual log           | Calendly `invitee.created` webhooks to auto-log. Cal.com as an alternative. |
+
+<Callout type="warn">
+  Only `MailProvider` exists in code today. WhatsApp, voice and calendar provider interfaces are not
+  implemented yet: the deep-link behavior lives in the outreach module.
+</Callout>

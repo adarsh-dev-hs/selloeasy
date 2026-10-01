@@ -1,0 +1,25 @@
+{
+  "name": "@selloeasy/pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pure pipeline stages (prefilter, batching, dedupe) and BANT+ scoring math. No DB or HTTP \u2014 the engine wires I/O.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "eval": "tsx src/eval.ts"
+  },
+  "dependencies": {
+    "@selloeasy/dataset": "workspace:*",
+    "@selloeasy/llm": "workspace:*",
+    "@selloeasy/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.0",
+    "@selloeasy/core": "workspace:*",
+    "tsx": "^4.20.0"
+  }
+}

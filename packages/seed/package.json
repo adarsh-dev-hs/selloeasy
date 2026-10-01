@@ -1,0 +1,23 @@
+{
+  "name": "@selloeasy/seed",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Idempotent demo seed: super admin, signal templates, company directory, market events, 5 synthetic orgs with a mock-mode pipeline run and simulated CRM history.",
+  "exports": {
+    ".": "./src/seed.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "seed": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@selloeasy/core": "workspace:*",
+    "@selloeasy/dataset": "workspace:*",
+    "@selloeasy/db": "workspace:*",
+    "@selloeasy/engine": "workspace:*",
+    "@selloeasy/llm": "workspace:*",
+    "@selloeasy/shared": "workspace:*",
+    "@selloeasy/pipeline": "workspace:*"
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "slug": "roadgrip-tyres",
+  "name": "Roadgrip Tyres Ltd.",
+  "industry": "AUTOMOTIVE",
+  "websiteUrl": "https://roadgrip-tyres.example",
+  "hq": "Chennai, India",
+  "regions": ["India", "Middle East", "Southeast Asia", "Africa"],
+  "companySize": "5001-10000",
+  "description": "Roadgrip Tyres Ltd. is a Chennai-headquartered tyre manufacturer producing passenger car, SUV, EV-specific, two-wheeler, truck and bus radial and OTR tyres for vehicle OEMs, fleet operators and replacement distributors across India and export markets.",
+  "profile": {
+    "summary": "Roadgrip Tyres designs and manufactures tyres for passenger cars, SUVs, electric vehicles, two-wheelers, trucks, buses and off-the-road mining and construction equipment. Three plants in Tamil Nadu and Gujarat produce 42 million tyres a year. Roadgrip supplies original-equipment fitment to more than 20 vehicle makers and runs cost-per-km tyre programmes for truck, bus and ride-hailing fleets, backed by retreading, on-site tyre management and a 4,800-outlet replacement network.",
+    "valueProps": [
+      "EV-specific tyres with low rolling resistance and acoustic foam that add up to 6% range and cut cabin noise",
+      "Co-development with OEM platform teams from concept to SOP, with dedicated application engineers",
+      "Cost-per-km fleet programmes that bundle new tyres, retreading, pressure monitoring and field service",
+      "Plants within 500 km of major OEM clusters in Chennai, Pune, Hosur and NCR for just-in-time supply",
+      "Full range under one supplier: car, SUV, EV, two-wheeler, truck and bus radial, and OTR"
+    ],
+    "differentiators": [
+      "In-house compound lab and indoor pass-by noise test track in Chennai",
+      "IATF 16949, ISO 14001 and BIS certified plants with PPAP-ready documentation",
+      "Retreadable truck and bus radial casings rated for three retreads",
+      "OTR sizes up to 57-inch rim produced in India, cutting lead times versus imports",
+      "Telematics-linked tyre pressure and tread monitoring for fleets"
+    ],
+    "targetIndustries": ["Automotive", "Electric Vehicles", "Two-Wheelers", "Commercial Vehicles", "Fleet & Mobility", "Manufacturing", "Logistics"],
+    "geographies": ["India", "UAE", "Saudi Arabia", "Oman", "Singapore", "Indonesia", "Kenya"],
+    "personas": [
+      {
+        "title": "VP Procurement / Chief Purchasing Officer (OEM)",
+        "goals": ["Secure dual-sourced, localised tyre supply for new platforms", "Hit piece-cost targets without compromising quality"],
+        "painPoints": ["Import dependence and long lead times", "Suppliers that cannot scale with a new plant's ramp-up"]
+      },
+      {
+        "title": "Head of Vehicle Platform / CTO",
+        "goals": ["Meet range, NVH and handling targets on new models", "Complete homologation on schedule for SOP"],
+        "painPoints": ["Generic tyres that erode EV range", "Slow supplier engineering support during validation"]
+      },
+      {
+        "title": "Fleet Operations Head",
+        "goals": ["Lower cost per km and vehicle downtime", "Predictable maintenance budgets across cities"],
+        "painPoints": ["Rapid tyre wear on heavier EVs", "Unplanned breakdowns from punctures and under-inflation"]
+      },
+      {
+        "title": "Head of Equipment & Fleet (Mining / Construction)",
+        "goals": ["Maximise haul-truck availability", "Secure OTR supply for tender commitments"],
+        "painPoints": ["Long OTR import lead times", "Tyre failures in high-heat, high-load pits"]
+      }
+    ]
+  },
+  "products": [
+    {
+      "name": "Roadgrip EcoVolt EV Series",
+      "category": "EV tyres",
+      "description": "Low rolling resistance passenger and SUV tyres engineered for electric vehicles, with high-load construction, silica-rich tread and an acoustic foam insert that reduces cabin noise by up to 4 dB.",
+      "targetSegments": ["EV OEMs", "Passenger vehicle OEMs", "Ride-hailing fleets"],
+      "priceNotes": "OEM pricing quoted per platform on annual volume; replacement MRP from INR 6,800 per tyre (15-inch) to INR 18,500 (20-inch).",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Roadgrip Terrain SUV & Passenger Range",
+      "category": "Passenger car & SUV tyres",
+      "description": "Highway-terrain and all-terrain radials for hatchbacks, sedans and SUVs in 13- to 20-inch sizes, balancing wet grip, tread life and comfort for Indian road conditions.",
+      "targetSegments": ["Passenger vehicle OEMs", "Replacement distributors", "Taxi fleets"],
+      "priceNotes": "Replacement MRP from INR 3,200 to INR 14,000; OEM price indexed quarterly to natural rubber and carbon black.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Roadgrip Moto Series",
+      "category": "Two-wheeler tyres",
+      "description": "Tubeless scooter and motorcycle tyres from 10 to 21 inches, including dual-purpose adventure patterns and low rolling resistance compounds for electric scooters.",
+      "targetSegments": ["Two-wheeler OEMs", "Electric two-wheeler makers", "Replacement distributors"],
+      "priceNotes": "Replacement MRP from INR 1,100 to INR 9,500; OEM pricing per model and annual volume.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Roadgrip HaulMax TBR",
+      "category": "Truck & bus radial",
+      "description": "Truck and bus radial tyres for long-haul, regional, city bus and tipper applications, with casings designed for three retreads and optional embedded pressure sensors.",
+      "targetSegments": ["Commercial vehicle OEMs", "Bus OEMs", "Logistics fleets", "State and private bus operators"],
+      "priceNotes": "Fleet cost-per-km contracts from INR 0.38/km (long-haul) to INR 0.55/km (tipper); outright price from INR 21,000 per tyre.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "Roadgrip Titan OTR",
+      "category": "Off-the-road tyres",
+      "description": "Radial and bias OTR tyres for rigid dump trucks, wheel loaders, graders and excavators up to 57-inch rim, with cut-resistant compounds for mining and quarry use.",
+      "targetSegments": ["Mining equipment OEMs", "Mining contractors", "Construction equipment OEMs"],
+      "priceNotes": "Quoted per tender; indicative floor margins and rebate bands held by the OTR key account team.",
+      "visibility": "INTERNAL"
+    },
+    {
+      "name": "Roadgrip FleetCare Tyre Management",
+      "category": "Fleet services",
+      "description": "Managed tyre service combining telematics pressure monitoring, scheduled rotation and alignment, retreading and on-site technicians at fleet depots and mine pits.",
+      "targetSegments": ["Logistics fleets", "Ride-hailing fleets", "Mining contractors", "Bus operators"],
+      "priceNotes": "Per-vehicle per-month fee from INR 450 (cars) to INR 2,400 (heavy trucks); discount ladder for 1,000+ vehicles is internal.",
+      "visibility": "INTERNAL"
+    }
+  ],
+  "plans": [
+    {
+      "name": "OEM Platform Partner",
+      "pricing": "Platform-specific piece price with annual raw-material indexation; tooling co-funded 50:50 above 1 lakh units per annum.",
+      "features": ["Dedicated application engineering team", "Co-development from concept to SOP", "Dual-plant supply guarantee", "PPAP and homologation support"],
+      "visibility": "INTERNAL"
+    },
+    {
+      "name": "Fleet Cost-per-km Programme",
+      "pricing": "Fixed INR per km by application, reviewed semi-annually; minimum 200 vehicles or 24-month term.",
+      "features": ["New tyres plus retreading", "FleetCare pressure and tread monitoring", "Depot technicians and 24x7 breakdown support", "Monthly cost-per-km reporting"],
+      "visibility": "PUBLIC"
+    },
+    {
+      "name": "OTR Mine Site Assurance",
+      "pricing": "Per-hour or per-tonne-hauled contracts linked to tender terms; consignment stock at site.",
+      "features": ["On-site tyre bay and technicians", "Consignment inventory", "Failure analysis within 72 hours"],
+      "visibility": "INTERNAL"
+    }
+  ],
+  "policies": [
+    {
+      "title": "Roadgrip Product Warranty",
+      "type": "WARRANTY",
+      "body": "All Roadgrip passenger, SUV, EV and two-wheeler tyres carry a five-year warranty against manufacturing defects from the date of invoice, with pro-rata replacement based on remaining tread depth. Truck and bus radials are covered for three years and one retread. Road hazard damage, improper inflation, misalignment and competition use are excluded. Claims are processed at any authorised Roadgrip outlet within seven working days.",
+      "visibility": "PUBLIC"
+    },
+    {
+      "title": "OEM and Fleet Credit & Payment Terms",
+      "type": "COMMERCIAL",
+      "body": "Standard OEM payment terms are 45 days from delivery against monthly consolidated invoicing, extendable to 60 days for platform partners above INR 50 crore annual business with CFO approval. Fleet programmes are billed monthly on actual kilometres with 30-day terms and a security deposit equal to one month's estimated billing. Raw-material price indexation is applied quarterly using the published natural rubber index. Any deviation requires Sales Director and Finance sign-off.",
+      "visibility": "INTERNAL"
+    },
+    {
+      "title": "Quality Certifications & Traceability",
+      "type": "QUALITY",
+      "body": "All three Roadgrip plants are certified to IATF 16949, ISO 9001, ISO 14001 and ISO 45001, and products carry BIS certification, ECE R30/R54/R117 and GCC conformity marks where applicable. Every tyre carries a unique DOT code and batch barcode traceable to compound batch, curing press and shift. OEM customers receive full PPAP Level 3 documentation and annual process audits.",
+      "visibility": "PUBLIC"
+    }
+  ],
+  "icps": [
+    {
+      "name": "Vehicle OEMs launching or expanding platforms",
+      "description": "Passenger vehicle, EV, two-wheeler and commercial vehicle makers launching new models, opening plants or localising production in India, who need OE tyre nominations.",
+      "criteria": {
+        "industries": ["Automotive", "Electric Vehicles", "Two-Wheelers", "Commercial Vehicles"],
+        "companySize": { "minEmployees": 200 },
+        "revenueBand": "INR 500 crore+",
+        "geographies": ["India", "Japan", "South Korea", "Germany", "United States", "Singapore"],
+        "personas": ["VP Procurement", "Head of Vehicle Platform", "CTO", "Director – Supply Chain"],
+        "painPoints": ["Supplier nomination for new platforms", "Localisation targets", "EV range and NVH targets"],
+        "keywords": ["launch", "new plant", "capacity", "ev platform", "localisation", "sop"]
+      }
+    },
+    {
+      "name": "High-mileage fleet operators",
+      "description": "Ride-hailing, logistics, last-mile delivery and bus operators running large fleets where tyre cost per km and downtime materially affect margins.",
+      "criteria": {
+        "industries": ["Fleet & Mobility", "Logistics", "Commercial Vehicles"],
+        "companySize": { "minEmployees": 200 },
+        "geographies": ["India", "UAE", "Saudi Arabia", "Oman"],
+        "personas": ["Fleet Operations Head", "Head of Fleet & Maintenance", "Procurement Lead"],
+        "painPoints": ["Rising cost per km", "Tyre wear on EVs", "Vehicle downtime"],
+        "keywords": ["fleet", "order", "deploy", "electric cabs", "buses", "trucks"]
+      }
+    },
+    {
+      "name": "Mining & construction equipment",
+      "description": "Mining contractors and earthmoving equipment makers that need OTR tyres with assured supply and on-site service for large equipment fleets.",
+      "criteria": {
+        "industries": ["Manufacturing", "Fleet & Mobility"],
+        "companySize": { "minEmployees": 500 },
+        "geographies": ["India", "UAE", "Oman"],
+        "personas": ["Head of Equipment & Fleet", "VP Procurement", "Director – Supply Chain"],
+        "painPoints": ["OTR lead times", "Tyre failures in harsh pits"],
+        "keywords": ["mining", "dumper", "haul truck", "otr", "excavator", "tender"]
+      }
+    }
+  ],
+  "customSignals": [
+    {
+      "name": "Ride-hailing fleet electrification",
+      "description": "A ride-hailing or cab fleet operator commits to converting a meaningful share of its fleet to electric vehicles.",
+      "matchInstructions": "Match when a ride-hailing, cab or shared-mobility operator announces plans to add or convert to electric cabs at fleet scale (typically 500+ vehicles), sets up EV charging-and-service depots for its fleet, or signs EV supply agreements. Do NOT match funding rounds, driver disputes, app features, or city-level EV statistics without a named operator commitment.",
+      "keywords": ["ride-hailing", "electric cabs", "fleet electrification", "ev fleet", "electrify", "e-cabs", "driver-partners"],
+      "negativeKeywords": ["funding round", "layoffs", "ipo", "lawsuit"],
+      "weight": 1.4,
+      "icpIndex": 1
+    },
+    {
+      "name": "Mining equipment tender",
+      "description": "A mining contractor, mine owner or equipment OEM floats or wins a tender for haul trucks, dumpers, loaders or OTR tyres.",
+      "matchInstructions": "Match when a mining company, mine developer-operator or earthmoving equipment maker floats, bids for or wins a tender or large order for dump trucks, haul trucks, excavators, loaders or OTR tyre supply. Do NOT match mineral price news, royalty or regulatory changes, mine accidents, or exploration licence awards without equipment procurement.",
+      "keywords": ["mining", "tender", "dumper", "haul truck", "otr", "quarry", "excavator", "earthmoving"],
+      "negativeKeywords": ["coal price", "royalty", "mine accident"],
+      "weight": 1.2,
+      "icpIndex": 2
+    }
+  ],
+  "users": [
+    { "name": "Venkatesh Subramanian", "email": "admin@roadgrip.local", "role": "ORG_ADMIN" },
+    { "name": "Revathi Krishnan", "email": "manager@roadgrip.local", "role": "SALES_MANAGER" },
+    { "name": "Arvind Balasubramaniam", "email": "sdr1@roadgrip.local", "role": "SDR" },
+    { "name": "Nisha Thomas", "email": "sdr2@roadgrip.local", "role": "SDR" },
+    { "name": "Harini Ramesh", "email": "viewer@roadgrip.local", "role": "VIEWER" }
+  ],
+  "documents": [
+    { "file": "brochure.md", "title": "Roadgrip Product Brochure", "visibility": "PUBLIC", "asPdf": true },
+    { "file": "oem-commercial-terms.md", "title": "OEM Commercial Terms (Internal)", "visibility": "INTERNAL", "asPdf": true },
+    { "file": "case-study-fleet.md", "title": "Case Study: Fleet Cost-per-km Reduction", "visibility": "PUBLIC", "asPdf": false }
+  ]
+}

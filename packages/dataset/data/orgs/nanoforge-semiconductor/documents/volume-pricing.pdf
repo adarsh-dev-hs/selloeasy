@@ -1,0 +1,105 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Title (Volume Pricing & Allocation \(Internal\)) /Producer (SelloEasy dataset) /Subject (Synthetic demo document) >>
+endobj
+6 0 obj
+<< /Length 2955 >>
+stream
+BT /F2 18 Tf 50 761 Td (Volume Pricing & Allocation \(Internal\)) Tj ET
+BT /F1 11 Tf 50 729 Td (Confidential - for Nanoforge sales, FAE and supply-planning staff only. Do not share with) Tj ET
+BT /F1 11 Tf 50 713 Td (    customers or partners.) Tj ET
+BT /F1 11 Tf 50 681 Td (This guide sets out standard price bands, discount authority and allocation rules for) Tj ET
+BT /F1 11 Tf 50 665 Td (    FY2026-27. All prices are in USD; INR quotes use the monthly treasury rate published on the) Tj ET
+BT /F1 11 Tf 50 649 Td (    first business day of each month. Quotes are valid for 30 days.) Tj ET
+BT /F2 14 Tf 50 598 Td (1. Price bands by product) Tj ET
+BT /F1 11 Tf 50 566 Td (   Product    Reference unit    List \(10k units\)    50k+ units    250k+ units   ) Tj ET
+BT /F1 11 Tf 50 550 Td (   ForgeSiC 650 V 200 A half-bridge    per module    95.00    87.40    81.70   ) Tj ET
+BT /F1 11 Tf 50 534 Td (   ForgeSiC 1200 V 400 A half-bridge    per module    210.00    193.20    180.60   ) Tj ET
+BT /F1 11 Tf 50 518 Td (   ForgeSiC 1200 V six-pack    per module    420.00    386.40    361.20   ) Tj ET
+BT /F1 11 Tf 50 502 Td (   NF-GD isolated gate driver \(single\)    per IC    1.60    1.47    1.38   ) Tj ET
+BT /F1 11 Tf 50 486 Td (   NF-GD dual-channel gate driver    per IC    3.40    3.13    2.92   ) Tj ET
+BT /F1 11 Tf 50 470 Td (   CellGuard 16-cell monitor    per IC    4.20    3.86    3.61   ) Tj ET
+BT /F1 11 Tf 50 454 Td (   CellGuard 18-cell monitor \(ASIL-C\)    per IC    5.60    5.15    4.82   ) Tj ET
+BT /F1 11 Tf 50 422 Td (The 50k and 250k columns reflect the Design-In Volume Tier discounts of 8% and 14% on a) Tj ET
+BT /F1 11 Tf 50 406 Td (    12-month commitment.) Tj ET
+BT /F2 14 Tf 50 355 Td (2. Discount authority) Tj ET
+BT /F1 11 Tf 50 323 Td (  - Account executive: up to the published tier price.) Tj ET
+BT /F1 11 Tf 50 307 Td (  - Sales manager: up to 18% below list, documented in CRM with competitor evidence.) Tj ET
+BT /F1 11 Tf 50 291 Td (- CFO: anything beyond 18%, any price lock longer than 24 months, and any) Tj ET
+BT /F1 11 Tf 50 275 Td (    most-favoured-customer clause.) Tj ET
+BT /F1 11 Tf 50 259 Td (- Never quote below the floor price in the pricing system; floors are recalculated quarterly) Tj ET
+BT /F1 11 Tf 50 243 Td (    with supply planning.) Tj ET
+BT /F2 14 Tf 50 192 Td (3. Strategic Allocation Tier) Tj ET
+BT /F1 11 Tf 50 160 Td (Available to accounts committing to more than 500k units a year across power products.) Tj ET
+BT /F1 11 Tf 50 128 Td (  - 24- to 36-month take-or-pay commitment with quarterly rolling forecasts.) Tj ET
+BT /F1 11 Tf 50 112 Td (  - Price bands reviewed every six months against SiC substrate cost indices.) Tj ET
+BT /F1 11 Tf 50 96 Td (  - Eight weeks of buffer stock held in Hyderabad or Singapore.) Tj ET
+BT /F1 11 Tf 50 80 Td (- Allocation priority during shortages, after safety-critical automotive programmes already) Tj ET
+BT /F1 11 Tf 50 64 Td (    in production.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2522 >>
+stream
+BT /F1 11 Tf 50 784 Td (  - Requires supply-planning sign-off before the proposal leaves sales.) Tj ET
+BT /F1 11 Tf 50 752 Td (Current strategic accounts receive quarterly allocation letters. New strategic accounts are) Tj ET
+BT /F1 11 Tf 50 736 Td (    capped at 15% of planned quarterly ForgeSiC output until qualification is complete.) Tj ET
+BT /F2 14 Tf 50 685 Td (4. Process-control equipment and software) Tj ET
+BT /F1 11 Tf 50 653 Td (   Item    Guidance   ) Tj ET
+BT /F1 11 Tf 50 637 Td (   InlineEye metrology tool    USD 1.2-2.6 million per tool depending on configuration   ) Tj ET
+BT /F1 11 Tf 50 621 Td (   InlineEye defect inspection tool    USD 2.4-4.8 million per tool   ) Tj ET
+BT /F1 11 Tf 50 605 Td (   Fab Process-Control Service Contract    9-12% of tool list price per year   ) Tj ET
+BT /F1 11 Tf 50 589 Td (   Forgesight yield analytics    from USD 180k per site per year \(up to 20 tools\)   ) Tj ET
+BT /F1 11 Tf 50 557 Td (Bundles: sites with five or more Nanoforge tools receive Forgesight at 20% off. Greenfield) Tj ET
+BT /F1 11 Tf 50 541 Td (    fabs receiving central or state incentives often run formal tenders; involve the bid desk as) Tj ET
+BT /F1 11 Tf 50 525 Td (    soon as a tender notice appears. Offer the free two-week yield baseline study only where) Tj ET
+BT /F1 11 Tf 50 509 Td (    there is a named line and ramp date.) Tj ET
+BT /F2 14 Tf 50 458 Td (5. Samples and evaluation) Tj ET
+BT /F1 11 Tf 50 426 Td (Up to 25 engineering samples per part number per account without approval. Evaluation boards) Tj ET
+BT /F1 11 Tf 50 410 Td (    are sold at cost. Anything above USD 5,000 in value needs a qualified opportunity in CRM) Tj ET
+BT /F1 11 Tf 50 394 Td (    with a named project and timeline.) Tj ET
+BT /F2 14 Tf 50 343 Td (6. Localization and domestic content) Tj ET
+BT /F1 11 Tf 50 311 Td (Several customers must meet domestic value-addition thresholds. Quote India-assembled) Tj ET
+BT /F1 11 Tf 50 295 Td (    ForgeSiC variants \(suffix "-IN"\) where the customer needs local-content certificates; they) Tj ET
+BT /F1 11 Tf 50 279 Td (    carry a 3% premium to cover partner OSAT costs, which may be waived by a sales manager for) Tj ET
+BT /F1 11 Tf 50 263 Td (    accounts above 100k modules a year.) Tj ET
+BT /F2 14 Tf 50 212 Td (7. Escalation) Tj ET
+BT /F1 11 Tf 50 180 Td (Contact the sales manager for pricing questions, supply planning for allocation, and the) Tj ET
+BT /F1 11 Tf 50 164 Td (    compliance team for any export-control flag raised during quoting.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000320 00000 n 
+0000000456 00000 n 
+0000003462 00000 n 
+0000003598 00000 n 
+0000006171 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R /Info 5 0 R >>
+startxref
+6307
+%%EOF

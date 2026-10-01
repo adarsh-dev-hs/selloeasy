@@ -1,0 +1,59 @@
+---
+title: ADR-0013 — API and worker run TypeScript via tsx, without bundling
+description: The backend processes execute their TypeScript sources directly with tsx in development and in production images, instead of compiling or bundling to JavaScript.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+The API, worker, migrate/seed and CLI scripts are TypeScript in a pnpm monorepo whose internal packages export their
+**sources** (`"exports": { ".": "./src/index.ts" }`). Shipping them to production usually means either compiling each
+package with `tsc` (and managing project references, `dist/` exports and path mapping) or bundling each app with
+esbuild or tsup into a single file.
+
+Bundling proved fragile for this stack:
+
+- **BullMQ** loads its Redis **Lua scripts** from files inside the package at runtime. Bundlers do not carry those
+  files along without extra copy steps.
+- **pino** transports (`pino-pretty`) and worker-thread-based modules are resolved by path at runtime.
+- Native modules (`argon2`) and dynamically imported parsers (`unpdf`, `mammoth`) need to stay external anyway.
+- Compiling every workspace package to `dist/` would duplicate the `exports` maps and slow the inner loop.
+
+## Decision
+
+Run backend processes with **`tsx`** everywhere:
+
+- development: `tsx watch src/index.ts`;
+- production images: `CMD pnpm --filter @selloeasy/<app> start`, i.e. `tsx src/index.ts`. Migrations, seed and
+  tooling scripts run with `tsx` too;
+- Docker images use `turbo prune --docker` to include only the needed workspace packages, and install dependencies with
+  `pnpm install --frozen-lockfile`. There is no build step for the API or worker.
+
+The web app is unaffected. It is built by Next.js (`output: 'standalone'`).
+
+## Consequences
+
+- One execution model from laptop to production, and no source-map or `dist/` drift between packages.
+- BullMQ, pino transports and native modules work without bundler configuration.
+- Workspace packages can be consumed as TypeScript sources with no per-package build.
+- **Startup is slower**: tsx transpiles on load (esbuild, cached per process), adding roughly a second or two of cold
+  start. That is acceptable for long-running services.
+- **Images are larger**: they include TypeScript sources, `tsx` and the full dependency tree of the pruned workspace
+  rather than a minimal bundle.
+- Type errors are not caught at runtime. `pnpm typecheck` (tsc `--noEmit`) must run in CI instead.
+
+## Alternatives considered
+
+- **esbuild or tsup bundles per app**: smallest artifacts and fastest startup, but fragile with BullMQ's Lua files and
+  pino transports, and needs externals and copy steps.
+- **`tsc` build of every package to `dist/`**: standard, but requires project references and dual `exports` (source
+  for dev, dist for prod), which adds friction.
+- **Node's native type stripping**: attractive, but at build time it did not support every TypeScript feature used
+  (e.g. parameter properties) without flags, and extensionless workspace imports still need a loader.
+
+## Revisit when
+
+- Cold-start time matters (e.g. scale-to-zero or Lambda-style execution).
+- Image size becomes a cost or deployment-time problem.
+- Node's built-in TypeScript support covers the codebase without a loader.

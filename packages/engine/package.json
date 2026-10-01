@@ -1,0 +1,28 @@
+{
+  "name": "@selloeasy/engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Domain services with I/O shared by api, worker and seed: LLM factory + telemetry, audit writer, knowledge ingestion, profile generation, pipeline orchestration, lead scoring.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@selloeasy/core": "workspace:*",
+    "@selloeasy/dataset": "workspace:*",
+    "@selloeasy/db": "workspace:*",
+    "@selloeasy/llm": "workspace:*",
+    "@selloeasy/pipeline": "workspace:*",
+    "@selloeasy/shared": "workspace:*",
+    "cheerio": "^1.1.0",
+    "mammoth": "^1.9.0",
+    "unpdf": "^1.1.0"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.0"
+  }
+}

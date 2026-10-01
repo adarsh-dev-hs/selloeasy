@@ -1,0 +1,55 @@
+---
+title: ADR-0007 — Application-level tenancy before Row-Level Security
+description: Tenant isolation is enforced in application code with org_id scoping; Postgres Row-Level Security is deferred to a hardening phase.
+---
+
+**Status:** Accepted · **Date:** 2026-09-24
+
+## Context
+
+SelloEasy is multi-tenant with a shared database and shared schema: every tenant table has `org_id`. Isolation
+can be enforced in two layers:
+
+1. **Application level:** the tenant is derived from the authenticated membership, and every query filters by
+   `org_id`.
+2. **Database level:** Postgres Row-Level Security (RLS) policies such as
+   `org_id = current_setting('app.org_id')::uuid`, with each request running in a transaction that sets
+   `SET LOCAL app.org_id`.
+
+RLS is strong defense-in-depth, but it complicates the query layer (every request needs a transaction with a
+session setting and correct pooling), background jobs, cross-org platform aggregates and the seed.
+
+## Decision
+
+Ship v1 with **application-level tenancy only**:
+
+- the tenant comes from `request.auth.orgId` (resolved from the membership on every request), never from input;
+- tenant routes use the `requireOrg(permission)` guard. Super Admins get 403;
+- every tenant query includes the `org_id` predicate, and id lookups combine id and org;
+- cross-tenant ids return **404**, not 403;
+- platform endpoints use allow-list DTOs ([ADR-0010](/docs/decisions/0010-superadmin-public-data-boundary)).
+
+RLS is planned for the hardening phase.
+
+## Consequences
+
+- A simple, readable query layer. Workers and platform aggregates need no special database roles or settings.
+- **Isolation relies on code discipline.** A single query missing `org_id` could leak data. Today there is no lint
+  rule, `tenantScoped()` wrapper or integration test suite enforcing this (all are planned), so code review is the
+  control.
+- Adding RLS later is additive: policies plus a per-request `SET LOCAL`. Current queries already filter by `org_id`,
+  so they keep working under RLS.
+
+## Alternatives considered
+
+- **RLS from day one**: strongest guarantees, but slows early development and complicates pooling and background
+  jobs.
+- **Schema per tenant / database per tenant**: stronger isolation, but migrations multiply, cross-tenant aggregates
+  for the Super Admin get hard, and it is heavy for a handful of tenants.
+- **A query-builder wrapper that injects `org_id` automatically**: planned as a cheap intermediate step.
+
+## Revisit when
+
+- Before onboarding real customer data, or when the team grows beyond a few contributors.
+- After the first isolation-related bug or near miss.
+- When integration tests for cross-tenant access are in place (they should run against the RLS setup).

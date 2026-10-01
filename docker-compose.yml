@@ -1,0 +1,184 @@
+# SelloEasy — local stack. `docker compose up --build` is all you need (see README).
+# The same images run on AWS ECS; only environment values differ (ADR-0012).
+
+x-app-env: &app-env
+  env_file:
+    - path: .env
+      required: false
+  environment:
+    # Container-network overrides — these win over .env so a host-oriented .env still works.
+    DATABASE_URL: postgres://${POSTGRES_USER:-selloeasy}:${POSTGRES_PASSWORD:-selloeasy}@postgres:5432/${POSTGRES_DB:-selloeasy}
+    REDIS_URL: redis://redis:6379
+    S3_ENDPOINT: http://minio:9000
+    S3_PUBLIC_ENDPOINT: http://localhost:${MINIO_HOST_PORT:-9000}
+    SMTP_HOST: mailpit
+    SMTP_PORT: '1025'
+    API_INTERNAL_URL: http://api:4000
+    API_PORT: '4000'
+    WEB_URL: ${COMPOSE_WEB_URL:-http://localhost:${WEB_HOST_PORT:-3000}}
+    CORS_ORIGINS: ${COMPOSE_WEB_URL:-http://localhost:${WEB_HOST_PORT:-3000}}
+    STORAGE_DRIVER: ${STORAGE_DRIVER:-minio}
+    S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-minioadmin}
+    S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-minioadmin}
+    S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-true}
+    JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-local-dev-access-secret-change-me-0123456789}
+    JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-local-dev-refresh-secret-change-me-0123456789}
+    NODE_ENV: production
+    APP_ENV: ${APP_ENV:-local}
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-selloeasy}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-selloeasy}
+      POSTGRES_DB: ${POSTGRES_DB:-selloeasy}
+    ports:
+      - '${POSTGRES_HOST_PORT:-5432}:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-selloeasy} -d ${POSTGRES_DB:-selloeasy}']
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  redis:
+    image: redis:7-alpine
+    command: ['redis-server', '--appendonly', 'yes']
+    ports:
+      - '${REDIS_HOST_PORT:-6379}:6379'
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  minio:
+    image: quay.io/minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY:-minioadmin}
+      MINIO_API_CORS_ALLOW_ORIGIN: '*'
+    ports:
+      - '${MINIO_HOST_PORT:-9000}:9000'
+      - '${MINIO_CONSOLE_HOST_PORT:-9001}:9001'
+    volumes:
+      - miniodata:/data
+    healthcheck:
+      test: ['CMD', 'mc', 'ready', 'local']
+      interval: 3s
+      timeout: 5s
+      retries: 30
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - '${SMTP_HOST_PORT:-1025}:1025'
+      - '${MAILPIT_UI_HOST_PORT:-8025}:8025'
+    healthcheck:
+      test: ['CMD', '/mailpit', 'readyz']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  # One-shot: apply migrations, then seed demo data (idempotent) when SEED_ON_START=true.
+  migrate:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    <<: *app-env
+    command:
+      ['sh', '-c', 'pnpm db:migrate && if [ "$${SEED_ON_START:-true}" = "true" ]; then pnpm db:seed; fi']
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: 'no'
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    <<: *app-env
+    ports:
+      - '${API_HOST_PORT:-4000}:4000'
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://localhost:4000/api/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: apps/worker/Dockerfile
+    <<: *app-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    environment:
+      API_INTERNAL_URL: http://api:4000
+      NODE_ENV: production
+    ports:
+      - '${WEB_HOST_PORT:-3000}:3000'
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Standalone documentation site (Fumadocs) rendering the whole docs/ folder. The web app still serves /docs too.
+  docs:
+    build:
+      context: .
+      dockerfile: apps/docs-site/Dockerfile
+    environment:
+      # Where "Open the app" links point (the browser's view of the web app).
+      WEB_URL: ${COMPOSE_WEB_URL:-http://localhost:${WEB_HOST_PORT:-3000}}
+      NODE_ENV: production
+    ports:
+      - '${DOCS_HOST_PORT:-3001}:3001'
+    restart: unless-stopped
+
+  # Allure test report (static). Opt-in: `pnpm test:report --no-serve && docker compose --profile reports up -d allure`
+  allure:
+    image: nginx:1.29-alpine
+    profiles: ['reports']
+    volumes:
+      - ./allure-report:/usr/share/nginx/html:ro
+    ports:
+      - '${ALLURE_HOST_PORT:-5252}:80'
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  redisdata:
+  miniodata:

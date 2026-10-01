@@ -1,0 +1,56 @@
+[
+  {
+    "industry": "AUTOMOTIVE",
+    "key": "new_vehicle_launch",
+    "name": "New vehicle launch",
+    "description": "A vehicle maker launches or unveils a new model, variant or facelift that will need original-equipment tyre fitment and a replacement-market pipeline.",
+    "matchInstructions": "Match when a passenger vehicle, SUV, EV, two-wheeler, tractor, truck or bus manufacturer officially launches, unveils or opens bookings for a new model, variant or facelift with a stated launch window or start of production. Do NOT match rumours or spy shots without company confirmation, concept cars with no production plan, price cuts on existing models, or marketing campaigns and brand-ambassador news.",
+    "defaultKeywords": ["launch", "unveil", "new suv", "new model", "bookings open", "variant", "facelift", "ex-showroom", "deliveries begin"],
+    "defaultWeight": 1.2
+  },
+  {
+    "industry": "AUTOMOTIVE",
+    "key": "oem_capacity_expansion",
+    "name": "OEM capacity expansion / new plant",
+    "description": "A vehicle or equipment OEM announces a new plant, production line or capacity expansion, signalling higher tyre volumes and new supplier nominations.",
+    "matchInstructions": "Match when a vehicle, two-wheeler, commercial vehicle or off-highway equipment maker announces a new or expanded manufacturing plant, assembly line or capacity increase with a location, volume or investment figure. Do NOT match expansions of offices, R&D centres, dealerships or showrooms, or plants that make only non-vehicle products (e.g. batteries alone, software, apparel).",
+    "defaultKeywords": ["new plant", "capacity", "expansion", "greenfield", "production line", "units per annum", "manufacturing facility", "assembly line", "brownfield"],
+    "defaultWeight": 1.4
+  },
+  {
+    "industry": "AUTOMOTIVE",
+    "key": "foreign_oem_india_investment",
+    "name": "Foreign OEM investment in India",
+    "description": "An overseas vehicle maker commits capital to India through a new subsidiary, joint venture or localisation programme, opening a window for local tyre sourcing.",
+    "matchInstructions": "Match when a vehicle or mobility OEM headquartered outside India announces an investment in India, a joint venture with an Indian partner, market entry, or a localisation programme for Indian-built vehicles. Do NOT match portfolio investments by financial investors, overseas investments by Indian companies, or announcements limited to importing fully built vehicles with no local assembly or sourcing.",
+    "defaultKeywords": ["investment in india", "joint venture", "localisation", "india operations", "market entry", "foreign direct investment", "wholly owned subsidiary", "local sourcing"],
+    "defaultWeight": 1.3
+  },
+  {
+    "industry": "AUTOMOTIVE",
+    "key": "ev_platform_announcement",
+    "name": "EV platform announcement",
+    "description": "An OEM or EV startup announces a dedicated electric vehicle platform or electric model family, creating demand for EV-specific low rolling resistance, noise-reduced tyres.",
+    "matchInstructions": "Match when a manufacturer announces a dedicated EV platform, skateboard architecture, or a battery electric car, SUV, scooter, motorcycle, bus or truck programme headed for production. Do NOT match charging-network news with no vehicle programme, battery-cell supply deals alone, or EV sales-statistics commentary.",
+    "defaultKeywords": ["electric", "ev platform", "battery electric", "skateboard", "dedicated ev", "electric suv", "electric scooter", "ev architecture", "range of"],
+    "defaultWeight": 1.3
+  },
+  {
+    "industry": "AUTOMOTIVE",
+    "key": "fleet_order_expansion",
+    "name": "Fleet operator large order / fleet expansion",
+    "description": "A fleet, logistics, bus or ride-hailing operator places a large vehicle order or expands its fleet, driving bulk replacement tyre demand and fleet-programme opportunities.",
+    "matchInstructions": "Match when a fleet operator, transporter, bus operator, ride-hailing or last-mile delivery company orders, procures or deploys a significant number of vehicles (typically 100+ units), or when an OEM announces a large fleet order win. Do NOT match driver recruitment, app feature launches, funding rounds without a fleet plan, or orders for non-vehicle equipment.",
+    "defaultKeywords": ["fleet", "fleet expansion", "order for", "placed an order", "deploy", "procure", "trucks", "buses", "fleet operator", "units to be delivered"],
+    "defaultWeight": 1.5
+  },
+  {
+    "industry": "AUTOMOTIVE",
+    "key": "ev_policy_change",
+    "name": "Government EV subsidy / policy change",
+    "description": "A central or state government subsidy, PLI award, EV policy or public tender that directly benefits a named vehicle maker or fleet operator and accelerates vehicle volumes.",
+    "matchInstructions": "Match when a government body notifies or awards a subsidy, incentive, PLI scheme approval, EV policy or state transport tender that names or directly benefits a vehicle maker or fleet operator. Do NOT match general tax commentary, fuel-price changes, road-safety rules or policies unrelated to vehicle production or fleet purchases.",
+    "defaultKeywords": ["subsidy", "incentive", "pli scheme", "ev policy", "government", "ministry", "state transport undertaking", "scheme", "notified"],
+    "defaultWeight": 0.9
+  }
+]

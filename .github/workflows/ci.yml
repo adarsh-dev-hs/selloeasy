@@ -1,0 +1,105 @@
+# CI — runs on every push and pull request. Needs no AWS account (plan §23.3 "verified in CI without an AWS account").
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Typecheck, test, validate, synth
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: selloeasy
+          POSTGRES_PASSWORD: selloeasy
+          POSTGRES_DB: selloeasy
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U selloeasy" --health-interval 5s --health-timeout 5s --health-retries 20
+      redis:
+        image: redis:7-alpine
+        ports: ['6379:6379']
+        options: >-
+          --health-cmd "redis-cli ping" --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      DATABASE_URL: postgres://selloeasy:selloeasy@localhost:5432/selloeasy
+      REDIS_URL: redis://localhost:6379
+      LLM_MODE: mock
+      JWT_ACCESS_SECRET: ci-access-secret-0123456789abcdef0123456789
+      JWT_REFRESH_SECRET: ci-refresh-secret-0123456789abcdef012345678
+      TURBO_TELEMETRY_DISABLED: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test (+ Allure report)
+        run: pnpm test:report --no-serve
+
+      - name: Upload Allure report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+          if-no-files-found: ignore
+
+      - name: Validate seed dataset
+        run: pnpm --filter @selloeasy/dataset validate
+
+      - name: Docs check
+        run: pnpm docs:check
+
+      - name: Env check (AWS fixture)
+        run: pnpm env:check --file infra/test/fixture.env --target aws
+
+      - name: CDK synth + cdk-nag (staging & production, dummy values)
+        run: pnpm --filter @selloeasy/infra synth:check
+
+  images:
+    name: Docker build (${{ matrix.service }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        service: [api, worker, web, docs-site]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build ${{ matrix.service }} image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: apps/${{ matrix.service }}/Dockerfile
+          platforms: linux/amd64
+          push: false
+          tags: selloeasy/${{ matrix.service }}:ci
+          cache-from: type=gha,scope=${{ matrix.service }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.service }}

@@ -1,0 +1,56 @@
+[
+  {
+    "industry": "LOGISTICS",
+    "key": "new_warehouse_fulfilment_centre",
+    "name": "New warehouse / fulfilment centre",
+    "description": "A brand, retailer, 3PL or developer announces a new or expanded warehouse, fulfilment centre, distribution centre or logistics park, creating demand for automation, WMS and material-handling systems.",
+    "matchInstructions": "Match when a company announces, leases, breaks ground on or commissions a warehouse, fulfilment centre, distribution centre, mother hub or logistics park with a concrete location, area (sq ft / sq m), pallet positions, investment or go-live date. Do NOT match retail store or showroom openings, corporate office moves, factory lines with no storage or distribution component, or vague statements that a company is 'exploring' new locations without a committed site.",
+    "defaultKeywords": ["warehouse", "fulfilment centre", "fulfillment center", "distribution centre", "sq ft", "pallet positions", "logistics park", "grade a", "mother hub"],
+    "defaultWeight": 1.4
+  },
+  {
+    "industry": "LOGISTICS",
+    "key": "d2c_ecommerce_funding",
+    "name": "D2C / e-commerce brand funding",
+    "description": "A D2C brand, e-commerce marketplace or quick-commerce startup closes a funding round earmarked partly for supply chain, fulfilment or delivery capacity.",
+    "matchInstructions": "Match when a direct-to-consumer brand, online marketplace, quick-commerce or e-commerce enabler raises equity or growth debt (Seed to pre-IPO) with a disclosed amount, especially when use of funds mentions warehousing, fulfilment, delivery speed or supply chain. Do NOT match funding for companies with no physical goods (pure SaaS, fintech, media), secondary share sales, rumours without confirmation, or valuation-only news.",
+    "defaultKeywords": ["funding", "raises", "series a", "series b", "series c", "funding round", "d2c", "growth capital", "investors", "pre-ipo"],
+    "defaultWeight": 1.2
+  },
+  {
+    "industry": "LOGISTICS",
+    "key": "port_rail_freight_corridor",
+    "name": "Port, rail or freight corridor project",
+    "description": "A port, container terminal, inland container depot (ICD), rail siding or freight corridor project that expands cargo-handling capacity and needs yard, gate and transport planning systems.",
+    "matchInstructions": "Match when a port operator, terminal, ICD/dry port or rail-logistics company announces new berths, terminal capacity (TEU), rail sidings, multimodal logistics parks or freight corridor connectivity with an investment figure or commissioning timeline. Do NOT match passenger rail, cruise terminals, general infrastructure budgets with no named operator, or routine monthly cargo-volume statistics.",
+    "defaultKeywords": ["container terminal", "inland container depot", "icd", "freight corridor", "rail siding", "teu", "berth", "multimodal logistics park", "dry port", "port capacity"],
+    "defaultWeight": 1.0
+  },
+  {
+    "industry": "LOGISTICS",
+    "key": "cold_chain_expansion",
+    "name": "Cold-chain expansion",
+    "description": "A food, dairy, pharma or cold-logistics company expands temperature-controlled storage or distribution, needing IoT monitoring, WMS and route planning for reefer fleets.",
+    "matchInstructions": "Match when a company adds cold storage capacity, temperature-controlled warehouses, reefer fleets, frozen-food lines with distribution, or GDP-compliant pharma distribution hubs, with locations, pallet or tonnage capacity, or investment. Do NOT match refrigerator/appliance launches, restaurant openings, cold-weather news, or product recalls unrelated to storage capacity.",
+    "defaultKeywords": ["cold chain", "cold storage", "temperature-controlled", "reefer", "frozen", "pharma distribution", "gdp-compliant", "2-8°c", "vaccine"],
+    "defaultWeight": 1.3
+  },
+  {
+    "industry": "LOGISTICS",
+    "key": "peak_season_capacity_ramp",
+    "name": "Festive / peak-season capacity ramp",
+    "description": "A retailer, marketplace or 3PL ramps up temporary storage, sortation, delivery and staffing ahead of a festive or peak sale season.",
+    "matchInstructions": "Match when a company announces capacity additions for a festive season, peak season or large sale event: temporary warehousing, extra sortation capacity, seasonal hiring, same-day delivery expansion or expected order volumes. Do NOT match festive marketing campaigns, discount announcements with no operational component, or post-season sales results.",
+    "defaultKeywords": ["festive season", "peak season", "sale season", "seasonal hiring", "order volumes", "same-day delivery", "sortation capacity", "temporary warehousing"],
+    "defaultWeight": 1.1
+  },
+  {
+    "industry": "LOGISTICS",
+    "key": "cross_border_export_hub",
+    "name": "Cross-border trade / export hub",
+    "description": "A company sets up an export hub, bonded warehouse or free-zone facility, or expands cross-border trade following a trade agreement, requiring customs-aware WMS and freight planning.",
+    "matchInstructions": "Match when a company opens or commits to an export hub, bonded warehouse, free-zone distribution facility or re-export operation, or expands cross-border shipping lanes tied to a free trade agreement, with volumes, corridors or investment named. Do NOT match macro trade statistics, tariff commentary without a company action, or one-off export orders with no new infrastructure.",
+    "defaultKeywords": ["export", "cross-border", "export hub", "free trade agreement", "bonded warehouse", "free zone", "re-export", "customs"],
+    "defaultWeight": 1.0
+  }
+]

@@ -1,0 +1,171 @@
+---
+title: Dashboards
+description: The org dashboard and the Super Admin's cross-org dashboard — every metric with its exact SQL definition, scoping (org versus "my stats"), date ranges and caching.
+---
+
+There are two dashboards:
+
+| Dashboard          | Endpoint                         | UI route         | Who                                                                    |
+| ------------------ | -------------------------------- | ---------------- | ---------------------------------------------------------------------- |
+| Org dashboard      | `GET /api/v1/dashboard?from&to`  | `/app/dashboard` | Org Admin, Sales Manager, Viewer (whole org). SDRs get **"My stats"**. |
+| Platform dashboard | `GET /api/v1/platform/dashboard` | `/platform`      | Super Admin, **aggregates only**                                       |
+
+All metrics are computed live with SQL aggregates in `apps/api/src/modules/dashboards.ts`,
+`apps/api/src/lib/stats.ts` and `apps/api/src/modules/platform.ts`. No warehouse or materialized views are used.
+
+## Org dashboard
+
+### Scope
+
+- `scope: "org"` for roles with `dashboard:org:read` (Org Admin, Sales Manager, Viewer).
+- `scope: "me"` for SDRs (`dashboard:self:read` only): lead metrics are restricted to leads **they own**, and
+  activity metrics to activities **they performed**.
+- The org's [lead-visibility filter](/docs/concepts/roles-and-permissions#lead-visibility-setting) is applied
+  too.
+
+### Date range
+
+`from` and `to` (`YYYY-MM-DD`, both optional, `to` inclusive through 23:59:59.999Z) filter:
+
+- **lead metrics** by `leads.first_signal_at` (when the lead was first detected);
+- **activity metrics** (team touches, channels) by `activities.occurred_at`.
+
+### Caching
+
+Results are cached in Redis for **60 seconds** under `dash:<orgId>:<org|userId>:<from>:<to>`. Changes may take up
+to a minute to show.
+
+### Summary KPIs
+
+Lead scope = `org_id = :org` (+ visibility) (+ `owner_user_id = :me` for SDRs) (+ date range):
+
+| Field                   | SQL                                                                                                                                                                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `leads`                 | `count(*)`                                                                                                                                                                                                               |
+| `approached`            | `count(*) filter (where stage <> 'NEW')`                                                                                                                                                                                 |
+| `engaged`               | `count(*) filter (where stage in ('ENGAGED','MEETING_SCHEDULED','QUALIFIED','PROPOSAL','WON'))`                                                                                                                          |
+| `meetings`              | `count(*) filter (where stage in ('MEETING_SCHEDULED','QUALIFIED','PROPOSAL','WON'))`                                                                                                                                    |
+| `converted`             | `count(*) filter (where stage = 'WON')`                                                                                                                                                                                  |
+| `lost`                  | `count(*) filter (where stage = 'LOST')`                                                                                                                                                                                 |
+| `hot` / `warm` / `cold` | `count(*) filter (where score_band = 'HOT' / 'WARM' / 'COLD')`                                                                                                                                                           |
+| `pipelineValueWon`      | `coalesce(sum(won_value) filter (where stage = 'WON'), 0)`, rounded                                                                                                                                                      |
+| `conversionRate`        | `converted / approached × 100`, one decimal (0 if nothing approached)                                                                                                                                                    |
+| `avgHoursToFirstTouch`  | `avg(extract(epoch from (first_touch_at − greatest(first_signal_at, created_at − interval '400 days'))) / 3600) filter (where first_touch_at is not null and first_touch_at >= first_signal_at)`, rounded to whole hours |
+
+<Callout type="info">
+  "Approached" is stage-based: any lead past `NEW`, **including `LOST`**. Since every outbound touch moves
+  `NEW` to `CONTACTED` automatically, this matches "has been contacted" in normal use. A lead moved manually
+  past `NEW` without a touch also counts.
+</Callout>
+
+### Funnel
+
+`select stage, count(*) … group by stage` over the lead scope, returned for all eight stages in canonical order
+(zero-filled).
+
+### Leads over time
+
+Weekly counts stacked by band, for leads whose `first_signal_at` is in the last **26 weeks** (and in the range):
+
+```sql
+select to_char(date_trunc('week', first_signal_at), 'YYYY-MM-DD') as week, score_band, count(*)
+from leads where <lead scope> and first_signal_at >= now() - interval '26 weeks'
+group by 1, score_band order by 1;
+```
+
+Returned as `[{ week, HOT, WARM, COLD }]`.
+
+### Leads by signal
+
+Which signals produce leads and conversions:
+
+```sql
+select s.id, s.name,
+  count(distinct l.id)                                    as leads,
+  count(distinct l.id) filter (where l.stage <> 'NEW')    as approached,
+  count(distinct l.id) filter (where l.stage = 'WON')     as converted
+from lead_signals ls
+join leads l          on l.id = ls.lead_id
+join signal_matches m on m.id = ls.signal_match_id
+join signals s        on s.id = m.signal_id
+where <lead scope>
+group by s.id, s.name order by leads desc;
+```
+
+A lead supported by several signals counts once for each of them.
+
+### Team leaderboard
+
+For each active member (only yourself for SDRs):
+
+| Field      | Definition                                                                             |
+| ---------- | -------------------------------------------------------------------------------------- |
+| `owned`    | leads in scope with `owner_user_id = member`                                           |
+| `won`      | owned leads with `stage = 'WON'`                                                       |
+| `touches`  | activities in range by the member with `type in ('EMAIL','WHATSAPP','CALL','MEETING')` |
+| `meetings` | activities in range by the member with `type = 'MEETING'`                              |
+
+Sorted by `won`, then `touches`, descending.
+
+### Channel effectiveness
+
+```sql
+select a.type as channel,
+  count(*)                                            as touches,
+  count(distinct a.lead_id)                           as leads_touched,
+  count(distinct a.lead_id) filter (where l.stage in
+    ('ENGAGED','MEETING_SCHEDULED','QUALIFIED','PROPOSAL','WON')) as engaged_after
+from activities a join leads l on l.id = a.lead_id
+where a.org_id = :org and <activity range> [and a.actor_user_id = :me]
+  and a.type in ('EMAIL','WHATSAPP','CALL','MEETING') and <visibility>
+group by a.type order by touches desc;
+```
+
+`engaged_after` uses the lead's **current** stage. It is not strictly causal.
+
+## Platform dashboard (Super Admin)
+
+<Callout type="warn">
+  Aggregates only. The Super Admin sees counts per org and per industry, never lead, contact or activity
+  records, and there is no drill-down ([ADR-0010](/docs/decisions/0010-superadmin-public-data-boundary)).
+</Callout>
+
+`GET /api/v1/platform/dashboard` returns:
+
+| Section            | Content                                                                                                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `totals`           | `orgs`, `activeOrgs` (status `ACTIVE`), `users` (count of memberships), `leads`, `approached`, `converted`, `conversionRate`, `llmCost30dUsd`, `llmCalls30d` |
+| `orgs[]`           | Per org: public list fields (name, slug, industry, status, created, `userCount`, `pendingInvites`) plus `PlatformOrgStats`                                   |
+| `byIndustry[]`     | `leads`, `approached`, `converted` summed per industry                                                                                                       |
+| `pipelineHealth`   | Runs in the last 30 days, failed runs, average duration in seconds                                                                                           |
+| `model`, `llmMode` | The configured model in live mode (otherwise the last non-mock model seen in `llm_calls`) and the current mode                                               |
+
+Per-org stats (`GET /platform/orgs/:id/stats` returns the same for one org):
+
+| Field             | SQL (from `lib/stats.ts`)                                                             |
+| ----------------- | ------------------------------------------------------------------------------------- |
+| `leads`           | `count(*)` over the org's leads                                                       |
+| `approached`      | `count(*) filter (where stage in (<every stage except NEW>))`                         |
+| `meetings`        | `count(*) filter (where stage in ('MEETING_SCHEDULED','QUALIFIED','PROPOSAL','WON'))` |
+| `converted`       | `count(*) filter (where stage = 'WON')`                                               |
+| `conversionRate`  | `converted / approached × 100`, one decimal                                           |
+| `llmCost30dUsd`   | `sum(cost_usd)` from `llm_calls` for the org, last 30 days                            |
+| `llmCalls30d`     | `count(*) filter (where not cached)`, last 30 days                                    |
+| `lastPipelineRun` | Status, finish time and error of the most recent run                                  |
+
+Pipeline health:
+
+```sql
+select count(*) as runs,
+       count(*) filter (where status = 'FAILED') as failed,
+       avg(extract(epoch from (finished_at - started_at))) as avg_seconds
+from pipeline_runs where created_at >= now() - interval '30 days';
+```
+
+The platform dashboard is not cached and has no date filter.
+
+## Performance notes
+
+The queries rely on the `leads (org_id, …)` and `activities (org_id, type, occurred_at)` indexes. At demo scale
+(hundreds of leads per org) they run in milliseconds. The plan's rule of thumb: introduce materialized views only if
+dashboard queries exceed about 300 ms p95.

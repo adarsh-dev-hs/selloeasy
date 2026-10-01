@@ -1,0 +1,124 @@
+---
+title: Validation rules
+description: Every anti-garbage check applied to imported and ingested records — file-level codes, row-level schema and heuristic codes, warnings, duplicate detection keys and how each outcome maps to a row status.
+---
+
+The same validator runs for file imports, connector ingestion and "Test connection". The pure parts live in
+`packages/shared/src/data-template.ts` (zod schema) and `packages/pipeline/src/data-quality.ts` (file inspection,
+heuristics, dedupe keys), with Vitest coverage in `packages/pipeline/test/`. The checks that need the database
+(duplicates against the data source, directory name consistency) and the optional AI gate run in
+`packages/engine/src/data/imports.ts` (`enrichValidation`).
+
+Every issue has the shape `{ field, code, message, severity }`, where `severity` is `error` or `warning`.
+
+## Layers at a glance
+
+| Layer                      | Checks                                                                                                | On failure                                                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| File                       | Size, binary/archive sniffing, strict UTF-8, format, parseability, row count, header                  | The whole file is rejected: batch `FAILED`, **no staging rows** |
+| Schema (zod)               | Required fields, types, lengths, formats, enums, tags, cross-field rules                              | Row `INVALID`                                                   |
+| Content quality            | Word count, printable ratio, placeholders, spam, all caps, internal hosts, free-mail domains          | Row `INVALID`                                                   |
+| Date window                | Future dates, dates older than `DATA_MAX_AGE_DAYS`                                                    | Row `INVALID`                                                   |
+| Consistency                | Email vs company domain, industry vs tags, missing size, directory name differs                       | Row `WARNING` (committed, flagged)                              |
+| Duplicates                 | Same `(source, external_id)`, same `source_url`, same content hash, in the file or in the data source | Row `DUPLICATE` (skipped)                                       |
+| AI quality gate (optional) | LLM judgement "is this a real B2B event?"                                                             | Row `WARNING` only                                              |
+
+A row with any `error` issue is `INVALID`. A row with only `warning` issues is `WARNING`. Duplicate detection runs
+only on rows that are otherwise valid.
+
+## File layer
+
+`inspectFile()` runs in the API on upload (fast fail) and again in the worker. For CSV/JSONL HTTP feeds, the same
+function inspects each response. Issues use `field: "(file)"`.
+
+| Code              | Rule                                                                                                                                                                                            |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `empty`           | The file has zero bytes                                                                                                                                                                         |
+| `too_large`       | Larger than `IMPORT_MAX_MB` (10 MB)                                                                                                                                                             |
+| `binary`          | Starts with `PK` (zip, `.xlsx`, `.docx`) or `%PDF`, or contains a NUL byte in the first 8 KB. "Export as CSV (UTF-8) or JSONL."                                                                 |
+| `encoding`        | Not valid UTF-8 (strict decode; a BOM is tolerated)                                                                                                                                             |
+| `format`          | Not recognized. Detected from the extension (`.csv`, `.jsonl`, `.ndjson`, `.json`), else from the content                                                                                       |
+| `parse`           | CSV: unterminated quote, or a row whose cell count differs from the header. JSONL: a line that is not a JSON object. JSON: not an array or `{"items": [...]}`, or an item that is not an object |
+| `no_rows`         | A header but no data rows, or no records at all                                                                                                                                                 |
+| `too_many_rows`   | More than `IMPORT_MAX_ROWS` (5 000) rows. "Split it or use a connector."                                                                                                                        |
+| `unknown_columns` | Any column or key outside template v1 (except `_comment`). "The file does not follow template v1."                                                                                              |
+| `missing_columns` | CSV only: the header lacks a required column. For JSON and JSONL, missing keys are reported per row instead                                                                                     |
+
+## Schema layer (row)
+
+After [normalization](/docs/platform-data/data-template#normalization), each row is parsed with the strict zod schema
+`marketEventRecordV1`. Issues keep the zod issue code and point at the column; positions inside list fields go into
+the message (for example `industry_tags[2]: Unknown tag — allowed: …`).
+
+| Code (zod)             | Typical cause                                                                                                                                                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `invalid_type`         | Missing required field, or a value of the wrong type (for example text in `amount`)                                                                                                                             |
+| `too_small`, `too_big` | Length or range limits: title 20–300, body 200–10 000, source 2–80, 1–4 tags, at most 5 mentioned companies, employees 1–5 000 000                                                                              |
+| `invalid_format`       | Not a hostname, not E.164, not ISO-2, not an ISO 8601 date, not an email                                                                                                                                        |
+| `invalid_value`        | A tag, size band or currency outside the allowed values                                                                                                                                                         |
+| `unrecognized_keys`    | An unknown key on a row (possible for connector JSON; files are stopped earlier by `unknown_columns`)                                                                                                           |
+| `custom`               | Not an `https://` URL, not a real calendar date, and the [cross-field rules](/docs/platform-data/data-template#cross-field-rules): currency without amount, employees outside the size band, incomplete contact |
+
+## Content-quality and date layer (row, errors)
+
+Implemented by `heuristics()` and the date checks in `validateRow()`:
+
+| Code                | Field                    | Rule                                                                                                                                                                           |
+| ------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `too_few_words`     | `body`                   | Fewer than 30 words                                                                                                                                                            |
+| `unprintable`       | `body`                   | Less than 95 % printable characters (letters, digits, punctuation, symbols, spaces, line breaks, tabs)                                                                         |
+| `placeholder`       | `title`, `body`          | Contains "lorem ipsum", "dolor sit amet", "test data", "asdf", "qwerty", "placeholder", "sample text", "foo bar", "xxx…" or "tbd", or starts with "test"                       |
+| `repeated_chars`    | `title`, `body`          | The same character 8 or more times in a row (`aaaaaaaa`)                                                                                                                       |
+| `all_caps`          | `title`                  | At least 10 letters, all upper case                                                                                                                                            |
+| `title_equals_body` | `body`                   | Body repeats the title                                                                                                                                                         |
+| `internal_host`     | `source_url`             | Host is `localhost`, an IPv4 literal, or ends in `.local` or `.internal`                                                                                                       |
+| `free_mail_domain`  | `subject_company_domain` | A free-mail provider (gmail.com, yahoo.com, outlook.com, hotmail.com, live.com, aol.com, icloud.com, proton.me, protonmail.com, rediffmail.com, yandex.com, mail.com, gmx.com) |
+| `future_date`       | `published_at`           | More than 1 day in the future                                                                                                                                                  |
+| `too_old`           | `published_at`           | Older than `DATA_MAX_AGE_DAYS` (730 days)                                                                                                                                      |
+
+## Consistency layer (row, warnings)
+
+Warnings never block a row. They are committed and shown in the report and `errors.csv`.
+
+| Code                    | Field                       | Rule                                                                                                                       |
+| ----------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `email_domain_mismatch` | `contact_email`             | The email domain is neither the company domain nor a subdomain of it                                                       |
+| `industry_not_tagged`   | `industry_tags`             | `subject_company_industry` is not among the event's tags                                                                   |
+| `no_company_size`       | `subject_company_size_band` | Neither size band nor employees given; ICP-fit scoring will be weaker                                                      |
+| `company_name_differs`  | `subject_company_name`      | The directory already has this domain under another name. The existing name is kept                                        |
+| `ai_low_quality`        | `(row)`                     | [AI quality gate](/docs/platform-data/importing#the-optional-ai-quality-gate) score below 0.5 (imports only, when enabled) |
+
+## Duplicates
+
+`dedupeKeys()` computes three keys for every otherwise-valid row:
+
+| Key          | Definition                                                                                                                      | Backed by                                                                                |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Source + id  | `lower(trimmed, whitespace-collapsed source)` + `::` + `lower(external_id)`, only when `external_id` is set                     | Unique index `market_events_source_external_uq` on `(lower(source), lower(external_id))` |
+| Source URL   | `source_url` lower-cased with trailing slashes removed                                                                          | Unique index `market_events_url_uq` on `lower(rtrim(url, '/'))`                          |
+| Content hash | SHA-256 of the normalized (lower-cased, whitespace-collapsed) title + newline + the first 500 characters of the normalized body | `market_events.content_hash` (indexed, not unique)                                       |
+
+- **Within the file** (`duplicate_in_file`): a row whose key matches an **earlier** row is `DUPLICATE`, with the
+  message "Duplicate of row N in this file".
+- **Against the data source** (`duplicate_existing`): the engine looks up all three keys in `market_events`, including
+  seed events and **retracted** events. A hit makes the row `DUPLICATE` and sets `duplicateOfEventId`.
+- **At insert time**, `ON CONFLICT DO NOTHING` on the unique indexes (plus the unique `market_events.hash`, which is
+  the SHA-256 of the source + id key or, without an `external_id`, of the content hash) catches races between
+  concurrent imports. Such rows are counted in `stats.duplicates`.
+
+The seed backfills `content_hash` for seeded events, so imports also detect near-copies of the demo corpus.
+
+## Directory upsert rules
+
+Applied at commit and ingestion time (`upsertRecord`, `packages/engine/src/data/upsert.ts`):
+
+- **Company**: matched on `subject_company_domain`. Missing industry, HQ country, size band and employees are filled
+  in (`updated_by_batch_id` is set); existing non-empty values and the existing name are never overwritten. A retracted
+  company that is touched again is un-retracted. New companies get `source_type` and `batch_id`.
+- **Contact**: matched on (company, email) or (company, phone). Inserted when new; never updated.
+- **Event**: always inserted (duplicates were excluded earlier), with provenance.
+
+## Tests
+
+`packages/pipeline/test/` covers each rule, including every row of `sampleData.invalid.csv`, CSV parser edge cases
+(BOM, quotes, embedded newlines, CRLF), dedupe keys and `sampleData.csv` validating 10/10.

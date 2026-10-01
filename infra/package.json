@@ -1,0 +1,27 @@
+{
+  "name": "@selloeasy/infra",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AWS CDK infrastructure for SelloEasy (plan §23). Deploy-ready; nothing here needs an AWS account to synthesize.",
+  "scripts": {
+    "cdk": "cdk",
+    "synth": "cdk synth",
+    "diff": "cdk diff --all",
+    "deploy": "cdk deploy --all --require-approval never",
+    "synth:check": "tsx scripts/synth-check.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@selloeasy/shared": "workspace:*",
+    "aws-cdk-lib": "^2.200.0",
+    "cdk-nag": "^2.36.0",
+    "constructs": "^10.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "aws-cdk": "^2.1000.0",
+    "tsx": "^4.20.0",
+    "typescript": "5.9.3"
+  }
+}
