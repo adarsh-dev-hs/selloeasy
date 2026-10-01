@@ -21,6 +21,8 @@ SelloEasy.
   rules work unchanged in both places.
 - "Open the app" links go through `/go/app` and `/go/api-docs`, which redirect to `WEB_URL` at request time, so one
   image works in every environment.
+- The standalone site's sidebar is limited to the sections in `VISIBLE_SECTIONS` (`app/docs/layout.tsx`, currently only
+  Project; `/` and `/docs` redirect to `/docs/project`). Hidden sections' pages still build so cross-links work.
 - The web app keeps `/docs` (the AWS deployment still serves docs from the web service). The docs-site image is built
   in CI but has no CDK stack yet.
 

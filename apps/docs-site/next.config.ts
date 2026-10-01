@@ -14,7 +14,11 @@ const config: NextConfig = {
   turbopack: { root },
   poweredByHeader: false,
   async redirects() {
-    return [{ source: '/', destination: '/docs', permanent: false }];
+    // Only the Project section is in the sidebar (app/docs/layout.tsx), so land there.
+    return [
+      { source: '/', destination: '/docs/project', permanent: false },
+      { source: '/docs', destination: '/docs/project', permanent: false },
+    ];
   },
   async headers() {
     return [

@@ -196,7 +196,10 @@ The documentation has two renderers of the same `docs/` folder ([ADR-0019](/docs
 | Inside the web app          | `pnpm dev` (or the `web` compose service)                | http://localhost:3000/docs                                       |
 | Standalone `apps/docs-site` | `pnpm dev:docs`, `pnpm dev`, or `docker compose up docs` | http://localhost:3001 (`DOCS_PORT`, `DOCS_HOST_PORT` in Compose) |
 
-Both pick up edits to `docs/**/*.mdx` live in dev mode. The standalone site redirects `/` to `/docs`, keeps the
+Both pick up edits to `docs/**/*.mdx` live in dev mode. The standalone site currently shows **only the Project
+section** in its sidebar and lands on `/docs/project`; the other sections are commented out in `VISIBLE_SECTIONS`
+(`apps/docs-site/app/docs/layout.tsx`), the changelog is hidden via `HIDDEN_PAGES`, and their pages still build, so links to them keep working. The web app's
+`/docs` shows every section. The standalone site redirects `/` to `/docs`, keeps the
 same URLs, has the same search, and links back to the product through `WEB_URL`. The sidebar is split into five sections with a dropdown switcher: `(guide)`,
 `(architecture)`, `operations`, `decisions` and `(project)` are `root: true` folders. Folder names in parentheses
 group pages without changing URLs, so put new pages in the section a reader would look in. When you add an MDX component,
